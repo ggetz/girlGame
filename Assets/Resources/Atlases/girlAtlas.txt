@@ -1,0 +1,228 @@
+{"frames": {
+
+"Back Foot.png":
+{
+	"frame": {"x":2,"y":2,"w":16,"h":9},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":9},
+	"sourceSize": {"w":16,"h":9}
+},
+"Back Hand Curl.png":
+{
+	"frame": {"x":20,"y":2,"w":24,"h":15},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":24,"h":15},
+	"sourceSize": {"w":24,"h":15}
+},
+"Back Hand Flat.png":
+{
+	"frame": {"x":46,"y":2,"w":49,"h":15},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":49,"h":15},
+	"sourceSize": {"w":49,"h":15}
+},
+"Back Hand Grasp.png":
+{
+	"frame": {"x":97,"y":2,"w":24,"h":15},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":24,"h":15},
+	"sourceSize": {"w":24,"h":15}
+},
+"Back Hand.png":
+{
+	"frame": {"x":123,"y":2,"w":15,"h":22},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":15,"h":22},
+	"sourceSize": {"w":15,"h":22}
+},
+"Back Lower Arm.png":
+{
+	"frame": {"x":140,"y":2,"w":6,"h":26},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":6,"h":26},
+	"sourceSize": {"w":6,"h":26}
+},
+"Back Lower Leg.png":
+{
+	"frame": {"x":148,"y":2,"w":11,"h":45},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":11,"h":45},
+	"sourceSize": {"w":11,"h":45}
+},
+"Back Shoulder.png":
+{
+	"frame": {"x":161,"y":2,"w":27,"h":39},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":27,"h":39},
+	"sourceSize": {"w":27,"h":39}
+},
+"Back Upper Arm.png":
+{
+	"frame": {"x":190,"y":2,"w":8,"h":27},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":8,"h":27},
+	"sourceSize": {"w":8,"h":27}
+},
+"Back Upper Leg.png":
+{
+	"frame": {"x":200,"y":2,"w":11,"h":40},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":11,"h":40},
+	"sourceSize": {"w":11,"h":40}
+},
+"Front Foot.png":
+{
+	"frame": {"x":213,"y":2,"w":20,"h":8},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":20,"h":8},
+	"sourceSize": {"w":20,"h":8}
+},
+"Front Hand Curl.png":
+{
+	"frame": {"x":2,"y":49,"w":24,"h":15},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":24,"h":15},
+	"sourceSize": {"w":24,"h":15}
+},
+"Front Hand Flat.png":
+{
+	"frame": {"x":28,"y":49,"w":49,"h":15},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":49,"h":15},
+	"sourceSize": {"w":49,"h":15}
+},
+"Front Hand Grasp.png":
+{
+	"frame": {"x":79,"y":49,"w":24,"h":15},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":24,"h":15},
+	"sourceSize": {"w":24,"h":15}
+},
+"Front Hand.png":
+{
+	"frame": {"x":105,"y":49,"w":17,"h":21},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":17,"h":21},
+	"sourceSize": {"w":17,"h":21}
+},
+"Front Lower Arm.png":
+{
+	"frame": {"x":124,"y":49,"w":5,"h":28},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":5,"h":28},
+	"sourceSize": {"w":5,"h":28}
+},
+"Front Lower Leg.png":
+{
+	"frame": {"x":131,"y":49,"w":11,"h":40},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":11,"h":40},
+	"sourceSize": {"w":11,"h":40}
+},
+"Front Shoulder.png":
+{
+	"frame": {"x":144,"y":49,"w":29,"h":32},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":29,"h":32},
+	"sourceSize": {"w":29,"h":32}
+},
+"Front Upper Arm.png":
+{
+	"frame": {"x":175,"y":49,"w":6,"h":32},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":6,"h":32},
+	"sourceSize": {"w":6,"h":32}
+},
+"Front Upper Leg.png":
+{
+	"frame": {"x":183,"y":49,"w":14,"h":50},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":14,"h":50},
+	"sourceSize": {"w":14,"h":50}
+},
+"Head 2.png":
+{
+	"frame": {"x":2,"y":101,"w":73,"h":50},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":73,"h":50},
+	"sourceSize": {"w":73,"h":50}
+},
+"Head.png":
+{
+	"frame": {"x":77,"y":101,"w":73,"h":50},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":73,"h":50},
+	"sourceSize": {"w":73,"h":50}
+},
+"Skirt 1.png":
+{
+	"frame": {"x":152,"y":101,"w":33,"h":55},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":33,"h":55},
+	"sourceSize": {"w":33,"h":55}
+},
+"Skirt 2.png":
+{
+	"frame": {"x":187,"y":101,"w":35,"h":60},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":35,"h":60},
+	"sourceSize": {"w":35,"h":60}
+},
+"Skirt 3.png":
+{
+	"frame": {"x":2,"y":163,"w":42,"h":60},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":42,"h":60},
+	"sourceSize": {"w":42,"h":60}
+},
+"Skirt 4.png":
+{
+	"frame": {"x":46,"y":163,"w":34,"h":58},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":34,"h":58},
+	"sourceSize": {"w":34,"h":58}
+},
+"Torso.png":
+{
+	"frame": {"x":82,"y":163,"w":54,"h":74},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":54,"h":74},
+	"sourceSize": {"w":54,"h":74}
+}},
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker ",
+	"version": "1.0",
+	"image": "GirlSprite.png",
+	"format": "RGBA8888",
+	"size": {"w":256,"h":256},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:27daa57380a959f43db6f61d59648fae$"
+}
+}
