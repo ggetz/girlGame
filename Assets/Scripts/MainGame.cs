@@ -74,9 +74,8 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 	
 		//load sprites
 		background = new FSprite("AliceBG1");
-		introText = new FSprite("1");
 		ground = new Ground(groundHeight);
-		obstacle1 = new FSprite("2");
+		
 		//power1 = new FLabel("PalitinoMedium", "JUMP!");
 	}
 	
@@ -88,8 +87,10 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		Futile.stage.AddChild(girl);
 		girl.SetPosition(0, groundHeight);
 		girl.setGroundHeight (groundHeight);
-		//girl.Pause();	
 		
+		//ground text
+		ground.Start();
+		girl.Start();
 		
 		
 		// makes it so that the entire screen is capable of multitouch
@@ -148,6 +149,16 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		{
 			if(touch.phase == TouchPhase.Began)
 			{
+				for(int i = specialWords.Count-1; i>=0; i--)
+					{
+						SpecialWords word = specialWords[i];
+						Vector2 touchPos = word.GlobalToLocal (touch.position);
+						if(word.textRect.Contains (touchPos))
+						{
+							word.action ();
+							Debug.Log ("I should do something");
+						}
+					}
 				if(girl.isIdle)
 				{
 					if(girl.isStanding)
@@ -272,66 +283,12 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		background2.scale = 0.6f;
 		background2.SetPosition(background.width + (background2.width/2)-20, background.height/2);
 		
-		Futile.stage.AddChild (introText);
-		
-		FSprite obstacle2 = new FSprite("3");
-		FSprite obstacle3 = new FSprite("4");
-		FSprite obstacle4 = new FSprite("5");
-		FSprite obstacle5 = new FSprite("6");
-		FSprite obstacle6 = new FSprite("7");
-		FSprite obstacle7 = new FSprite("8");
-		FSprite obstacle8 = new FSprite("9");
-		FSprite obstacle9 = new FSprite("10");
-		FSprite obstacle10 = new FSprite("11");
-		FSprite obstacle11 = new FSprite("12");
-		
-		obstacles.Add (obstacle1);
-		obstacles.Add (obstacle2);
-		obstacles.Add (obstacle3);
-		obstacles.Add (obstacle4);
-		obstacles.Add (obstacle5);
-		obstacles.Add (obstacle6);
-		obstacles.Add (obstacle7);
-		obstacles.Add (obstacle8);
-		obstacles.Add (obstacle9);
-		obstacles.Add (obstacle10);
-		obstacles.Add (obstacle11);
-		
-		//ground text
-		
-		ground.Start();
-		girl.Start();
-		
 		//obstacle
-		foreach (FSprite i in obstacles)
-		{
-			Futile.stage.AddChild (i);
-			i.scale = 0.65f;
-		}
-		
-		obstacle1.SetPosition(obstacle1.width*4.5f, groundHeight + (obstacle1.height/2f));
-		obstacle3.SetPosition (obstacle1.x + obstacle3.width/2, obstacle1.y + obstacle3.height);
-		obstacle2.SetPosition (obstacle3.x, obstacle3.y+obstacle2.height);
-		obstacle4.SetPosition (obstacle3.x+obstacle4.width, obstacle3.y);
-		
-		obstacle5.SetPosition(obstacle4.x, obstacle2.y + obstacle5.height);
-		obstacle6.SetPosition(obstacle5.x, obstacle5.y+obstacle6.height);
-		obstacle7.SetPosition (obstacle6.x+obstacle7.width, obstacle6.y);
-		obstacle8.SetPosition (obstacle7.x+obstacle8.width*2f, obstacle7.y);
-		obstacle9.SetPosition (obstacle8.x+obstacle9.width, obstacle8.y);
-		obstacle10.SetPosition (obstacle9.x, obstacle5.y);
-		obstacle11.SetPosition (obstacle10.x, obstacle2.y);
-		
-		foreach (FSprite obs in obstacles)
-		{
-			Rect obsRect = obs.localRect.CloneAndOffset(obs.x, obs.y);
-			textRects.Add(obsRect);
-		}
-		
+
 		PictureObstacle hole = new PictureObstacle("Hole");
 		Futile.stage.AddChild (hole);
 		hole.scale=0.5f;
-		hole.SetPosition (obstacle7.x+(obstacle8.x-obstacle7.x)/2f, obstacle7.y+hole.height/4.5f);
+		
 		hole.setSolidity (false);
 		pictures.Add (hole);
 		
@@ -340,11 +297,6 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 			Rect picRect = pic.localRect.CloneAndOffset(pic.x, pic.y);
 			pictureObstacleRects.Add(picRect);
 		}
-		
-		introText.SetPosition (introText.width/1.7f, Futile.screen.height*0.8f);
-		Rect introTextRect = introText.localRect.CloneAndOffset(introText.x, introText.y);
-		textRects.Add(introTextRect);
-		
 		
 		MediumText sentence1 = new MediumText("PalatinoMedium", "In another moment");
 		MediumText sentence2 = new MediumText("PalatinoMedium", "went Alice after it");
@@ -359,14 +311,14 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		mediumText.Add (sentence4);
 		mediumText.Add (sentence5);
 		mediumText.Add (sentence6);
-		
+
 		foreach (MediumText i in mediumText)
 		{
 			Futile.stage.AddChild (i);
 			i.scale = 0.6f;
 		}
 		
-		sentence1.SetPosition (obstacle3.x+sentence1.textRect.width/1.9f, obstacle4.y+ obstacle4.height/2f+sentence1.textRect.height*0.1f);
+		sentence1.SetPosition (Futile.screen.width*0.2f, Futile.screen.height*0.4f);
 		
 		ChangeWord down = new ChangeWord("PalatinoSpecial", " down");
 		Futile.stage.AddChild(down);
@@ -378,7 +330,7 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		sentence5.SetPosition (sentence4.x, sentence4.y-sentence5.textRect.height/2f);
 		sentence6.SetPosition (sentence5.x, sentence5.y-sentence6.textRect.height/2f);
 		
-		float outX = sentence6.x + obstacle1.width;
+		float outX = sentence6.x+girl.girlWidth;
 		float outY = girl.y;
 		Vector2 outPosition = new Vector2(outX, outY);
 		ChangeGirlPositionWord Out = new ChangeGirlPositionWord("PalatinoSpecial", "out", outPosition, girl);
@@ -387,8 +339,7 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		
 		foreach (MediumText mt in mediumText)
 		{
-			Rect mtRect = new Rect(mt.x, mt.y, 
-			mt.textRect.height, mt.textRect.width);
+			Rect mtRect = new Rect(mt.x, mt.y, mt.textRect.height, mt.textRect.width);
 			mediumTextRects.Add (mtRect);
 		}
 		
@@ -397,8 +348,7 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		
 		foreach (SpecialWords sw in specialWords)
 		{
-			Rect swRect = new Rect(sw.x, sw.y, 
-			sw.textRect.height, sw.textRect.width);
+			Rect swRect = new Rect(sw.x, sw.y, sw.textRect.height, sw.textRect.width);
 			specialWordRects.Add (swRect);
 		}
 		
