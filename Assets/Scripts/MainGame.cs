@@ -27,7 +27,6 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 	
 	List <SpecialWords> specialWords = new List<SpecialWords> ();
 	List <MediumText> mediumText = new List<MediumText>();
-	List <FSprite> obstacles=new List<FSprite>();
 	List <PictureObstacle> pictures = new List<PictureObstacle>();
 	
 	FCamObject cam;
@@ -74,8 +73,7 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 	
 		//load sprites
 		background = new FSprite("AliceBG1");
-		ground = new Ground(groundHeight);
-		
+		ground = new Ground(groundHeight, "PalatinoMedium");
 		//power1 = new FLabel("PalitinoMedium", "JUMP!");
 	}
 	
@@ -90,12 +88,12 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		
 		//ground text
 		ground.Start();
+		
 		girl.Start();
 		
 		
 		// makes it so that the entire screen is capable of multitouch
 		Futile.touchManager.AddMultiTouchTarget (this);
-		
 		
 		//set camera to follow girl
 		cam.setWorldBounds(new Rect(-1.5f * Futile.screen.width, -.5f*Futile.screen.height, 4*Futile.screen.width, 1.25f* Futile.screen.height));
@@ -277,14 +275,41 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		Futile.stage.AddChild(background);
 		background.scale = 0.6f;
 		background.SetPosition(background.width/2, background.height/2);
-	
+		string font = "PalatinoMedium";
 		FSprite background2 = new FSprite("blank");
 		Futile.stage.AddChild (background2);
 		background2.scale = 0.6f;
 		background2.SetPosition(background.width + (background2.width/2)-20, background.height/2);
 		
-		//obstacle
-
+		//obstacles
+	// and fortunately was just in time to see it pop down a large rabbit-hole under the hedge.
+		MediumText blocka1 = new MediumText(font, "Alice started to");
+		MediumText blocka2 = new MediumText(font, "her feet, for it");
+		MediumText blocka3 = new MediumText(font, "flashed   across");
+		MediumText blocka4 = new MediumText(font, "her mind that she");
+		MediumText blocka5 = new MediumText(font, "had never before");
+		MediumText blocka6 = new MediumText(font, "seen   a  rabbit");
+		MediumText blocka7 = new MediumText(font, "with   either  a");
+		MediumText blocka8 = new MediumText(font, "waist-coat pocket, or a watch to take out of");
+		MediumText blocka9 = new MediumText(font, "it, and burning  with  curiousity, she  ran ");
+		MediumText blocka10 = new MediumText(font, "across the field after it and fortunately  "); 
+		MediumText blocka11 = new MediumText(font, "was just in time to see it pop down a large ");
+		
+		mediumText.Add (blocka1);
+		mediumText.Add (blocka2);
+		mediumText.Add (blocka3);
+		mediumText.Add (blocka4);
+		mediumText.Add (blocka5);
+		mediumText.Add (blocka6);
+		mediumText.Add (blocka7);
+		mediumText.Add (blocka8);
+		mediumText.Add (blocka9);
+		mediumText.Add (blocka10);
+		mediumText.Add (blocka11);
+		
+		MediumText blockb = new MediumText(font, "rabbit-hole under the hedge");
+		mediumText.Add (blockb);
+		
 		PictureObstacle hole = new PictureObstacle("Hole");
 		Futile.stage.AddChild (hole);
 		hole.scale=0.5f;
@@ -299,11 +324,11 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		}
 		
 		MediumText sentence1 = new MediumText("PalatinoMedium", "In another moment");
-		MediumText sentence2 = new MediumText("PalatinoMedium", "went Alice after it");
-		MediumText sentence3 = new MediumText("PalatinoMedium", "never once considering");
-		MediumText sentence4 = new MediumText("PalatinoMedium", "how in the world");
-		MediumText sentence5 = new MediumText("PalatinoMedium", "she was going");
-		MediumText sentence6 = new MediumText("PalatinoMedium", "to get");
+		MediumText sentence2 = new MediumText("PalatinoMedium", " went Alice after it never once");
+		MediumText sentence3 = new MediumText("PalatinoMedium", "considering");
+		MediumText sentence4 = new MediumText("PalatinoMedium", "how in the");
+		MediumText sentence5 = new MediumText("PalatinoMedium", "world she was");
+		MediumText sentence6 = new MediumText("PalatinoMedium", "going to get");
 		
 		mediumText.Add (sentence1);
 		mediumText.Add (sentence2);
@@ -318,14 +343,29 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 			i.scale = 0.6f;
 		}
 		
-		sentence1.SetPosition (Futile.screen.width*0.2f, Futile.screen.height*0.4f);
+		blocka1.SetPosition (Futile.screen.width*0.5f, blocka1.textRect.height*7.5f + groundHeight);
+		blocka2.SetPosition (blocka1.x, blocka1.y - blocka2.textRect.height/2f);
+		blocka3.SetPosition (blocka1.x, blocka2.y - blocka3.textRect.height/2f);
+		blocka4.SetPosition (blocka1.x, blocka3.y - blocka4.textRect.height/2f);
+		blocka5.SetPosition (blocka1.x, blocka4.y - blocka5.textRect.height/2f);
+		blocka6.SetPosition (blocka1.x, blocka5.y - blocka6.textRect.height/2f);
+		blocka7.SetPosition (blocka1.x, blocka6.y - blocka7.textRect.height/2f);
+		blocka8.SetPosition (blocka1.x+(blocka8.textRect.width-blocka1.textRect.width)/4f, blocka7.y - blocka8.textRect.height/2f);
+		blocka9.SetPosition (blocka8.x, blocka8.y - blocka9.textRect.height/2f);
+		blocka10.SetPosition (blocka8.x, blocka9.y - blocka10.textRect.height/2f);
+		blocka11.SetPosition (blocka8.x, blocka10.y - blocka11.textRect.height/2f);
 		
-		ChangeWord down = new ChangeWord("PalatinoSpecial", " down");
+		blockb.SetPosition (blocka11.x - blockb.textRect.width/2f, groundHeight+(blocka11.y-groundHeight)/2f);
+		
+		
+		sentence1.SetPosition (blocka7.x + sentence1.textRect.width/1.5f, blocka8.y+sentence1.textRect.height/1.5f);
+		
+		ChangeWord down = new ChangeWord("PalatinoSpecial", "down");
 		Futile.stage.AddChild(down);
-		down.SetPosition (sentence1.x + down.textRect.width*1.2f, sentence1.y);
+		down.SetPosition (sentence1.x + down.textRect.width*1.5f, sentence1.y);
 		
-		sentence2.SetPosition(down.x+sentence2.textRect.width/2.1f, down.y);
-		sentence3.SetPosition (sentence2.x+sentence3.textRect.width/2.3f, sentence2.y-sentence3.textRect.height/2f);
+		sentence2.SetPosition(down.x+sentence2.textRect.width/2.5f, down.y);
+		sentence3.SetPosition (sentence2.x+(sentence2.textRect.width-sentence3.textRect.width)/4f, sentence2.y-sentence3.textRect.height/2f);
 		sentence4.SetPosition(sentence3.x, sentence3.y-sentence4.textRect.height/2f);
 		sentence5.SetPosition (sentence4.x, sentence4.y-sentence5.textRect.height/2f);
 		sentence6.SetPosition (sentence5.x, sentence5.y-sentence6.textRect.height/2f);

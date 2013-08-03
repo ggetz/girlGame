@@ -1,36 +1,39 @@
 using UnityEngine;
 using System.Collections;
+using System.IO;
+using System;
 
 public class Ground
 {
-	float nextX;
-	float xLoc=0;
-	float yLoc, groundHeight;
-	FSprite block;
-	string sprite;
-	public Ground(float ground)
+	float groundHeight;
+	string gFont;
+	
+	public Ground(float ground, string font)
 	{
 		groundHeight = ground;
+		gFont = font;
 		
 	}
 
 	// Use this for initialization
 	public void Start () 
 	{
-		for(int i=0; i < 2; i++)
-		{
-			for(int x=0; x<=i; x++)
-			{
-				sprite+="0";
-			}
-			
-			block = new FSprite(sprite);
-			
-			Futile.stage.AddChild (block);
-			block.SetPosition(xLoc+block.width/2, groundHeight - block.height/2.3f);
-			xLoc += block.width;
-			sprite="";
-		}
+		try
+        {
+            using (StreamReader sr = new StreamReader("Assets/Resources/AliceGround.txt"))
+            {
+                string text = sr.ReadToEnd ();
+                MediumText groundText = new MediumText(gFont, text);
+				groundText.scale = 0.6f;
+				groundText.SetPosition (groundText.textRect.width/3.334f, groundHeight);
+				Futile.stage.AddChild (groundText);
+            }
+        }
+        catch (Exception e)
+        {
+            Debug.Log ("ooops");
+			Debug.Log (e);
+        }
 		
 	}
 	
@@ -39,9 +42,5 @@ public class Ground
 	{
 		
 	}
-	
-	public float getXLoc()
-	{
-		return xLoc;
-	}
+
 }
