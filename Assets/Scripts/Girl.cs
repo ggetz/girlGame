@@ -54,11 +54,10 @@ public class Girl : GSpineSprite
 	public void Update () 
 	{
 		y += yVel;
-		if (!isGrounded)
+		if (y > groundHeight)
 		{
 			yVel -= gravity;
 			isJumping = true;
-			
 		}
 		else
 		{	
@@ -67,23 +66,25 @@ public class Girl : GSpineSprite
 				if(isFacingRight)
 				{
 					Play("Forward Landing");
-					Queue("Forward Idle");
+					Queue ("Forward Idle");
 				}
-				else
+				if(!isFacingRight)
 				{
 					Play("Reverse Landing");
-					Queue("Reverse Idle");
+					Queue ("Reverse Idle");
+					
 				}
 				
+				isIdle=true;
 				isJumping = false;	
 				isGrounded = true;
 				isStanding=true;
 				isRunning = false;
+				isCrawling = false;
+				
 			}
 			
 		}
-		
-		isGrounded = false;
 		
 		//update dimensions
 		if (isCrawling)
@@ -107,7 +108,6 @@ public class Girl : GSpineSprite
 	public void jump(Vector2 delta)
 	{
 		
-		
 		if (isGrounded)
 		{
 			Stop ();
@@ -120,16 +120,15 @@ public class Girl : GSpineSprite
 			
 			if(!isFacingRight)
 			{
-				Debug.Log ("I should jump");
-				Play("Reverse Jump");
 				
-				
+				Play("Reverse Jump");	
 			}
 			
 			isGrounded=false;
 			isJumping = true;
 			isCrawling = false;
 			isStanding = false;
+			isRunning = false;
 		}
 		
 		

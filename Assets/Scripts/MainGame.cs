@@ -245,6 +245,15 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 			{
 				if(girl.isGrounded)
 				{
+					if (girl.isStanding && !girl.isRunning)
+					{ 
+						girl.run ();
+					}
+					
+					if(!girl.isStanding && !girl.isCrawling)
+					{
+						girl.crawl ();
+					}
 					girl.move (touch.position.x + focus.x);
 				}
 				
@@ -310,6 +319,20 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		MediumText blockb = new MediumText(font, "rabbit-hole under the hedge");
 		mediumText.Add (blockb);
 		
+		MediumText blockc1 = new MediumText(font, "There was nothing so VERY remarkable");
+		MediumText blockc2 = new MediumText(font, "in that; nor did Alice think it so ");
+		MediumText blockc3 = new MediumText(font, "VERY much out of the  ");
+		MediumText blockc4 = new MediumText(font, "way to hear the Rabbit");
+		MediumText blockc5 = new MediumText(font, "say 'Oh dear! Oh dear!");
+		MediumText blockc6 = new MediumText(font, " I shall be late!'    ");
+		
+		mediumText.Add (blockc1);
+		mediumText.Add (blockc2);
+		mediumText.Add (blockc3);
+		mediumText.Add (blockc4);
+		mediumText.Add (blockc5);
+		mediumText.Add (blockc6);
+		
 		PictureObstacle hole = new PictureObstacle("Hole");
 		Futile.stage.AddChild (hole);
 		hole.scale=0.5f;
@@ -357,6 +380,12 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		
 		blockb.SetPosition (blocka11.x - blockb.textRect.width/2f, groundHeight+(blocka11.y-groundHeight)/2f);
 		
+		blockc5.SetPosition(blocka1.x + blockc5.textRect.width/2f, blocka1.y + blockc5.textRect.height/2f);
+		blockc6.SetPosition(blockc5.x + blockc6.textRect.width*2.5f, blockc5.y);
+		blockc3.SetPosition (blockc5.x, blockc5.y + blockc3.textRect.height);
+		blockc4.SetPosition (blockc6.x, blockc6.y+blockc4.textRect.height);
+		blockc1.SetPosition (blockc5.x+(blockc1.textRect.width/2f - blockc3.textRect.width/2f), blockc1.textRect.height + blockc3.y);
+		blockc2.SetPosition (blockc6.x - + (blockc2.textRect.width/2f - blockc4.textRect.width/2f), blockc2.textRect.height + blockc4.y);
 		
 		sentence1.SetPosition (blocka7.x + sentence1.textRect.width/1.5f, blocka8.y+sentence1.textRect.height/1.5f);
 		
@@ -370,7 +399,7 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		sentence5.SetPosition (sentence4.x, sentence4.y-sentence5.textRect.height/2f);
 		sentence6.SetPosition (sentence5.x, sentence5.y-sentence6.textRect.height/2f);
 		
-		float outX = sentence6.x+girl.girlWidth;
+		float outX = sentence6.x+girl.girlWidth*4f;
 		float outY = girl.y;
 		Vector2 outPosition = new Vector2(outX, outY);
 		ChangeGirlPositionWord Out = new ChangeGirlPositionWord("PalatinoSpecial", "out", outPosition, girl);
