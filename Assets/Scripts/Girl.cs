@@ -54,7 +54,7 @@ public class Girl : GSpineSprite
 	public void Update () 
 	{
 		y += yVel;
-		if (y > groundHeight)
+		if (!isGrounded)
 		{
 			yVel -= gravity;
 			isJumping = true;
@@ -130,8 +130,6 @@ public class Girl : GSpineSprite
 			isStanding = false;
 			isRunning = false;
 		}
-		
-		
 		
 	}
 	
@@ -239,7 +237,7 @@ public class Girl : GSpineSprite
 			//run left
 			if (isFacingRight)
 			{
-				Stop ();
+				//Stop ();
 				Play ("Reverse Mid-Jump");
 				scaleX = -scaleX;
 				isFacingRight = false;
@@ -251,7 +249,7 @@ public class Girl : GSpineSprite
 			//run right
 			if (!isFacingRight)
 			{
-				Stop ();
+				//Stop ();
 				Play ("Forward Mid-Jump");
 				scaleX = -scaleX;
 				isFacingRight = true;
@@ -301,6 +299,7 @@ public class Girl : GSpineSprite
 		{
 			Play(reverse);
 		}
+
 		isRunning = false;
 		isCrawling = false;
 		isIdle = true;
@@ -356,6 +355,7 @@ public class Girl : GSpineSprite
 				x = rect.xMax + girlWidth/4;	
 			}
 			
+			Debug.Log ("Colliding with " + rect);
 			return true;
 		}
 		
@@ -368,45 +368,13 @@ public class Girl : GSpineSprite
 		{			
 			if(solid)
 			{
-				//hit top
-				if (girlRect.yMin > rect.yMax - rect.height/4)
-				{
-					isGrounded = true;
-					y = rect.yMax;
-					yVel = 0;
-				}
-				//hit bottom
-				else if (girlRect.yMax < rect.yMin + rect.height/4)
-				{
-					yVel = 0;
-					y = rect.yMin - girlHeight - 1f;
-				}
-				//hit right
-				else if (isFacingRight && girlRect.xMin < rect.xMin)
-				{
-					x = rect.xMin - girlWidth;	
-					
-				}
-				//hit left
-				else if (!isFacingRight && girlRect.xMax > rect.xMax)
-				{
-					x = rect.xMax + girlWidth/4;	
-				}
+				checkCollisions(rect);
+				return true;
 			}
-			
-			if(!solid)
+			else
 			{
 				Debug.Log ("GO THROUGH");
-				
-				if (girlRect.yMax < rect.yMin + rect.height/4)
-				{
-					yVel-=gravity;
-					y+=yVel;
-				}
-				
 			}
-			
-			return true;
 		}
 		
 		return false;
@@ -419,6 +387,7 @@ public class Girl : GSpineSprite
 			isGrounded = true;
 			y = ground;
 			yVel = 0;
+			//Debug.Log("On Ground");
 		}
 	}
 	
