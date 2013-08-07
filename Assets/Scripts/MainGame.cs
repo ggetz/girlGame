@@ -111,21 +111,24 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 	{
 		girl.Update();
 		bool solid;
+		
+		girl.isGrounded = false;
+		
 		foreach (Rect text in textRects)
 		{
-			girl.checkCollisions(text);
+			//girl.checkCollisions(text);
 		}
 		
 		for(int x = pictures.Count-1; x>=0; x--)
 		{
-			solid = pictures[x].isSolid ();
-			girl.checkCollisions (pictureObstacleRects[x], solid);
+			//solid = pictures[x].isSolid ();
+			//girl.checkCollisions (pictureObstacleRects[x], solid);
 		}
 		
 		for(int x = specialWords.Count-1; x>=0; x--)
 		{
-			solid = specialWords[x].isSolid ();
-			girl.checkCollisions (specialWordRects[x], solid);
+			//solid = specialWords[x].isSolid ();
+			//girl.checkCollisions (specialWordRects[x], solid);
 		}
 		
 		for(int x = mediumText.Count-1; x>=0; x--)
@@ -574,13 +577,13 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		{
 			Futile.stage.AddChild (mt);
 			mt.scale = 0.6f;
-			Rect mtRect = new Rect(mt.x, mt.y, mt.textRect.height, mt.textRect.width);
+			Rect mtRect = makeTextRect(mt);
 			mediumTextRects.Add (mtRect);
 		}
 				
 		foreach (SpecialWords sw in specialWords)
 		{
-			Rect swRect = new Rect(sw.x, sw.y, sw.textRect.height, sw.textRect.width);
+			Rect swRect = makeTextRect(sw);
 			specialWordRects.Add (swRect);
 		}
 		
@@ -590,6 +593,13 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 			pictureObstacleRects.Add(picRect);
 		}
 		
+	}
+	
+	Rect makeTextRect(FLabel l)
+	{
+		Rect r;
+		r = new Rect(l.x - 0.6f * l.textRect.width/2, l.y, 0.6f * l.textRect.width, 0.6f * l.textRect.height);
+		return r;
 	}
 	
 }
