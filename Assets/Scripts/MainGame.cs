@@ -106,6 +106,9 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 	{
 		girl.Update();
 		bool solid;
+		
+		girl.isGrounded = false;
+		
 		foreach (Rect text in textRects)
 		{
 			//girl.checkCollisions(text);
@@ -426,7 +429,7 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 	Rect makeTextRect(FLabel l)
 	{
 		Rect r;
-		r = new Rect(l.x - 0.6f * l.textRect.width/2, l.y + 0.6f * l.textRect.height/2, 0.6f * l.textRect.width, 0.6f * l.textRect.height);
+		r = new Rect(l.x - 0.6f * l.textRect.width/2, l.y, 0.6f * l.textRect.width, 0.6f * l.textRect.height);
 		return r;
 	}
 	

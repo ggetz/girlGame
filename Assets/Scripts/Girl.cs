@@ -21,7 +21,7 @@ public class Girl : GSpineSprite
 	
 	// height width
 	public float girlWidth = 10;
-	public float girlHeight = 70;
+	public float girlHeight = 60;
 	
 	// states of action
 	public bool isRunning = false;
@@ -237,7 +237,7 @@ public class Girl : GSpineSprite
 			//run left
 			if (isFacingRight)
 			{
-				//Stop ();
+				Stop ();
 				Play ("Reverse Mid-Jump");
 				scaleX = -scaleX;
 				isFacingRight = false;
@@ -249,7 +249,7 @@ public class Girl : GSpineSprite
 			//run right
 			if (!isFacingRight)
 			{
-				//Stop ();
+				Stop ();
 				Play ("Forward Mid-Jump");
 				scaleX = -scaleX;
 				isFacingRight = true;
