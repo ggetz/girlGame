@@ -1,12 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class AffectPictureWords : MediumText {
+public class AffectPictureWords : SpecialWords {
 	
-	PictureObstacle effectedObstacle;
+	MovingPictureObstacles effectedObstacle;
 	bool linked = false;
 	
-	public AffectPictureWords(string font, string word, PictureObstacle obs): base(font, word)
+	public AffectPictureWords(string font, string word, MovingPictureObstacles obs): base(font, word)
 	{
 		effectedObstacle = obs;	
 		linked = true;
@@ -22,7 +22,7 @@ public class AffectPictureWords : MediumText {
 	
 	}
 	
-	public void action()
+	public override void action()
 	{
 		if(linked)
 		{

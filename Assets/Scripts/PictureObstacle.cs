@@ -23,7 +23,7 @@ public class PictureObstacle : FSprite
 	
 	}
 	
-	public void action()
+	public virtual void action()
 	{
 		
 	}

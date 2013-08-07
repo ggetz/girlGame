@@ -32,6 +32,9 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 	FCamObject cam;
 	FNode focus;
 	
+	string blockFont;
+	string specialFont;
+	
 	void Start()
 	{
 		// Setup Futile
@@ -70,7 +73,9 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		Futile.atlasManager.LoadAtlas("Atlases/AliceAtlas");
 		Futile.atlasManager.LoadFont("PalatinoMedium", "MediumNormalText", "Atlases/MediumNormalText", 0, 0);
 		Futile.atlasManager.LoadFont("PalatinoSpecial", "MediumSpecialText", "Atlases/MediumSpecialText", 0, 0);
-	
+		blockFont = "PalatinoMedium";
+		specialFont = "PalatinoSpecial";
+		
 		//load sprites
 		background = new FSprite("AliceBG1");
 		ground = new Ground(groundHeight, "PalatinoMedium");
@@ -284,7 +289,6 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		Futile.stage.AddChild(background);
 		background.scale = 0.6f;
 		background.SetPosition(background.width/2, background.height/2);
-		string font = "PalatinoMedium";
 		FSprite background2 = new FSprite("blank");
 		Futile.stage.AddChild (background2);
 		background2.scale = 0.6f;
@@ -292,17 +296,17 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		
 		//obstacles
 	// and fortunately was just in time to see it pop down a large rabbit-hole under the hedge.
-		MediumText blocka1 = new MediumText(font, "Alice started to");
-		MediumText blocka2 = new MediumText(font, "her feet, for it");
-		MediumText blocka3 = new MediumText(font, "flashed   across");
-		MediumText blocka4 = new MediumText(font, "her mind that she");
-		MediumText blocka5 = new MediumText(font, "had never before");
-		MediumText blocka6 = new MediumText(font, "seen   a  rabbit");
-		MediumText blocka7 = new MediumText(font, "with   either  a");
-		MediumText blocka8 = new MediumText(font, "waist-coat pocket, or a watch to take out of");
-		MediumText blocka9 = new MediumText(font, "it, and burning  with  curiousity, she  ran ");
-		MediumText blocka10 = new MediumText(font, "across the field after it and fortunately  "); 
-		MediumText blocka11 = new MediumText(font, "was just in time to see it pop down a large ");
+		MediumText blocka1 = new MediumText(blockFont, "Alice started to her");
+		MediumText blocka2 = new MediumText(blockFont, "feet, for it flashed");
+		MediumText blocka3 = new MediumText(blockFont, "across her mind that");
+		MediumText blocka4 = new MediumText(blockFont, "she had never before");
+		MediumText blocka5 = new MediumText(blockFont, "seen any rabbit with");
+		MediumText blocka6 = new MediumText(blockFont, "either a waist -coat");
+		MediumText blocka7 = new MediumText(blockFont, "pocket,or a watch to");
+		MediumText blocka8 = new MediumText(blockFont, "take out of it , and");
+		MediumText blocka9 = new MediumText(blockFont, "burning with curiousity,she ran across");
+		MediumText blocka10 = new MediumText(blockFont, "the field after it, and , fortunately was"); 
+		MediumText blocka11 = new MediumText(blockFont, "just in time to see it pop  down a large ");
 		
 		mediumText.Add (blocka1);
 		mediumText.Add (blocka2);
@@ -316,15 +320,15 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		mediumText.Add (blocka10);
 		mediumText.Add (blocka11);
 		
-		MediumText blockb = new MediumText(font, "rabbit-hole under the hedge");
+		MediumText blockb = new MediumText(blockFont, "rabbit-hole under the hedge");
 		mediumText.Add (blockb);
 		
-		MediumText blockc1 = new MediumText(font, "There was nothing so VERY remarkable");
-		MediumText blockc2 = new MediumText(font, "in that; nor did Alice think it so ");
-		MediumText blockc3 = new MediumText(font, "VERY much out of the  ");
-		MediumText blockc4 = new MediumText(font, "way to hear the Rabbit");
-		MediumText blockc5 = new MediumText(font, "say 'Oh dear! Oh dear!");
-		MediumText blockc6 = new MediumText(font, " I shall be late!'    ");
+		MediumText blockc1 = new MediumText(blockFont, "There was nothing so VERY remarkable");
+		MediumText blockc2 = new MediumText(blockFont, "in that; nor did Alice think it so ");
+		MediumText blockc3 = new MediumText(blockFont, "VERY much out of the  ");
+		MediumText blockc4 = new MediumText(blockFont, "way to hear the Rabbit");
+		MediumText blockc5 = new MediumText(blockFont, "say 'Oh dear! Oh dear!");
+		MediumText blockc6 = new MediumText(blockFont, " I shall be late!'    ");
 		
 		mediumText.Add (blockc1);
 		mediumText.Add (blockc2);
@@ -340,43 +344,27 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		hole.setSolidity (false);
 		pictures.Add (hole);
 		
-		foreach (PictureObstacle pic in pictures)
-		{
-			Rect picRect = pic.localRect.CloneAndOffset(pic.x, pic.y);
-			pictureObstacleRects.Add(picRect);
-		}
-		
-		MediumText sentence1 = new MediumText("PalatinoMedium", "In another moment");
-		MediumText sentence2 = new MediumText("PalatinoMedium", " went Alice after it never once");
-		MediumText sentence3 = new MediumText("PalatinoMedium", "considering");
-		MediumText sentence4 = new MediumText("PalatinoMedium", "how in the");
-		MediumText sentence5 = new MediumText("PalatinoMedium", "world she was");
-		MediumText sentence6 = new MediumText("PalatinoMedium", "going to get");
+		MediumText sentence1 = new MediumText(blockFont, "In another moment");
+		MediumText sentence2 = new MediumText(blockFont, " went Alice after it never once considering");
+		MediumText sentence3 = new MediumText(blockFont, "how in the world she");
+		MediumText sentence4 = new MediumText(blockFont, "was going to get");
 		
 		mediumText.Add (sentence1);
 		mediumText.Add (sentence2);
 		mediumText.Add (sentence3);
 		mediumText.Add (sentence4);
-		mediumText.Add (sentence5);
-		mediumText.Add (sentence6);
 
-		foreach (MediumText i in mediumText)
-		{
-			Futile.stage.AddChild (i);
-			i.scale = 0.6f;
-		}
-		
 		blocka1.SetPosition (Futile.screen.width*0.5f, blocka1.textRect.height*7.5f + groundHeight);
-		blocka2.SetPosition (blocka1.x, blocka1.y - blocka2.textRect.height/2f);
-		blocka3.SetPosition (blocka1.x, blocka2.y - blocka3.textRect.height/2f);
-		blocka4.SetPosition (blocka1.x, blocka3.y - blocka4.textRect.height/2f);
-		blocka5.SetPosition (blocka1.x, blocka4.y - blocka5.textRect.height/2f);
-		blocka6.SetPosition (blocka1.x, blocka5.y - blocka6.textRect.height/2f);
-		blocka7.SetPosition (blocka1.x, blocka6.y - blocka7.textRect.height/2f);
-		blocka8.SetPosition (blocka1.x+(blocka8.textRect.width-blocka1.textRect.width)/4f, blocka7.y - blocka8.textRect.height/2f);
-		blocka9.SetPosition (blocka8.x, blocka8.y - blocka9.textRect.height/2f);
-		blocka10.SetPosition (blocka8.x, blocka9.y - blocka10.textRect.height/2f);
-		blocka11.SetPosition (blocka8.x, blocka10.y - blocka11.textRect.height/2f);
+		blocka2.SetPosition (blocka1.x + blocka2.textRect.width*3f, blocka1.y);
+		blocka3.SetPosition (blocka1.x, blocka1.y - blocka3.textRect.height/1.5f);
+		blocka4.SetPosition (blocka2.x, blocka2.y - blocka4.textRect.height/1.5f);
+		blocka5.SetPosition (blocka1.x, blocka3.y - blocka5.textRect.height/1.5f);
+		blocka6.SetPosition (blocka2.x, blocka4.y - blocka6.textRect.height/1.5f);
+		blocka7.SetPosition (blocka1.x, blocka5.y - blocka7.textRect.height/1.5f);
+		blocka8.SetPosition (blocka2.x, blocka6.y - blocka8.textRect.height/1.5f);
+		blocka9.SetPosition (blocka1.x + (blocka9.textRect.width - blocka1.textRect.width)/4f, blocka8.y - blocka9.textRect.height);
+		blocka10.SetPosition (blocka9.x, blocka9.y - blocka10.textRect.height);
+		blocka11.SetPosition (blocka9.x, blocka10.y - blocka11.textRect.height);
 		
 		blockb.SetPosition (blocka11.x - blockb.textRect.width/2f, groundHeight+(blocka11.y-groundHeight)/2f);
 		
@@ -387,38 +375,219 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		blockc1.SetPosition (blockc5.x+(blockc1.textRect.width/2f - blockc3.textRect.width/2f), blockc1.textRect.height + blockc3.y);
 		blockc2.SetPosition (blockc6.x - + (blockc2.textRect.width/2f - blockc4.textRect.width/2f), blockc2.textRect.height + blockc4.y);
 		
-		sentence1.SetPosition (blocka7.x + sentence1.textRect.width/1.5f, blocka8.y+sentence1.textRect.height/1.5f);
+		sentence1.SetPosition (blocka7.x + sentence1.textRect.width/1.5f, blocka9.y+sentence1.textRect.height/1.5f);
 		
-		ChangeWord down = new ChangeWord("PalatinoSpecial", "down");
+		ChangeWord down = new ChangeWord(specialFont, "down");
 		Futile.stage.AddChild(down);
 		down.SetPosition (sentence1.x + down.textRect.width*1.5f, sentence1.y);
 		
 		sentence2.SetPosition(down.x+sentence2.textRect.width/2.5f, down.y);
-		sentence3.SetPosition (sentence2.x+(sentence2.textRect.width-sentence3.textRect.width)/4f, sentence2.y-sentence3.textRect.height/2f);
-		sentence4.SetPosition(sentence3.x, sentence3.y-sentence4.textRect.height/2f);
-		sentence5.SetPosition (sentence4.x, sentence4.y-sentence5.textRect.height/2f);
-		sentence6.SetPosition (sentence5.x, sentence5.y-sentence6.textRect.height/2f);
+		sentence3.SetPosition (sentence2.x+(sentence2.textRect.width-sentence3.textRect.width)/4f, sentence2.y-sentence3.textRect.height);
+		sentence4.SetPosition(sentence3.x, sentence3.y-sentence4.textRect.height);
 		
-		float outX = sentence6.x+girl.girlWidth*4f;
+		
+		hole.SetPosition ((blockc1.x+blockc2.x)/2f, blockc1.y);
+		
+		float outX = sentence4.x+girl.girlWidth*4f;
 		float outY = girl.y;
 		Vector2 outPosition = new Vector2(outX, outY);
-		ChangeGirlPositionWord Out = new ChangeGirlPositionWord("PalatinoSpecial", "out", outPosition, girl);
+		ChangeGirlPositionWord Out = new ChangeGirlPositionWord(specialFont, "out", outPosition, girl);
 		Futile.stage.AddChild (Out);
-		Out.SetPosition(sentence6.x, sentence6.y-Out.textRect.height);
-		
-		foreach (MediumText mt in mediumText)
-		{
-			Rect mtRect = new Rect(mt.x, mt.y, mt.textRect.height, mt.textRect.width);
-			mediumTextRects.Add (mtRect);
-		}
+		Out.SetPosition(sentence4.x, groundHeight + (sentence4.y-groundHeight)/2f);
 		
 		specialWords.Add (Out);
 		specialWords.Add (down);
 		
+		setUpShrinkStage (background2.x + background2.width/2f);
+		
+	}
+	
+	void setUpShrinkStage(float startX)
+	{
+		FSprite background3 = new FSprite("blank");
+		FSprite background4 = new FSprite("blank");
+
+		Futile.stage.AddChild (background3);
+		background3.scale = 0.6f;
+		background3.SetPosition((background3.width/2)-20 + startX, background.height/2);
+		Futile.stage.AddChild (background4);
+		background4.scale = 0.6f;
+		background4.SetPosition(background3.x +(background3.width/2)-20, background.height/2);
+	
+		ChangeGirlSizeWord shrink = new ChangeGirlSizeWord(specialFont, "shrink", 0.3f, girl);
+		ChangeGirlSizeWord grow = new ChangeGirlSizeWord(specialFont, "grow", 0.6f, girl);
+		
+		specialWords.Add (shrink);
+		specialWords.Add (grow);
+		Futile.stage.AddChild (grow);
+		Futile.stage.AddChild (shrink);
+		
+		MediumText sentence1 = new MediumText(blockFont, "First, however, she waited for a few minutes to see if");
+		MediumText sentence2 = new MediumText(blockFont, "she was going to ");
+		MediumText sentence3 = new MediumText(blockFont, " any further");
+		
+		MediumText blocka1 = new MediumText(blockFont, "she  felt a little");
+		MediumText blocka2 = new MediumText(blockFont, "nervous about this");
+		MediumText blocka3 = new MediumText(blockFont, "' for it might end"); 
+		MediumText blocka4 = new MediumText( blockFont, "you know,' said Alice to herself, ' in my going out altogether, like a"); 
+		MediumText blocka5 = new MediumText(blockFont, "candle. I wonder what I should be like then?' And she tried to fancy");
+		MediumText blocka6 = new MediumText(blockFont, "what the flame of a candle is like after the candle is blown out, for");
+		MediumText blocka7 = new MediumText (blockFont, "she could not remember ever having seen such a thing. After a while,");
+		MediumText blocka8 = new MediumText (blockFont, "finding that nothing happened she decided on going into the garden at");
+		MediumText blocka9 = new MediumText(blockFont, "once; but, alas for poor Alice! when she got to the door she found she");
+		
+		mediumText.Add (sentence1);
+		mediumText.Add (sentence2);
+		mediumText.Add (sentence3);
+	
+		mediumText.Add (blocka1);
+		mediumText.Add (blocka2);
+		mediumText.Add (blocka3);
+		mediumText.Add (blocka4);
+		mediumText.Add (blocka5);
+		mediumText.Add (blocka6);
+		mediumText.Add (blocka7);
+		mediumText.Add (blocka8);
+		mediumText.Add (blocka9);
+		
+		sentence1.SetPosition (startX + sentence1.textRect.width/2f, Futile.screen.height*0.85f);
+		sentence3.SetPosition(sentence1.x + (sentence1.textRect.width - sentence3.textRect.width)/4f, sentence1.y - sentence3.textRect.height);
+		shrink.SetPosition(sentence3.x - shrink.textRect.width, sentence3.y);
+		sentence2.SetPosition (shrink.x - sentence2.textRect.width/2f, sentence3.y);
+		
+		blocka1.SetPosition (sentence3.x, sentence3.y - blocka1.textRect.height);
+		blocka2.SetPosition (sentence3.x, blocka1.y - blocka2.textRect.height);
+		blocka3.SetPosition (sentence3.x, blocka2.y - blocka3.textRect.height);
+		blocka4.SetPosition (sentence1.x, blocka3.y - blocka4.textRect.height);
+		blocka5.SetPosition (sentence1.x, blocka4.y - blocka5.textRect.height);
+		blocka6.SetPosition (sentence1.x, blocka5.y - blocka6.textRect.height);
+		blocka7.SetPosition (sentence1.x, blocka6.y - blocka7.textRect.height);
+		blocka8.SetPosition (sentence1.x, blocka7.y - blocka8.textRect.height);
+		blocka9.SetPosition (sentence1.x, blocka8.y - blocka9.textRect.height);
+		
+		MediumText sentence4 = new MediumText(blockFont, "\"Well, I'll eat it,\" said Alice");
+		MediumText sentence5 = new MediumText(blockFont, "\"and it if makes me ");
+		MediumText sentence6 = new MediumText(blockFont, " larger, I can reach the key.\"");
+		
+		mediumText.Add (sentence4);
+		mediumText.Add (sentence5);
+		mediumText.Add (sentence6);
+		
+		sentence4.SetPosition (blocka1.x + sentence4.textRect.width, blocka2.y);
+		sentence5.SetPosition (sentence4.x, sentence4.y - sentence5.textRect.height);
+		grow.SetPosition (sentence5.x - (sentence5.textRect.width - grow.textRect.width)/4f, sentence5.y - grow.textRect.height);
+		sentence6.SetAnchor (grow.x + sentence6.textRect.width/2f, grow.y);
+		
+		setUpMushroomStage (background4.x + background4.width/2f);
+		
+	}
+	
+	void setUpMushroomStage(float startX)
+	{
+		FSprite background = new FSprite("blank");
+		Futile.stage.AddChild (background);
+		background.scale = 0.6f;
+		background.SetPosition((background.width/2)-20 + startX, background.height/2);
+		
+		FSprite background2 = new FSprite("blank");
+		Futile.stage.AddChild (background2);
+		background2.scale = 0.6f;
+		background2.SetPosition((background.width/2)-20 + background.x, background.height/2);
+		
+		FSprite background3 = new FSprite("blank");
+		Futile.stage.AddChild (background3);
+		background3.scale = 0.6f;
+		background3.SetPosition((background.width/2)-20 + background2.x, background.height/2);
+		
+		FSprite background4 = new FSprite("blank");
+		Futile.stage.AddChild (background4);
+		background4.scale = 0.6f;
+		background4.SetPosition((background.width/2)-20 + background3.x, background.height/2);
+		
+		GSpineManager.LoadSpine("MushroomAtlas", "Atlases/MushroomJson", "Atlases/MushroomAtlas");
+		GrowingMushroom smallMushroom = new GrowingMushroom("MushroomAtlas", "small", 0.6f);
+		smallMushroom.scale = 0.6f;
+		smallMushroom.Start();
+		
+		GrowingMushroom bigMushroom = new GrowingMushroom("MushroomAtlas", "big", 0.6f);
+		bigMushroom.scale = 0.6f;
+		bigMushroom.Start ();
+		
+		Futile.stage.AddChild (smallMushroom);
+		Futile.stage.AddChild(bigMushroom);
+		
+		AffectPictureWords bgrow = new AffectPictureWords(specialFont, "grow", smallMushroom);
+		bgrow.SetPosition (300, groundHeight + 20f);
+		Futile.stage.AddChild (bgrow);
+		specialWords.Add (bgrow);
+		
+		AffectPictureWords sgrow = new AffectPictureWords(specialFont, "grow", bigMushroom);
+		Futile.stage.AddChild (sgrow);
+		specialWords.Add(sgrow);
+		
+		MediumText sentence1 = new MediumText(blockFont, "'One side will make you");
+		MediumText sentence2 = new MediumText(blockFont, " taller, and the other side will make you ");
+		MediumText sentence3 = new MediumText(blockFont, " shorter.'");
+		
+		MediumText block1 = new MediumText(blockFont, "'One side of WHAT? The other side of WHAT?' thought Alice to herself.");
+		MediumText block2 = new MediumText(blockFont, "'Of the mushroom,'said");
+		MediumText block3 = new MediumText(blockFont, "the Caterpillar, just ");
+		MediumText block4 = new MediumText(blockFont, "as if she had asked it");
+		MediumText block5 = new MediumText(blockFont, "aloud ; and in another");
+		MediumText block6 = new MediumText(blockFont, " moment it was out  of");
+		MediumText block7 = new MediumText(blockFont, "sight. Alice remained ");
+		MediumText block8 = new MediumText(blockFont, "looking thoughtfully at");
+		MediumText block9 = new MediumText(blockFont, "the mushroom a minute, ");
+		MediumText block10 = new MediumText(blockFont, "trying to make out which");
+		MediumText block11 = new MediumText(blockFont, "were the two sides of it."); 
+		
+		sentence1.SetPosition(startX, Futile.screen.height*0.4f);
+		bgrow.SetPosition (sentence1.x + sentence1.textRect.width/2.3f, sentence1.y);
+		sentence2.SetPosition (sentence1.x + (sentence2.textRect.width-sentence1.textRect.width)/4f, sentence1.y - sentence2.textRect.height);
+		sgrow.SetPosition (sentence2.x + sentence2.textRect.width/2.6f, sentence2.y);
+		sentence3.SetPosition (sgrow.x+sentence3.textRect.width/1.7f, sentence2.y);
+		
+		bigMushroom.SetPosition (sentence3.x + sentence3.textRect.width*1.5f, groundHeight);
+		smallMushroom.SetPosition (bigMushroom.x + smallMushroom.width*1.5f, groundHeight);
+		
+		block1.SetPosition (smallMushroom.x + block1.textRect.width/2f, bigMushroom.height);
+		block2.SetPosition (block1.x - (block1.textRect.width-block2.textRect.width)/4f, block1.y-block2.textRect.height);
+		block3.SetPosition (block2.x, block2.y-block3.textRect.height);
+		block4.SetPosition (block2.x, block3.y-block4.textRect.height);
+		block5.SetPosition (block2.x, block4.y-block5.textRect.height);
+		block6.SetPosition (block2.x, block5.y-block6.textRect.height);
+		block7.SetPosition (block2.x, block6.y-block7.textRect.height);
+		
+		mediumText.Add (sentence1);
+		mediumText.Add (sentence2);
+		mediumText.Add (sentence3);
+		
+		mediumText.Add (block1);
+		mediumText.Add (block2);
+		mediumText.Add (block3);
+		mediumText.Add (block4);
+		mediumText.Add (block5);
+		mediumText.Add (block6);
+		mediumText.Add (block7);
+		
+		foreach (MediumText mt in mediumText)
+		{
+			Futile.stage.AddChild (mt);
+			mt.scale = 0.6f;
+			Rect mtRect = new Rect(mt.x, mt.y, mt.textRect.height, mt.textRect.width);
+			mediumTextRects.Add (mtRect);
+		}
+				
 		foreach (SpecialWords sw in specialWords)
 		{
 			Rect swRect = new Rect(sw.x, sw.y, sw.textRect.height, sw.textRect.width);
 			specialWordRects.Add (swRect);
+		}
+		
+		foreach (PictureObstacle pic in pictures)
+		{
+			Rect picRect = pic.localRect.CloneAndOffset(pic.x, pic.y);
+			pictureObstacleRects.Add(picRect);
 		}
 		
 	}
