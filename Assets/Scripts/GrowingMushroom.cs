@@ -13,6 +13,7 @@ public class GrowingMushroom : MovingPictureObstacles
 	public float height;
 	public float width;
 	bool isBig = false;
+	bool isSold=true;
 
 	public GrowingMushroom(string atlas, string startState, float scale): base(atlas)
 	{

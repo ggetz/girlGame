@@ -24,6 +24,7 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 	List <Rect> specialWordRects;
 	
 	bool directionTouchFound;
+
 	
 	List <SpecialWords> specialWords = new List<SpecialWords> ();
 	List <MediumText> mediumText = new List<MediumText>();
@@ -162,127 +163,129 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 						if(word.textRect.Contains (touchPos))
 						{
 							word.action ();
-							Debug.Log ("I should do something");
 						}
 					}
-				if(girl.isIdle)
-				{
-					if(girl.isStanding)
-					{
-						girl.run ();
-					}
-					if(!girl.isStanding)
-					{
-						girl.crawl ();
-					}
-				}
-				girl.move (touch.position.x - focus.x);
-			}
-			
-			if(touch.phase == TouchPhase.Moved)
-			{
-				deltaSwipe = touch.deltaPosition;
-				if(Mathf.Abs(deltaSwipe.x) > 10)
-				{
+				
+				
 					if(girl.isIdle)
 					{
-						girl.isIdle=false;
-						
-						if(girl.isStanding && girl.isGrounded)
+						if(girl.isStanding)
 						{
 							girl.run ();
 						}
-						if(!girl.isStanding && girl.isGrounded)
+						if(!girl.isStanding)
 						{
 							girl.crawl ();
 						}
 					}
+					girl.move (touch.position.x - focus.x);
+				}
+				
+				if(touch.phase == TouchPhase.Moved)
+				{
+					deltaSwipe = touch.deltaPosition;
+					if(Mathf.Abs(deltaSwipe.x) > 10)
+					{
+						if(girl.isIdle)
+						{
+							girl.isIdle=false;
+							
+							if(girl.isStanding && girl.isGrounded)
+							{
+								girl.run ();
+							}
+							if(!girl.isStanding && girl.isGrounded)
+							{
+								girl.crawl ();
+							}
+						}
+						
+						if(girl.isGrounded)
+						{
+							if(!girl.isRunning && girl.isStanding)
+							{
+								girl.run ();
+							}
+							if(!girl.isStanding && !girl.isCrawling)
+							{
+								girl.crawl ();
+							}
+							girl.move (touch.position.x + focus.x);
+						}
+						if(girl.isJumping)
+						{
+							girl.jumpMove(touch.position.x + focus.x);
+						}
+					}
 					
+					if(deltaSwipe.y > 10)
+					{
+						
+						if(girl.isGrounded && girl.isStanding)
+						{
+							girl.jump (deltaSwipe);
+						}
+						
+						if(girl.isJumping && !girl.isGrounded)
+						{
+							girl.jumpMove(touch.position.x + focus.x);
+						}
+						
+						if(!girl.isStanding && girl.isGrounded)
+						{
+							girl.isStanding = true;
+							girl.isGrounded=true;
+							girl.isCrawling = false;
+							girl.isRunning = false;
+							girl.idle ();
+						}
+						
+					}
+					
+					if(deltaSwipe.y < -10)
+					{
+						if(girl.isStanding && girl.isGrounded)
+						{
+							girl.crawl ();
+						}
+					}
+				}
+				
+				if(touch.phase != TouchPhase.Ended)
+				{
 					if(girl.isGrounded)
 					{
-						if(!girl.isRunning && girl.isStanding)
-						{
+						if (girl.isStanding && !girl.isRunning)
+						{ 
 							girl.run ();
 						}
+						
 						if(!girl.isStanding && !girl.isCrawling)
 						{
 							girl.crawl ();
 						}
 						girl.move (touch.position.x + focus.x);
 					}
-					if(girl.isJumping)
+					
+					else
 					{
 						girl.jumpMove(touch.position.x + focus.x);
 					}
 				}
 				
-				if(deltaSwipe.y > 10)
+				if(touch.phase == TouchPhase.Ended)
 				{
-					
-					if(girl.isGrounded && girl.isStanding)
+			
+					if(girl.isGrounded)
 					{
-						girl.jump (deltaSwipe);
-					}
-					
-					if(girl.isJumping && !girl.isGrounded)
-					{
-						girl.jumpMove(touch.position.x + focus.x);
-					}
-					
-					if(!girl.isStanding && girl.isGrounded)
-					{
-						girl.isStanding = true;
-						girl.isGrounded=true;
-						girl.isCrawling = false;
-						girl.isRunning = false;
 						girl.idle ();
 					}
-					
-				}
-				
-				if(deltaSwipe.y < -10)
-				{
-					if(girl.isStanding && girl.isGrounded)
+					else
 					{
-						girl.crawl ();
+						girl.jumpMove(girl.x + focus.x);
 					}
+
 				}
-			}
-			
-			if(touch.phase != TouchPhase.Ended)
-			{
-				if(girl.isGrounded)
-				{
-					if (girl.isStanding && !girl.isRunning)
-					{ 
-						girl.run ();
-					}
-					
-					if(!girl.isStanding && !girl.isCrawling)
-					{
-						girl.crawl ();
-					}
-					girl.move (touch.position.x + focus.x);
-				}
-				
-				else
-				{
-					girl.jumpMove(touch.position.x + focus.x);
-				}
-			}
-			
-			if(touch.phase == TouchPhase.Ended)
-			{
-				if(girl.isGrounded)
-				{
-					girl.idle ();
-				}
-				else
-				{
-					girl.jumpMove(girl.x + focus.x);
-				}
-			}
-			
 		}
 	}
 	
@@ -401,7 +404,7 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		specialWords.Add (Out);
 		specialWords.Add (down);
 		
-		setUpShrinkStage (background2.x + background2.width/2f);
+		setUpEggStage (background2.x + background2.width/2f);
 		
 	}
 	
@@ -539,10 +542,6 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		MediumText block5 = new MediumText(blockFont, "aloud ; and in another");
 		MediumText block6 = new MediumText(blockFont, " moment it was out  of");
 		MediumText block7 = new MediumText(blockFont, "sight. Alice remained ");
-		MediumText block8 = new MediumText(blockFont, "looking thoughtfully at");
-		MediumText block9 = new MediumText(blockFont, "the mushroom a minute, ");
-		MediumText block10 = new MediumText(blockFont, "trying to make out which");
-		MediumText block11 = new MediumText(blockFont, "were the two sides of it."); 
 		
 		sentence1.SetPosition(startX, Futile.screen.height*0.4f);
 		bgrow.SetPosition (sentence1.x + sentence1.textRect.width/2.3f, sentence1.y);
@@ -572,6 +571,86 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		mediumText.Add (block5);
 		mediumText.Add (block6);
 		mediumText.Add (block7);
+		
+	}
+	
+	void setUpEggStage(float startX)
+	{
+		FSprite background = new FSprite("blank");
+		Futile.stage.AddChild (background);
+		background.scale = 0.6f;
+		background.SetPosition((background.width/2)-20 + startX, background.height/2);
+		
+		FSprite background2 = new FSprite("blank");
+		Futile.stage.AddChild (background2);
+		background2.scale = 0.6f;
+		background2.SetPosition((background.width/2)-20 + background.x, background.height/2);
+		
+		FSprite background3 = new FSprite("blank");
+		Futile.stage.AddChild (background3);
+		background3.scale = 0.6f;
+		background3.SetPosition((background.width/2)-20 + background2.x, background.height/2);
+		
+		FSprite background4 = new FSprite("blank");
+		Futile.stage.AddChild (background4);
+		background4.scale = 0.6f;
+		background4.SetPosition((background.width/2)-20 + background3.x, background.height/2);
+		
+		GSpineManager.LoadSpine("EggAtlas", "Atlases/EggJson", "Atlases/EggAtlas");
+		CrackingEggs egg1 = new CrackingEggs("EggAtlas", 0.3f);
+		egg1.scale = 0.3f;
+		egg1.Start();
+		
+		CrackingEggs egg2 = new CrackingEggs("EggAtlas", 0.3f);
+		egg2.scale = 0.3f;
+		egg2.Start();
+		
+		CrackingEggs egg3 = new CrackingEggs("EggAtlas", 0.3f);
+		egg3.scale = 0.3f;
+		egg3.Start();
+		
+		CrackingEggs bigEgg = new CrackingEggs("EggAtlas", 0.6f);
+		bigEgg.scale = 0.6f;
+		bigEgg.Start ();
+		
+		MediumText sentence1 = new MediumText(blockFont, "'As if I wasn't having enough trouble");
+		MediumText sentence2 = new MediumText(blockFont, "the eggs'");
+		
+		MediumText block1 = new MediumText(blockFont, "Alice was more and more");
+		MediumText block2 = new MediumText(blockFont, "puzzled,  but she thought there was no use");
+		MediumText block3 = new MediumText (blockFont, "in saying anything more till the Pigeon had finished.");
+		
+		AffectPictureWords hatching = new AffectPictureWords(specialFont, "hatching", bigEgg);
+		Futile.stage.AddChild(hatching);
+		
+		specialWords.Add (hatching);
+		
+		
+		block3.SetPosition (startX + block3.textRect.width/2f,groundHeight + block3.textRect.height);
+		block2.SetPosition(block3.x, block3.y + block2.textRect.height);
+		block1.SetPosition (block3.x, block2.y + block3.textRect.height);
+		
+		sentence1.SetPosition(block3.x + block3.textRect.width/1.5f, block1.y + sentence1.textRect.height);
+		
+		egg1.SetPosition (sentence1.x + sentence1.textRect.width/1.5f, groundHeight);
+		egg2.SetPosition (egg1.x + egg2.width/2f, groundHeight);
+		egg3.SetPosition (egg2.x + egg3.width/2f, groundHeight);
+		hatching.SetPosition (egg2.x, egg2.height + hatching.textRect.height);
+		
+		sentence2.SetPosition(egg3.x + egg3.width/1.5f, groundHeight + sentence2.textRect.height);
+		bigEgg.SetPosition (sentence2.x + bigEgg.width/2f, groundHeight);
+		
+		Futile.stage.AddChild(egg1);
+		Futile.stage.AddChild(egg2);
+		Futile.stage.AddChild(egg3);
+		Futile.stage.AddChild(bigEgg);
+		
+		mediumText.Add (sentence1);
+		mediumText.Add (sentence2);
+		
+		mediumText.Add (block1);
+		mediumText.Add (block2);
+		mediumText.Add (block3);
 		
 		foreach (MediumText mt in mediumText)
 		{

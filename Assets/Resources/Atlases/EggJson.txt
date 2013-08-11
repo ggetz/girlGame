@@ -1,0 +1,330 @@
+{
+"bones": [
+	{ "name": "root", "x": 14.65, "y": -295.11 },
+	{ "name": "bone1", "parent": "root", "length": 266.66, "x": -199.61, "y": 400.14, "rotation": 58.9 },
+	{ "name": "bone2", "parent": "root", "length": 134.16, "x": 126.89, "y": 549.13, "rotation": 141.5 },
+	{ "name": "bone3", "parent": "root", "length": 281.81, "x": 187.12, "y": 352.59, "rotation": 131.4 },
+	{ "name": "bone4", "parent": "root", "length": 195.23, "x": -186.93, "y": 374.78, "rotation": 7.62 },
+	{ "name": "bone5", "parent": "root", "length": 216.54, "x": -172.66, "y": 113.26, "rotation": 84.55 },
+	{ "name": "bone6", "parent": "root", "length": 247.58, "x": 209.31, "y": 230.55, "rotation": 166.7 },
+	{ "name": "bone7", "parent": "root", "length": 270.27, "x": 204.56, "y": 121.18, "rotation": 167.13 },
+	{ "name": "bone8", "parent": "root", "length": 223.31, "x": 117.38, "y": 45.1, "rotation": 170.61 }
+],
+"slots": [
+	{ "name": "Egg1", "bone": "bone3", "attachment": "Egg1" },
+	{ "name": "Egg2", "bone": "bone6", "attachment": "Egg2" },
+	{ "name": "Egg3-copy", "bone": "bone4", "attachment": "Egg3" },
+	{ "name": "Egg4", "bone": "bone5", "attachment": "Egg4" },
+	{ "name": "Egg5", "bone": "bone7", "attachment": "Egg5" },
+	{ "name": "Egg6", "bone": "bone8", "attachment": "Egg6" },
+	{ "name": "Egg7", "bone": "bone1", "attachment": "Egg7" },
+	{ "name": "Egg8", "bone": "bone2", "attachment": "Egg8" },
+	{ "name": "Cracked7", "bone": "bone1" },
+	{ "name": "Cracked8", "bone": "bone2" },
+	{ "name": "Cracked1", "bone": "bone3" },
+	{ "name": "Cracked3", "bone": "bone4" },
+	{ "name": "Cracked4", "bone": "bone5" },
+	{ "name": "Cracked2", "bone": "bone6" },
+	{ "name": "Cracked5", "bone": "bone7" },
+	{ "name": "Cracked6", "bone": "bone8" }
+],
+"skins": {
+	"default": {
+		"Cracked1": {
+			"Cracked1": { "x": 160.52, "y": 13.89, "rotation": -131.4, "width": 358, "height": 330 }
+		},
+		"Cracked2": {
+			"Cracked2": { "x": 124.76, "y": 16.55, "rotation": -166.7, "width": 328, "height": 218 }
+		},
+		"Cracked3": {
+			"Cracked3": { "x": 103.6, "y": 15.41, "rotation": -7.62, "width": 291, "height": 187 }
+		},
+		"Cracked4": {
+			"Cracked4": { "x": 99.9, "y": -26.7, "rotation": -84.55, "width": 194, "height": 320 }
+		},
+		"Cracked5": {
+			"Cracked5": { "x": 150, "y": -11.36, "rotation": -167.13, "width": 357, "height": 201 }
+		},
+		"Cracked6": {
+			"Cracked6": { "x": 101.02, "y": -15.21, "rotation": -170.61, "width": 388, "height": 144 }
+		},
+		"Cracked7": {
+			"Cracked7": { "x": 138.51, "y": -23.91, "rotation": -58.9, "width": 245, "height": 322 }
+		},
+		"Cracked8": {
+			"Cracked8": { "x": 76.28, "y": 3.95, "rotation": -141.5, "width": 204, "height": 145 }
+		},
+		"Egg1": {
+			"Egg1": { "x": 158.36, "y": 11.37, "rotation": -131.4, "width": 347, "height": 327 }
+		},
+		"Egg2": {
+			"Egg2": { "x": 128.31, "y": 15.59, "rotation": -166.7, "width": 328, "height": 218 }
+		},
+		"Egg3-copy": {
+			"Egg3": { "x": 107.84, "y": 15.91, "rotation": -7.62, "width": 291, "height": 187 }
+		},
+		"Egg4": {
+			"Egg4": { "x": 101.04, "y": -21.03, "rotation": -84.55, "width": 194, "height": 320 }
+		},
+		"Egg5": {
+			"Egg5": { "x": 151.72, "y": -0.9, "rotation": -167.13, "width": 357, "height": 201 }
+		},
+		"Egg6": {
+			"Egg6": { "x": 99.4, "y": -11.07, "rotation": -168.41, "width": 388, "height": 144 }
+		},
+		"Egg7": {
+			"Egg7": { "x": 135.46, "y": -23.91, "rotation": -58.9, "width": 245, "height": 322 }
+		},
+		"Egg8": {
+			"Egg8": { "x": 77.16, "y": 10.05, "rotation": -141.5, "width": 204, "height": 145 }
+		}
+	}
+},
+"events": {},
+"animations": {
+	"Cracked1": {
+		"slots": {
+			"Cracked8": {
+				"attachment": [
+					{ "time": 0.0666, "name": "Cracked8" }
+				]
+			},
+			"Egg8": {
+				"attachment": [
+					{ "time": 0.0666, "name": null }
+				]
+			},
+			"Cracked7": {
+				"attachment": [
+					{ "time": 0.0666, "name": "Cracked7" }
+				]
+			},
+			"Egg7": {
+				"attachment": [
+					{ "time": 0.0666, "name": null }
+				]
+			}
+		}
+	},
+	"Cracked2": {
+		"slots": {
+			"Egg4": {
+				"attachment": [
+					{ "time": 0.1333, "name": null }
+				]
+			},
+			"Cracked8": {
+				"attachment": [
+					{ "time": 0.0666, "name": "Cracked8" }
+				]
+			},
+			"Cracked1": {
+				"attachment": [
+					{ "time": 0.0666, "name": "Cracked1" }
+				]
+			},
+			"Cracked6": {
+				"attachment": [
+					{ "time": 0.1666, "name": "Cracked6" }
+				]
+			},
+			"Cracked4": {
+				"attachment": [
+					{ "time": 0.1333, "name": "Cracked4" }
+				]
+			},
+			"Egg5": {
+				"attachment": [
+					{ "time": 0.1666, "name": null }
+				]
+			},
+			"Cracked7": {
+				"attachment": [
+					{ "time": 0, "name": "Cracked7" }
+				]
+			},
+			"Cracked5": {
+				"attachment": [
+					{ "time": 0.1666, "name": "Cracked5" }
+				]
+			},
+			"Egg7": {
+				"attachment": [
+					{ "time": 0, "name": null }
+				]
+			},
+			"Egg8": {
+				"attachment": [
+					{ "time": 0.0666, "name": null }
+				]
+			},
+			"Egg6": {
+				"attachment": [
+					{ "time": 0.1666, "name": null }
+				]
+			},
+			"Egg1": {
+				"attachment": [
+					{ "time": 0.0666, "name": null }
+				]
+			}
+		}
+	},
+	"Cracked3": {
+		"bones": {
+			"bone1": {
+				"rotate": [
+					{ "time": 0.0666, "angle": -47.5 },
+					{ "time": 0.2666, "angle": -80.65 },
+					{ "time": 0.3333, "angle": -71.36 },
+					{ "time": 0.4, "angle": -99.99 },
+					{ "time": 0.5, "angle": -79.88 }
+				],
+				"translate": [
+					{ "time": 0.1666, "x": 0, "y": -62.78 },
+					{ "time": 0.3333, "x": 0, "y": -127.67 },
+					{ "time": 0.5, "x": -12.55, "y": -207.2 }
+				]
+			},
+			"bone2": {
+				"rotate": [
+					{ "time": 0.0666, "angle": -316 },
+					{ "time": 0.3333, "angle": -277.82 }
+				],
+				"translate": [
+					{ "time": 0.1666, "x": -4.18, "y": -117.2 },
+					{ "time": 0.3333, "x": 23.02, "y": -171.62 },
+					{ "time": 0.4, "x": -33.48, "y": -276.27 },
+					{ "time": 0.5, "x": -77.44, "y": -359.99 }
+				]
+			},
+			"bone3": {
+				"rotate": [
+					{ "time": 0.0666, "angle": 19.51 },
+					{ "time": 0.4, "angle": 21.93 },
+					{ "time": 0.5, "angle": 40.6 }
+				],
+				"translate": [
+					{ "time": 0.1666, "x": 29.3, "y": -69.06 },
+					{ "time": 0.3333, "x": 66.97, "y": -146.5 },
+					{ "time": 0.4, "x": 163.25, "y": -236.5 }
+				]
+			},
+			"bone5": {
+				"rotate": [
+					{ "time": 0.1666, "angle": -19.01 },
+					{ "time": 0.4, "angle": 28.56 },
+					{ "time": 0.5, "angle": 56.3 }
+				],
+				"translate": [
+					{ "time": 0.4, "x": -16.74, "y": -50.23 }
+				]
+			},
+			"bone7": {
+				"rotate": [
+					{ "time": 0.1666, "angle": 7.5 },
+					{ "time": 0.2666, "angle": -342.77 },
+					{ "time": 0.3333, "angle": -345.31 }
+				],
+				"translate": [
+					{ "time": 0.3333, "x": -2.09, "y": -41.85 }
+				]
+			},
+			"bone8": {
+				"rotate": [
+					{ "time": 0.2666, "angle": -2.59 },
+					{ "time": 0.3333, "angle": -15.41 },
+					{ "time": 0.5, "angle": 2.13 }
+				]
+			},
+			"bone4": {
+				"rotate": [
+					{ "time": 0.2666, "angle": -8.94 },
+					{ "time": 0.3333, "angle": -32.57 },
+					{ "time": 0.4, "angle": -50.36 },
+					{ "time": 0.5, "angle": -33.49 }
+				],
+				"translate": [
+					{ "time": 0.1666, "x": -18.83, "y": -20.93 },
+					{ "time": 0.3333, "x": -23.02, "y": -92.09 },
+					{ "time": 0.4, "x": -56.51, "y": -163.25 }
+				]
+			},
+			"bone6": {
+				"rotate": [
+					{ "time": 0.1666, "angle": -340.3 },
+					{ "time": 0.4, "angle": -9.37 }
+				],
+				"translate": [
+					{ "time": 0.3333, "x": 0, "y": -71.16 },
+					{ "time": 0.4, "x": 33.48, "y": -104.64 },
+					{ "time": 0.5, "x": 2.09, "y": -125.57 }
+				]
+			}
+		},
+		"slots": {
+			"Egg4": {
+				"attachment": [
+					{ "time": 0, "name": null }
+				]
+			},
+			"Cracked8": {
+				"attachment": [
+					{ "time": 0, "name": "Cracked8" }
+				]
+			},
+			"Cracked1": {
+				"attachment": [
+					{ "time": 0, "name": "Cracked1" }
+				]
+			},
+			"Cracked6": {
+				"attachment": [
+					{ "time": 0, "name": "Cracked6" }
+				]
+			},
+			"Cracked4": {
+				"attachment": [
+					{ "time": 0, "name": "Cracked4" }
+				]
+			},
+			"Egg5": {
+				"attachment": [
+					{ "time": 0, "name": null }
+				]
+			},
+			"Cracked7": {
+				"attachment": [
+					{ "time": 0, "name": "Cracked7" }
+				]
+			},
+			"Cracked5": {
+				"attachment": [
+					{ "time": 0, "name": "Cracked5" }
+				]
+			},
+			"Egg7": {
+				"attachment": [
+					{ "time": 0, "name": null }
+				]
+			},
+			"Egg8": {
+				"attachment": [
+					{ "time": 0, "name": null }
+				]
+			},
+			"Egg6": {
+				"attachment": [
+					{ "time": 0, "name": null }
+				]
+			},
+			"Egg1": {
+				"attachment": [
+					{ "time": 0, "name": null }
+				]
+			}
+		}
+	},
+	"Uncracked": {}
+}
+}
