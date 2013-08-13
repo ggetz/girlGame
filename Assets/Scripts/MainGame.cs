@@ -24,7 +24,7 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 	List <Rect> specialWordRects;
 	
 	bool directionTouchFound;
-
+	bool inSpecialWord=false;
 	
 	List <SpecialWords> specialWords = new List<SpecialWords> ();
 	List <MediumText> mediumText = new List<MediumText>();
@@ -163,10 +163,12 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 						if(word.textRect.Contains (touchPos))
 						{
 							word.action ();
+							inSpecialWord=true;
 						}
 					}
 				
-				
+				if(!inSpecialWord)
+				{
 					if(girl.isIdle)
 					{
 						if(girl.isStanding)
@@ -180,6 +182,7 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 					}
 					girl.move (touch.position.x - focus.x);
 				}
+			}
 				
 				if(touch.phase == TouchPhase.Moved)
 				{
@@ -253,38 +256,49 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 				
 				if(touch.phase != TouchPhase.Ended)
 				{
-					if(girl.isGrounded)
+					if(!inSpecialWord)
 					{
-						if (girl.isStanding && !girl.isRunning)
-						{ 
-							girl.run ();
+						if(girl.isGrounded)
+						{
+							if (girl.isStanding && !girl.isRunning)
+							{ 
+								girl.run ();
+							}
+							
+							if(!girl.isStanding && !girl.isCrawling)
+							{
+								girl.crawl ();
+							}
+							girl.move (touch.position.x + focus.x);
 						}
 						
-						if(!girl.isStanding && !girl.isCrawling)
+						else
 						{
-							girl.crawl ();
+							girl.jumpMove(touch.position.x + focus.x);
 						}
-						girl.move (touch.position.x + focus.x);
-					}
-					
-					else
-					{
-						girl.jumpMove(touch.position.x + focus.x);
 					}
 				}
 				
 				if(touch.phase == TouchPhase.Ended)
 				{
 			
-					if(girl.isGrounded)
+					if(!inSpecialWord)
 					{
-						girl.idle ();
-					}
-					else
-					{
-						girl.jumpMove(girl.x + focus.x);
-					}
+						if(girl.isGrounded)
+						{
+							girl.idle ();
+						}
+						else
+						{
+							girl.jumpMove(girl.x + focus.x);
+						}
 
+					}
+					if (inSpecialWord)
+					{
+						inSpecialWord = false;
+					}
+					
 				}
 		}
 	}
@@ -404,7 +418,7 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		specialWords.Add (Out);
 		specialWords.Add (down);
 		
-		setUpEggStage (background2.x + background2.width/2f);
+		setUpRotationStage (background2.x + background2.width/2f);
 		
 	}
 	
@@ -652,6 +666,66 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		mediumText.Add (block2);
 		mediumText.Add (block3);
 		
+	}
+	
+	void setUpRotationStage(float startX)
+	{
+		FSprite background = new FSprite("blank");
+		Futile.stage.AddChild (background);
+		background.scale = 0.6f;
+		background.SetPosition((background.width/2)-20 + startX, background.height/2);
+		
+		FSprite background2 = new FSprite("blank");
+		Futile.stage.AddChild (background2);
+		background2.scale = 0.6f;
+		background2.SetPosition((background.width/2)-20 + background.x, background.height/2);
+		
+		FSprite background3 = new FSprite("blank");
+		Futile.stage.AddChild (background3);
+		background3.scale = 0.6f;
+		background3.SetPosition((background.width/2)-20 + background2.x, background.height/2);
+		
+		FSprite background4 = new FSprite("blank");
+		Futile.stage.AddChild (background4);
+		background4.scale = 0.6f;
+		background4.SetPosition((background.width/2)-20 + background3.x, background.height/2);
+		
+		MediumText sentence1 = new MediumText(blockFont, "So they began solemnly dancing round and round");
+		MediumText sentence2 = new MediumText(blockFont, "Alice, every now and then treading on her toes");
+		MediumText sentence3 = new MediumText(blockFont, "when they passed too close , and  waving their");
+		MediumText sentence4 = new MediumText(blockFont, "forepaws to mark the time while the Mock Turtle");
+		MediumText sentence5 = new MediumText(blockFont, "sang this, very slowly and sadly:—");
+		
+		mediumText.Add (sentence1);
+		mediumText.Add (sentence2);
+		mediumText.Add (sentence3);
+		mediumText.Add (sentence4);
+		mediumText.Add (sentence5);
+		
+		MediumText rotateBlock1 = new MediumText(blockFont, "\"'Will you walk a little faster?\" said a whiting to a snail.\n\"There's a porpoise close behind us, and he's treading on my tail.");
+		MediumText rotateBlock2 = new MediumText( blockFont, "See how eagerly the lobsters and the turtles all advance!\nThey are waiting on the shingle—will you come and join the dance?");
+		
+		mediumText.Add (rotateBlock1);
+		mediumText.Add (rotateBlock2);
+		
+		rotateBlock1.rotation=90f;
+		rotateBlock2.rotation=90f;
+		
+		AffectPictureWords round1 = new AffectPictureWords(specialFont, "round", rotateBlock1,1);
+		AffectPictureWords round2 = new AffectPictureWords(specialFont, "round", rotateBlock2, 1);
+		
+		round1.SetPosition (startX + round1.textRect.width, groundHeight*2);
+		round2.SetPosition (round1.x, groundHeight*1.5f);
+		round2.addCollisionObjects (round1);
+		
+		rotateBlock1.SetPosition (round1.x + rotateBlock1.textRect.width/1.5f, groundHeight + rotateBlock1.textRect.height/2f);
+		rotateBlock2.SetPosition (rotateBlock1.x + rotateBlock2.textRect.width/3f, groundHeight + rotateBlock2.textRect.height/1.5f);
+		
+		Futile.stage.AddChild (round1);
+		Futile.stage.AddChild (round2);
+		specialWords.Add (round1);
+		specialWords.Add (round2);
+		
 		foreach (MediumText mt in mediumText)
 		{
 			Futile.stage.AddChild (mt);
@@ -671,7 +745,6 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 			Rect picRect = pic.localRect.CloneAndOffset(pic.x, pic.y);
 			pictureObstacleRects.Add(picRect);
 		}
-		
 	}
 	
 	Rect makeTextRect(FLabel l)
