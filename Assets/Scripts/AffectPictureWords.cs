@@ -54,6 +54,21 @@ public class AffectPictureWords : SpecialWords {
 		}
 	}
 	
+	public void releaseAction()
+	{
+		if(linked)
+		{
+			if(effectedObstacle!=null)
+			{
+				effectedObstacle.releaseAction();
+			}
+			if(effectedText != null)
+			{
+				
+			}
+		}
+	}
+	
 	public void changeBack()
 	{
 	}

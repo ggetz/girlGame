@@ -1,0 +1,52 @@
+{"frames": {
+
+"Note1.png":
+{
+	"frame": {"x":2,"y":2,"w":49,"h":36},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":49,"h":36},
+	"sourceSize": {"w":49,"h":36}
+},
+"Note2.png":
+{
+	"frame": {"x":53,"y":2,"w":66,"h":60},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":66,"h":60},
+	"sourceSize": {"w":66,"h":60}
+},
+"Note3.png":
+{
+	"frame": {"x":121,"y":2,"w":93,"h":81},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":93,"h":81},
+	"sourceSize": {"w":93,"h":81}
+},
+"Trumpet1.png":
+{
+	"frame": {"x":2,"y":85,"w":447,"h":177},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":447,"h":177},
+	"sourceSize": {"w":447,"h":177}
+},
+"Trumpet2.png":
+{
+	"frame": {"x":2,"y":264,"w":68,"h":158},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":68,"h":158},
+	"sourceSize": {"w":68,"h":158}
+}},
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker ",
+	"version": "1.0",
+	"image": "Trumpet.png",
+	"format": "RGBA8888",
+	"size": {"w":512,"h":512},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:2686583a2cdcfc8bd4f061b1fda75f36$"
+}
+}

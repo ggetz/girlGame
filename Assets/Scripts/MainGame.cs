@@ -418,7 +418,7 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		specialWords.Add (Out);
 		specialWords.Add (down);
 		
-		setUpRotationStage (background2.x + background2.width/2f);
+		setUpTrumpetStage (background2.x + background2.width/2f);
 		
 	}
 	
@@ -725,6 +725,110 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		Futile.stage.AddChild (round2);
 		specialWords.Add (round1);
 		specialWords.Add (round2);
+		
+		foreach (MediumText mt in mediumText)
+		{
+			Futile.stage.AddChild (mt);
+			mt.scale = 0.6f;
+			Rect mtRect = makeTextRect(mt);
+			mediumTextRects.Add (mtRect);
+		}
+				
+		foreach (SpecialWords sw in specialWords)
+		{
+			Rect swRect = makeTextRect(sw);
+			specialWordRects.Add (swRect);
+		}
+		
+		foreach (PictureObstacle pic in pictures)
+		{
+			Rect picRect = pic.localRect.CloneAndOffset(pic.x, pic.y);
+			pictureObstacleRects.Add(picRect);
+		}
+	}
+	
+	void setUpTrumpetStage(float startX)
+	{
+		FSprite background = new FSprite("blank");
+		Futile.stage.AddChild (background);
+		background.scale = 0.6f;
+		background.SetPosition((background.width/2)-20 + startX, background.height/2);
+		
+		FSprite background2 = new FSprite("blank");
+		Futile.stage.AddChild (background2);
+		background2.scale = 0.6f;
+		background2.SetPosition((background.width/2)-20 + background.x, background.height/2);
+		
+		FSprite background3 = new FSprite("blank");
+		Futile.stage.AddChild (background3);
+		background3.scale = 0.6f;
+		background3.SetPosition((background.width/2)-20 + background2.x, background.height/2);
+		
+		FSprite background4 = new FSprite("blank");
+		Futile.stage.AddChild (background4);
+		background4.scale = 0.6f;
+		background4.SetPosition((background.width/2)-20 + background3.x, background.height/2);
+		
+		Debug.Log("1");			
+		GSpineManager.LoadSpine ("ScrollAtlas", "Atlases/ScrollJson", "Atlases/ScrollAtlas");
+		Scroll scroll = new Scroll("ScrollAtlas", 0.6f);
+		scroll.scale=0.6f;
+		
+		GSpineManager.LoadSpine("TrumpetAtlas", "Atlases/TrumpetJson", "Atlases/TrumpetAtlas");
+		Trumpet trumpet = new Trumpet("TrumpetAtlas", 0.6f, scroll);
+		trumpet.scale = 0.6f;
+		
+		MediumText block1 = new MediumText(blockFont, "'Herald, read the accusation!' said the King.'");
+		Debug.Log("2");
+		MediumText block2 = new MediumText(blockFont, "'Consider your verdict,' the King said to the\n" +
+														"\njury. ' Not yet,not yet!' the Rabbit hastily\n" +
+													 "\ninterrupted.'There's a great deal to come before\n" +
+													 "\nthat!' 'Call the first witness,' said the King\n");
+		MediumText block3 = new MediumText(blockFont, "and the White Rabbit blew three  blasts on the \n\n" +
+													  "trumpet, and called out, 'First witness!' The first\n\n" +
+													  "witness was the Hatter. He came in with a teacup in \n\n" +
+													  "one hand and a piece of bread-and-butter in the other. '");
+												
+		Debug.Log("3");
+		
+		MediumText sentence1 = new MediumText(blockFont, "On this the White Rabbit");
+		MediumText sentence2 = new MediumText(blockFont, " three blasts on");
+		MediumText sentence3 = new MediumText(blockFont, "the trumpet, and then unrolled the parchment \n\n" +
+														"scroll, and read as follows:");
+		
+		
+		
+		mediumText.Add (sentence1);
+		mediumText.Add (sentence2);
+		mediumText.Add (sentence3);
+		
+		mediumText.Add (block1);
+		mediumText.Add (block2);
+		mediumText.Add(block3);
+		
+		AffectPictureWords blew = new AffectPictureWords(specialFont, "blew", trumpet);
+		
+		block1.SetPosition (startX + block1.textRect.width/2f, groundHeight + block1.textRect.height*3f);
+		sentence3.SetPosition (block1.x + sentence3.textRect.width/3f, block1.y + sentence3.textRect.height/2f);
+		sentence1.SetPosition (sentence3.x-(sentence3.textRect.width-sentence1.textRect.width)/4f, sentence3.y + sentence1.textRect.height*2f);		
+		blew.SetPosition (sentence1.x + blew.textRect.width*2f, sentence1.y);
+		sentence2.SetPosition (blew.x + sentence2.textRect.width/2f, sentence1.y);
+	
+		Futile.stage.AddChild (blew);
+		specialWords.Add (blew);
+		
+		trumpet.SetPosition (blew.x, groundHeight);
+		scroll.SetPosition (trumpet.x + scroll.width/1.5f, Futile.screen.height*0.2f);
+		trumpet.Start();
+		scroll.Start();
+		
+		block3.SetPosition (scroll.x + block2.textRect.width/1.5f, Futile.screen.height*0.3f);
+		block2.SetPosition (block3.x, block3.y + block2.textRect.height/1.5f);
+		
+		Futile.stage.AddChild (scroll);
+		Futile.stage.AddChild (trumpet);
+	
+		Debug.Log("3");
 		
 		foreach (MediumText mt in mediumText)
 		{

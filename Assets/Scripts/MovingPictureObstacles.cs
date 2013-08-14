@@ -28,6 +28,10 @@ public class MovingPictureObstacles : GSpineSprite
 		
 	}
 	
+	public virtual void releaseAction()
+	{
+	}
+	
 	public void setSolidity(bool solidity)
 	{
 		solid = solidity;

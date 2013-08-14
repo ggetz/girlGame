@@ -1,0 +1,124 @@
+{
+"bones": [
+	{ "name": "root" },
+	{ "name": "Body", "parent": "root", "length": 75.45, "x": -15.99, "y": 13.12, "rotation": 90.45 },
+	{ "name": "Mouth", "parent": "Body", "x": 108.84, "y": -231.23 },
+	{ "name": "Note1", "parent": "Body", "x": 146.7, "y": -278.81 },
+	{ "name": "Note2", "parent": "Body", "x": 117.05, "y": -291.71 },
+	{ "name": "Note3", "parent": "Body", "x": 67.86, "y": -283.98, "scaleX": 0.225, "scaleY": 0.455 }
+],
+"slots": [
+	{ "name": "Trumpet2", "bone": "Mouth", "attachment": "Trumpet2" },
+	{ "name": "Body", "bone": "Body", "attachment": "Trumpet1" },
+	{ "name": "Note1", "bone": "Note1", "attachment": "Note1" },
+	{ "name": "Note2", "bone": "Note2", "attachment": "Note2" },
+	{ "name": "Note3", "bone": "Note3", "attachment": "Note3" }
+],
+"skins": {
+	"default": {
+		"Body": {
+			"Trumpet1": { "x": 70.49, "y": 9.5, "rotation": -90.45, "width": 447, "height": 177 }
+		},
+		"Note1": {
+			"Note1": { "x": -0.19, "y": 0.49, "rotation": -90.45, "width": 49, "height": 36 }
+		},
+		"Note2": {
+			"Note2": { "x": -8.37, "y": 1.11, "scaleX": 0.654, "scaleY": 0.654, "rotation": -90.45, "width": 66, "height": 60 }
+		},
+		"Note3": {
+			"Note3": { "x": -55.98, "y": -15.88, "scaleX": 1.314, "scaleY": 1.599, "rotation": -90.45, "width": 93, "height": 81 }
+		},
+		"Trumpet2": {
+			"Trumpet2": { "y": 1, "rotation": -90.45, "width": 68, "height": 158 }
+		}
+	}
+},
+"animations": {
+	"Blow": {
+		"bones": {
+			"Note2": {
+				"translate": [
+					{ "time": 0.1666, "x": 14.18, "y": -20.04 },
+					{ "time": 0.3333, "x": 35.8, "y": -59.23 },
+					{ "time": 0.5, "x": 30.75, "y": -80.73 }
+				]
+			},
+			"Note1": {
+				"translate": [
+					{ "time": 0.2666, "x": 5.42, "y": -9.6 },
+					{ "time": 0.3333, "x": 36.64, "y": -43.75 },
+					{ "time": 0.5, "x": 25.06, "y": -43.35 }
+				]
+			},
+			"Note3": {
+				"translate": [
+					{ "time": 0.1666, "x": -1.55, "y": -19.69 },
+					{ "time": 0.3333, "x": 28.13, "y": -25.74 },
+					{ "time": 0.5, "x": 37.34, "y": -103.96 }
+				]
+			},
+			"Body": {
+				"rotate": [
+					{ "time": 0, "angle": -0.45 },
+					{ "time": 0.1666, "angle": 4.05 },
+					{ "time": 0.3333, "angle": 6.68 },
+					{ "time": 0.6666, "angle": -0.45 }
+				]
+			},
+			"Mouth": {
+				"scale": [
+					{ "time": 0.1666, "x": 1.031, "y": 1.083 },
+					{ "time": 0.3, "x": 1.05, "y": 1.099, "curve": "stepped" },
+					{ "time": 0.3333, "x": 1.05, "y": 1.099 },
+					{ "time": 0.6666, "x": 1, "y": 1 }
+				]
+			}
+		},
+		"slots": {
+			"Note1": {
+				"attachment": [
+					{ "time": 0, "name": null },
+					{ "time": 0.1666, "name": "Note1" },
+					{ "time": 0.5333, "name": null }
+				]
+			},
+			"Note2": {
+				"attachment": [
+					{ "time": 0, "name": null },
+					{ "time": 0.1666, "name": "Note2" },
+					{ "time": 0.5333, "name": null }
+				]
+			},
+			"Note3": {
+				"attachment": [
+					{ "time": 0, "name": null },
+					{ "time": 0.1666, "name": "Note3" },
+					{ "time": 0.5333, "name": null }
+				]
+			}
+		}
+	},
+	"Still": {
+		"slots": {
+			"Note1": {
+				"attachment": [
+					{ "time": 0, "name": null },
+					{ "time": 0.4666, "name": null }
+				]
+			},
+			"Note2": {
+				"attachment": [
+					{ "time": 0, "name": null },
+					{ "time": 0.4666, "name": null }
+				]
+			},
+			"Note3": {
+				"attachment": [
+					{ "time": 0, "name": null },
+					{ "time": 0.4666, "name": null }
+				]
+			}
+		}
+	}
+}
+}

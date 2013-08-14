@@ -1,0 +1,100 @@
+{"frames": {
+
+"Paper1.png":
+{
+	"frame": {"x":2,"y":2,"w":424,"h":77},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":424,"h":77},
+	"sourceSize": {"w":424,"h":77}
+},
+"Paper10.png":
+{
+	"frame": {"x":2,"y":81,"w":441,"h":54},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":441,"h":54},
+	"sourceSize": {"w":441,"h":54}
+},
+"Paper2.png":
+{
+	"frame": {"x":2,"y":137,"w":422,"h":74},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":422,"h":74},
+	"sourceSize": {"w":422,"h":74}
+},
+"Paper3.png":
+{
+	"frame": {"x":2,"y":213,"w":428,"h":79},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":428,"h":79},
+	"sourceSize": {"w":428,"h":79}
+},
+"Paper4.png":
+{
+	"frame": {"x":2,"y":294,"w":427,"h":83},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":427,"h":83},
+	"sourceSize": {"w":427,"h":83}
+},
+"Paper5.png":
+{
+	"frame": {"x":2,"y":379,"w":431,"h":84},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":431,"h":84},
+	"sourceSize": {"w":431,"h":84}
+},
+"Paper6.png":
+{
+	"frame": {"x":2,"y":465,"w":433,"h":79},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":433,"h":79},
+	"sourceSize": {"w":433,"h":79}
+},
+"Paper7.png":
+{
+	"frame": {"x":2,"y":546,"w":427,"h":85},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":427,"h":85},
+	"sourceSize": {"w":427,"h":85}
+},
+"Paper8.png":
+{
+	"frame": {"x":2,"y":633,"w":429,"h":77},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":429,"h":77},
+	"sourceSize": {"w":429,"h":77}
+},
+"Paper9.png":
+{
+	"frame": {"x":2,"y":712,"w":435,"h":95},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":435,"h":95},
+	"sourceSize": {"w":435,"h":95}
+},
+"Scroll.png":
+{
+	"frame": {"x":2,"y":809,"w":444,"h":90},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":444,"h":90},
+	"sourceSize": {"w":444,"h":90}
+}},
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker ",
+	"version": "1.0",
+	"image": "ScrollAtlas.png",
+	"format": "RGBA8888",
+	"size": {"w":512,"h":1024},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:46c07ae460e332b3096375a9a1a29778$"
+}
+}
