@@ -726,25 +726,6 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		specialWords.Add (round1);
 		specialWords.Add (round2);
 		
-		foreach (MediumText mt in mediumText)
-		{
-			Futile.stage.AddChild (mt);
-			mt.scale = 0.6f;
-			Rect mtRect = makeTextRect(mt);
-			mediumTextRects.Add (mtRect);
-		}
-				
-		foreach (SpecialWords sw in specialWords)
-		{
-			Rect swRect = makeTextRect(sw);
-			specialWordRects.Add (swRect);
-		}
-		
-		foreach (PictureObstacle pic in pictures)
-		{
-			Rect picRect = pic.localRect.CloneAndOffset(pic.x, pic.y);
-			pictureObstacleRects.Add(picRect);
-		}
 	}
 	
 	void setUpTrumpetStage(float startX)
