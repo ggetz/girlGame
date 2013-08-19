@@ -1,24 +1,18 @@
 {
 "bones": [
-	{ "name": "root", "x": 14.65, "y": -295.11 },
-	{ "name": "bone1", "parent": "root", "length": 266.66, "x": -199.61, "y": 400.14, "rotation": 58.9 },
-	{ "name": "bone2", "parent": "root", "length": 134.16, "x": 126.89, "y": 549.13, "rotation": 141.5 },
-	{ "name": "bone3", "parent": "root", "length": 281.81, "x": 187.12, "y": 352.59, "rotation": 131.4 },
-	{ "name": "bone4", "parent": "root", "length": 195.23, "x": -186.93, "y": 374.78, "rotation": 7.62 },
-	{ "name": "bone5", "parent": "root", "length": 216.54, "x": -172.66, "y": 113.26, "rotation": 84.55 },
-	{ "name": "bone6", "parent": "root", "length": 247.58, "x": 209.31, "y": 230.55, "rotation": 166.7 },
-	{ "name": "bone7", "parent": "root", "length": 270.27, "x": 204.56, "y": 121.18, "rotation": 167.13 },
-	{ "name": "bone8", "parent": "root", "length": 223.31, "x": 117.38, "y": 45.1, "rotation": 170.61 }
+	{ "name": "root", "x": -1.85, "y": 5.36 },
+	{ "name": "Egg", "parent": "root", "x": -2.46, "y": 343.05 },
+	{ "name": "bone1", "parent": "Egg", "length": 266.66, "x": -193.85, "y": 83.51, "rotation": 58.9 },
+	{ "name": "bone2", "parent": "Egg", "length": 134.16, "x": 132.65, "y": 232.5, "rotation": 141.5 },
+	{ "name": "bone3", "parent": "Egg", "length": 281.81, "x": 192.88, "y": 35.96, "rotation": 131.4 },
+	{ "name": "bone4", "parent": "Egg", "length": 195.23, "x": -181.17, "y": 58.15, "rotation": 7.62 },
+	{ "name": "bone5", "parent": "Egg", "length": 216.54, "x": -166.9, "y": -203.37, "rotation": 84.55 },
+	{ "name": "bone6", "parent": "Egg", "length": 247.58, "x": 215.07, "y": -86.08, "rotation": 166.7 },
+	{ "name": "bone7", "parent": "Egg", "length": 270.27, "x": 210.32, "y": -195.44, "rotation": 167.13 },
+	{ "name": "bone8", "parent": "Egg", "length": 223.31, "x": 123.14, "y": -271.52, "rotation": 170.61 }
 ],
 "slots": [
-	{ "name": "Egg1", "bone": "bone3", "attachment": "Egg1" },
-	{ "name": "Egg2", "bone": "bone6", "attachment": "Egg2" },
-	{ "name": "Egg3-copy", "bone": "bone4", "attachment": "Egg3" },
-	{ "name": "Egg4", "bone": "bone5", "attachment": "Egg4" },
-	{ "name": "Egg5", "bone": "bone7", "attachment": "Egg5" },
-	{ "name": "Egg6", "bone": "bone8", "attachment": "Egg6" },
-	{ "name": "Egg7", "bone": "bone1", "attachment": "Egg7" },
-	{ "name": "Egg8", "bone": "bone2", "attachment": "Egg8" },
+	{ "name": "EggSprite", "bone": "Egg", "attachment": "EggSprite" },
 	{ "name": "Cracked7", "bone": "bone1" },
 	{ "name": "Cracked8", "bone": "bone2" },
 	{ "name": "Cracked1", "bone": "bone3" },
@@ -54,78 +48,31 @@
 		"Cracked8": {
 			"Cracked8": { "x": 76.28, "y": 3.95, "rotation": -141.5, "width": 204, "height": 145 }
 		},
-		"Egg1": {
-			"Egg1": { "x": 158.36, "y": 11.37, "rotation": -131.4, "width": 347, "height": 327 }
-		},
-		"Egg2": {
-			"Egg2": { "x": 128.31, "y": 15.59, "rotation": -166.7, "width": 328, "height": 218 }
-		},
-		"Egg3-copy": {
-			"Egg3": { "x": 107.84, "y": 15.91, "rotation": -7.62, "width": 291, "height": 187 }
-		},
-		"Egg4": {
-			"Egg4": { "x": 101.04, "y": -21.03, "rotation": -84.55, "width": 194, "height": 320 }
-		},
-		"Egg5": {
-			"Egg5": { "x": 151.72, "y": -0.9, "rotation": -167.13, "width": 357, "height": 201 }
-		},
-		"Egg6": {
-			"Egg6": { "x": 99.4, "y": -11.07, "rotation": -168.41, "width": 388, "height": 144 }
-		},
-		"Egg7": {
-			"Egg7": { "x": 135.46, "y": -23.91, "rotation": -58.9, "width": 245, "height": 322 }
-		},
-		"Egg8": {
-			"Egg8": { "x": 77.16, "y": 10.05, "rotation": -141.5, "width": 204, "height": 145 }
+		"EggSprite": {
+			"EggSprite": { "x": 7.01, "width": 500, "height": 700 }
 		}
 	}
 },
-"events": {},
 "animations": {
 	"Cracked1": {
 		"slots": {
-			"Cracked8": {
-				"attachment": [
-					{ "time": 0.0666, "name": "Cracked8" }
-				]
-			},
-			"Egg8": {
-				"attachment": [
-					{ "time": 0.0666, "name": null }
-				]
-			},
 			"Cracked7": {
 				"attachment": [
 					{ "time": 0.0666, "name": "Cracked7" }
 				]
 			},
-			"Egg7": {
+			"Cracked8": {
 				"attachment": [
-					{ "time": 0.0666, "name": null }
+					{ "time": 0.0666, "name": "Cracked8" }
 				]
 			}
 		}
 	},
 	"Cracked2": {
 		"slots": {
-			"Egg4": {
-				"attachment": [
-					{ "time": 0.1333, "name": null }
-				]
-			},
-			"Cracked8": {
-				"attachment": [
-					{ "time": 0.0666, "name": "Cracked8" }
-				]
-			},
 			"Cracked1": {
 				"attachment": [
 					{ "time": 0.0666, "name": "Cracked1" }
-				]
-			},
-			"Cracked6": {
-				"attachment": [
-					{ "time": 0.1666, "name": "Cracked6" }
 				]
 			},
 			"Cracked4": {
@@ -133,9 +80,14 @@
 					{ "time": 0.1333, "name": "Cracked4" }
 				]
 			},
-			"Egg5": {
+			"Cracked5": {
 				"attachment": [
-					{ "time": 0.1666, "name": null }
+					{ "time": 0.1666, "name": "Cracked5" }
+				]
+			},
+			"Cracked6": {
+				"attachment": [
+					{ "time": 0.1666, "name": "Cracked6" }
 				]
 			},
 			"Cracked7": {
@@ -143,29 +95,9 @@
 					{ "time": 0, "name": "Cracked7" }
 				]
 			},
-			"Cracked5": {
+			"Cracked8": {
 				"attachment": [
-					{ "time": 0.1666, "name": "Cracked5" }
-				]
-			},
-			"Egg7": {
-				"attachment": [
-					{ "time": 0, "name": null }
-				]
-			},
-			"Egg8": {
-				"attachment": [
-					{ "time": 0.0666, "name": null }
-				]
-			},
-			"Egg6": {
-				"attachment": [
-					{ "time": 0.1666, "name": null }
-				]
-			},
-			"Egg1": {
-				"attachment": [
-					{ "time": 0.0666, "name": null }
+					{ "time": 0.0666, "name": "Cracked8" }
 				]
 			}
 		}
@@ -263,24 +195,19 @@
 			}
 		},
 		"slots": {
-			"Egg4": {
-				"attachment": [
-					{ "time": 0, "name": null }
-				]
-			},
-			"Cracked8": {
-				"attachment": [
-					{ "time": 0, "name": "Cracked8" }
-				]
-			},
 			"Cracked1": {
 				"attachment": [
 					{ "time": 0, "name": "Cracked1" }
 				]
 			},
-			"Cracked6": {
+			"Cracked2": {
 				"attachment": [
-					{ "time": 0, "name": "Cracked6" }
+					{ "time": 0, "name": "Cracked2" }
+				]
+			},
+			"Cracked3": {
+				"attachment": [
+					{ "time": 0, "name": "Cracked3" }
 				]
 			},
 			"Cracked4": {
@@ -288,9 +215,14 @@
 					{ "time": 0, "name": "Cracked4" }
 				]
 			},
-			"Egg5": {
+			"Cracked5": {
 				"attachment": [
-					{ "time": 0, "name": null }
+					{ "time": 0, "name": "Cracked5" }
+				]
+			},
+			"Cracked6": {
+				"attachment": [
+					{ "time": 0, "name": "Cracked6" }
 				]
 			},
 			"Cracked7": {
@@ -298,27 +230,12 @@
 					{ "time": 0, "name": "Cracked7" }
 				]
 			},
-			"Cracked5": {
+			"Cracked8": {
 				"attachment": [
-					{ "time": 0, "name": "Cracked5" }
+					{ "time": 0, "name": "Cracked8" }
 				]
 			},
-			"Egg7": {
-				"attachment": [
-					{ "time": 0, "name": null }
-				]
-			},
-			"Egg8": {
-				"attachment": [
-					{ "time": 0, "name": null }
-				]
-			},
-			"Egg6": {
-				"attachment": [
-					{ "time": 0, "name": null }
-				]
-			},
-			"Egg1": {
+			"EggSprite": {
 				"attachment": [
 					{ "time": 0, "name": null }
 				]

@@ -1,0 +1,289 @@
+{
+"bones": [
+	{ "name": "root", "length": 60 },
+	{ "name": "Lightening1", "parent": "root", "x": -181.26, "y": 557.31, "rotation": -4.07 },
+	{ "name": "Lightening2", "parent": "root", "x": 212.73, "y": 154.49 },
+	{ "name": "Mallet", "parent": "root", "length": 211.32, "x": 9.66, "y": 22.41, "rotation": 90 },
+	{ "name": "Ash1", "parent": "Mallet", "length": 67.22, "x": 23.11, "y": 178.3, "rotation": -24.54 },
+	{ "name": "Ash10", "parent": "Mallet", "length": 140.37, "x": 521.71, "y": 4.95, "rotation": -0.9 },
+	{ "name": "Ash2", "parent": "Mallet", "length": 90.82, "x": 3.3, "y": 141.98, "rotation": -89.09 },
+	{ "name": "Ash3", "parent": "Mallet", "length": 76.39, "x": 52.83, "y": 120.52, "rotation": -84.15 },
+	{ "name": "Ash4", "parent": "Mallet", "length": 93.91, "x": -1.65, "y": -107.31, "rotation": 80.17 },
+	{ "name": "Ash5", "parent": "Mallet", "length": 69.51, "x": 74.29, "y": -100.71, "rotation": 85.94 },
+	{ "name": "Ash6", "parent": "Mallet", "length": 79.74, "x": 6.6, "y": -163.44, "rotation": 26.74 },
+	{ "name": "Ash7", "parent": "Mallet", "length": 77.66, "x": 92.45, "y": 14.85, "rotation": 2.25 },
+	{ "name": "Ash8", "parent": "Mallet", "length": 66.03, "x": 221.23, "y": 3.3 },
+	{ "name": "Ash9", "parent": "Mallet", "length": 145.32, "x": 321.94, "y": -1.65, "rotation": 0.9 }
+],
+"slots": [
+	{ "name": "Mallet", "bone": "Mallet", "attachment": "Mallet" },
+	{ "name": "Ash1", "bone": "Ash1" },
+	{ "name": "Ash2", "bone": "Ash2" },
+	{ "name": "Ash3", "bone": "Ash3" },
+	{ "name": "Ash4", "bone": "Ash4" },
+	{ "name": "Ash5", "bone": "Ash5" },
+	{ "name": "Ash6", "bone": "Ash6" },
+	{ "name": "Ash7", "bone": "Ash7" },
+	{ "name": "Ash8", "bone": "Ash8" },
+	{ "name": "Ash72", "bone": "Ash9" },
+	{ "name": "Ash73", "bone": "Ash10" },
+	{ "name": "Lightening1", "bone": "Lightening1" },
+	{ "name": "Lightening2", "bone": "Lightening2" }
+],
+"skins": {
+	"default": {
+		"Ash1": {
+			"Ash1": { "x": 40.19, "y": -12.49, "rotation": -65.45, "width": 114, "height": 137 }
+		},
+		"Ash2": {
+			"Ash2": { "x": 62.83, "y": 5.6, "rotation": -0.9, "width": 184, "height": 68 }
+		},
+		"Ash3": {
+			"Ash3": { "x": 51.41, "y": -0.27, "rotation": -5.84, "width": 194, "height": 110 }
+		},
+		"Ash4": {
+			"Ash4": { "x": 47.65, "y": -23.57, "rotation": -170.17, "width": 191, "height": 110 }
+		},
+		"Ash5": {
+			"Ash5": { "x": 18.23, "y": -0.36, "rotation": -175.94, "width": 188, "height": 114 }
+		},
+		"Ash6": {
+			"Ash6": { "x": 29.49, "y": -11.17, "rotation": -116.74, "width": 72, "height": 129 }
+		},
+		"Ash7": {
+			"Ash7": { "x": 42.5, "y": -11.58, "scaleX": 1.148, "scaleY": 1.528, "rotation": -92.25, "width": 54, "height": 111 }
+		},
+		"Ash72": {
+			"Ash7": { "x": 99.12, "y": 3.37, "scaleY": 2.254, "rotation": -90.9, "width": 54, "height": 111 }
+		},
+		"Ash73": {
+			"Ash7": { "x": 61.05, "y": 2.62, "scaleY": 2.337, "rotation": -89.09, "width": 54, "height": 111 }
+		},
+		"Ash8": {
+			"Ash8": { "x": 46.22, "y": 4.95, "scaleY": 2.337, "rotation": -90, "width": 68, "height": 126 }
+		},
+		"Lightening1": {
+			"Lightening1": { "x": -2.11, "y": -0.09, "rotation": 4.07, "width": 236, "height": 93 }
+		},
+		"Lightening2": {
+			"Lightening2": { "x": -14.85, "y": 11.55, "width": 135, "height": 170 }
+		},
+		"Mallet": {
+			"Mallet": { "x": 323.59, "y": -0.83, "rotation": -90, "width": 400, "height": 700 }
+		}
+	}
+},
+"animations": {
+	"Fry": {
+		"bones": {
+			"Ash1": {
+				"rotate": [
+					{ "time": 0.5666, "angle": -28.65 },
+					{ "time": 0.6666, "angle": -31.04 }
+				]
+			},
+			"Ash2": {
+				"rotate": [
+					{ "time": 0.5666, "angle": -1.78 }
+				]
+			},
+			"Ash3": {
+				"rotate": [
+					{ "time": 0.5666, "angle": -5.85 },
+					{ "time": 0.6666, "angle": -12.65 }
+				]
+			},
+			"Lightening1": {
+				"rotate": [
+					{ "time": 0.0333, "angle": 26.61 },
+					{ "time": 0.1666, "angle": 91.99 }
+				],
+				"translate": [
+					{ "time": 0.0333, "x": -18.16, "y": -493.64 },
+					{ "time": 0.1666, "x": 178.3, "y": -394.58 },
+					{ "time": 0.3, "x": 185.29, "y": -201.91 },
+					{ "time": 0.4333, "x": 190.16, "y": -67.42 }
+				]
+			},
+			"Lightening2": {
+				"rotate": [
+					{ "time": 0.1666, "angle": 40.9 },
+					{ "time": 0.3, "angle": -124.94 },
+					{ "time": 0.4333, "angle": -2.2 },
+					{ "time": 0.5333, "angle": -18.02 }
+				],
+				"translate": [
+					{ "time": 0.0333, "x": -250.95, "y": -135.38 },
+					{ "time": 0.1666, "x": -118.92, "y": -103.53 },
+					{ "time": 0.3, "x": -81.72, "y": -90.58 },
+					{ "time": 0.4333, "x": -199.09, "y": 473.34 }
+				]
+			},
+			"Ash4": {
+				"rotate": [
+					{ "time": 0.5666, "angle": 13.08 }
+				]
+			},
+			"Ash7": {
+				"rotate": [
+					{ "time": 0.6666, "angle": 64.53 }
+				],
+				"translate": [
+					{ "time": 0.7333, "x": -24.49, "y": 0 },
+					{ "time": 0.8, "x": -58.79, "y": 9.79 },
+					{ "time": 0.9, "x": -75.1, "y": 17.47 }
+				]
+			},
+			"Ash5": {
+				"rotate": [
+					{ "time": 0.5666, "angle": 8.53 },
+					{ "time": 0.6666, "angle": 17.25 }
+				],
+				"translate": [
+					{ "time": 0.6666, "x": -7.35, "y": 7.34 },
+					{ "time": 0.8, "x": -17.14, "y": 4.89 },
+					{ "time": 0.9, "x": -44.09, "y": 4.89 }
+				]
+			},
+			"Ash6": {
+				"rotate": [
+					{ "time": 0.5666, "angle": 16 },
+					{ "time": 0.6666, "angle": 45.86 },
+					{ "time": 0.8, "angle": 67.8 }
+				]
+			},
+			"Ash8": {
+				"rotate": [
+					{ "time": 0.5666, "angle": -17.52 },
+					{ "time": 0.7333, "angle": -62.23 },
+					{ "time": 0.8, "angle": -99.4 }
+				],
+				"translate": [
+					{ "time": 0.7333, "x": -24.5, "y": 2.45 },
+					{ "time": 0.8, "x": -53.9, "y": 2.45 },
+					{ "time": 0.8333, "x": -155.36, "y": 13.56 }
+				]
+			},
+			"Ash9": {
+				"rotate": [
+					{ "time": 0.5333, "angle": 19.14 },
+					{ "time": 0.5666, "angle": 5.83 },
+					{ "time": 0.6666, "angle": 13.93 },
+					{ "time": 0.8, "angle": 10.82 },
+					{ "time": 0.8333, "angle": 81.97 }
+				],
+				"translate": [
+					{ "time": 0.7333, "x": -58.16, "y": -15.41 },
+					{ "time": 0.8, "x": -181.78, "y": -48.17 },
+					{ "time": 0.8333, "x": -250.87, "y": -62.51 }
+				],
+				"scale": [
+					{ "time": 0.6333, "x": 0.822, "y": 1 },
+					{ "time": 0.6666, "x": 0.649, "y": 1 }
+				]
+			},
+			"Ash10": {
+				"rotate": [
+					{ "time": 0.5333, "angle": -15.21 },
+					{ "time": 0.5666, "angle": -12.81 },
+					{ "time": 0.6666, "angle": -46.73 },
+					{ "time": 0.8, "angle": -81.93 },
+					{ "time": 0.9, "angle": -109.34 }
+				],
+				"translate": [
+					{ "time": 0.7333, "x": -58.79, "y": 4.9 },
+					{ "time": 0.8, "x": -206.17, "y": -13.58 },
+					{ "time": 0.8333, "x": -421.77, "y": -8.68 },
+					{ "time": 0.9, "x": -460.97, "y": 1.11 }
+				],
+				"scale": [
+					{ "time": 0.6333, "x": 0.862, "y": 1 },
+					{ "time": 0.6666, "x": 0.68, "y": 1 }
+				]
+			}
+		},
+		"slots": {
+			"Ash1": {
+				"attachment": [
+					{ "time": 0.1, "name": "Ash1" }
+				]
+			},
+			"Ash2": {
+				"attachment": [
+					{ "time": 0.1, "name": "Ash2" }
+				]
+			},
+			"Ash3": {
+				"attachment": [
+					{ "time": 0.1, "name": "Ash3" }
+				]
+			},
+			"Ash4": {
+				"attachment": [
+					{ "time": 0.2333, "name": "Ash4" }
+				]
+			},
+			"Ash5": {
+				"attachment": [
+					{ "time": 0.3666, "name": "Ash5" }
+				]
+			},
+			"Ash6": {
+				"attachment": [
+					{ "time": 0.3666, "name": "Ash6" }
+				]
+			},
+			"Ash7": {
+				"attachment": [
+					{ "time": 0.2333, "name": "Ash7" }
+				]
+			},
+			"Ash72": {
+				"attachment": [
+					{ "time": 0.5, "name": "Ash7" }
+				]
+			},
+			"Ash73": {
+				"attachment": [
+					{ "time": 0.5, "name": "Ash7" }
+				]
+			},
+			"Ash8": {
+				"attachment": [
+					{ "time": 0.3666, "name": "Ash8" }
+				]
+			},
+			"Lightening1": {
+				"attachment": [
+					{ "time": 0.0333, "name": "Lightening1" },
+					{ "time": 0.1, "name": null },
+					{ "time": 0.1666, "name": "Lightening1" },
+					{ "time": 0.2333, "name": null },
+					{ "time": 0.3, "name": "Lightening1" },
+					{ "time": 0.3666, "name": null },
+					{ "time": 0.4333, "name": "Lightening1" },
+					{ "time": 0.5, "name": null }
+				]
+			},
+			"Lightening2": {
+				"attachment": [
+					{ "time": 0.0333, "name": "Lightening2" },
+					{ "time": 0.1, "name": null },
+					{ "time": 0.1666, "name": "Lightening2" },
+					{ "time": 0.2333, "name": null },
+					{ "time": 0.3, "name": "Lightening2" },
+					{ "time": 0.3666, "name": null },
+					{ "time": 0.4333, "name": "Lightening2" },
+					{ "time": 0.5, "name": null }
+				]
+			},
+			"Mallet": {
+				"attachment": [
+					{ "time": 0.5, "name": null }
+				]
+			}
+		}
+	},
+	"Still": {}
+}
+}

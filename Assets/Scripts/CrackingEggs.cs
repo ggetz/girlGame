@@ -36,12 +36,12 @@ public class CrackingEggs : MovingPictureObstacles
 			state+=1;
 			Play ("Cracked1", false);
 		}
-		if(state==1)
+		else if(state==1)
 		{
 			state+=1;
 			Play ("Cracked2", false);
 		}
-		if(state==2)
+		else if(state==2)
 		{
 			state+=1;
 			Play ("Cracked3",false);

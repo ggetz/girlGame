@@ -1,13 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class AffectPictureWords : SpecialWords {
 	
 	MovingPictureObstacles effectedObstacle;
 	MediumText effectedText;
+	List <MediumText> effectedTextGroup;
 	int actionType;
 	bool linked = false;
-	
+
 	public AffectPictureWords(string font, string word, MovingPictureObstacles obs): base(font, word)
 	{
 		effectedObstacle = obs;	
@@ -20,7 +22,13 @@ public class AffectPictureWords : SpecialWords {
 		actionType = type;
 		linked=true;
 	}
-	
+
+	public AffectPictureWords(string font, string word, List <MediumText> obs, int type): base(font, word)
+	{
+		effectedTextGroup = obs;
+		actionType = type;
+		linked=true;
+	}
 	// Use this for initialization
 	void Start () {
 	
@@ -42,9 +50,15 @@ public class AffectPictureWords : SpecialWords {
 			
 			if(effectedText != null)
 			{
-				if(actionType==1)
+				actionOption ();
+			}
+			
+			if(effectedTextGroup.Count>0)
+			{
+				foreach(MediumText obs in effectedTextGroup)
 				{
-					effectedText.rotate(5f);
+					effectedText=obs;
+					actionOption ();
 				}
 			}
 		}
@@ -54,22 +68,24 @@ public class AffectPictureWords : SpecialWords {
 		}
 	}
 	
-	public void releaseAction()
+	public void actionOption()
 	{
-		if(linked)
+		if(actionType==1)
 		{
-			if(effectedObstacle!=null)
+			effectedText.rotate(5f);
+		}
+		if(actionType==2)
+		{
+			int random = Random.Range (0,1);
+			if(random==1)
 			{
-				effectedObstacle.releaseAction();
+				effectedText.twinkle (Random.Range (200,300), Random.Range (100,200), true,10);
 			}
-			if(effectedText != null)
+			
+			else
 			{
-				
+				effectedText.twinkle (Random.Range(200,300), Random.Range (100,200),false,10);
 			}
 		}
-	}
-	
-	public void changeBack()
-	{
 	}
 }

@@ -1,0 +1,62 @@
+{
+"bones": [
+	{ "name": "root", "length": 60 },
+	{ "name": "bone1", "parent": "root", "x": 23.93, "y": 421.32 },
+	{ "name": "bone2", "parent": "bone1", "x": 15.33, "y": -69.86 },
+	{ "name": "bone3", "parent": "bone2" },
+	{ "name": "bone4", "parent": "bone3" }
+],
+"slots": [
+	{ "name": "Lightening1", "bone": "bone1" },
+	{ "name": "Lightening2", "bone": "bone2" },
+	{ "name": "Lightening3", "bone": "bone3" },
+	{ "name": "Lightening4", "bone": "bone4" }
+],
+"skins": {
+	"default": {
+		"Lightening1": {
+			"Lightening1": { "x": -20.18, "y": -7.11, "width": 117, "height": 141 }
+		},
+		"Lightening2": {
+			"Lightening2": { "x": -10.88, "y": -113.87, "width": 300, "height": 500 }
+		},
+		"Lightening3": {
+			"Lightening3": { "x": -11.43, "y": -168.31, "width": 242, "height": 207 }
+		},
+		"Lightening4": {
+			"Lightening4": { "x": -11.43, "y": -271.75, "width": 277, "height": 151 }
+		}
+	}
+},
+"animations": {
+	"Still": {},
+	"Strike": {
+		"slots": {
+			"Lightening1": {
+				"attachment": [
+					{ "time": 0.0666, "name": "Lightening1" },
+					{ "time": 0.4, "name": null }
+				]
+			},
+			"Lightening2": {
+				"attachment": [
+					{ "time": 0.1333, "name": "Lightening2" },
+					{ "time": 0.4, "name": null }
+				]
+			},
+			"Lightening3": {
+				"attachment": [
+					{ "time": 0.2, "name": "Lightening3" },
+					{ "time": 0.3333, "name": null }
+				]
+			},
+			"Lightening4": {
+				"attachment": [
+					{ "time": 0.2666, "name": "Lightening4" },
+					{ "time": 0.3333, "name": null }
+				]
+			}
+		}
+	}
+}
+}
