@@ -103,7 +103,7 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		Futile.touchManager.AddMultiTouchTarget (this);
 		
 		//set camera to follow girl
-		cam.setWorldBounds(new Rect(-1.5f * Futile.screen.width, -.5f*Futile.screen.height, 20*Futile.screen.width, 1.25f* Futile.screen.height));
+		cam.setWorldBounds(new Rect(-1.5f * Futile.screen.width, -.5f*Futile.screen.height, 4*Futile.screen.width, 1.25f* Futile.screen.height));
 		cam.follow(focus);
 		
 		
