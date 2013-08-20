@@ -333,7 +333,7 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		MediumText blocka9 = new MediumText(blockFont, "burning with curiousity,she ran across");
 		MediumText blocka10 = new MediumText(blockFont, "the field after it, and , fortunately was"); 
 		MediumText blocka11 = new MediumText(blockFont, "just in time to see it pop  down a large ");
-		
+
 		mediumText.Add (blocka1);
 		mediumText.Add (blocka2);
 		mediumText.Add (blocka3);
@@ -345,7 +345,7 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		mediumText.Add (blocka9);
 		mediumText.Add (blocka10);
 		mediumText.Add (blocka11);
-		
+
 		MediumText blockb = new MediumText(blockFont, "rabbit-hole under the hedge");
 		mediumText.Add (blockb);
 		
