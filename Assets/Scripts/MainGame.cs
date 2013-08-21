@@ -425,8 +425,8 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		specialWords.Add (down);
 		
 		//setUpTwinkleStage (background2.x + background2.width/2f);
-		setUpFiller1(background2.x + background2.width/2f);
-		
+		//setUpFiller1(background2.x + background2.width/2f);
+		setUpFiller2(background2.x + background2.width/2f);
 	}
 	
 	void setUpFiller1(float startX)
@@ -495,7 +495,134 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		}
 	
 	}
-
+	
+	void setUpFiller2(float startX)
+	{
+		//'Oh dear, what nonsense I'm ... along in a great hurry, muttering
+		FSprite background1 = new FSprite("blank");
+		Futile.stage.AddChild(background1);
+		background1.scale = 0.6f;
+		background1.SetPosition(startX + background1.width/2, background1.height/2);
+		
+		FSprite background2 = new FSprite("blank");
+		Futile.stage.AddChild (background2);
+		background2.scale = 0.6f;
+		background2.SetPosition(startX + background1.width + (background2.width/2)-20, background1.height/2);
+		
+		FSprite background3 = new FSprite("blank");
+		Futile.stage.AddChild (background3);
+		background3.scale = 0.6f;
+		background3.SetPosition(startX + background1.width + background2.width + (background3.width/2)-20, background1.height/2);
+		
+		FSprite background4 = new FSprite("blank");
+		Futile.stage.AddChild (background4);
+		background4.scale = 0.6f;
+		background4.SetPosition(startX + background1.width + background2.width + background3.width + (background4.width/2)-20, background1.height/2);
+		
+		MediumText blockd1 = new MediumText(blockFont, "Oh dear, what");
+		MediumText blockd2 = new MediumText(blockFont, "nonsense I'm");
+		
+		MediumText blockd3 = new MediumText(blockFont, "talking!' Just then her head struck against");
+		MediumText blockd4 = new MediumText(blockFont, "the roof of the hall: in fact she was now more");
+		MediumText blockd5 = new MediumText(blockFont, "than nine feet high, and she at once took up");
+		
+		MediumText blockd6 = new MediumText(blockFont, "the little golden key and");
+		MediumText blockd7 = new MediumText(blockFont, "hurried off to the garden");
+		
+		MediumText blockd8 = new MediumText(blockFont, "door. Poor Alice!");
+		MediumText blockd9 = new MediumText(blockFont, "It was as much");
+		MediumText blockd10 = new MediumText(blockFont, "as she could do,"); 
+		
+		MediumText blockd11 = new MediumText(blockFont, "lying down on one side, to look through into the garden with one eye; but");
+		MediumText blockd12 = new MediumText(blockFont, "to get through was more hopeless than ever: she sat down and began to cry");
+		
+		MediumText blockd13 = new MediumText(blockFont, "again. 'You ought to be ashamed of yourself,'");
+		MediumText blockd14 = new MediumText(blockFont, "said Alice, 'a great girl like you,' (she might");
+		
+		MediumText blockd15 = new MediumText(blockFont, "well say this), 'to go on crying in this");
+		MediumText blockd16 = new MediumText(blockFont, "way! Stop this moment, I tell you!' But");
+		MediumText blockd17 = new MediumText(blockFont, "she went on all the same, shedding gallons");
+		MediumText blockd18 = new MediumText(blockFont, "of tears, until there was a large pool all");
+		MediumText blockd19 = new MediumText(blockFont, "round her, about four inches deep and reaching");
+		MediumText blockd20 = new MediumText(blockFont, "half down the hall. After a time she heard a");
+		
+		MediumText blockd21 = new MediumText(blockFont, "little pattering of");
+		MediumText blockd22 = new MediumText(blockFont, "feet in the distance");
+		
+		MediumText blockd23 = new MediumText(blockFont, "and she hastily dried her eyes to see what was coming.");
+		MediumText blockd24 = new MediumText(blockFont, "It was the White Rabbit returning, splendidly dressed,");
+		MediumText blockd25 = new MediumText(blockFont, "with a pair of white kid gloves in one hand and a large");
+		
+		MediumText blockd26 = new MediumText(blockFont, "fan in the other: he came trotting");
+		MediumText blockd27 = new MediumText(blockFont, "along in a great hurry, muttering");
+		
+		
+		blockd1.SetPosition (startX + Futile.screen.width*0.1f, Futile.screen.height*0.9f);
+		blockd2.SetPosition (blockd1.x, blockd1.y - blockd1.textRect.height*0.6f);
+		blockd3.SetPosition (blockd1.x + blockd2.textRect.width*0.8f, blockd1.y - blockd3.textRect.height*3.5f);
+		blockd4.SetPosition (blockd3.x, blockd3.y - blockd4.textRect.height*0.6f);
+		blockd5.SetPosition (blockd4.x, blockd4.y - blockd5.textRect.height*0.6f);
+		blockd6.SetPosition (blockd3.x + blockd3.textRect.width*0.5f, blockd3.y - blockd3.textRect.height*4f);
+		blockd7.SetPosition (blockd6.x, blockd6.y - blockd7.textRect.height*0.6f);
+		blockd8.SetPosition (blockd6.x + blockd6.textRect.width*0.6f, blockd6.y + blockd8.textRect.height*2f);
+		blockd9.SetPosition (blockd8.x, blockd8.y - blockd9.textRect.height*0.6f);
+		blockd10.SetPosition (blockd9.x, blockd9.y - blockd10.textRect.height*0.6f);
+		blockd11.SetPosition (blockd7.x + blockd11.textRect.width*0.5f, blockd7.y - blockd11.textRect.height);
+		blockd12.SetPosition (blockd11.x, blockd11.y - blockd12.textRect.height*0.6f);
+		blockd13.SetPosition (blockd11.x, blockd8.y + blockd13.textRect.height*4f);
+		blockd14.SetPosition (blockd13.x, blockd13.y - blockd14.textRect.height*0.6f);
+		blockd15.SetPosition (blockd13.x + blockd15.textRect.width*0.9f, blockd13.y - blockd15.textRect.height*2f);
+		blockd16.SetPosition (blockd15.x, blockd15.y - blockd16.textRect.height*0.6f);
+		blockd17.SetPosition (blockd16.x, blockd16.y - blockd17.textRect.height*0.6f);
+		blockd18.SetPosition (blockd17.x, blockd17.y - blockd18.textRect.height*0.6f);
+		blockd19.SetPosition (blockd18.x, blockd18.y - blockd19.textRect.height*0.6f);
+		blockd20.SetPosition (blockd19.x, blockd19.y - blockd20.textRect.height*0.6f);
+		blockd21.SetPosition (blockd15.x + blockd21.textRect.width*2f, blockd15.y + blockd21.textRect.height*3f);
+		blockd22.SetPosition (blockd21.x, blockd21.y - blockd22.textRect.height*0.6f);
+		blockd23.SetPosition (blockd15.x + blockd23.textRect.width*2f, blockd15.y - blockd23.textRect.height*4f);
+		blockd24.SetPosition (blockd23.x, blockd23.y - blockd24.textRect.height*0.6f);
+		blockd25.SetPosition (blockd24.x, blockd24.y - blockd25.textRect.height*0.6f);
+		blockd26.SetPosition (blockd23.x + blockd26.textRect.width*0.5f, blockd23.y + blockd26.textRect.height*3f);
+		blockd27.SetPosition (blockd26.x, blockd26.y - blockd27.textRect.height*0.6f);
+		
+		mediumText.Add (blockd1);
+		mediumText.Add (blockd2);
+		mediumText.Add (blockd3);
+		mediumText.Add (blockd4);
+		mediumText.Add (blockd5);
+		mediumText.Add (blockd6);
+		mediumText.Add (blockd7);
+		mediumText.Add (blockd8);
+		mediumText.Add (blockd9);
+		mediumText.Add (blockd10);
+		mediumText.Add (blockd11);
+		mediumText.Add (blockd12);
+		mediumText.Add (blockd13);
+		mediumText.Add (blockd14);
+		mediumText.Add (blockd15);
+		mediumText.Add (blockd16);
+		mediumText.Add (blockd17);
+		mediumText.Add (blockd18);
+		mediumText.Add (blockd19);
+		mediumText.Add (blockd20);
+		mediumText.Add (blockd21);
+		mediumText.Add (blockd22);
+		mediumText.Add (blockd23);
+		mediumText.Add (blockd24);
+		mediumText.Add (blockd25);
+		mediumText.Add (blockd26);
+		mediumText.Add (blockd27);
+		
+		
+		foreach (MediumText mt in mediumText)
+		{
+			Futile.stage.AddChild (mt);
+			mt.scale = 0.6f;
+			Rect mtRect = makeTextRect(mt);
+			mediumTextRects.Add (mtRect);
+		}
+	}
+	
 	void setUpShrinkStage(float startX)
 	{
 		FSprite background3 = new FSprite("blank");
