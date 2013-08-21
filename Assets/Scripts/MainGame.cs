@@ -424,10 +424,78 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		specialWords.Add (Out);
 		specialWords.Add (down);
 		
-		setUpTwinkleStage (background2.x + background2.width/2f);
+		//setUpTwinkleStage (background2.x + background2.width/2f);
+		setUpFiller1(background2.x + background2.width/2f);
 		
 	}
 	
+	void setUpFiller1(float startX)
+	{
+		//I'm sure I shan't be able! I shall be a great deal too far off
+		FSprite background1 = new FSprite("blank");
+		Futile.stage.AddChild(background1);
+		background1.scale = 0.6f;
+		background1.SetPosition(startX + background1.width/2, background1.height/2);
+		
+		FSprite background2 = new FSprite("blank");
+		Futile.stage.AddChild (background2);
+		background2.scale = 0.6f;
+		background2.SetPosition(startX + background1.width + (background2.width/2)-20, background1.height/2);
+		
+		FSprite background3 = new FSprite("blank");
+		Futile.stage.AddChild (background3);
+		background3.scale = 0.6f;
+		background3.SetPosition(startX + + background1.width + background2.width + (background3.width/2)-20, background1.height/2);
+		
+		MediumText blockd1 = new MediumText(blockFont, "'Curiouser and curiouser!'");
+		MediumText blockd2 = new MediumText(blockFont, "cried Alice (she was");
+		MediumText blockd3 = new MediumText(blockFont, "so much surprised, that");
+		MediumText blockd4 = new MediumText(blockFont, "for the moment she");
+		MediumText blockd5 = new MediumText(blockFont, "quite forgot how to speak good English);");
+		MediumText blockd6 = new MediumText(blockFont, "'now I'm opening out like the largest telescope that ever was! Good-bye, feet!'");
+		MediumText blockd7 = new MediumText(blockFont, "(for when she looked down at her feet, they seemed to be almost out of sight,");
+		MediumText blockd8 = new MediumText(blockFont, " they were getting so far off). 'Oh, my poor little feet, I wonder who will put");
+		MediumText blockd9 = new MediumText(blockFont, "on your shoes and stockings");
+		MediumText blockd10 = new MediumText(blockFont, "for you now, dears? I'm sure"); 
+		MediumText blockd11 = new MediumText(blockFont, "I shan't be able! I shall be");
+		MediumText blockd12 = new MediumText(blockFont, "a great deal too far off");
+		
+		blockd1.SetPosition (startX + Futile.screen.width*0.2f, Futile.screen.height*0.3f);
+		blockd2.SetPosition (blockd1.x, blockd1.y - blockd1.textRect.height*0.6f);
+		blockd3.SetPosition (blockd1.x, blockd2.y - blockd2.textRect.height*0.6f);
+		blockd4.SetPosition (blockd1.x + blockd5.textRect.width*0.6f, blockd1.y + blockd4.textRect.height*3f);
+		blockd5.SetPosition (blockd4.x, blockd4.y - blockd5.textRect.height*0.6f);
+		blockd6.SetPosition (blockd4.x + blockd6.textRect.width*0.5f, blockd5.y + blockd6.textRect.height*4f);
+		blockd7.SetPosition (blockd6.x, blockd6.y - blockd7.textRect.height*0.6f);
+		blockd8.SetPosition (blockd7.x, blockd7.y - blockd8.textRect.height*0.6f);
+		blockd9.SetPosition (blockd5.x + blockd9.textRect.width, blockd8.y - blockd9.textRect.height*5f);
+		blockd10.SetPosition (blockd9.x, blockd9.y - blockd10.textRect.height*0.6f);
+		blockd11.SetPosition (blockd10.x, blockd10.y - blockd11.textRect.height*0.6f);
+		blockd12.SetPosition (blockd6.x + blockd12.textRect.width*0.5f, blockd6.y + blockd12.textRect.height*3f);
+		
+		mediumText.Add (blockd1);
+		mediumText.Add (blockd2);
+		mediumText.Add (blockd3);
+		mediumText.Add (blockd4);
+		mediumText.Add (blockd5);
+		mediumText.Add (blockd6);
+		mediumText.Add (blockd7);
+		mediumText.Add (blockd8);
+		mediumText.Add (blockd9);
+		mediumText.Add (blockd10);
+		mediumText.Add (blockd11);
+		mediumText.Add (blockd12);
+		
+		foreach (MediumText mt in mediumText)
+		{
+			Futile.stage.AddChild (mt);
+			mt.scale = 0.6f;
+			Rect mtRect = makeTextRect(mt);
+			mediumTextRects.Add (mtRect);
+		}
+	
+	}
+
 	void setUpShrinkStage(float startX)
 	{
 		FSprite background3 = new FSprite("blank");
