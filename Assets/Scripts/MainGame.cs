@@ -570,7 +570,7 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		blockd8.SetPosition (blockd6.x + blockd6.textRect.width*0.6f, blockd6.y + blockd8.textRect.height*2f);
 		blockd9.SetPosition (blockd8.x, blockd8.y - blockd9.textRect.height*0.6f);
 		blockd10.SetPosition (blockd9.x, blockd9.y - blockd10.textRect.height*0.6f);
-		blockd11.SetPosition (blockd7.x + blockd11.textRect.width*0.5f, blockd7.y - blockd11.textRect.height);
+		blockd11.SetPosition (blockd7.x + blockd11.textRect.width*0.5f, blockd7.y - blockd11.textRect.height*1.5f);
 		blockd12.SetPosition (blockd11.x, blockd11.y - blockd12.textRect.height*0.6f);
 		blockd13.SetPosition (blockd11.x, blockd8.y + blockd13.textRect.height*4f);
 		blockd14.SetPosition (blockd13.x, blockd13.y - blockd14.textRect.height*0.6f);
@@ -580,12 +580,12 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		blockd18.SetPosition (blockd17.x, blockd17.y - blockd18.textRect.height*0.6f);
 		blockd19.SetPosition (blockd18.x, blockd18.y - blockd19.textRect.height*0.6f);
 		blockd20.SetPosition (blockd19.x, blockd19.y - blockd20.textRect.height*0.6f);
-		blockd21.SetPosition (blockd15.x + blockd21.textRect.width*2f, blockd15.y + blockd21.textRect.height*3f);
+		blockd21.SetPosition (blockd15.x + blockd21.textRect.width*1.5f, blockd15.y + blockd21.textRect.height*4f);
 		blockd22.SetPosition (blockd21.x, blockd21.y - blockd22.textRect.height*0.6f);
-		blockd23.SetPosition (blockd15.x + blockd23.textRect.width*2f, blockd15.y - blockd23.textRect.height*4f);
+		blockd23.SetPosition (blockd15.x + blockd23.textRect.width*0.6f, blockd15.y - blockd23.textRect.height*4.5f);
 		blockd24.SetPosition (blockd23.x, blockd23.y - blockd24.textRect.height*0.6f);
 		blockd25.SetPosition (blockd24.x, blockd24.y - blockd25.textRect.height*0.6f);
-		blockd26.SetPosition (blockd23.x + blockd26.textRect.width*0.5f, blockd23.y + blockd26.textRect.height*3f);
+		blockd26.SetPosition (blockd23.x + blockd26.textRect.width*0.8f, blockd23.y + blockd26.textRect.height*3f);
 		blockd27.SetPosition (blockd26.x, blockd26.y - blockd27.textRect.height*0.6f);
 		
 		mediumText.Add (blockd1);
