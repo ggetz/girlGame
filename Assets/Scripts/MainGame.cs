@@ -30,6 +30,7 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 	List <SpecialWords> specialWords = new List<SpecialWords> ();
 	List <MediumText> mediumText = new List<MediumText>();
 	List <PictureObstacle> pictures = new List<PictureObstacle>();
+	List <SpecialWords> holdSpecialWords = new List<SpecialWords> ();
 	
 	FCamObject cam;
 	FNode focus;
@@ -262,6 +263,14 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 				
 				if(touch.phase != TouchPhase.Ended)
 				{
+					if(inSpecialWord)
+					{
+						foreach(SpecialWords sw in holdSpecialWords)
+						{	
+							sw.action();
+						}
+					}
+					
 					if(!inSpecialWord)
 					{
 						if(girl.isGrounded)
@@ -426,7 +435,7 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		
 		//setUpTwinkleStage (background2.x + background2.width/2f);
 		//setUpFiller1(background2.x + background2.width/2f);
-		setUpFiller2(background2.x + background2.width/2f);
+		setUpFiller1(background2.x + background2.width/2f);
 	}
 	
 	void setUpFiller1(float startX)
@@ -486,13 +495,7 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		mediumText.Add (blockd11);
 		mediumText.Add (blockd12);
 		
-		foreach (MediumText mt in mediumText)
-		{
-			Futile.stage.AddChild (mt);
-			mt.scale = 0.6f;
-			Rect mtRect = makeTextRect(mt);
-			mediumTextRects.Add (mtRect);
-		}
+		setUpShrinkStage (background3.x+background3.width/2f);
 	
 	}
 	
@@ -613,14 +616,8 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		mediumText.Add (blockd26);
 		mediumText.Add (blockd27);
 		
-		
-		foreach (MediumText mt in mediumText)
-		{
-			Futile.stage.AddChild (mt);
-			mt.scale = 0.6f;
-			Rect mtRect = makeTextRect(mt);
-			mediumTextRects.Add (mtRect);
-		}
+		setUpMushroomStage (background4.x+background4.width/2f);
+
 	}
 	
 	void setUpShrinkStage(float startX)
@@ -671,7 +668,7 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		mediumText.Add (blocka8);
 		mediumText.Add (blocka9);
 		
-		sentence1.SetPosition (startX + sentence1.textRect.width/2f, Futile.screen.height*0.85f);
+		sentence1.SetPosition (startX + sentence1.textRect.width/3f, Futile.screen.height*0.85f);
 		sentence3.SetPosition(sentence1.x + (sentence1.textRect.width - sentence3.textRect.width)/4f, sentence1.y - sentence3.textRect.height);
 		shrink.SetPosition(sentence3.x - shrink.textRect.width, sentence3.y);
 		sentence2.SetPosition (shrink.x - sentence2.textRect.width/2f, sentence3.y);
@@ -699,7 +696,7 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		grow.SetPosition (sentence5.x - (sentence5.textRect.width - grow.textRect.width)/4f, sentence5.y - grow.textRect.height);
 		sentence6.SetAnchor (grow.x + sentence6.textRect.width/2f, grow.y);
 		
-		setUpEggStage (background4.x + background4.width/2f);
+		setUpFiller2(background4.x + background4.width/2f);
 		
 	}
 	
@@ -756,7 +753,7 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		MediumText block6 = new MediumText(blockFont, " moment it was out  of");
 		MediumText block7 = new MediumText(blockFont, "sight. Alice remained ");
 		
-		sentence1.SetPosition(startX, Futile.screen.height*0.4f);
+		sentence1.SetPosition(startX + sentence1.textRect.width, Futile.screen.height*0.4f);
 		bgrow.SetPosition (sentence1.x + sentence1.textRect.width/2.3f, sentence1.y);
 		sentence2.SetPosition (sentence1.x + (sentence2.textRect.width-sentence1.textRect.width)/4f, sentence1.y - sentence2.textRect.height);
 		sgrow.SetPosition (sentence2.x + sentence2.textRect.width/2.6f, sentence2.y);
@@ -785,29 +782,7 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		mediumText.Add (block6);
 		mediumText.Add (block7);
 		
-				
-		foreach (MediumText mt in mediumText)
-		{
-			Futile.stage.AddChild (mt);
-			mt.scale = 0.6f;
-			Rect mtRect = makeTextRect(mt);
-			mediumTextRects.Add (mtRect);
-		}
-				
-		foreach (SpecialWords sw in specialWords)
-		{
-			Futile.stage.AddChild (sw);
-			Rect swRect = makeTextRect(sw);
-			specialWordRects.Add (swRect);
-		}
-		
-		foreach (PictureObstacle pic in pictures)
-		{
-			Rect picRect = pic.localRect.CloneAndOffset(pic.x, pic.y);
-			pictureObstacleRects.Add(picRect);
-		}
-		
-		
+		setUpEggStage (background4.x+background4.width/2f);
 	}
 	
 	void setUpEggStage(float startX)
@@ -831,6 +806,12 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		Futile.stage.AddChild (background4);
 		background4.scale = 0.6f;
 		background4.SetPosition((background.width/2)-20 + background3.x, background.height/2);
+		
+		FSprite background5 = new FSprite("blank");
+		Futile.stage.AddChild (background5);
+		background5.scale = 0.6f;
+		background5.SetPosition((background.width/2)-20 + background4.x, background.height/2);
+		
 		
 		GSpineManager.LoadSpine("EggAtlas", "Atlases/EggJson", "Atlases/EggAtlas");
 		CrackingEggs egg1 = new CrackingEggs("EggAtlas", 0.3f);
@@ -886,6 +867,8 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		mediumText.Add (block1);
 		mediumText.Add (block2);
 		mediumText.Add (block3);
+		
+		setUpTwinkleStage (background5.x+background5.width/2f);
 		
 	}
 	
@@ -943,6 +926,12 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		
 		rotateBlock1.SetPosition (round1.x + rotateBlock1.textRect.width/1.5f, groundHeight + rotateBlock1.textRect.width/2f);
 		rotateBlock2.SetPosition (rotateBlock1.x + rotateBlock2.textRect.width/3f, groundHeight + rotateBlock2.textRect.width/1.5f);
+		
+		specialWords.Add (round1);
+		specialWords.Add(round2);
+		holdSpecialWords.Add (round1);
+		holdSpecialWords.Add(round2);
+		setUpTrumpetStage (background4.x+background4.width/2f);
 	}
 	
 	void setUpTrumpetStage(float startX)
@@ -1016,8 +1005,32 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		trumpet.Start();
 		scroll.Start();
 		
+		Futile.stage.AddChild (trumpet);
+		Futile.stage.AddChild (scroll);
+		
 		block3.SetPosition (scroll.x + block2.textRect.width/1.5f, Futile.screen.height*0.3f);
 		block2.SetPosition (block3.x, block3.y + block2.textRect.height/1.5f);
+		
+		foreach (MediumText mt in mediumText)
+		{
+			Futile.stage.AddChild (mt);
+			mt.scale = 0.6f;
+			Rect mtRect = makeTextRect(mt);
+			mediumTextRects.Add (mtRect);
+		}
+				
+		foreach (SpecialWords sw in specialWords)
+		{
+			Futile.stage.AddChild (sw);
+			Rect swRect = makeTextRect(sw);
+			specialWordRects.Add (swRect);
+		}
+		
+		foreach (PictureObstacle pic in pictures)
+		{
+			Rect picRect = pic.localRect.CloneAndOffset(pic.x, pic.y);
+			pictureObstacleRects.Add(picRect);
+		}
 		
 	}
 	
@@ -1145,27 +1158,7 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		twinkle3.SetPosition (twinkle2.x + twinkle3.textRect.width/1.5f, twinkle1.y+twinkle3.textRect.height);
 		twinkle4.SetPosition (twinkle3.x + twinkle4.textRect.width/1.5f, twinkle3.y+twinkle4.textRect.height*3f);
 		
-		foreach (MediumText mt in mediumText)
-		{
-			Futile.stage.AddChild (mt);
-			mt.scale = 0.6f;
-			Rect mtRect = makeTextRect(mt);
-			mediumTextRects.Add (mtRect);
-		}
-				
-		foreach (SpecialWords sw in specialWords)
-		{
-			Futile.stage.AddChild (sw);
-			Rect swRect = makeTextRect(sw);
-			specialWordRects.Add (swRect);
-		}
-		
-		foreach (PictureObstacle pic in pictures)
-		{
-			Rect picRect = pic.localRect.CloneAndOffset(pic.x, pic.y);
-			pictureObstacleRects.Add(picRect);
-		}
-		
+		setUpRotationStage (background4.x+background4.width/2f);
 	}
 	
 	Rect makeTextRect(FLabel l)

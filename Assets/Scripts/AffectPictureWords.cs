@@ -53,7 +53,7 @@ public class AffectPictureWords : SpecialWords {
 				actionOption ();
 			}
 			
-			if(effectedTextGroup.Count>0)
+			if(effectedTextGroup !=null)
 			{
 				foreach(MediumText obs in effectedTextGroup)
 				{
