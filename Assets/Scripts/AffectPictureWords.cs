@@ -2,7 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class AffectPictureWords : SpecialWords {
+public class AffectPictureWords : SpecialWords 
+{
 	
 	MovingPictureObstacles effectedObstacle;
 	MediumText effectedText;
@@ -48,13 +49,15 @@ public class AffectPictureWords : SpecialWords {
 				effectedObstacle.action();
 			}
 			
-			if(effectedText != null)
+			else if(effectedText != null)
 			{
+				Debug.Log ("one");
 				actionOption ();
 			}
 			
-			if(effectedTextGroup !=null)
+			else if(effectedTextGroup !=null)
 			{
+				Debug.Log ("multiple");
 				foreach(MediumText obs in effectedTextGroup)
 				{
 					effectedText=obs;

@@ -9,6 +9,9 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 	Vector2 deltaSwipe;
 	
 	Girl girl;
+	
+	Eraser eraser;
+	
 	float groundHeight;
 
 	FSprite background;
@@ -83,14 +86,21 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		background = new FSprite("AliceBG1");
 		ground = new Ground(groundHeight, "PalatinoMedium");
 		//power1 = new FLabel("PalitinoMedium", "JUMP!");
+		
+		GSpineManager.LoadSpine("EraserAtlas", "Atlases/EraserJson", "Atlases/EraserAtlas");
+		eraser = new Eraser("EraserAtlas", girl, 0.6f);
+		eraser.SetPosition(girl.x, Futile.screen.height + girl.y);
+		eraser.scale=0.6f;
+		
 	}
-	
+			
 	void SetUpStage()
 	{
 		setUpTutorialStage();
 		//girl
 		
 		Futile.stage.AddChild(girl);
+		Futile.stage.AddChild (eraser);
 		girl.SetPosition(0, groundHeight);
 		girl.setGroundHeight (groundHeight);
 		
@@ -98,16 +108,13 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		ground.Start();
 		
 		girl.Start();
-		
-		
+		eraser.Start ();
 		// makes it so that the entire screen is capable of multitouch
 		Futile.touchManager.AddMultiTouchTarget (this);
 		
 		//set camera to follow girl
 		cam.setWorldBounds(new Rect(-1.5f * Futile.screen.width, -.5f*Futile.screen.height, 30*Futile.screen.width, 1.25f* Futile.screen.height));
 		cam.follow(focus);
-		
-		
 	}
 	
 	void Update()
@@ -149,6 +156,8 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		
 		focus.x = girl.x - Futile.screen.halfWidth;
 		focus.y = girl.y - .1f * Futile.screen.height;
+		
+		eraser.Update ();
 	}
 	
 	/*-----------------------------------------
@@ -267,7 +276,11 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 					{
 						foreach(SpecialWords sw in holdSpecialWords)
 						{	
-							sw.action();
+							Vector2 touchPos = sw.GlobalToLocal (touch.position);
+							if(sw.textRect.Contains (touchPos))
+							{
+								sw.action ();
+							}
 						}
 					}
 					
@@ -469,7 +482,7 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		MediumText blockd11 = new MediumText(blockFont, "I shan't be able! I shall be");
 		MediumText blockd12 = new MediumText(blockFont, "a great deal too far off");
 		
-		blockd1.SetPosition (startX + Futile.screen.width*0.2f, Futile.screen.height*0.3f);
+		blockd1.SetPosition (startX + blockd1.textRect.width/2f, Futile.screen.height*0.3f);
 		blockd2.SetPosition (blockd1.x, blockd1.y - blockd1.textRect.height*0.6f);
 		blockd3.SetPosition (blockd1.x, blockd2.y - blockd2.textRect.height*0.6f);
 		blockd4.SetPosition (blockd1.x + blockd5.textRect.width*0.6f, blockd1.y + blockd4.textRect.height*3f);
@@ -920,8 +933,8 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		AffectPictureWords round1 = new AffectPictureWords(specialFont, "round", rotateBlock1,1);
 		AffectPictureWords round2 = new AffectPictureWords(specialFont, "round", rotateBlock2, 1);
 		
-		round1.SetPosition (startX + round1.textRect.width, groundHeight*2);
-		round2.SetPosition (round1.x, groundHeight*1.5f);
+		round1.SetPosition (startX + round1.textRect.width, groundHeight*3);
+		round2.SetPosition (round1.x, groundHeight);
 		round2.addCollisionObjects (round1);
 		
 		rotateBlock1.SetPosition (round1.x + rotateBlock1.textRect.width/1.5f, groundHeight + rotateBlock1.textRect.width/2f);

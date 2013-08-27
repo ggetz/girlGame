@@ -11,9 +11,13 @@ public class WaterGlass : MovingPictureObstacles
 	float groundHeight;
 	float gravity = 0.4f;
 	bool electrified = false;
-	int state=0;
+	int state=1;
 	bool shattered;
 	List <MovingPictureObstacles> checkHit = new List<MovingPictureObstacles>();
+	
+	int trembleUp = 5;
+	int coolDownTime=15;
+	bool isTrembling;
 	
 	public WaterGlass(string atlas, float scale, float ground): base(atlas)
 	{
@@ -33,7 +37,26 @@ public class WaterGlass : MovingPictureObstacles
 	// Update is called once per frame
 	void Update () 
 	{
-	
+		if(isTrembling && coolDownTime > 0)
+		{
+			coolDownTime--;
+		}
+		else if(isTrembling && coolDownTime==0)
+		{
+			trembleUp--;
+			coolDownTime=15;
+		}
+		
+		if(isTrembling && trembleUp==0 && state>0)
+		{
+			state--;
+			coolDownTime = 15;
+		}
+		if(isTrembling && trembleUp==0 && state==0)
+		{
+			isTrembling=false;
+			coolDownTime=15;
+		}
 	}
 	
 	public void tremble(int state)
@@ -69,8 +92,12 @@ public class WaterGlass : MovingPictureObstacles
 	
 	public override void action()
 	{
-		state+=1;
+		trembleUp+=1;
 		
+		if(!isTrembling)
+		{
+			isTrembling=true;
+		}
 		if(state<3)
 		{
 			tremble (state);
