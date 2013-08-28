@@ -368,6 +368,9 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		mediumText.Add (blocka9);
 		mediumText.Add (blocka10);
 		mediumText.Add (blocka11);
+		
+		Doodle rabbit = new Doodle("Bunny");
+		rabbit.scale=0.5f;
 
 		MediumText blockb = new MediumText(blockFont, "rabbit-hole under the hedge");
 		mediumText.Add (blockb);
@@ -416,6 +419,7 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		blocka11.SetPosition (blocka9.x, blocka10.y - blocka11.textRect.height);
 		
 		blockb.SetPosition (blocka11.x - blockb.textRect.width/2f, groundHeight+(blocka11.y-groundHeight)/2f);
+		rabbit.SetPosition (blockb.x + blockb.textRect.width/2f, groundHeight+rabbit.height/2f);
 		
 		blockc5.SetPosition(blocka1.x + blockc5.textRect.width/2f, blocka1.y + blockc5.textRect.height/2f);
 		blockc6.SetPosition(blockc5.x + blockc6.textRect.width*2.5f, blockc5.y);
@@ -429,6 +433,8 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		ChangeWord down = new ChangeWord(specialFont, "down");
 		Futile.stage.AddChild(down);
 		down.SetPosition (sentence1.x + down.textRect.width*1.5f, sentence1.y);
+		
+		Futile.stage.AddChild (rabbit);
 		
 		sentence2.SetPosition(down.x+sentence2.textRect.width/2.5f, down.y);
 		sentence3.SetPosition (sentence2.x+(sentence2.textRect.width-sentence3.textRect.width)/4f, sentence2.y-sentence3.textRect.height);
@@ -447,8 +453,8 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		specialWords.Add (Out);
 		specialWords.Add (down);
 		
-		setUpFiller1(background2.x + background2.width/2f);
-		//setUpFiller4(background2.x + background2.width/2f);
+		setUpFiller3(background2.x + background2.width/2f);
+		
 	}
 	
 	void setUpFiller1(float startX)
@@ -535,6 +541,10 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		Futile.stage.AddChild (background4);
 		background4.scale = 0.6f;
 		background4.SetPosition(background3.x +(background3.width/2)-20, background.height/2);
+		
+				
+		PictureObstacle drinkMe = new PictureObstacle("drinkme");
+		drinkMe.scale=0.6f;
 	
 		ChangeGirlSizeWord shrink = new ChangeGirlSizeWord(specialFont, "shrink", 0.3f, girl);
 		ChangeGirlSizeWord grow = new ChangeGirlSizeWord(specialFont, "grow", 0.6f, girl);
@@ -600,6 +610,8 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		grow.SetPosition (sentence5.x - (sentence5.textRect.width - grow.textRect.width)/4f, sentence5.y - grow.textRect.height);
 		sentence6.SetAnchor (grow.x + sentence6.textRect.width/2f, grow.y);
 		
+		drinkMe.SetPosition(grow.x, groundHeight + drinkMe.height/2f);
+		Futile.stage.AddChild (drinkMe);
 		setUpFiller2(background4.x + background4.width/2f);
 		
 	}
@@ -622,6 +634,8 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		background3.scale = 0.6f;
 		background3.SetPosition(startX + background1.width + background2.width + (background3.width/2)-20, background1.height/2);
 		
+		Doodle key = new Doodle("Key");
+		key.scale=0.6f;
 		
 		MediumText blockd1 = new MediumText(blockFont, "Oh dear, what");
 		MediumText blockd2 = new MediumText(blockFont, "nonsense I'm");
@@ -687,6 +701,9 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		blockd25.SetPosition (blockd24.x, blockd24.y - blockd25.textRect.height*0.6f);
 		blockd26.SetPosition (blockd23.x + blockd26.textRect.width*0.8f, blockd23.y + blockd26.textRect.height*3f);
 		blockd27.SetPosition (blockd26.x, blockd26.y - blockd27.textRect.height*0.6f);
+		
+		key.SetPosition (blockd6.x, blockd6.y+key.height/2f);
+		Futile.stage.AddChild (key);
 		
 		mediumText.Add (blockd1);
 		mediumText.Add (blockd2);
@@ -754,6 +771,9 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		Futile.stage.AddChild (smallMushroom);
 		Futile.stage.AddChild(bigMushroom);
 		
+		Doodle mushroomDoodle = new Doodle("Mushroom");
+		mushroomDoodle.scale=0.6f;
+		
 		AffectPictureWords bgrow = new AffectPictureWords(specialFont, "grow", smallMushroom);
 		bgrow.SetPosition (300, groundHeight + 20f);
 		specialWords.Add (bgrow);
@@ -792,6 +812,9 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		block7.SetPosition (block2.x, block6.y-block7.textRect.height);
 		block8.SetPosition (block1.x + block8.textRect.width*0.25f, block1.y + block8.textRect.height*3.5f);
 		
+		mushroomDoodle.SetPosition (block8.x, block8.y+mushroomDoodle.height/2f);
+		Futile.stage.AddChild (mushroomDoodle);
+		
 		mediumText.Add (sentence1);
 		mediumText.Add (sentence2);
 		mediumText.Add (sentence3);
@@ -819,6 +842,11 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		Futile.stage.AddChild (background2);
 		background2.scale = 0.6f;
 		background2.SetPosition(startX + background1.width + (background2.width/2)-20, background1.height/2);
+		
+		Doodle canary = new Doodle("Canary");
+		canary.scale=0.6f;
+		PictureObstacle mushroom = new PictureObstacle("mushroom1");
+		mushroom.scale=0.3f;
 		
 		MediumText blockd1 = new MediumText(blockFont, "Alice replied eagerly, for she");
 		MediumText blockd2 = new MediumText(blockFont, "was always ready to talk about");
@@ -877,6 +905,11 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		blockd19.SetPosition (blockd17.x + blockd19.textRect.width*0.6f, blockd17.y - blockd19.textRect.height*3f);
 		blockd20.SetPosition (blockd19.x, blockd19.y - blockd20.textRect.height*0.6f);
 		
+		canary.SetPosition (blockd14.x, blockd14.y+canary.height/2f);
+		mushroom.SetPosition(blockd13.x + blockd13.textRect.width/2f, groundHeight+mushroom.height/2.3f);
+		
+		Futile.stage.AddChild (canary);
+		Futile.stage.AddChild (mushroom);
 		
 		mediumText.Add (blockd1);
 		mediumText.Add (blockd2);
@@ -1121,9 +1154,25 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		MediumText twinkle3 = new MediumText(blockFont, "like a tea tray in the sky");
 		MediumText twinkle4 = new MediumText(blockFont, "how I wonder what you're at");
 		
+		MediumText block4 = new MediumText(blockFont, "Here the Dormouse shook itself , and began singing\n\n" +
+													  "in its sleep\'Twinkle, twinkle, twinkle, twinkle—\'\n\n" +
+													  "and went on so long that they had to pinch it to ");
+		MediumText block5 = new MediumText(blockFont, "make it stop.\'Well, I'd hardly finished the first\n\n" +
+												   	  "verse,' said the Hatter, \'when the Queen jumped up\n\n " +
+												   	  "and bawled out, \"He's murdering the time! Off with\n\n" +
+												   	  "his head!\"\'\'How dreadfully savage!' exclaimed Alice.\n\n");
+		MediumText block6 = new MediumText(blockFont, "\'And ever since that,\'the Hatter went on in a mournful\n\n" +
+												      "tone, \'he won't do a thing I ask! It's always six o\'\n\n" +
+												      "clock now.\'A bright idea came into Alice's head.\'Is that\n\n" +
+												      "the reason so many tea-things are put out here?\' she asked.");
+		
+		
 		mediumText.Add (block1);
 		mediumText.Add (block2);
 		mediumText.Add (block3);
+		mediumText.Add (block4);
+		mediumText.Add (block5);
+		mediumText.Add (block6);
 		
 		mediumText.Add (twinkle1);
 		mediumText.Add (twinkle2);
@@ -1150,11 +1199,15 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		block2.SetPosition (block1.x+block2.textRect.width/2f, block1.y + block2.textRect.height*3f);
 		talk.SetPosition (block2.x + block2.textRect.width/2.5f, block2.y);
 		block3.SetPosition (block2.x, block2.y-block3.textRect.height/2f);
-		
+	
 		twinkle1.SetPosition (talk.x + twinkle1.textRect.width/2.2f, talk.y+twinkle1.textRect.height*2f);
 		twinkle2.SetPosition (twinkle1.x + twinkle2.textRect.width/1.5f, block3.y);
 		twinkle3.SetPosition (twinkle2.x + twinkle3.textRect.width/1.5f, twinkle1.y+twinkle3.textRect.height);
 		twinkle4.SetPosition (twinkle3.x + twinkle4.textRect.width/1.5f, twinkle3.y+twinkle4.textRect.height*3f);
+		
+		block4.SetPosition (twinkle4.x+block4.textRect.width/1.5f, twinkle4.y - (block4.textRect.height-twinkle4.textRect.height)/4f);
+		block5.SetPosition (block4.x, block4.y-block5.textRect.height/1.9f);
+		block6.SetPosition (block4.x, block5.y-block6.textRect.height/1.7f);
 		
 		setUpRotationStage (background4.x+background4.width/2f);
 	}
@@ -1181,17 +1234,16 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		background4.scale = 0.6f;
 		background4.SetPosition((background.width/2)-20 + background3.x, background.height/2);
 		
-		MediumText sentence1 = new MediumText(blockFont, "So they began solemnly dancing round and round");
-		MediumText sentence2 = new MediumText(blockFont, "Alice, every now and then treading on her toes");
-		MediumText sentence3 = new MediumText(blockFont, "when they passed too close , and  waving their");
-		MediumText sentence4 = new MediumText(blockFont, "forepaws to mark the time while the Mock Turtle");
-		MediumText sentence5 = new MediumText(blockFont, "sang this, very slowly and sadly:—");
+		MediumText sentence1 = new MediumText(blockFont, "So they began solemnly dancing");
+		MediumText sentence2 = new MediumText(blockFont, " and ");
+		MediumText sentence3 = new MediumText(blockFont, "\n\nAlice, every now and then treading on her toes\n\n" +
+														 "then they passed too close , and  waving their \n\n" +
+														 "forepaws to mark the time while the Mock Turtle\n\n" +
+														 " sang this, very slowly and sadly:—");
 		
 		mediumText.Add (sentence1);
 		mediumText.Add (sentence2);
 		mediumText.Add (sentence3);
-		mediumText.Add (sentence4);
-		mediumText.Add (sentence5);
 		
 		MediumText rotateBlock1 = new MediumText(blockFont, "\"'Will you walk a little faster?\" said a whiting to a snail.\n\"There's a porpoise close behind us, and he's treading on my tail.");
 		MediumText rotateBlock2 = new MediumText( blockFont, "See how eagerly the lobsters and the turtles all advance!\nThey are waiting on the shingle—will you come and join the dance?");
@@ -1202,14 +1254,17 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		Vector2 rotatePoint1 = new Vector2(rotateBlock1.x, rotateBlock1.y);
 		Vector2 rotatePoint2 = new Vector2(rotateBlock2.x, rotateBlock2.y);
 		rotateBlock1.RotateAroundPointAbsolute (rotatePoint1,90f);
-		rotateBlock2.RotateAroundPointAbsolute( rotatePoint2, 90f);;
+		rotateBlock2.RotateAroundPointAbsolute( rotatePoint2, 90f);
 		
 		AffectPictureWords round1 = new AffectPictureWords(specialFont, "round", rotateBlock1,1);
 		AffectPictureWords round2 = new AffectPictureWords(specialFont, "round", rotateBlock2, 1);
 		
-		round1.SetPosition (startX + round1.textRect.width, groundHeight*3);
-		round2.SetPosition (round1.x, groundHeight);
+		sentence1.SetPosition (startX+sentence1.textRect.width, groundHeight*4);
+		round1.SetPosition (sentence1.x + (sentence1.textRect.width + round1.textRect.width)/3f, sentence1.y);
+		sentence2.SetPosition (round1.x+sentence2.textRect.width, sentence1.y);
+		round2.SetPosition (sentence2.x + (sentence2.textRect.width + round2.textRect.width)/2.9f, sentence1.y);
 		round2.addCollisionObjects (round1);
+		sentence3.SetPosition (sentence1.x + (sentence3.textRect.width-sentence1.textRect.width)/4f, sentence1.y-sentence3.textRect.height/3f);
 		
 		rotateBlock1.SetPosition (round1.x + rotateBlock1.textRect.width/1.5f, groundHeight + rotateBlock1.textRect.width/2f);
 		rotateBlock2.SetPosition (rotateBlock1.x + rotateBlock2.textRect.width/3f, groundHeight + rotateBlock2.textRect.width/1.5f);
