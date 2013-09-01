@@ -15,13 +15,14 @@ public class WaterGlass : MovingPictureObstacles
 	bool shattered;
 	List <MovingPictureObstacles> checkHit = new List<MovingPictureObstacles>();
 	
-	int trembleUp = 5;
+	int trembleUp = 1;
 	int coolDownTime=15;
 	bool isTrembling;
+	bool isTrembling2;
 	
 	public WaterGlass(string atlas, float scale, float ground): base(atlas)
 	{
-		state = 0;
+		state = 1;
 		wscale = scale;
 		groundHeight=ground;
 	}
@@ -35,44 +36,78 @@ public class WaterGlass : MovingPictureObstacles
 	}
 	
 	// Update is called once per frame
-	void Update () 
+	public override void Update () 
 	{
-		if(isTrembling && coolDownTime > 0)
+		if(!shattered)
 		{
-			coolDownTime--;
-		}
-		else if(isTrembling && coolDownTime==0)
-		{
-			trembleUp--;
-			coolDownTime=15;
+			if(isTrembling && coolDownTime > 0)
+			{
+				coolDownTime--;
+			}
+			else if(isTrembling && coolDownTime==0)
+			{
+				trembleUp--;
+				coolDownTime=10;
+			}
+			
+			if(isTrembling && trembleUp==0 && state>0)
+			{
+				state--;
+				coolDownTime = 10;
+			}
+			if(isTrembling && trembleUp==0 && state==0)
+			{
+				isTrembling=false;
+				coolDownTime=10;
+				Play ("Still");
+			}
+			
+			if(trembleUp>5)
+			{
+				trembleUp=1;
+				state++;
+				
+			}
 		}
 		
-		if(isTrembling && trembleUp==0 && state>0)
+		if(electrified)
 		{
-			state--;
-			coolDownTime = 15;
-		}
-		if(isTrembling && trembleUp==0 && state==0)
-		{
-			isTrembling=false;
-			coolDownTime=15;
+			Play ("Electric", false);
 		}
 	}
 	
 	public void tremble(int state)
 	{
+		Debug.Log ("state: " + state);
+		if(state==0)
+		{
+			isTrembling=false;
+			Play ("Still");
+		}
 		if(state==1)
 		{
-			Play ("Tremble1");
+			if(!isTrembling)
+			{
+				isTrembling=true;
+				Play ("Tremble1");
+			}
+			
 		}
 		if(state==2)
 		{
-			Play ("Tremble2");
+			if(!isTrembling2)
+			{
+				isTrembling2=true;
+				Play ("Tremble2");
+			}
 		}
+		trembleUp++;
+		coolDownTime=10;
 	}
 	
 	public void fall()
 	{
+
 		Play ("Fall", false);
 		while(y > groundHeight)
 		{
@@ -80,9 +115,12 @@ public class WaterGlass : MovingPictureObstacles
 		}
 		
 		Stop ();
+
 		Play ("Shatter", false);
+		
 		height = 250*wscale;
 		width = 1375*wscale;
+		
 	}
 	
 	public bool getElectric()
@@ -92,20 +130,24 @@ public class WaterGlass : MovingPictureObstacles
 	
 	public override void action()
 	{
-		trembleUp+=1;
-		
-		if(!isTrembling)
+		if(!shattered)
 		{
-			isTrembling=true;
-		}
-		if(state<3)
-		{
-			tremble (state);
-		}
-		
-		else
-		{
-			fall ();
+			trembleUp+=1;
+			
+			if(state==0)
+			{
+				state=1;
+			}
+			if(state<3)
+			{
+				tremble (state);
+			}
+			
+			else
+			{
+				shattered=true;
+				fall ();
+			}
 		}
 	}
 	
@@ -116,6 +158,7 @@ public class WaterGlass : MovingPictureObstacles
 	
 	public override void electrify()
 	{
+		electrified=true;
 		foreach(MovingPictureObstacles obs in checkHit)
 		{
 			if(glassRect.CheckIntersect (obs.getRect ()))

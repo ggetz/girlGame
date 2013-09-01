@@ -1,8 +1,8 @@
 {
 "bones": [
 	{ "name": "root", "length": 60 },
-	{ "name": "Lightening1", "parent": "root", "x": -181.26, "y": 557.31, "rotation": -4.07 },
-	{ "name": "Lightening2", "parent": "root", "x": 212.73, "y": 154.49 },
+	{ "name": "Lighteninga", "parent": "root", "x": -181.26, "y": 557.31, "rotation": -4.07 },
+	{ "name": "Lighteningb", "parent": "root", "x": 212.73, "y": 154.49 },
 	{ "name": "Mallet", "parent": "root", "length": 211.32, "x": 9.66, "y": 22.41, "rotation": 90 },
 	{ "name": "Ash1", "parent": "Mallet", "length": 67.22, "x": 23.11, "y": 178.3, "rotation": -24.54 },
 	{ "name": "Ash10", "parent": "Mallet", "length": 140.37, "x": 521.71, "y": 4.95, "rotation": -0.9 },
@@ -27,8 +27,8 @@
 	{ "name": "Ash8", "bone": "Ash8" },
 	{ "name": "Ash72", "bone": "Ash9" },
 	{ "name": "Ash73", "bone": "Ash10" },
-	{ "name": "Lightening1", "bone": "Lightening1" },
-	{ "name": "Lightening2", "bone": "Lightening2" }
+	{ "name": "Lighteninga", "bone": "Lighteninga" },
+	{ "name": "Lighteningb", "bone": "Lighteningb" }
 ],
 "skins": {
 	"default": {
@@ -62,11 +62,11 @@
 		"Ash8": {
 			"Ash8": { "x": 46.22, "y": 4.95, "scaleY": 2.337, "rotation": -90, "width": 68, "height": 126 }
 		},
-		"Lightening1": {
-			"Lightening1": { "x": -2.11, "y": -0.09, "rotation": 4.07, "width": 236, "height": 93 }
+		"Lighteninga": {
+			"Lighteninga": { "rotation": 4.07, "width": 236, "height": 93 }
 		},
-		"Lightening2": {
-			"Lightening2": { "x": -14.85, "y": 11.55, "width": 135, "height": 170 }
+		"Lighteningb": {
+			"Lighteningb": { "width": 135, "height": 170 }
 		},
 		"Mallet": {
 			"Mallet": { "x": 323.59, "y": -0.83, "rotation": -90, "width": 400, "height": 700 }
@@ -93,29 +93,34 @@
 					{ "time": 0.6666, "angle": -12.65 }
 				]
 			},
-			"Lightening1": {
+			"Lighteninga": {
 				"rotate": [
-					{ "time": 0.0333, "angle": 26.61 },
+					{ "time": 0.0333, "angle": 34.11 },
+					{ "time": 0.0666, "angle": 171.73 },
 					{ "time": 0.1666, "angle": 91.99 }
 				],
 				"translate": [
-					{ "time": 0.0333, "x": -18.16, "y": -493.64 },
+					{ "time": 0.0333, "x": 76.57, "y": -481.23 },
+					{ "time": 0.0666, "x": 105.74, "y": -536.69 },
 					{ "time": 0.1666, "x": 178.3, "y": -394.58 },
 					{ "time": 0.3, "x": 185.29, "y": -201.91 },
 					{ "time": 0.4333, "x": 190.16, "y": -67.42 }
 				]
 			},
-			"Lightening2": {
+			"Lighteningb": {
 				"rotate": [
+					{ "time": 0.0666, "angle": -8.74 },
 					{ "time": 0.1666, "angle": 40.9 },
 					{ "time": 0.3, "angle": -124.94 },
 					{ "time": 0.4333, "angle": -2.2 },
 					{ "time": 0.5333, "angle": -18.02 }
 				],
 				"translate": [
-					{ "time": 0.0333, "x": -250.95, "y": -135.38 },
+					{ "time": 0.0333, "x": -333.83, "y": -102.66 },
+					{ "time": 0.0666, "x": -348.23, "y": -100.57 },
 					{ "time": 0.1666, "x": -118.92, "y": -103.53 },
 					{ "time": 0.3, "x": -81.72, "y": -90.58 },
+					{ "time": 0.3333, "x": -94.28, "y": -80.24 },
 					{ "time": 0.4333, "x": -199.09, "y": 473.34 }
 				]
 			},
@@ -253,28 +258,31 @@
 					{ "time": 0.3666, "name": "Ash8" }
 				]
 			},
-			"Lightening1": {
+			"Lighteninga": {
 				"attachment": [
-					{ "time": 0.0333, "name": "Lightening1" },
+					{ "time": 0.0666, "name": "Lighteninga" },
 					{ "time": 0.1, "name": null },
-					{ "time": 0.1666, "name": "Lightening1" },
+					{ "time": 0.2, "name": "Lighteninga" },
 					{ "time": 0.2333, "name": null },
-					{ "time": 0.3, "name": "Lightening1" },
+					{ "time": 0.2666, "name": "Lighteninga" },
+					{ "time": 0.3, "name": null },
+					{ "time": 0.3333, "name": "Lighteninga" },
 					{ "time": 0.3666, "name": null },
-					{ "time": 0.4333, "name": "Lightening1" },
-					{ "time": 0.5, "name": null }
+					{ "time": 0.4333, "name": "Lighteninga" },
+					{ "time": 0.4666, "name": null }
 				]
 			},
-			"Lightening2": {
+			"Lighteningb": {
 				"attachment": [
-					{ "time": 0.0333, "name": "Lightening2" },
+					{ "time": 0.0333, "name": null },
+					{ "time": 0.0666, "name": "Lighteningb" },
 					{ "time": 0.1, "name": null },
-					{ "time": 0.1666, "name": "Lightening2" },
+					{ "time": 0.2, "name": "Lighteningb" },
 					{ "time": 0.2333, "name": null },
-					{ "time": 0.3, "name": "Lightening2" },
-					{ "time": 0.3666, "name": null },
-					{ "time": 0.4333, "name": "Lightening2" },
-					{ "time": 0.5, "name": null }
+					{ "time": 0.2666, "name": "Lighteningb" },
+					{ "time": 0.3, "name": null },
+					{ "time": 0.3333, "name": "Lighteningb" },
+					{ "time": 0.3666, "name": null }
 				]
 			},
 			"Mallet": {

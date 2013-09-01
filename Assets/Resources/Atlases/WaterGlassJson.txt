@@ -9,8 +9,8 @@
 	{ "name": "Glass5", "parent": "Glass", "length": 212.01, "x": -100.46, "y": -226.39, "rotation": 11.13 },
 	{ "name": "Glass6", "parent": "Glass", "length": 158.13, "x": 185.36, "y": -123.1, "rotation": 173.7 },
 	{ "name": "Glass7", "parent": "Glass", "length": 103.01, "x": -107.53, "y": 181.12, "rotation": 105.82 },
-	{ "name": "Lightening1", "parent": "Glass", "x": 259.59, "y": -231.16 },
-	{ "name": "Lightening2", "parent": "Glass", "x": -243.83, "y": -257.53 },
+	{ "name": "Lightening1a", "parent": "Glass", "x": 259.59, "y": -231.16 },
+	{ "name": "Lightening1b", "parent": "Glass", "x": -243.83, "y": -257.53 },
 	{ "name": "Water1", "parent": "Glass", "length": 195.31, "x": -76.4, "y": -220.74, "rotation": -0.9 },
 	{ "name": "Water2", "parent": "Glass", "length": 230.64, "x": -103.29, "y": -142.91 },
 	{ "name": "Water3", "parent": "Glass", "length": 174.28, "x": -120.27, "y": 29.71, "rotation": -60.25 },
@@ -31,8 +31,9 @@
 	{ "name": "Water13", "bone": "Water3", "attachment": "Water1" },
 	{ "name": "Water14", "bone": "Water4", "attachment": "Water1" },
 	{ "name": "Water15", "bone": "Water5", "attachment": "Water1" },
-	{ "name": "Lightening1", "bone": "Lightening1" },
-	{ "name": "Lightening2", "bone": "Lightening2" }
+	{ "name": "Lightening1b", "bone": "Lightening1b" },
+	{ "name": "Lightening1a", "bone": "Lightening1a" },
+	{ "name": "Lightening1b2", "bone": "Lightening1b" }
 ],
 "skins": {
 	"default": {
@@ -57,11 +58,14 @@
 		"Glass7": {
 			"Glass7": { "x": 7.35, "y": 15.56, "rotation": -105.82, "width": 186, "height": 234 }
 		},
-		"Lightening1": {
-			"Lightening1": { "x": 1.72, "y": -2.31, "width": 236, "height": 93 }
+		"Lightening1a": {
+			"Lightening1a": { "width": 236, "height": 93 }
 		},
-		"Lightening2": {
-			"Lightening2": { "x": -42.44, "y": 45.28, "width": 135, "height": 170 }
+		"Lightening1b": {
+			"Lightening1b": { "x": -42.44, "y": 45.28, "width": 135, "height": 170 }
+		},
+		"Lightening1b2": {
+			"Lightening1b": { "width": 135, "height": 170 }
 		},
 		"Water1": {
 			"Water1": { "x": 85.75, "y": 36.71, "scaleY": 1.849, "rotation": 0.9, "width": 324, "height": 96 }
@@ -202,7 +206,7 @@
 					{ "time": 0, "x": 1.698, "y": 0.411 }
 				]
 			},
-			"Lightening1": {
+			"Lightening1a": {
 				"translate": [
 					{ "time": 0.0333, "x": -191.51, "y": 19.28 },
 					{ "time": 0.1666, "x": 250.55, "y": 244.97 }
@@ -211,7 +215,7 @@
 					{ "time": 0.0333, "x": 1.261, "y": 1 }
 				]
 			},
-			"Lightening2": {
+			"Lightening1b": {
 				"rotate": [
 					{ "time": 0.0333, "angle": -58.08 }
 				],
@@ -260,19 +264,11 @@
 					{ "time": 0, "name": "Glass7" }
 				]
 			},
-			"Lightening1": {
+			"Lightening1b": {
 				"attachment": [
-					{ "time": 0.0333, "name": "Lightening1" },
+					{ "time": 0.0333, "name": "Lightening1b" },
 					{ "time": 0.1, "name": null },
-					{ "time": 0.1666, "name": "Lightening1" },
-					{ "time": 0.2333, "name": null }
-				]
-			},
-			"Lightening2": {
-				"attachment": [
-					{ "time": 0.0333, "name": "Lightening2" },
-					{ "time": 0.1, "name": null },
-					{ "time": 0.1666, "name": "Lightening2" },
+					{ "time": 0.1666, "name": "Lightening1b" },
 					{ "time": 0.2333, "name": null }
 				]
 			},

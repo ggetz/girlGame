@@ -56,7 +56,7 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":186,"h":234},
 	"sourceSize": {"w":186,"h":234}
 },
-"Lightening1.png":
+"Lightening1a.png":
 {
 	"frame": {"x":190,"y":933,"w":236,"h":93},
 	"rotated": false,
@@ -64,7 +64,7 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":236,"h":93},
 	"sourceSize": {"w":236,"h":93}
 },
-"Lightening2.png":
+"Lightening1b.png":
 {
 	"frame": {"x":428,"y":933,"w":135,"h":170},
 	"rotated": false,
@@ -95,6 +95,6 @@
 	"format": "RGBA8888",
 	"size": {"w":1024,"h":2048},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:6856733afaedd8f9739391987ed5cb33$"
+	"smartupdate": "$TexturePacker:SmartUpdate:444548726fcf6e70d4b5e3384885e1eb$"
 }
 }

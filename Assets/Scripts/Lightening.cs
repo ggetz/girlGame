@@ -20,7 +20,7 @@ public class Lightening : MovingPictureObstacles
 	{
 		height =1*lscale;
 		width = 1*lscale;
-		flashRect = new Rect(x-width/2f, y+height, width, height);
+		flashRect = new Rect(x-width/2f, y, width, height);
 		Play ("Still", false);
 	}
 	
@@ -32,7 +32,7 @@ public class Lightening : MovingPictureObstacles
 	
 	public override void action()
 	{
-		Play ("Strike", false);
+		Play("Strike", false);
 		height = 500*lscale;
 		width = 300 * lscale;
 		flashRect.height=height;
@@ -42,6 +42,7 @@ public class Lightening : MovingPictureObstacles
 		{
 			if(flashRect.CheckIntersect (obs.getRect ()))
 			{
+				Debug.Log ("Hey I see something");
 				obs.electrify ();
 			}
 		}

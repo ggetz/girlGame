@@ -64,7 +64,7 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":68,"h":126},
 	"sourceSize": {"w":68,"h":126}
 },
-"Lightening1.png":
+"Lighteninga.png":
 {
 	"frame": {"x":72,"y":141,"w":236,"h":93},
 	"rotated": false,
@@ -72,7 +72,7 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":236,"h":93},
 	"sourceSize": {"w":236,"h":93}
 },
-"Lightening2.png":
+"Lighteningb.png":
 {
 	"frame": {"x":310,"y":141,"w":135,"h":170},
 	"rotated": false,
@@ -91,10 +91,10 @@
 "meta": {
 	"app": "http://www.codeandweb.com/texturepacker ",
 	"version": "1.0",
-	"image": "MalletSprite.png",
+	"image": "MalletAtlas.png",
 	"format": "RGBA8888",
 	"size": {"w":1024,"h":1024},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:2dad14a1ba94bcce7b54aa8aaf0ba536$"
+	"smartupdate": "$TexturePacker:SmartUpdate:2f97ddac545a5f41979d9f95525252f9$"
 }
 }

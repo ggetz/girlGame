@@ -26,6 +26,7 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 	List <Rect> pictureObstacleRects;
 	List <Rect> specialWordRects;
 	List <MediumText> twinkleText = new List<MediumText>();
+	List <MovingPictureObstacles> updateObs = new List<MovingPictureObstacles>();
 	
 	bool directionTouchFound;
 	bool inSpecialWord=false;
@@ -150,6 +151,11 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		foreach (MediumText txt in twinkleText)
 		{
 			txt.Update();
+		}
+		
+		foreach (MovingPictureObstacles obs in updateObs)
+		{
+			obs.Update();
 		}
 		
 		girl.checkCollisions(groundHeight);
@@ -453,7 +459,7 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		specialWords.Add (Out);
 		specialWords.Add (down);
 		
-		setUpFiller3(background2.x + background2.width/2f);
+		setUpMalletStage(background2.x + background2.width/2f);
 		
 	}
 	
@@ -1353,31 +1359,12 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		block3.SetPosition (scroll.x + block2.textRect.width/1.5f, Futile.screen.height*0.3f);
 		block2.SetPosition (block3.x, block3.y + block2.textRect.height/1.5f);
 		
-		foreach (MediumText mt in mediumText)
-		{
-			Futile.stage.AddChild (mt);
-			mt.scale = 0.6f;
-			Rect mtRect = makeTextRect(mt);
-			mediumTextRects.Add (mtRect);
-		}
-				
-		foreach (SpecialWords sw in specialWords)
-		{
-			Futile.stage.AddChild (sw);
-			Rect swRect = makeTextRect(sw);
-			specialWordRects.Add (swRect);
-		}
-		
-		foreach (PictureObstacle pic in pictures)
-		{
-			Rect picRect = pic.localRect.CloneAndOffset(pic.x, pic.y);
-			pictureObstacleRects.Add(picRect);
-		}
-		
+
 	}
 	
 	void setUpMalletStage(float startX)
 	{
+		
 		FSprite background = new FSprite("blank");
 		Futile.stage.AddChild (background);
 		background.scale = 0.6f;
@@ -1400,20 +1387,20 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 	
 		GSpineManager.LoadSpine ("WaterGlassAtlas", "Atlases/WaterGlassJson", "Atlases/WaterGlassAtlas");
 		WaterGlass glass = new WaterGlass("WaterGlassAtlas", 0.6f, groundHeight);
-		glass.scale=0.6f;
+		glass.scale=0.35f;
 
 		GSpineManager.LoadSpine("MalletAtlas", "Atlases/MalletJson", "Atlases/MalletAtlas");
-		Mallet mallet = new Mallet("MalletAtlas", 0.6f);;
+		Mallet mallet = new Mallet("MalletAtlas", 0.6f);
 		mallet.scale = 0.6f;
 
 		GSpineManager.LoadSpine ("LighteningAtlas", "Atlases/LighteningJson", "Atlases/LighteningAtlas");
 		Lightening lightening = new Lightening("LighteningAtlas", 0.6f);
-		lightening.scale = 0.6f;
+		lightening.scale = 0.4f;
 		
 		AffectPictureWords tremble = new AffectPictureWords(specialFont, "tremble", glass);
 		AffectPictureWords thundercloud = new AffectPictureWords(specialFont, "thundercloud", lightening);
 		
-		tremble.SetPosition (startX + tremble.textRect.width*2f, Futile.screen.halfWidth);
+		tremble.SetPosition (startX + tremble.textRect.width*2f, Futile.screen.halfHeight);
 		thundercloud.SetPosition (startX+thundercloud.textRect.width/1.5f, tremble.y-thundercloud.textRect.height);
 		
 		Futile.stage.AddChild (tremble);
@@ -1421,16 +1408,43 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		Futile.stage.AddChild (thundercloud);
 		specialWords.Add (thundercloud);
 		
-		mallet.SetPosition (tremble.x+mallet.height/2f, groundHeight);
-		glass.SetPosition (tremble.x, tremble.y);
-		lightening.SetPosition (lightening.x, lightening.y);
 		mallet.Start();
 		glass.Start();
 		lightening.Start ();
-		
 		lightening.addCollider (glass);
 		glass.addCollider (mallet);
 		
+		mallet.SetPosition (tremble.x+mallet.height/1.5f, groundHeight);
+		glass.SetPosition (tremble.x, tremble.y+tremble.textRect.height/2f);
+		lightening.SetPosition (thundercloud.x, thundercloud.y);
+		
+		updateObs.Add(glass);
+		
+		Futile.stage.AddChild (glass);
+		Futile.stage.AddChild (lightening);
+		Futile.stage.AddChild(mallet);
+		
+		foreach (MediumText mt in mediumText)
+		{
+			Futile.stage.AddChild (mt);
+			mt.scale = 0.6f;
+			Rect mtRect = makeTextRect(mt);
+			mediumTextRects.Add (mtRect);
+		}
+				
+		foreach (SpecialWords sw in specialWords)
+		{
+			Futile.stage.AddChild (sw);
+			Rect swRect = makeTextRect(sw);
+			specialWordRects.Add (swRect);
+		}
+		
+		foreach (PictureObstacle pic in pictures)
+		{
+			Rect picRect = pic.localRect.CloneAndOffset(pic.x, pic.y);
+			pictureObstacleRects.Add(picRect);
+		}
+	
 		
 	}
 	

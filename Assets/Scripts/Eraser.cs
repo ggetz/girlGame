@@ -32,6 +32,7 @@ public class Eraser: MovingPictureObstacles
 	private int zigZagCount=0;
 	private bool doZigZag;
 	Girl girl;
+	float origVel;
 
 	
 	/**
@@ -69,6 +70,7 @@ public class Eraser: MovingPictureObstacles
 		isHit = false;
 		
 		vel = Random.Range(0, maxSpeed)+ score/100 + 2;
+		origVel=vel;
 		
 		if(area==0)
 		{
@@ -86,19 +88,6 @@ public class Eraser: MovingPictureObstacles
 		dy = girl.y - y - 10 + (float)Random.Range (0, 20);
 		
 		angle = Mathf.Atan(dy/dx);
-		
-		if(angle > 0)
-		{
-			Play ("Down Left", false);
-		}
-		else if(angle<0 && angle > -Mathf.PI/2f)
-		{
-			Play ("Down Right", false);	
-		}
-		else
-		{
-			Play ("Up", false);
-		}
 	}
 	
 
@@ -221,7 +210,7 @@ public class Eraser: MovingPictureObstacles
 			else
 			{
 				Play("Down Left", false);
-				vel=4;
+				vel=origVel;
 			}
 		}
 		else if(angle<0 && angle > -Mathf.PI/2f)
@@ -234,7 +223,7 @@ public class Eraser: MovingPictureObstacles
 			else
 			{
 				Play("Down Right", false);
-				vel=4;
+				vel=origVel;
 			}
 			
 		}
@@ -248,7 +237,7 @@ public class Eraser: MovingPictureObstacles
 			else
 			{
 				Play("Up", false);
-				vel=4;
+				vel=origVel;
 			}
 			
 		}
