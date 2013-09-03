@@ -32,6 +32,7 @@ public class WaterGlass : MovingPictureObstacles
 		height =600*wscale;
 		width = 500*wscale;
 		glassRect = new Rect(x-width/2f, y+height, width, height);
+	
 		Play ("Still", false);
 	}
 	
@@ -78,7 +79,6 @@ public class WaterGlass : MovingPictureObstacles
 	
 	public void tremble(int state)
 	{
-		Debug.Log ("state: " + state);
 		if(state==0)
 		{
 			isTrembling=false;
@@ -119,7 +119,10 @@ public class WaterGlass : MovingPictureObstacles
 		Play ("Shatter", false);
 		
 		height = 250*wscale;
-		width = 1375*wscale;
+		width = 1400*wscale;
+		
+		glassRect = new Rect(x-width/2f, y, width, height);
+Debug.Log ("Glass: " + y + " " +height + " "+ glassRect.xMin + " " + glassRect.xMax + ", " + glassRect.yMin + " " + glassRect.yMax);
 		
 	}
 	
@@ -158,14 +161,20 @@ public class WaterGlass : MovingPictureObstacles
 	
 	public override void electrify()
 	{
+		Play ("Electric", false);
+		
 		electrified=true;
+		Debug.Log ("Glass: " + y + " " +height + " "+ glassRect.xMin + " " + glassRect.xMax + ", " + glassRect.yMin + " " + glassRect.yMax);
 		foreach(MovingPictureObstacles obs in checkHit)
 		{
 			if(glassRect.CheckIntersect (obs.getRect ()))
 			{
+				Debug.Log ("I see something");
 				obs.electrify();
 			}
 		}
+		
+		electrified=false;
 	}
 	
 		

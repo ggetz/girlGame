@@ -22,6 +22,7 @@ public class Lightening : MovingPictureObstacles
 		width = 1*lscale;
 		flashRect = new Rect(x-width/2f, y, width, height);
 		Play ("Still", false);
+		
 	}
 	
 	// Update is called once per frame
@@ -37,7 +38,8 @@ public class Lightening : MovingPictureObstacles
 		width = 300 * lscale;
 		flashRect.height=height;
 		flashRect.width = width; 
-		
+		flashRect = new Rect(x-width/2f, y-height, width, height);
+		Debug.Log ("Lightening: " + y +" " + height + " " + flashRect.xMin + " - " + flashRect.xMax + ", " + flashRect.yMin + " - " + flashRect.yMax);
 		foreach( MovingPictureObstacles obs in checkHit)
 		{
 			if(flashRect.CheckIntersect (obs.getRect ()))
@@ -51,6 +53,7 @@ public class Lightening : MovingPictureObstacles
 		width = 1 * lscale;
 		flashRect.height=height;
 		flashRect.width = width; 
+		flashRect = new Rect(x-width/2f, y, width, height);
 	}
 	
 	public void addCollider(MovingPictureObstacles obs)

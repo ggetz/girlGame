@@ -19,8 +19,8 @@ public class Mallet : MovingPictureObstacles
 	{
 		height =700*mscale;
 		width = 400*mscale;
-		malletRect = new Rect(x-width/2f, y+height, width, height);
 		Play ("Still", false);
+		
 	}
 	
 	// Update is called once per frame
@@ -34,6 +34,13 @@ public class Mallet : MovingPictureObstacles
 
 	}
 	
+	public void makeRect()
+	{
+		malletRect = new Rect(x-width/2f, y, width, height);
+	
+		Debug.Log ("Mallet: " + y + " " +height + " " + malletRect.xMin + " " + malletRect.xMax + ", " + malletRect.yMin + " " + malletRect.yMax);
+	}
+	
 	public override Rect getRect()
 	{
 		return malletRect;
@@ -41,6 +48,7 @@ public class Mallet : MovingPictureObstacles
 	
 	public override void electrify()
 	{
+		Debug.Log ("Mallet frying!");
 		Play ("Fry", false);
 		height = 90*mscale;
 		width = 400*mscale;

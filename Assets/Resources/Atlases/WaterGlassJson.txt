@@ -32,8 +32,7 @@
 	{ "name": "Water14", "bone": "Water4", "attachment": "Water1" },
 	{ "name": "Water15", "bone": "Water5", "attachment": "Water1" },
 	{ "name": "Lightening1b", "bone": "Lightening1b" },
-	{ "name": "Lightening1a", "bone": "Lightening1a" },
-	{ "name": "Lightening1b2", "bone": "Lightening1b" }
+	{ "name": "Lightening1a", "bone": "Lightening1a" }
 ],
 "skins": {
 	"default": {
@@ -63,9 +62,6 @@
 		},
 		"Lightening1b": {
 			"Lightening1b": { "x": -42.44, "y": 45.28, "width": 135, "height": 170 }
-		},
-		"Lightening1b2": {
-			"Lightening1b": { "width": 135, "height": 170 }
 		},
 		"Water1": {
 			"Water1": { "x": 85.75, "y": 36.71, "scaleY": 1.849, "rotation": 0.9, "width": 324, "height": 96 }
@@ -221,7 +217,11 @@
 				],
 				"translate": [
 					{ "time": 0.0333, "x": -86.19, "y": -161.07 },
-					{ "time": 0.1666, "x": 448.59, "y": 171.64 }
+					{ "time": 0.1666, "x": 448.59, "y": 171.64 },
+					{ "time": 0.3, "x": 659.02, "y": 236.86 },
+					{ "time": 0.3333, "x": 665.39, "y": 240.82 },
+					{ "time": 0.4, "x": 693.92, "y": 258.57 },
+					{ "time": 0.5, "x": 728.82, "y": 280.28 }
 				],
 				"scale": [
 					{ "time": 0.0333, "x": 0.664, "y": 2.353 }
@@ -267,9 +267,11 @@
 			"Lightening1b": {
 				"attachment": [
 					{ "time": 0.0333, "name": "Lightening1b" },
-					{ "time": 0.1, "name": null },
+					{ "time": 0.1, "name": "Lightening1b" },
 					{ "time": 0.1666, "name": "Lightening1b" },
-					{ "time": 0.2333, "name": null }
+					{ "time": 0.2333, "name": null },
+					{ "time": 0.3, "name": "Lightening1b" },
+					{ "time": 0.3666, "name": null }
 				]
 			},
 			"WaterGlass": {

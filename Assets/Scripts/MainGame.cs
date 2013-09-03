@@ -459,7 +459,7 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		specialWords.Add (Out);
 		specialWords.Add (down);
 		
-		setUpFiller1(background2.x + background2.width/2f);
+		setUpMalletStage(background2.x + background2.width/2f);
 		
 	}
 	
@@ -1398,15 +1398,23 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		lightening.scale = 0.4f;
 		
 		AffectPictureWords tremble = new AffectPictureWords(specialFont, "tremble", glass);
-		AffectPictureWords thundercloud = new AffectPictureWords(specialFont, "thundercloud", lightening);
+		AffectPictureWords thunderstorm = new AffectPictureWords(specialFont, "thunderstorm", lightening);
 		
-		tremble.SetPosition (startX + tremble.textRect.width*2f, Futile.screen.halfHeight);
-		thundercloud.SetPosition (startX+thundercloud.textRect.width/1.5f, tremble.y-thundercloud.textRect.height);
 		
-		Futile.stage.AddChild (tremble);
+		MediumText block1 = new MediumText(blockFont, "But here, the Duchess's voice died away, and hers arm began to ");
+		MediumText block2 = new MediumText(blockFont, "Alice looked up, and there stood the Queen, frowning like a ");
+		
+		block1.SetPosition (startX + block1.textRect.width/1.5f, groundHeight + girl.girlHeight*2f);
+		block2.SetPosition (startX + block2.textRect.width/2f, block1.y - block2.textRect.height*2f);
+		
+		tremble.SetPosition (block1.x + block1.textRect.width/2.8f, block1.y);
+		thunderstorm.SetPosition (block2.x + block2.textRect.width/2.4f, block2.y);
+		
+		mediumText.Add (block1);
+		mediumText.Add (block2);
+		
 		specialWords.Add (tremble);
-		Futile.stage.AddChild (thundercloud);
-		specialWords.Add (thundercloud);
+		specialWords.Add (thunderstorm);
 		
 		mallet.Start();
 		glass.Start();
@@ -1416,7 +1424,9 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		
 		mallet.SetPosition (tremble.x+mallet.height/1.5f, groundHeight);
 		glass.SetPosition (tremble.x, tremble.y+tremble.textRect.height/2f);
-		lightening.SetPosition (thundercloud.x, thundercloud.y);
+		lightening.SetPosition (thunderstorm.x, thunderstorm.y);
+		
+		mallet.makeRect ();
 		
 		updateObs.Add(glass);
 		

@@ -21,7 +21,7 @@ public class Girl : GSpineSprite
 	
 	// height width
 	public float girlWidth = 10;
-	public float girlHeight = 60;
+	public float girlHeight = 140;
 	
 	// states of action
 	public bool isRunning = false;
@@ -34,7 +34,7 @@ public class Girl : GSpineSprite
 	
 	Rect girlRect;
 	float crawlingHeight = 30;
-	float standingHeight = 70;
+	float standingHeight = 140;
 	
 	// height of ground
 	float groundHeight;
@@ -355,7 +355,7 @@ public class Girl : GSpineSprite
 				x = rect.xMax + girlWidth/4;	
 			}
 			
-			Debug.Log ("Colliding with " + rect);
+			//Debug.Log ("Colliding with " + rect);
 			return true;
 		}
 		
@@ -373,7 +373,7 @@ public class Girl : GSpineSprite
 			}
 			else
 			{
-				Debug.Log ("GO THROUGH");
+				//Debug.Log ("GO THROUGH");
 			}
 		}
 		
