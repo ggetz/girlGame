@@ -70,8 +70,8 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 	{
 		// Load the girl 
 		GSpineManager.LoadSpine("girlAtlas", "Atlases/girlJson", "Atlases/girlAtlas");
-		girl = new Girl("girlAtlas");
 		scaleGirl=0.6f;
+		girl = new Girl("girlAtlas", scaleGirl);
 		girl.scale =scaleGirl;
 		girl.alpha = .75f * girl.alpha;
 		girl.SetPosition(900, groundHeight);
@@ -459,7 +459,7 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		specialWords.Add (Out);
 		specialWords.Add (down);
 		
-		setUpMalletStage(background2.x + background2.width/2f);
+		setUpEggStage(background2.x + background2.width/2f);
 		
 	}
 	
@@ -971,19 +971,19 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		
 		
 		GSpineManager.LoadSpine("EggAtlas", "Atlases/EggJson", "Atlases/EggAtlas");
-		CrackingEggs egg1 = new CrackingEggs("EggAtlas", 0.3f);
+		CrackingEggs egg1 = new CrackingEggs("EggAtlas", 0.3f, girl);
 		egg1.scale = 0.3f;
 		egg1.Start();
 		
-		CrackingEggs egg2 = new CrackingEggs("EggAtlas", 0.3f);
+		CrackingEggs egg2 = new CrackingEggs("EggAtlas", 0.3f, girl);
 		egg2.scale = 0.3f;
 		egg2.Start();
 		
-		CrackingEggs egg3 = new CrackingEggs("EggAtlas", 0.3f);
+		CrackingEggs egg3 = new CrackingEggs("EggAtlas", 0.3f, girl);
 		egg3.scale = 0.3f;
 		egg3.Start();
 		
-		CrackingEggs bigEgg = new CrackingEggs("EggAtlas", 0.6f);
+		CrackingEggs bigEgg = new CrackingEggs("EggAtlas", 0.6f, girl);
 		bigEgg.scale = 0.6f;
 		bigEgg.Start ();
 		
@@ -1026,6 +1026,29 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		mediumText.Add (block3);
 		
 		setUpFiller4 (background5.x+background5.width/2f);
+		
+		
+		foreach (MediumText mt in mediumText)
+		{
+			Futile.stage.AddChild (mt);
+			mt.scale = 0.6f;
+			Rect mtRect = makeTextRect(mt);
+			mediumTextRects.Add (mtRect);
+		}
+				
+		foreach (SpecialWords sw in specialWords)
+		{
+			Futile.stage.AddChild (sw);
+			Rect swRect = makeTextRect(sw);
+			specialWordRects.Add (swRect);
+		}
+		
+		foreach (PictureObstacle pic in pictures)
+		{
+			Rect picRect = pic.localRect.CloneAndOffset(pic.x, pic.y);
+			pictureObstacleRects.Add(picRect);
+		}
+	
 		
 	}
 
@@ -1433,28 +1456,6 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		Futile.stage.AddChild (glass);
 		Futile.stage.AddChild (lightening);
 		Futile.stage.AddChild(mallet);
-		
-		foreach (MediumText mt in mediumText)
-		{
-			Futile.stage.AddChild (mt);
-			mt.scale = 0.6f;
-			Rect mtRect = makeTextRect(mt);
-			mediumTextRects.Add (mtRect);
-		}
-				
-		foreach (SpecialWords sw in specialWords)
-		{
-			Futile.stage.AddChild (sw);
-			Rect swRect = makeTextRect(sw);
-			specialWordRects.Add (swRect);
-		}
-		
-		foreach (PictureObstacle pic in pictures)
-		{
-			Rect picRect = pic.localRect.CloneAndOffset(pic.x, pic.y);
-			pictureObstacleRects.Add(picRect);
-		}
-	
 		
 	}
 	

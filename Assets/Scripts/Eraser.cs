@@ -33,6 +33,8 @@ public class Eraser: MovingPictureObstacles
 	private bool doZigZag;
 	Girl girl;
 	float origVel;
+	
+	bool close=false;
 
 	
 	/**
@@ -202,42 +204,54 @@ public class Eraser: MovingPictureObstacles
 	
 		if(angle > 0)
 		{
-			if(Mathf.Abs (girl.x-x) < width*1.5f && Mathf.Abs (girl.y-y)<height*1.5f)
+			
+			if(Mathf.Abs (girl.x-x) < width*1.5f && Mathf.Abs (girl.y-y)<height*1.5f && !close)
 			{
 				Play("Down Left Rub");
 				vel=1;
+				close=true;
 			}
-			else
+			
+			if(Mathf.Abs (girl.x-x)>=width*1.5f || Mathf.Abs (girl.y-y)>=height*1.5f && close)
 			{
 				Play("Down Left", false);
 				vel=origVel;
+				close=false;
 			}
+			
 		}
+		
 		else if(angle<0 && angle > -Mathf.PI/2f)
 		{
-			if(Mathf.Abs (girl.x-x) < width*1.5f && Mathf.Abs (girl.y-y)<height*1.5f)
+			if(Mathf.Abs (girl.x-x) < width*1.5f && Mathf.Abs (girl.y-y)<height*1.5f && !close)
 			{
 				Play("Down Right Rub");
 				vel=1;
+				close=true;
 			}
-			else
+			
+			if(Mathf.Abs (girl.x-x)>=width*1.5f || Mathf.Abs (girl.y-y)>=height*1.5f && close)
 			{
 				Play("Down Right", false);
 				vel=origVel;
+				close=false;
 			}
 			
 		}
 		else
 		{
-			if(Mathf.Abs (girl.x-x) < width*1.5f && Mathf.Abs (girl.y-y)<height*1.5f)
+			if(Mathf.Abs (girl.x-x) < width*1.5f && Mathf.Abs (girl.y-y)<height*1.5f && !close)
 			{
 				Play("Up Rub");
 				vel=1;
+				close=true;
 			}
-			else
+			
+			if(Mathf.Abs (girl.x-x)>=width*1.5f || Mathf.Abs (girl.y-y)>=height*1.5f && close)
 			{
 				Play("Up", false);
 				vel=origVel;
+				close=false;
 			}
 			
 		}
@@ -259,6 +273,8 @@ public class Eraser: MovingPictureObstacles
 		{
 			trackPath();
 		}
+		
+		Debug.Log ("animation: " + animation);
 		
 		// Conditions of a collision (x and y axis)
 		/*bool collisionX = (X+radius - sprite.x > 0 && X+radius -(sprite.x + sprite.width) < 0);

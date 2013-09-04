@@ -8,18 +8,20 @@ public class CrackingEggs : MovingPictureObstacles
 	public Rect eggRect;
 	public float height;
 	public float width;
+	Girl girl;
 
-	public CrackingEggs(string atlas, float scale): base(atlas)
+	public CrackingEggs(string atlas, float scale, Girl g): base(atlas)
 	{
 		state = 0;
 		escale = scale;
+		girl=g;
 	}
 	// Use this for initialization
 	public void Start () 
 	{
 		height = 700*escale;
 		width = 450*escale;
-		eggRect = new Rect(x, y, width, height);
+		eggRect = new Rect(x-width/2f, y-height/2f, width, height);
 		Play ("Uncracked");
 	}
 	
@@ -52,5 +54,32 @@ public class CrackingEggs : MovingPictureObstacles
 			width = 500*escale;
 		}
 		
+	}
+	
+	public void crack()
+	{
+		if(girl.checkCollisions (eggRect) && girl.getGirlRect().yMin >= (eggRect.yMax - 10f))
+		{
+			if(state==0)
+			{
+				state+=1;
+				Play ("Cracked1", false);
+			}
+			else if(state==1)
+			{
+				state+=1;
+				Play ("Cracked2", false);
+			}
+			else if(state==2)
+			{
+				state+=1;
+				Play ("Cracked3",false);
+			}
+			else
+			{
+				height = 300*escale;
+				width = 500*escale;
+			}
+		}
 	}
 }

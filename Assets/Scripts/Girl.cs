@@ -20,8 +20,8 @@ public class Girl : GSpineSprite
 	float yVel = 0;
 	
 	// height width
-	public float girlWidth = 10;
-	public float girlHeight = 140;
+	public float girlWidth;
+	public float girlHeight;
 	
 	// states of action
 	public bool isRunning = false;
@@ -33,21 +33,27 @@ public class Girl : GSpineSprite
 	public bool isGrounded = true;
 	
 	Rect girlRect;
-	float crawlingHeight = 30;
-	float standingHeight = 140;
+	float crawlingHeight;
+	float standingHeight;
+	float scale;
 	
 	// height of ground
 	float groundHeight;
 	
-	public Girl(string girlAtlas) : base(girlAtlas)
+	public Girl(string girlAtlas, float sc) : base(girlAtlas)
 	{
+		scale=sc;
+		girlWidth = 100*sc;
+		standingHeight=225*sc;
+		crawlingHeight = 150*sc;
+		girlHeight=standingHeight;
 	}
 	
 	// Use this for initialization
 	public void Start () 
 	{
 		idle ();
-		girlRect = new Rect(x, y, girlWidth, girlHeight);
+		girlRect = new Rect(x-girlWidth/2f, y-girlHeight/2f, girlWidth, girlHeight);
 	}
 	
 	// Update is called once per frame, checks for collisions and falls
@@ -389,6 +395,11 @@ public class Girl : GSpineSprite
 			yVel = 0;
 			//Debug.Log("On Ground");
 		}
+	}
+	
+	public Rect getGirlRect()
+	{
+		return girlRect;
 	}
 	
 }
