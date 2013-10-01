@@ -459,7 +459,7 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		specialWords.Add (Out);
 		specialWords.Add (down);
 		
-		setUpEggStage(background2.x + background2.width/2f);
+		setUpMalletStage(background2.x + background2.width/2f);
 		
 	}
 	
@@ -1027,29 +1027,6 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		
 		setUpFiller4 (background5.x+background5.width/2f);
 		
-		
-		foreach (MediumText mt in mediumText)
-		{
-			Futile.stage.AddChild (mt);
-			mt.scale = 0.6f;
-			Rect mtRect = makeTextRect(mt);
-			mediumTextRects.Add (mtRect);
-		}
-				
-		foreach (SpecialWords sw in specialWords)
-		{
-			Futile.stage.AddChild (sw);
-			Rect swRect = makeTextRect(sw);
-			specialWordRects.Add (swRect);
-		}
-		
-		foreach (PictureObstacle pic in pictures)
-		{
-			Rect picRect = pic.localRect.CloneAndOffset(pic.x, pic.y);
-			pictureObstacleRects.Add(picRect);
-		}
-	
-		
 	}
 
 	void setUpFiller4(float startX)
@@ -1428,7 +1405,7 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		MediumText block2 = new MediumText(blockFont, "Alice looked up, and there stood the Queen, frowning like a ");
 		
 		block1.SetPosition (startX + block1.textRect.width/1.5f, groundHeight + girl.girlHeight*2f);
-		block2.SetPosition (startX + block2.textRect.width/2f, block1.y - block2.textRect.height*2f);
+		block2.SetPosition (startX + block2.textRect.width/2f, lightening.lighteningHeight - block2.textRect.height);
 		
 		tremble.SetPosition (block1.x + block1.textRect.width/2.8f, block1.y);
 		thunderstorm.SetPosition (block2.x + block2.textRect.width/2.4f, block2.y);
@@ -1456,6 +1433,28 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		Futile.stage.AddChild (glass);
 		Futile.stage.AddChild (lightening);
 		Futile.stage.AddChild(mallet);
+		
+		foreach (MediumText mt in mediumText)
+		{
+			Futile.stage.AddChild (mt);
+			mt.scale = 0.6f;
+			Rect mtRect = makeTextRect(mt);
+			mediumTextRects.Add (mtRect);
+		}
+				
+		foreach (SpecialWords sw in specialWords)
+		{
+			Futile.stage.AddChild (sw);
+			Rect swRect = makeTextRect(sw);
+			specialWordRects.Add (swRect);
+		}
+		
+		foreach (PictureObstacle pic in pictures)
+		{
+			Rect picRect = pic.localRect.CloneAndOffset(pic.x, pic.y);
+			pictureObstacleRects.Add(picRect);
+		}
+	
 		
 	}
 	

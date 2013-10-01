@@ -1,0 +1,62 @@
+{
+"bones": [
+	{ "name": "root" },
+	{ "name": "Pupil", "parent": "root", "length": 562.78, "x": -39.71, "y": 141.33, "rotation": 128.43 }
+],
+"slots": [
+	{ "name": "EyeSocket", "bone": "root", "attachment": "EyeSocket" },
+	{ "name": "Side", "bone": "root", "attachment": "Side" },
+	{ "name": "Pupil", "bone": "Pupil", "attachment": "Pupil" },
+	{ "name": "Side2", "bone": "root", "attachment": "Side" },
+	{ "name": "BlackBorder", "bone": "root", "attachment": "BlackBorder" },
+	{ "name": "BlackScreen", "bone": "root" }
+],
+"skins": {
+	"default": {
+		"BlackBorder": {
+			"BlackBorder": { "x": -23.97, "y": 545.46, "width": 1617, "height": 1080 }
+		},
+		"BlackScreen": {
+			"BlackScreen": { "x": -16.11, "y": 545.46, "width": 1463, "height": 1080 }
+		},
+		"EyeSocket": {
+			"EyeSocket": { "x": -0.53, "y": 544.24, "width": 1419, "height": 1080 }
+		},
+		"Pupil": {
+			"Pupil": { "x": 316.41, "y": -0.02, "rotation": -128.43, "width": 529, "height": 686 }
+		},
+		"Side": {
+			"Side": { "x": -830.7, "y": 542.24, "width": 253, "height": 1078 }
+		},
+		"Side2": {
+			"Side": { "x": 828.36, "y": 541.66, "width": 253, "height": 1078 }
+		}
+	}
+},
+"animations": {
+	"animation": {
+		"bones": {
+			"Pupil": {
+				"translate": [
+					{ "time": 0.8333, "x": 4.82, "y": 3.83 },
+					{ "time": 1.0666, "x": 396.37, "y": 385.31 }
+				]
+			}
+		},
+		"slots": {
+			"BlackScreen": {
+				"attachment": [
+					{ "time": 0, "name": "BlackScreen" },
+					{ "time": 0.3333, "name": "BlackScreen" }
+				],
+				"color": [
+					{ "time": 0.3333, "color": "fffffff9" },
+					{ "time": 1, "color": "ffffff00" },
+					{ "time": 1.3333, "color": "ffffff06" },
+					{ "time": 1.8333, "color": "ffffffff" }
+				]
+			}
+		}
+	}
+}
+}

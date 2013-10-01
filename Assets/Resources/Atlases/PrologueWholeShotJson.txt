@@ -1,0 +1,422 @@
+{
+"bones": [
+	{ "name": "root" },
+	{ "name": "Background", "parent": "root", "x": 18.58, "y": 634.99 },
+	{ "name": "Border", "parent": "root", "x": -613.13, "y": 89.5 },
+	{ "name": "Arm", "parent": "Background", "length": 591.01, "x": 530.43, "y": -600.88, "rotation": 67.73 },
+	{ "name": "BlackScreen", "parent": "Background", "x": -49.79, "y": -339.19 },
+	{ "name": "Bust", "parent": "Background", "length": 255.16, "x": 308.74, "y": -452.05, "rotation": 63.61 },
+	{ "name": "Eye", "parent": "Background", "length": 184.98, "x": 391.38, "y": 181.48, "rotation": 29.2 },
+	{ "name": "Face", "parent": "Background", "length": 212.49, "x": -490.05, "y": -3.46, "rotation": 90 },
+	{ "name": "Girl", "parent": "Background", "length": 351.34, "x": -9.98, "y": -133.31, "rotation": 105.4 },
+	{ "name": "Hand", "parent": "Background", "length": 372.97, "x": -651.37, "y": -421.14, "rotation": 55.58 },
+	{ "name": "Lips", "parent": "Background", "length": 179.85, "x": -525.47, "y": -448.11, "rotation": 9.82 }
+],
+"slots": [
+	{ "name": "WholeShotBackground", "bone": "Background", "attachment": "WholeShotBackground" },
+	{ "name": "GirlGlow", "bone": "root" },
+	{ "name": "WholeShotGirl", "bone": "Girl", "attachment": "WholeShotGirl" },
+	{ "name": "WholeShotBust", "bone": "Bust", "attachment": "WholeShotBust" },
+	{ "name": "WholeShotEye", "bone": "Eye", "attachment": "WholeShotEye" },
+	{ "name": "FaceGlow", "bone": "root" },
+	{ "name": "WholeShotFace", "bone": "Face", "attachment": "WholeShotFace" },
+	{ "name": "WholeShotLips", "bone": "Lips", "attachment": "WholeShotLips" },
+	{ "name": "WholeShotHand", "bone": "Hand", "attachment": "WholeShotHand" },
+	{ "name": "WholeShotArm", "bone": "Arm" },
+	{ "name": "Border", "bone": "Border", "attachment": "Border6" },
+	{ "name": "WholeShotBorder0", "bone": "Background", "attachment": "WholeShotBorder0" },
+	{ "name": "WholeShotBorder02", "bone": "Background", "attachment": "WholeShotBorder0" },
+	{ "name": "BlackScreen", "bone": "BlackScreen" }
+],
+"skins": {
+	"default": {
+		"BlackScreen": {
+			"Border5": { "x": 31.2, "y": 247.09, "width": 1463, "height": 1080 }
+		},
+		"Border": {
+			"Border2": { "x": 630.68, "y": 454.22, "width": 1613, "height": 1080 },
+			"Border4": { "x": 613.13, "y": 454.38, "width": 1630, "height": 1080 },
+			"Border6": { "x": 613.13, "y": 453.8, "width": 1593, "height": 1080 }
+		},
+		"FaceGlow": {
+			"FaceGlow": { "x": 401.37, "y": 336.52, "width": 547, "height": 602 }
+		},
+		"GirlGlow": {
+			"GirlGlow": { "x": -25.96, "y": 552.54, "width": 623, "height": 1073 }
+		},
+		"WholeShotArm": {
+			"WholeShotArm": { "x": 349.54, "y": 15.6, "rotation": -67.73, "width": 618, "height": 717 }
+		},
+		"WholeShotBackground": {
+			"WholeShotBackground": { "x": -0.08, "y": -91.06, "width": 1419, "height": 1080 }
+		},
+		"WholeShotBorder0": {
+			"WholeShotBorder0": { "x": -829.37, "y": -92.09, "width": 253, "height": 1078 }
+		},
+		"WholeShotBorder02": {
+			"WholeShotBorder0": { "x": 828.3, "y": -91.35, "width": 253, "height": 1078 }
+		},
+		"WholeShotBust": {
+			"WholeShotBust": { "x": 190.05, "y": -2.37, "rotation": -63.61, "width": 529, "height": 626 }
+		},
+		"WholeShotEye": {
+			"WholeShotEye": { "x": 43.94, "y": -2.03, "rotation": -29.2, "width": 629, "height": 470 }
+		},
+		"WholeShotFace": {
+			"WholeShotFace": { "x": 114.11, "y": -51.15, "rotation": -90, "width": 487, "height": 674 }
+		},
+		"WholeShotGirl": {
+			"WholeShotGirl": { "x": 50.75, "y": 6.41, "rotation": -105.4, "width": 533, "height": 986 }
+		},
+		"WholeShotHand": {
+			"WholeShotHand": { "x": 218.82, "y": -70.71, "rotation": -55.58, "width": 743, "height": 526 }
+		},
+		"WholeShotLips": {
+			"WholeShotLips": { "x": 175.73, "y": -22.96, "rotation": -9.82, "width": 679, "height": 380 }
+		}
+	}
+},
+"animations": {
+	"Part1": {
+		"bones": {
+			"Hand": {
+				"rotate": [
+					{ "time": 3.2, "angle": 12.11 },
+					{ "time": 9.3333, "angle": -86.42 },
+					{ "time": 9.4333, "angle": -73.75 },
+					{ "time": 9.5, "angle": -79.89, "curve": "stepped" },
+					{ "time": 9.6333, "angle": -79.89 },
+					{ "time": 9.7333, "angle": -86.31 },
+					{ "time": 9.8333, "angle": -78.7 },
+					{ "time": 9.9333, "angle": -86.31 },
+					{ "time": 10.0333, "angle": -78.27 },
+					{ "time": 10.1333, "angle": -89.21 },
+					{ "time": 10.2666, "angle": -77.25 },
+					{ "time": 10.3666, "angle": -89.3 },
+					{ "time": 10.4666, "angle": -75.17 },
+					{ "time": 10.7333, "angle": -96.13 },
+					{ "time": 10.8666, "angle": -78.85 },
+					{ "time": 10.9, "angle": -88.2 },
+					{ "time": 10.9666, "angle": -99.29 },
+					{ "time": 11, "angle": -92.81 },
+					{ "time": 11.0666, "angle": -69.5 },
+					{ "time": 11.1, "angle": -79.06 },
+					{ "time": 11.2, "angle": -88.86 },
+					{ "time": 11.3333, "angle": -66.37 },
+					{ "time": 11.4, "angle": -89.73 },
+					{ "time": 11.4666, "angle": -76.18 }
+				],
+				"translate": [
+					{ "time": 0.7, "x": 30.39, "y": 315.62 },
+					{ "time": 9.1666, "x": -79.76, "y": 532.05 },
+					{ "time": 9.3333, "x": -59.15, "y": 485.55 },
+					{ "time": 9.4333, "x": -44.39, "y": 484.67 },
+					{ "time": 9.5, "x": -53.36, "y": 510.48 },
+					{ "time": 9.6333, "x": -35.42, "y": 443.71 },
+					{ "time": 9.7333, "x": -72.84, "y": 478.77 },
+					{ "time": 9.9333, "x": -65.97, "y": 500.33 },
+					{ "time": 10.0333, "x": -45.34, "y": 479.97 },
+					{ "time": 10.0666, "x": -59.26, "y": 473.19 },
+					{ "time": 10.1333, "x": -67.53, "y": 459.61 },
+					{ "time": 10.2666, "x": -53.55, "y": 432.47 },
+					{ "time": 10.3666, "x": -70.64, "y": 375.36 },
+					{ "time": 10.4666, "x": -38.43, "y": 330 },
+					{ "time": 10.7333, "x": -83.04, "y": 376.26 },
+					{ "time": 10.8666, "x": -48.94, "y": 322.11 },
+					{ "time": 10.9, "x": -65.07, "y": 346.73 },
+					{ "time": 10.9333, "x": -81.99, "y": 358.45 },
+					{ "time": 10.9666, "x": -105.37, "y": 370.75 },
+					{ "time": 11, "x": -92.74, "y": 372.88 },
+					{ "time": 11.0666, "x": -22.87, "y": 372.45 },
+					{ "time": 11.1, "x": -41.65, "y": 377.15 }
+				]
+			}
+		},
+		"slots": {
+			"BlackScreen": {
+				"attachment": [
+					{ "time": 0, "name": "Border5" }
+				],
+				"color": [
+					{ "time": 0.8333, "color": "fffffffe" },
+					{ "time": 1.8333, "color": "ffffff00" },
+					{ "time": 2.6666, "color": "ffffff01" },
+					{ "time": 3.3333, "color": "ffffffff" },
+					{ "time": 9.1666, "color": "fffffffa" },
+					{ "time": 10, "color": "ffffff00" },
+					{ "time": 10.3333, "color": "ffffff06" },
+					{ "time": 11.1666, "color": "ffffffff" }
+				]
+			},
+			"Border": {
+				"attachment": [
+					{ "time": 0, "name": "Border5" },
+					{ "time": 10.7, "name": null },
+					{ "time": 10.8333, "name": "Border5" }
+				],
+				"color": [
+					{ "time": 2.8333, "color": "ffffff07" },
+					{ "time": 4, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 9.3333, "color": "ffffffff" },
+					{ "time": 10.6666, "color": "ffffff00" },
+					{ "time": 11.6333, "color": "ffffffff" }
+				]
+			},
+			"WholeShotHand": {
+				"attachment": [
+					{ "time": 0, "name": null },
+					{ "time": 2.5333, "name": null },
+					{ "time": 8.6666, "name": "WholeShotHand" },
+					{ "time": 9.5, "name": "WholeShotHand" },
+					{ "time": 10.0666, "name": "WholeShotHand" },
+					{ "time": 10.9333, "name": "WholeShotHand" }
+				]
+			},
+			"WholeShotLips": {
+				"color": [
+					{ "time": 9.7333, "color": "fffffffa" },
+					{ "time": 9.8333, "color": "fffffff3" },
+					{ "time": 9.9333, "color": "ffffffe6" },
+					{ "time": 10.0666, "color": "ffffffc5" },
+					{ "time": 10.2666, "color": "ffffffaf" },
+					{ "time": 10.4333, "color": "ffffff9f" },
+					{ "time": 10.7333, "color": "ffffff68" },
+					{ "time": 10.8333, "color": "ffffff58" },
+					{ "time": 11, "color": "ffffff46" },
+					{ "time": 11.3333, "color": "ffffff44" }
+				]
+			}
+		}
+	},
+	"Part2": {
+		"bones": {
+			"Arm": {
+				"rotate": [
+					{ "time": 0.6666, "angle": 0.38 },
+					{ "time": 0.7, "angle": 1.55 },
+					{ "time": 0.7333, "angle": -0.25 },
+					{ "time": 0.8333, "angle": 1.71 },
+					{ "time": 1.0333, "angle": 1.07 },
+					{ "time": 1.1333, "angle": -0.4 },
+					{ "time": 1.1666, "angle": 0.34 },
+					{ "time": 1.2666, "angle": 1.93 },
+					{ "time": 1.4, "angle": 0 },
+					{ "time": 1.5, "angle": 0.15 },
+					{ "time": 1.6, "angle": -0.6 },
+					{ "time": 1.7, "angle": 0.32 },
+					{ "time": 1.8, "angle": -0.45 },
+					{ "time": 1.9, "angle": 1.34 }
+				],
+				"translate": [
+					{ "time": 0, "x": -774.99, "y": -4.67 },
+					{ "time": 0.7, "x": -774.41, "y": -3.12 },
+					{ "time": 0.8333, "x": -771.29, "y": 14.01 },
+					{ "time": 0.9333, "x": -782.02, "y": -2.62 },
+					{ "time": 1.4, "x": -779.08, "y": -0.79 }
+				]
+			},
+			"Hand": {
+				"rotate": [
+					{ "time": 0.6666, "angle": 12.02 },
+					{ "time": 0.7333, "angle": -0.42 },
+					{ "time": 0.7666, "angle": 1.17 },
+					{ "time": 0.8, "angle": 3.68 },
+					{ "time": 0.8333, "angle": 11.39 },
+					{ "time": 0.9333, "angle": -1.21 },
+					{ "time": 1.0333, "angle": 4.9 },
+					{ "time": 1.1333, "angle": -0.12 },
+					{ "time": 1.2666, "angle": 11.2 },
+					{ "time": 1.4, "angle": -6.99 },
+					{ "time": 1.5, "angle": 1.53 },
+					{ "time": 1.6, "angle": -6.33 },
+					{ "time": 1.7, "angle": 5.42 },
+					{ "time": 1.8, "angle": -1.98 },
+					{ "time": 1.9, "angle": 18.08 },
+					{ "time": 2, "angle": 0.54 }
+				],
+				"translate": [
+					{ "time": 0, "x": 712.91, "y": 401.92 },
+					{ "time": 0.6666, "x": 713.46, "y": 401.5 },
+					{ "time": 0.7, "x": 696.72, "y": 405.53 },
+					{ "time": 0.7333, "x": 716.73, "y": 406.14 },
+					{ "time": 0.7666, "x": 707.95, "y": 409.77 },
+					{ "time": 0.8, "x": 706.74, "y": 417.42 },
+					{ "time": 0.8333, "x": 696.58, "y": 411.26 },
+					{ "time": 0.8666, "x": 701.83, "y": 420.78 },
+					{ "time": 0.9, "x": 690.09, "y": 408.12 },
+					{ "time": 0.9333, "x": 695.13, "y": 407.67 },
+					{ "time": 1.0333, "x": 689.55, "y": 393.49 },
+					{ "time": 1.1333, "x": 720.62, "y": 407.32 },
+					{ "time": 1.1666, "x": 705.99, "y": 404.63 },
+					{ "time": 1.2, "x": 689.95, "y": 395.09 },
+					{ "time": 1.2666, "x": 684.87, "y": 398.75 },
+					{ "time": 1.3, "x": 705.23, "y": 418.06 },
+					{ "time": 1.3333, "x": 698.71, "y": 407.93 },
+					{ "time": 1.4, "x": 712.24, "y": 407.12 },
+					{ "time": 1.5, "x": 710.84, "y": 406.49 },
+					{ "time": 1.6, "x": 715.89, "y": 397.42 },
+					{ "time": 1.7, "x": 700.87, "y": 396.69 },
+					{ "time": 1.8, "x": 710.2, "y": 398.32 },
+					{ "time": 1.9, "x": 695.96, "y": 399.54 },
+					{ "time": 2, "x": 692.41, "y": 405.34 }
+				]
+			}
+		},
+		"slots": {
+			"BlackScreen": {
+				"attachment": [
+					{ "time": 0, "name": "Border5" }
+				],
+				"color": [
+					{ "time": 0.5, "color": "fffffffc" },
+					{ "time": 1, "color": "ffffff00" },
+					{ "time": 1.3, "color": "ffffff04" },
+					{ "time": 2.3333, "color": "ffffffff" }
+				]
+			},
+			"Border": {
+				"attachment": [
+					{ "time": 0, "name": "Border2" },
+					{ "time": 2.3, "name": "Border2" }
+				],
+				"color": [
+					{ "time": 0.0333, "color": "fffffffc" },
+					{ "time": 0.8666, "color": "ffffffff" }
+				]
+			},
+			"WholeShotArm": {
+				"attachment": [
+					{ "time": 0, "name": "WholeShotArm" }
+				]
+			},
+			"WholeShotEye": {
+				"color": [
+					{ "time": 0.7, "color": "fffffff3" },
+					{ "time": 0.8333, "color": "ffffffe6" },
+					{ "time": 0.9333, "color": "fffffff6" },
+					{ "time": 1.1666, "color": "ffffffcd" },
+					{ "time": 1.3333, "color": "ffffff6b" },
+					{ "time": 2, "color": "ffffff29" }
+				]
+			},
+			"WholeShotFace": {
+				"attachment": [
+					{ "time": 0, "name": null },
+					{ "time": 2.4666, "name": null }
+				]
+			},
+			"WholeShotLips": {
+				"attachment": [
+					{ "time": 0, "name": null }
+				]
+			}
+		}
+	},
+	"Part3": {
+		"slots": {
+			"BlackScreen": {
+				"attachment": [
+					{ "time": 0, "name": "Border5" }
+				],
+				"color": [
+					{ "time": 0.5, "color": "fffffffb" },
+					{ "time": 1.8333, "color": "ffffff00" },
+					{ "time": 2.1666, "color": "ffffff05" },
+					{ "time": 3, "color": "ffffffff" }
+				]
+			},
+			"Border": {
+				"attachment": [
+					{ "time": 0, "name": "Border4" }
+				]
+			},
+			"WholeShotEye": {
+				"attachment": [
+					{ "time": 0, "name": null }
+				]
+			},
+			"WholeShotFace": {
+				"attachment": [
+					{ "time": 0, "name": null }
+				]
+			},
+			"WholeShotHand": {
+				"attachment": [
+					{ "time": 0, "name": null },
+					{ "time": 2.9333, "name": null }
+				]
+			},
+			"WholeShotLips": {
+				"attachment": [
+					{ "time": 0, "name": null }
+				]
+			}
+		}
+	},
+	"Part4": {
+		"slots": {
+			"BlackScreen": {
+				"attachment": [
+					{ "time": 0, "name": "Border5" }
+				],
+				"color": [
+					{ "time": 0.5, "color": "fffffffe" },
+					{ "time": 1.5, "color": "ffffff00" },
+					{ "time": 8, "color": "ffffff04" },
+					{ "time": 8.8333, "color": "ffffffff" }
+				]
+			},
+			"FaceGlow": {
+				"attachment": [
+					{ "time": 2.1666, "name": "FaceGlow" }
+				],
+				"color": [
+					{ "time": 2.1666, "color": "ffffff00" },
+					{ "time": 2.6666, "color": "ffffffa9" },
+					{ "time": 3.1666, "color": "ffffff00" },
+					{ "time": 4.5, "color": "ffffff04" },
+					{ "time": 5, "color": "ffffffa3" },
+					{ "time": 5.5, "color": "ffffff00" }
+				]
+			},
+			"GirlGlow": {
+				"attachment": [
+					{ "time": 4.5, "name": "GirlGlow" }
+				],
+				"color": [
+					{ "time": 4.5, "color": "ffffff00" },
+					{ "time": 5, "color": "ffffffe9" },
+					{ "time": 5.5, "color": "ffffff00" },
+					{ "time": 6.6666, "color": "ffffff04" },
+					{ "time": 7.1666, "color": "ffffff93" },
+					{ "time": 7.5, "color": "ffffff00" }
+				]
+			},
+			"WholeShotBust": {
+				"color": [
+					{ "time": 0, "color": "ffffff9e" },
+					{ "time": 4.5, "color": "ffffff9d" },
+					{ "time": 7, "color": "ffffff00" }
+				]
+			},
+			"WholeShotFace": {
+				"attachment": [
+					{ "time": 0, "name": null },
+					{ "time": 1.5, "name": null }
+				]
+			},
+			"WholeShotHand": {
+				"attachment": [
+					{ "time": 0, "name": null },
+					{ "time": 10.9, "name": null }
+				]
+			},
+			"WholeShotLips": {
+				"attachment": [
+					{ "time": 0, "name": null }
+				]
+			}
+		}
+	}
+}
+}

@@ -1,0 +1,52 @@
+{"frames": {
+
+"BlackBorder.png":
+{
+	"frame": {"x":2,"y":2,"w":1617,"h":1080},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":1617,"h":1080},
+	"sourceSize": {"w":1617,"h":1080}
+},
+"BlackScreen.png":
+{
+	"frame": {"x":1621,"y":2,"w":1463,"h":1080},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":1463,"h":1080},
+	"sourceSize": {"w":1463,"h":1080}
+},
+"EyeSocket.png":
+{
+	"frame": {"x":2,"y":1084,"w":1419,"h":1080},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":1419,"h":1080},
+	"sourceSize": {"w":1419,"h":1080}
+},
+"Pupil.png":
+{
+	"frame": {"x":1423,"y":1084,"w":529,"h":686},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":529,"h":686},
+	"sourceSize": {"w":529,"h":686}
+},
+"Side.png":
+{
+	"frame": {"x":1954,"y":1084,"w":253,"h":1078},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":253,"h":1078},
+	"sourceSize": {"w":253,"h":1078}
+}},
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker ",
+	"version": "1.0",
+	"image": "EyeCloseUpAtlas.png",
+	"format": "RGBA8888",
+	"size": {"w":4096,"h":4096},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:88afb0268c218e9046fe2bce9ec2945d$"
+}
+}

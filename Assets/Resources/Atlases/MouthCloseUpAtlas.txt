@@ -1,0 +1,92 @@
+{"frames": {
+
+"Black.png":
+{
+	"frame": {"x":2,"y":2,"w":1463,"h":1080},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":1463,"h":1080},
+	"sourceSize": {"w":1463,"h":1080}
+},
+"Border.png":
+{
+	"frame": {"x":1467,"y":2,"w":253,"h":1078},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":253,"h":1078},
+	"sourceSize": {"w":253,"h":1078}
+},
+"Border1.png":
+{
+	"frame": {"x":1722,"y":2,"w":1613,"h":1080},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":1613,"h":1080},
+	"sourceSize": {"w":1613,"h":1080}
+},
+"LowerLip.png":
+{
+	"frame": {"x":3337,"y":2,"w":709,"h":270},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":709,"h":270},
+	"sourceSize": {"w":709,"h":270}
+},
+"Mouth1.png":
+{
+	"frame": {"x":2,"y":1084,"w":965,"h":368},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":965,"h":368},
+	"sourceSize": {"w":965,"h":368}
+},
+"Mouth2.png":
+{
+	"frame": {"x":969,"y":1084,"w":965,"h":368},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":965,"h":368},
+	"sourceSize": {"w":965,"h":368}
+},
+"Mouth3.png":
+{
+	"frame": {"x":1936,"y":1084,"w":905,"h":328},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":905,"h":328},
+	"sourceSize": {"w":905,"h":328}
+},
+"Mouth4.png":
+{
+	"frame": {"x":2843,"y":1084,"w":895,"h":380},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":895,"h":380},
+	"sourceSize": {"w":895,"h":380}
+},
+"Mouth5.png":
+{
+	"frame": {"x":2,"y":1466,"w":895,"h":380},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":895,"h":380},
+	"sourceSize": {"w":895,"h":380}
+},
+"MouthBackground.png":
+{
+	"frame": {"x":899,"y":1466,"w":1435,"h":1080},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":1435,"h":1080},
+	"sourceSize": {"w":1435,"h":1080}
+}},
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker ",
+	"version": "1.0",
+	"image": "MouthCloseUpAtlas.png",
+	"format": "RGBA8888",
+	"size": {"w":4096,"h":4096},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:94203096046e7ab4613bc093da4392c0$"
+}
+}

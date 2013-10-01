@@ -1,0 +1,103 @@
+{
+"bones": [
+	{ "name": "root" },
+	{ "name": "Lower Lip", "parent": "root", "length": 304.54, "x": -77.96, "y": 577.67, "rotation": 20.5 },
+	{ "name": "Upper Lip", "parent": "root", "length": 559.74, "x": -273.98, "y": 548.01, "rotation": 18.7 }
+],
+"slots": [
+	{ "name": "MouthBackground", "bone": "root", "attachment": "MouthBackground" },
+	{ "name": "Border", "bone": "root", "attachment": "Border" },
+	{ "name": "Mouth1", "bone": "Upper Lip", "attachment": "Mouth1" },
+	{ "name": "LowerLip", "bone": "Lower Lip", "attachment": "LowerLip" },
+	{ "name": "Border1", "bone": "root" },
+	{ "name": "Black", "bone": "root", "attachment": "Black" },
+	{ "name": "Border2", "bone": "root", "attachment": "Border" }
+],
+"skins": {
+	"default": {
+		"Black": {
+			"Black": { "x": 52.25, "y": 537.57, "width": 1463, "height": 1080 }
+		},
+		"Border": {
+			"Border": { "x": 868.47, "y": 537.3, "width": 253, "height": 1078 }
+		},
+		"Border1": {
+			"Border1": { "x": 41.21, "y": 538.6, "width": 1613, "height": 1080 }
+		},
+		"Border2": {
+			"Border": { "x": -788.99, "y": 535.91, "width": 253, "height": 1078 }
+		},
+		"LowerLip": {
+			"LowerLip": { "x": 104.36, "y": 52.22, "rotation": -20.5, "width": 709, "height": 270 }
+		},
+		"Mouth1": {
+			"Mouth1": { "x": 304.25, "y": 31.48, "rotation": -18.7, "width": 965, "height": 368 },
+			"Mouth2": { "x": 326.24, "y": 32.23, "rotation": -18.7, "width": 965, "height": 368 },
+			"Mouth3": { "x": 266.77, "y": 1.11, "rotation": -18.7, "width": 905, "height": 328 },
+			"Mouth4": { "x": 305.74, "y": -21.4, "rotation": -18.7, "width": 895, "height": 380 },
+			"Mouth5": { "x": 312.59, "y": -49.35, "rotation": -18.7, "width": 895, "height": 380 }
+		},
+		"MouthBackground": {
+			"MouthBackground": { "x": 31.88, "y": 536.37, "width": 1435, "height": 1080 }
+		}
+	}
+},
+"animations": {
+	"Part1": {
+		"bones": {
+			"Upper Lip": {
+				"translate": [
+					{ "time": 1.7333, "x": -0.89, "y": 2.65 },
+					{ "time": 1.8, "x": -2.23, "y": 6.61 }
+				]
+			},
+			"Lower Lip": {
+				"translate": [
+					{ "time": 1.3666, "x": 2.89, "y": -7.74 },
+					{ "time": 1.4, "x": 5.07, "y": -13.55 },
+					{ "time": 1.4333, "x": 17.37, "y": -46.45 },
+					{ "time": 1.4666, "x": 24.79, "y": -66.28 },
+					{ "time": 1.5, "x": 32.21, "y": -86.11 },
+					{ "time": 1.8333, "x": 35.38, "y": -94.58 },
+					{ "time": 1.8666, "x": 30.49, "y": -81.52 },
+					{ "time": 1.9, "x": 35.38, "y": -94.58 },
+					{ "time": 1.9333, "x": 30.49, "y": -81.52 },
+					{ "time": 1.9666, "x": 36.65, "y": -97.97 },
+					{ "time": 2, "x": 29.05, "y": -77.65 }
+				],
+				"scale": [
+					{ "time": 1.4666, "x": 1.099, "y": 1 },
+					{ "time": 1.5, "x": 1.2, "y": 1 }
+				]
+			}
+		},
+		"slots": {
+			"Black": {
+				"color": [
+					{ "time": 0.0333, "color": "fffffffb" },
+					{ "time": 0.8333, "color": "ffffff00" },
+					{ "time": 2.2333, "color": "ffffff05" },
+					{ "time": 3.1666, "color": "ffffffff" }
+				]
+			},
+			"Border1": {
+				"attachment": [
+					{ "time": 1, "name": "Border1" }
+				],
+				"color": [
+					{ "time": 1, "color": "ffffff00" }
+				]
+			},
+			"Mouth1": {
+				"attachment": [
+					{ "time": 1, "name": "Mouth1" },
+					{ "time": 1.3333, "name": "Mouth2" },
+					{ "time": 1.3666, "name": "Mouth3" },
+					{ "time": 1.4, "name": "Mouth4" },
+					{ "time": 1.4333, "name": "Mouth5" }
+				]
+			}
+		}
+	}
+}
+}
