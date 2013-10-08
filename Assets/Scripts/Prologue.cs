@@ -196,9 +196,14 @@ public class Prologue: MonoBehaviour
 			text.text="Won't you carry us far\naway from here?";
 			fadeText (true, 50);
 		}
-		if(time==3800)
+		if(time==3650)
 		{
 			fadeText (false, 50);
+		}
+		
+		if(time==3710)
+		{
+			Application.LoadLevel ("MainMenu");
 		}
 		
 		time++;

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using Spine;
 
 // remember to extend FMultiTouchableInterface! (wow that's a long title)
-public class VelveteenLevel: MonoBehaviour, FMultiTouchableInterface 
+public class Velveteen: MonoBehaviour, FMultiTouchableInterface 
 {
 	Vector2 deltaSwipe;
 	

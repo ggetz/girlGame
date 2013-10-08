@@ -27,7 +27,6 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 	List <Rect> specialWordRects;
 	List <MediumText> twinkleText = new List<MediumText>();
 	List <MovingPictureObstacles> updateObs = new List<MovingPictureObstacles>();
-	List<Rectangle> collisionRects = new List<Rectangle>();
 	
 	bool directionTouchFound;
 	bool inSpecialWord=false;
@@ -65,11 +64,6 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		LoadTextures ();
 		SetUpStage ();
 		
-		foreach (MediumText t in mediumText)
-		{
-			collisionRects.Add(new Rectangle(t));	
-		}
-		
 	}
 	
 	void LoadTextures()
@@ -80,7 +74,6 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		girl = new Girl("girlAtlas", scaleGirl);
 		girl.scale =scaleGirl;
 		girl.alpha = .75f * girl.alpha;
-		girl.SetPosition(900, groundHeight);
 		
 		//load the atlas
 		Futile.atlasManager.LoadAtlas("Atlases/AliceAtlas");
@@ -91,12 +84,12 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		
 		//load sprites
 		background = new FSprite("AliceBG1");
-		ground = new Ground(groundHeight, "PalatinoMedium");
+		ground = new Ground(groundHeight, "PalatinoMedium", "Assets/Resources/AliceGround.txt", 3);
 		//power1 = new FLabel("PalitinoMedium", "JUMP!");
 		
 		GSpineManager.LoadSpine("EraserAtlas", "Atlases/EraserJson", "Atlases/EraserAtlas");
-		eraser = new Eraser("EraserAtlas", girl, 0.6f);
-		eraser.SetPosition(girl.x, Futile.screen.height + girl.y);
+		eraser = new Eraser("EraserAtlas", girl, 0.6f, 8);
+		eraser.SetPosition(0, Futile.screen.height*1.5f);
 		eraser.scale=0.6f;
 		
 	}
@@ -106,11 +99,11 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		setUpTutorialStage();
 		//girl
 		
-		Futile.stage.AddChild(girl);
-		Futile.stage.AddChild (eraser);
-		girl.SetPosition(0, groundHeight);
+		girl.SetPosition(Futile.screen.width*0.05f, groundHeight);
 		girl.setGroundHeight (groundHeight);
 		
+		Futile.stage.AddChild(girl);
+		Futile.stage.AddChild (eraser);
 		//ground text
 		ground.Start();
 		
@@ -127,12 +120,31 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 	void Update()
 	{
 		girl.Update();
+		bool solid;
 		
 		girl.isGrounded = false;
 		
-		foreach (Rectangle r in collisionRects)
+		foreach (Rect text in textRects)
 		{
-			girl.checkCollisions(r);
+			//girl.checkCollisions(text);
+		}
+		
+		for(int x = pictures.Count-1; x>=0; x--)
+		{
+			//solid = pictures[x].isSolid ();
+			//girl.checkCollisions (pictureObstacleRects[x], solid);
+		}
+		
+		for(int x = specialWords.Count-1; x>=0; x--)
+		{
+			//solid = specialWords[x].isSolid ();
+			//girl.checkCollisions (specialWordRects[x], solid);
+		}
+		
+		for(int x = mediumText.Count-1; x>=0; x--)
+		{
+			solid = mediumText[x].isSolid ();
+			girl.checkCollisions (mediumTextRects[x], solid);
 		}
 		
 		foreach (MediumText txt in twinkleText)
@@ -151,9 +163,6 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		focus.y = girl.y - .1f * Futile.screen.height;
 		
 		eraser.Update ();
-		
-		Debug.Log("GIRL: " + girl.x + ", " + girl.y);
-		Debug.Log( collisionRects[11].x + ", " + collisionRects[11].y);
 	}
 	
 	/*-----------------------------------------
@@ -285,7 +294,7 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 						if(girl.isGrounded)
 						{
 							if (girl.isStanding && !girl.isRunning)
-							{ 
+							{  
 								girl.run ();
 							}
 							
@@ -1151,7 +1160,7 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		MediumText twinkle4 = new MediumText(blockFont, "how I wonder what you're at");
 		
 		MediumText block4 = new MediumText(blockFont, "Here the Dormouse shook itself , and began singing\n\n" +
-													  "in its sleep\'Twinkle, twinkle, twinkle, twinkle—\'\n\n" +
+													  "in its sleep\'Twinkle, twinkle, twinkle, twinkle窶能'\n\n" +
 													  "and went on so long that they had to pinch it to ");
 		MediumText block5 = new MediumText(blockFont, "make it stop.\'Well, I'd hardly finished the first\n\n" +
 												   	  "verse,' said the Hatter, \'when the Queen jumped up\n\n " +
@@ -1234,15 +1243,14 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		MediumText sentence2 = new MediumText(blockFont, " and ");
 		MediumText sentence3 = new MediumText(blockFont, "\n\nAlice, every now and then treading on her toes\n\n" +
 														 "then they passed too close , and  waving their \n\n" +
-														 "forepaws to mark the time while the Mock Turtle\n\n" +
-														 " sang this, very slowly and sadly:—");
+														 "forepaws to mark the time while the Mock Turtle\n\n");
 		
 		mediumText.Add (sentence1);
 		mediumText.Add (sentence2);
 		mediumText.Add (sentence3);
 		
 		MediumText rotateBlock1 = new MediumText(blockFont, "\"'Will you walk a little faster?\" said a whiting to a snail.\n\"There's a porpoise close behind us, and he's treading on my tail.");
-		MediumText rotateBlock2 = new MediumText( blockFont, "See how eagerly the lobsters and the turtles all advance!\nThey are waiting on the shingle—will you come and join the dance?");
+		MediumText rotateBlock2 = new MediumText( blockFont, "See how eagerly the lobsters and the turtles all advance!\nThey are waiting on the shingle窶背ill you come and join the dance?");
 		
 		mediumText.Add (rotateBlock1);
 		mediumText.Add (rotateBlock2);
@@ -1393,10 +1401,7 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		
 		MediumText block1 = new MediumText(blockFont, "But here, the Duchess's voice died away, and hers arm began to ");
 		MediumText block2 = new MediumText(blockFont, "Alice looked up, and there stood the Queen, frowning like a ");
-
-		block1.SetPosition (startX + block1.textRect.width/1.5f, groundHeight + girl.girlHeight*2f);
-		block2.SetPosition (startX + block2.textRect.width/2f, lightening.lighteningHeight - block2.textRect.height);
-
+		
 		block1.SetPosition (startX + block1.textRect.width/1.5f, groundHeight + girl.girlHeight*2f);
 		block2.SetPosition (startX + block2.textRect.width/2f, lightening.lighteningHeight - block2.textRect.height);
 		

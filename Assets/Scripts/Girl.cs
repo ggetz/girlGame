@@ -37,6 +37,8 @@ public class Girl : GSpineSprite
 	float standingHeight;
 	float scale;
 	
+	int life=10;
+	
 	// height of ground
 	float groundHeight;
 	
@@ -428,8 +430,15 @@ public class Girl : GSpineSprite
 		}
 		else
 		{
-			alpha=alpha*0.8f;
+			alpha=alpha*0.85f;
 		}
+		
+		life--;
+	}
+	
+	public int getLife()
+	{
+		return life;
 	}
 	
 	public Rect getGirlRect()
