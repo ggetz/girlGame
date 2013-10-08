@@ -18,8 +18,8 @@ public class Rectangle {
 	
 	public Rectangle( MediumText text )
 	{
-		height = text.textRect.height;
-		width = text.textRect.width;
+		height = text.textRect.height * text.textRect.scale;
+		width = text.textRect.width * text.textRect.scale;
 		x = text.x - width/2;
 		y = text.y - height/2;
 		isSolid = text.isSolid();
