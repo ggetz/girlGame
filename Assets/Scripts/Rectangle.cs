@@ -67,7 +67,7 @@ public class Rectangle {
 	{
 		
 		if ( ( ( right() >= r.left() && right() <= r.right() ) || (left() <= r.left () && left() >= r.right())))//horizontally
-			//&& (( r.top () >= bottom() && r.top() <= top() )  || ( r.bottom () >= bottom() && r.bottom() <= top() ) ) )//vertically
+			&& (( top () >= r.bottom() && top() <= r.top() )  || ( bottom () <= r.bottom() && bottom() >= r.top() ) ) )//vertically
 			return true;
 		else return false;
 	}
