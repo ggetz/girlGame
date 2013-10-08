@@ -66,8 +66,7 @@ public class Rectangle {
 	public bool isIntersecting(Rectangle r)
 	{
 		
-		if ( ( ( right() >= r.left() && right() <= r.right() ) || (left() >= r.left () && left() <= r.right())))//horizontally
-			&& (( top () <= r.bottom() && top() >= r.top() )  || ( bottom () <= r.bottom() && bottom() >= r.top() ) ) )//vertically
+		if ( ( ( right() >= r.left() && right() <= r.right() ) || (left() >= r.left () && left() <= r.right())) && (( top () <= r.bottom() && top() >= r.top() )  || ( bottom () <= r.bottom() && bottom() >= r.top() ) ) )
 			return true;
 		else return false;
 	}
