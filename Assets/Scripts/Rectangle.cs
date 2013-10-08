@@ -6,6 +6,7 @@ public class Rectangle {
 	public float x, y;
 	public float height, width;
 	public bool isSolid;
+
 	
 	public Rectangle(float x, float y, float width = 0, float height = 0)
 	{
@@ -16,10 +17,10 @@ public class Rectangle {
 		isSolid = true;
 	}
 	
-	public Rectangle( MediumText text )
+	public Rectangle( MediumText text, float scale )
 	{
-		height = text.textRect.height * text.textRect.scale;
-		width = text.textRect.width * text.textRect.scale;
+		height = text.textRect.height * scale;
+		width = text.textRect.width * scale;
 		x = text.x - width/2;
 		y = text.y - height/2;
 		isSolid = text.isSolid();
@@ -70,5 +71,10 @@ public class Rectangle {
 			return true;
 		else return false;
 	}
-
+	
+	public void scale(float sc)
+	{
+		height=height*sc;
+		width=width*sc;
+	}
 }

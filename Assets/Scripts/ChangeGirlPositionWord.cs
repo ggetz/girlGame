@@ -6,7 +6,7 @@ public class ChangeGirlPositionWord : SpecialWords {
 	Vector2 targetLocation;
 	Girl targetGirl;
 	
-	public ChangeGirlPositionWord(string font, string word, Vector2 location, Girl girl): base(font, word)
+	public ChangeGirlPositionWord(string font, string word, float scale, Vector2 location, Girl girl): base(font, word, scale)
 	{
 		targetLocation = location;
 		targetGirl = girl;

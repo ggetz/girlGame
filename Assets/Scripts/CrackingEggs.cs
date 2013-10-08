@@ -58,7 +58,7 @@ public class CrackingEggs : MovingPictureObstacles
 	
 	public void crack()
 	{
-		if(girl.checkCollisions (eggRect) && girl.getGirlRect().yMin >= (eggRect.yMax - 10f))
+		/*if(girl.checkCollisions (eggRect) && girl.getRect().bottom() >= (eggRect.yMax - 10f))
 		{
 			if(state==0)
 			{
@@ -80,6 +80,6 @@ public class CrackingEggs : MovingPictureObstacles
 				height = 300*escale;
 				width = 500*escale;
 			}
-		}
+		}*/
 	}
 }

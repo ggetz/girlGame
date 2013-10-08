@@ -11,20 +11,20 @@ public class AffectPictureWords : SpecialWords
 	int actionType;
 	bool linked = false;
 
-	public AffectPictureWords(string font, string word, MovingPictureObstacles obs): base(font, word)
+	public AffectPictureWords(string font, string word, float scale, MovingPictureObstacles obs): base(font, word, scale)
 	{
 		effectedObstacle = obs;	
 		linked = true;
 	}
 	
-	public AffectPictureWords(string font, string word, MediumText obs, int type): base(font, word)
+	public AffectPictureWords(string font, string word, float scale, MediumText obs, int type): base(font, word, scale)
 	{
 		effectedText = obs;
 		actionType = type;
 		linked=true;
 	}
 
-	public AffectPictureWords(string font, string word, List <MediumText> obs, int type): base(font, word)
+	public AffectPictureWords(string font, string word, float scale, List <MediumText> obs, int type): base(font, word, scale)
 	{
 		effectedTextGroup = obs;
 		actionType = type;

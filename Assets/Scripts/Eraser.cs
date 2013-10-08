@@ -34,7 +34,7 @@ public class Eraser: MovingPictureObstacles
 	Girl girl;
 	float origVel;
 	
-	Rect eraserRect;
+	Rectangle eraserRect;
 	
 	bool isRubbing=false;
 	bool erasing=false;
@@ -58,7 +58,7 @@ public class Eraser: MovingPictureObstacles
 		scale=sc;
 		height = 300*scale;
 		width = 200*scale;
-		eraserRect = new Rect(x-width/2f, y, width, height/2f);
+		eraserRect = new Rectangle(x, y, width, height);
 		difficulty=diff;
 		delay = Random.Range (50*difficulty, difficulty*100);
 	}
@@ -364,7 +364,7 @@ public class Eraser: MovingPictureObstacles
 	
 	void checkCollisionsWithGirl()
 	{
-		if(eraserRect.CheckIntersect (girl.getGirlRect ()))
+		if(eraserRect.isIntersecting(girl.getRect ()))
 		{
 			Debug.Log ("Erasing time!");
 			if(!erasing)

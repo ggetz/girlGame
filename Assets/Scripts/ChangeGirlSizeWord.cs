@@ -6,7 +6,7 @@ public class ChangeGirlSizeWord : SpecialWords {
 	float scaleSize;
 	Girl targetGirl;
 
-	public ChangeGirlSizeWord(string font, string word, float scale, Girl girl): base(font, word)
+	public ChangeGirlSizeWord(string font, string word, float textScale, float scale, Girl girl): base(font, word, textScale)
 	{
 		scaleSize = scale;
 		targetGirl = girl;
@@ -25,6 +25,8 @@ public class ChangeGirlSizeWord : SpecialWords {
 	public override void action()
 	{
 		targetGirl.scale = scaleSize;
+		targetGirl.getRect().scale(scaleSize);
+		targetGirl.getRect().scale(scaleSize);
 	}
 		
 }
