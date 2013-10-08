@@ -32,7 +32,7 @@ public class Girl : GSpineSprite
 	public bool isFacingRight = true;
 	public bool isGrounded = true;
 	
-	Rect girlRect;
+	Rectangle rect;
 	float crawlingHeight;
 	float standingHeight;
 	float scale;
@@ -55,7 +55,7 @@ public class Girl : GSpineSprite
 	public void Start () 
 	{
 		idle ();
-		girlRect = new Rect(x-girlWidth/2f, y-girlHeight/2f, girlWidth, girlHeight);
+		rect = new Rectangle(x, y, girlWidth, girlHeight);
 	}
 	
 	// Update is called once per frame, checks for collisions and falls
@@ -98,17 +98,19 @@ public class Girl : GSpineSprite
 		if (isCrawling)
 		{
 			girlHeight = crawlingHeight;
-			girlRect.height = girlHeight;
+			rect.height = girlHeight;
+			rect = new Rectangle(x, y, girlWidth, girlHeight);
 		}
 		else 
 		{
 			girlHeight = standingHeight;
-			girlRect.height = girlHeight;
+			rect.height = girlHeight;
+			rect = new Rectangle(x, y, girlWidth, girlHeight);
 		}
 		
 		//check collisions
-		girlRect.x = x;
-		girlRect.y = y;
+		rect.x = x;
+		rect.y = y;
 		
 	}
 	
@@ -333,69 +335,41 @@ public class Girl : GSpineSprite
 		}
 	}
 	
-	//check collisions
-	public bool checkCollisions(Rect rect)
-	{
-		if (girlRect.CheckIntersect(rect))
-		{			
-			//hit top
-			if (girlRect.yMin > rect.yMax - rect.height/4)
-			{
-				isGrounded = true;
-				y = rect.yMax;
-				yVel = 0;
-			}
-			//hit bottom
-			else if (girlRect.yMax < rect.yMin + rect.height/4)
-			{
-				yVel = 0;
-				y = rect.yMin - girlHeight - 1f;
-			}
-			//hit right
-			else if (isFacingRight && girlRect.xMin < rect.xMin)
-			{
-				x = rect.xMin - girlWidth;	
-				
-			}
-			//hit left
-			else if (!isFacingRight && girlRect.xMax > rect.xMax)
-			{
-				x = rect.xMax + girlWidth/4;	
-			}
-			
-			return true;
-		}
-		
-		return false;
-	}
-	
-	public bool checkCollisions(Rect rect, bool solid)
-	{
-		if (girlRect.CheckIntersect(rect))
-		{			
-			if(solid)
-			{
-				checkCollisions(rect);
-				return true;
-			}
-			else
-			{
-				//Debug.Log ("GO THROUGH");
-			}
-		}
-		
-		return false;
-	}
 	
 	public void checkCollisions(float ground)
 	{
-		if (girlRect.y <= ground)
+		if (rect.y <= ground)
 		{
 			isGrounded = true;
 			y = ground;
 			yVel = 0;
 			//Debug.Log("On Ground");
 		}
+	}
+	
+	public bool checkCollisions(Rectangle r)
+	{
+		if (rect.isIntersecting(r))
+		{
+			Debug.Log("WE HAVE POTATO INCOMING");
+			//if( rect.left() > r.left())
+			//	x = r.left() - girlWidth;
+			//else if (rect.right() < r.right())
+			//	x = r.right();
+			
+			//if ( rect.bottom() < r.bottom() )
+			//	y = r.top ();
+			//else if (rect.top () > r.top() )
+			//	y = r.bottom () - girlHeight;
+			
+			return true;
+		}
+		return false;
+	}
+	
+	public Rectangle getRect()
+	{
+		return rect;
 	}
 	
 	public void erased()
