@@ -352,15 +352,15 @@ public class Girl : GSpineSprite
 		if (rect.isIntersecting(r))
 		{
 			Debug.Log("WE HAVE POTATO INCOMING");
-			//if( rect.left() > r.left())
-			//	x = r.left() - girlWidth;
-			//else if (rect.right() < r.right())
-			//	x = r.right();
+			if( rect.left() > r.left())
+				x = r.left() - girlWidth;
+			else if (rect.right() < r.right())
+				x = r.right();
 			
-			//if ( rect.bottom() < r.bottom() )
-			//	y = r.top ();
-			//else if (rect.top () > r.top() )
-			//	y = r.bottom () - girlHeight;
+			if ( rect.bottom() < r.bottom() )
+				y = r.top ();
+			else if (rect.top () > r.top() )
+				y = r.bottom () - girlHeight;
 			
 			return true;
 		}
