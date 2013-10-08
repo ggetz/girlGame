@@ -361,7 +361,6 @@ public class Girl : GSpineSprite
 				x = rect.xMax + girlWidth/4;	
 			}
 			
-			//Debug.Log ("Colliding with " + rect);
 			return true;
 		}
 		
@@ -394,6 +393,42 @@ public class Girl : GSpineSprite
 			y = ground;
 			yVel = 0;
 			//Debug.Log("On Ground");
+		}
+	}
+	
+	public void erased()
+	{
+		Debug.Log ("Oh god I'm being erased");
+		if(isCrawling)
+		{
+			if(isFacingRight)
+			{
+				Play ("Forward Crawl Hit", false);
+			}
+			else
+			{
+				Play ("Reverse Crawl Hit", false);
+			}
+		}
+		else
+		{
+			if(isFacingRight)
+			{
+				Play ("Forward Hit", false);
+			}
+			else
+			{
+				Play ("Reverse Hit", false);
+			}
+		}
+		
+		if(alpha>0.5f)
+		{
+			alpha=alpha*0.9f;
+		}
+		else
+		{
+			alpha=alpha*0.8f;
 		}
 	}
 	

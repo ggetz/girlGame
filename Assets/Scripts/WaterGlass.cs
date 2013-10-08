@@ -122,8 +122,7 @@ public class WaterGlass : MovingPictureObstacles
 		width = 1400*wscale;
 		
 		glassRect = new Rect(x-width/2f, y, width, height);
-Debug.Log ("Glass: " + y + " " +height + " "+ glassRect.xMin + " " + glassRect.xMax + ", " + glassRect.yMin + " " + glassRect.yMax);
-		
+
 	}
 	
 	public bool getElectric()

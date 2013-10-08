@@ -27,6 +27,7 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 	List <Rect> specialWordRects;
 	List <MediumText> twinkleText = new List<MediumText>();
 	List <MovingPictureObstacles> updateObs = new List<MovingPictureObstacles>();
+	List<Rectangle> collisionRects = new List<Rectangle>();
 	
 	bool directionTouchFound;
 	bool inSpecialWord=false;
@@ -63,6 +64,11 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		
 		LoadTextures ();
 		SetUpStage ();
+		
+		foreach (MediumText t in mediumText)
+		{
+			collisionRects.Add(new Rectangle(t));	
+		}
 		
 	}
 	
@@ -121,31 +127,12 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 	void Update()
 	{
 		girl.Update();
-		bool solid;
 		
 		girl.isGrounded = false;
 		
-		foreach (Rect text in textRects)
+		foreach (Rectangle r in collisionRects)
 		{
-			//girl.checkCollisions(text);
-		}
-		
-		for(int x = pictures.Count-1; x>=0; x--)
-		{
-			//solid = pictures[x].isSolid ();
-			//girl.checkCollisions (pictureObstacleRects[x], solid);
-		}
-		
-		for(int x = specialWords.Count-1; x>=0; x--)
-		{
-			//solid = specialWords[x].isSolid ();
-			//girl.checkCollisions (specialWordRects[x], solid);
-		}
-		
-		for(int x = mediumText.Count-1; x>=0; x--)
-		{
-			solid = mediumText[x].isSolid ();
-			girl.checkCollisions (mediumTextRects[x], solid);
+			girl.checkCollisions(r);
 		}
 		
 		foreach (MediumText txt in twinkleText)
@@ -164,6 +151,9 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		focus.y = girl.y - .1f * Futile.screen.height;
 		
 		eraser.Update ();
+		
+		Debug.Log("GIRL: " + girl.x + ", " + girl.y);
+		Debug.Log( collisionRects[11].x + ", " + collisionRects[11].y);
 	}
 	
 	/*-----------------------------------------
@@ -1403,7 +1393,10 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		
 		MediumText block1 = new MediumText(blockFont, "But here, the Duchess's voice died away, and hers arm began to ");
 		MediumText block2 = new MediumText(blockFont, "Alice looked up, and there stood the Queen, frowning like a ");
-		
+
+		block1.SetPosition (startX + block1.textRect.width/1.5f, groundHeight + girl.girlHeight*2f);
+		block2.SetPosition (startX + block2.textRect.width/2f, lightening.lighteningHeight - block2.textRect.height);
+
 		block1.SetPosition (startX + block1.textRect.width/1.5f, groundHeight + girl.girlHeight*2f);
 		block2.SetPosition (startX + block2.textRect.width/2f, lightening.lighteningHeight - block2.textRect.height);
 		

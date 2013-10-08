@@ -5,7 +5,7 @@ public class SpecialWords : MediumText
 {
 	PictureObstacle effectedObstacle;
 	bool linked = false;
-	
+	Girl girl;
 	
 	enum effectTypes{SHRINK, ENLARGE};
 	
@@ -30,7 +30,10 @@ public class SpecialWords : MediumText
 	{
 	}
 	
-
+	public bool contactMade()
+	{
+		return textRect.CheckIntersect(girl.getGirlRect ());
+	}
 	
 
 	
