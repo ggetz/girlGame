@@ -42,15 +42,17 @@ public class Ground
 	{
 		try
         {
-            using (StreamReader sr = new StreamReader(textSource))
+			using (StreamReader sr = new StreamReader(textSource))
             {
 				
+				Debug.Log ("I'm in!");
 				if(level<2)
 				{
 					text = sr.ReadToEnd ();
+					Debug.Log (text);
 	                groundText = new MediumText(gFont, text);
 					groundText.scale = 0.6f;
-					groundText.SetPosition (groundText.textRect.width/2f, groundHeight);
+					groundText.SetPosition (groundText.textRect.width/2f*groundText.scaleX, groundHeight);
 					Futile.stage.AddChild (groundText);
 				}
 				

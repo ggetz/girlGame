@@ -95,7 +95,7 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		
 		//load sprites
 		background = new FSprite("AliceBG1");
-		ground = new Ground(groundHeight, "PalatinoMedium", "Assets/Resources/AliceGround.txt", 1);
+		ground = new Ground(groundHeight, "PalatinoMedium", "Assets/Resources/Atlases/AliceGround.txt", 2);
 		//power1 = new FLabel("PalitinoMedium", "JUMP!");
 		
 		GSpineManager.LoadSpine("EraserAtlas", "Atlases/EraserJson", "Atlases/EraserAtlas");
@@ -158,6 +158,11 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		
 		Debug.Log("GIRL: " + girl.x + ", " + girl.y);
 		Debug.Log( collisionRects[11].x + ", " + collisionRects[11].y);
+		
+		if(girl.getLife ()==0)
+		{
+			Application.LoadLevel ("DeadScreen");
+		}
 	}
 	
 	/*-----------------------------------------
