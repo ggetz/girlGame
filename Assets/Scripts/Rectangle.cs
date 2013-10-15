@@ -72,6 +72,12 @@ public class Rectangle {
 		else return false;
 	}
 	
+	public bool doesContain(Vector2 v)
+	{
+		return (v.x > left() && v.x < right() && v.y > top() && v.y < bottom());
+		
+	}
+	
 	public void scale(float sc)
 	{
 		height=height*sc;
