@@ -111,7 +111,6 @@ public class Girl : GSpineSprite
 		//check collisions
 		rect.x = x;
 		rect.y = y;
-		
 	}
 	
 	// initiates jump animation and sets states
@@ -413,6 +412,12 @@ public class Girl : GSpineSprite
 	public int getLife()
 	{
 		return life;
+	}
+	
+	public void collectDoodle(Doodle target)
+	{
+		target.Collect ();
+		
 	}
 	
 }

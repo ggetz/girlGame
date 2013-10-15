@@ -374,8 +374,9 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		mediumText.Add (blocka10);
 		mediumText.Add (blocka11);
 		
-		Doodle rabbit = new Doodle("Bunny");
-		rabbit.scale=0.5f;
+		GSpineManager.LoadSpine("DoodleAtlas", "Atlases/DoodleJson", "Atlases/DoodleAtlas");
+		Doodle rabbit = new Doodle("DoodleAtlas", 193f, 200f, 0.5f);
+		rabbit.SetSkin ("Bunny");
 
 		MediumText blockb = new MediumText(blockFont, "rabbit-hole under the hedge");
 		mediumText.Add (blockb);
@@ -424,7 +425,7 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		blocka11.SetPosition (blocka9.x, blocka10.y - blocka11.textRect.height);
 		
 		blockb.SetPosition (blocka11.x - blockb.textRect.width/2f, groundHeight+(blocka11.y-groundHeight)/2f);
-		rabbit.SetPosition (blockb.x + blockb.textRect.width/2f, groundHeight+rabbit.height/2f);
+		rabbit.SetPosition (blockb.x + blockb.textRect.width/2f, groundHeight);
 		
 		blockc5.SetPosition(blocka1.x + blockc5.textRect.width/2f, blocka1.y + blockc5.textRect.height/2f);
 		blockc6.SetPosition(blockc5.x + blockc6.textRect.width*2.5f, blockc5.y);
@@ -639,8 +640,9 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		background3.scale = 0.6f;
 		background3.SetPosition(startX + background1.width + background2.width + (background3.width/2)-20, background1.height/2);
 		
-		Doodle key = new Doodle("Key");
-		key.scale=0.6f;
+		GSpineManager.LoadSpine("DoodleAtlas", "Atlases/DoodleJson", "Atlases/DoodleAtlas");
+		Doodle key = new Doodle("DoodleAtlas", 150f, 179f, 0.6f);
+		key.SetSkin ("Key");
 		
 		MediumText blockd1 = new MediumText(blockFont, "Oh dear, what");
 		MediumText blockd2 = new MediumText(blockFont, "nonsense I'm");
@@ -776,8 +778,9 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		Futile.stage.AddChild (smallMushroom);
 		Futile.stage.AddChild(bigMushroom);
 		
-		Doodle mushroomDoodle = new Doodle("Mushroom");
-		mushroomDoodle.scale=0.6f;
+		GSpineManager.LoadSpine("DoodleAtlas", "Atlases/DoodleJson", "Atlases/DoodleAtlas");
+		Doodle mushroomDoodle = new Doodle("DoodleAtlas", 250f, 150f, 0.6f);
+		mushroomDoodle.SetSkin ("Mushroom");
 		
 		AffectPictureWords bgrow = new AffectPictureWords(specialFont, "grow", 1f, smallMushroom);
 		bgrow.SetPosition (300, groundHeight + 20f);
@@ -848,8 +851,9 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		background2.scale = 0.6f;
 		background2.SetPosition(startX + background1.width + (background2.width/2)-20, background1.height/2);
 		
-		Doodle canary = new Doodle("Canary");
-		canary.scale=0.6f;
+		GSpineManager.LoadSpine("DoodleAtlas", "Atlases/DoodleJson", "Atlases/DoodleAtlas");
+		Doodle canary = new Doodle("DoodleAtlas", 238f, 200f, 0.6f);
+		canary.SetSkin ("Canary");
 		PictureObstacle mushroom = new PictureObstacle("mushroom1");
 		mushroom.scale=0.3f;
 		

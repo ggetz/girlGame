@@ -1,11 +1,16 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Spine;
 
-public class Doodle : FSprite 
+public class Doodle : GSpineSprite
 {
-	public Doodle(string name): base(name)
+	public float height, width;
+	
+	public Doodle(string atlas, float h, float w, float sc): base(atlas)
 	{
-		
+		height=h*sc;
+		width=w*sc;
+		scale=sc;
 	}
 	
 	// Use this for initialization
@@ -15,7 +20,14 @@ public class Doodle : FSprite
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void Update () 
+	{
 	
+	}
+	
+	public void Collect()
+	{
+		Play("Collected");
+		
 	}
 }

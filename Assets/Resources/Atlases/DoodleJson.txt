@@ -1,0 +1,83 @@
+{
+"bones": [
+	{ "name": "root" },
+	{ "name": "DoodleBone", "parent": "root", "x": 0.34, "y": 53.92 }
+],
+"slots": [
+	{ "name": "Doodle", "bone": "DoodleBone", "attachment": "Doodle" }
+],
+"skins": {
+	"Bunny": {
+		"Doodle": {
+			"Doodle": { "name": "Bunny", "x": -0.34, "y": 30.07, "width": 200, "height": 193 }
+		}
+	},
+	"Canary": {
+		"Doodle": {
+			"Doodle": { "name": "Canary", "x": -19.34, "y": 64.07, "width": 200, "height": 238 }
+		}
+	},
+	"CardSoldier": {
+		"Doodle": {
+			"Doodle": { "name": "CardSoldier", "x": 6.65, "y": 27.07, "width": 250, "height": 220 }
+		}
+	},
+	"Cat": {
+		"Doodle": {
+			"Doodle": { "name": "Cat", "x": 3.65, "y": 25.07, "width": 300, "height": 169 }
+		}
+	},
+	"Duchess": {
+		"Doodle": {
+			"Doodle": { "name": "Duchess", "x": 23.65, "y": 82.07, "width": 250, "height": 282 }
+		}
+	},
+	"Hat": {
+		"Doodle": {
+			"Doodle": { "name": "Hat", "x": -0.34, "y": 8.07, "width": 150, "height": 129 }
+		}
+	},
+	"Key": {
+		"Doodle": {
+			"Doodle": { "name": "Key", "x": -10.34, "y": 27.07, "width": 150, "height": 179 }
+		}
+	},
+	"Mushroom": {
+		"Doodle": {
+			"Doodle": { "name": "Mushroom", "x": -12.34, "y": 63.07, "width": 150, "height": 250 }
+		}
+	},
+	"OffHead": {
+		"Doodle": {
+			"Doodle": { "name": "OffHead", "x": -0.34, "y": 8.07, "width": 250, "height": 258 }
+		}
+	},
+	"TeaCup": {
+		"Doodle": {
+			"Doodle": { "name": "TeaCup", "x": -21.34, "y": 6.07, "width": 250, "height": 229 }
+		}
+	}
+},
+"animations": {
+	"Collected": {
+		"bones": {
+			"DoodleBone": {
+				"translate": [
+					{ "time": 0.0333, "x": 0.74, "y": 2.23 },
+					{ "time": 0.1666, "x": 18.59, "y": 18.6 },
+					{ "time": 0.3333, "x": 19.83, "y": 58.29 },
+					{ "time": 0.6666, "x": -3.23, "y": 113.35 }
+				]
+			}
+		},
+		"slots": {
+			"Doodle": {
+				"color": [
+					{ "time": 0, "color": "fffffffe" },
+					{ "time": 0.6666, "color": "ffffff00" }
+				]
+			}
+		}
+	}
+}
+}

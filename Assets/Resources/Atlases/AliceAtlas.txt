@@ -8,41 +8,17 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":1175,"h":1000},
 	"sourceSize": {"w":1175,"h":1000}
 },
-"Bunny.png":
-{
-	"frame": {"x":1179,"y":2,"w":200,"h":193},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":200,"h":193},
-	"sourceSize": {"w":200,"h":193}
-},
-"Canary.png":
-{
-	"frame": {"x":1381,"y":2,"w":200,"h":238},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":200,"h":238},
-	"sourceSize": {"w":200,"h":238}
-},
 "Hole.png":
 {
-	"frame": {"x":1583,"y":2,"w":300,"h":121},
+	"frame": {"x":1179,"y":2,"w":300,"h":121},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":300,"h":121},
 	"sourceSize": {"w":300,"h":121}
 },
-"Key.png":
-{
-	"frame": {"x":1885,"y":2,"w":150,"h":179},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":150,"h":179},
-	"sourceSize": {"w":150,"h":179}
-},
 "MediumNormalText.png":
 {
-	"frame": {"x":2037,"y":2,"w":256,"h":256},
+	"frame": {"x":1481,"y":2,"w":256,"h":256},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":256,"h":256},
@@ -50,23 +26,15 @@
 },
 "MediumSpecialText.png":
 {
-	"frame": {"x":2295,"y":2,"w":512,"h":256},
+	"frame": {"x":1739,"y":2,"w":512,"h":256},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":512,"h":256},
 	"sourceSize": {"w":512,"h":256}
 },
-"Mushroom.png":
-{
-	"frame": {"x":2809,"y":2,"w":150,"h":250},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":150,"h":250},
-	"sourceSize": {"w":150,"h":250}
-},
 "blank.png":
 {
-	"frame": {"x":2,"y":1004,"w":1175,"h":1000},
+	"frame": {"x":2253,"y":2,"w":1175,"h":1000},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":1175,"h":1000},
@@ -74,7 +42,7 @@
 },
 "drinkme.png":
 {
-	"frame": {"x":1179,"y":1004,"w":106,"h":145},
+	"frame": {"x":3430,"y":2,"w":106,"h":145},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":106,"h":145},
@@ -82,7 +50,7 @@
 },
 "mushroom1.png":
 {
-	"frame": {"x":1287,"y":1004,"w":638,"h":504},
+	"frame": {"x":2,"y":1004,"w":638,"h":504},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":638,"h":504},
@@ -90,7 +58,7 @@
 },
 "mushroom2.png":
 {
-	"frame": {"x":1927,"y":1004,"w":369,"h":554},
+	"frame": {"x":642,"y":1004,"w":369,"h":554},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":369,"h":554},
@@ -103,6 +71,6 @@
 	"format": "RGBA8888",
 	"size": {"w":4096,"h":2048},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:fbaf2e3be42a599a109458da09a3ff27$"
+	"smartupdate": "$TexturePacker:SmartUpdate:d7980269a91b4effc8a3d37c25c4dcd6$"
 }
 }
