@@ -83,7 +83,7 @@ public class Girl : GSpineSprite
 		
 		foreach (Rectangle r in collRects)
 		{
-			checkCollisions(r);
+			//checkCollisions(r);
 		}
 		
 		checkCollisions(groundHeight);
@@ -254,6 +254,7 @@ public class Girl : GSpineSprite
 			{
 				idle ();
 			}
+			xVel = 0;
 		}
 	}
 	
@@ -271,7 +272,7 @@ public class Girl : GSpineSprite
 				scaleX = -scaleX;
 				isFacingRight = false;
 			}
-			xVel *= -1;
+			xVel = runSpeed * -1;
 		}
 		else if ( (targetX-x) > 10 )
 		{
@@ -283,6 +284,7 @@ public class Girl : GSpineSprite
 				scaleX = -scaleX;
 				isFacingRight = true;
 			}
+			xVel = runSpeed;
 		}
 		else
 		{
@@ -294,6 +296,7 @@ public class Girl : GSpineSprite
 			{
 				Play("Reverse Mid-Jump");
 			}
+			xVel = 0;
 		}
 		
 	}
