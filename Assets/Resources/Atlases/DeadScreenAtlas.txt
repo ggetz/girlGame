@@ -1,0 +1,36 @@
+{"frames": {
+
+"DeathScreenIcon.png":
+{
+	"frame": {"x":2,"y":2,"w":441,"h":417},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":441,"h":417},
+	"sourceSize": {"w":441,"h":417}
+},
+"ReplayButton.png":
+{
+	"frame": {"x":2,"y":421,"w":458,"h":212},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":458,"h":212},
+	"sourceSize": {"w":458,"h":212}
+},
+"ReplayButton2.png":
+{
+	"frame": {"x":2,"y":635,"w":458,"h":212},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":458,"h":212},
+	"sourceSize": {"w":458,"h":212}
+}},
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker ",
+	"version": "1.0",
+	"image": "DeadScreenAtlas.png",
+	"format": "RGBA8888",
+	"size": {"w":512,"h":1024},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:4fdbc1c853c86db1fb4ba045c0c476f0$"
+}
+}
