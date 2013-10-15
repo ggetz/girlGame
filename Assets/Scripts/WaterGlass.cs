@@ -163,12 +163,10 @@ public class WaterGlass : MovingPictureObstacles
 		Play ("Electric", false);
 		
 		electrified=true;
-		Debug.Log ("Glass: " + y + " " +height + " "+ glassRect.xMin + " " + glassRect.xMax + ", " + glassRect.yMin + " " + glassRect.yMax);
 		foreach(MovingPictureObstacles obs in checkHit)
 		{
 			if(glassRect.CheckIntersect (obs.getRect ()))
 			{
-				Debug.Log ("I see something");
 				obs.electrify();
 			}
 		}

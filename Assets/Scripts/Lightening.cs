@@ -41,7 +41,7 @@ public class Lightening : MovingPictureObstacles
 		flashRect.height=height;
 		flashRect.width = width; 
 		flashRect = new Rect(x-width/2f, y-height, width, height);
-		Debug.Log ("Lightening: " + y +" " + height + " " + flashRect.xMin + " - " + flashRect.xMax + ", " + flashRect.yMin + " - " + flashRect.yMax);
+		
 		foreach( MovingPictureObstacles obs in checkHit)
 		{
 			if(flashRect.CheckIntersect (obs.getRect ()))

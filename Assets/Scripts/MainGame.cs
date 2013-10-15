@@ -57,6 +57,7 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		
 		groundHeight = 0.25f * Futile.screen.halfHeight;
 		
+		Debug.Log ("GroundHeight: " + groundHeight);
 		//set up camera
 		Futile.stage.AddChild(cam = new FCamObject());
 		focus = new FNode();
@@ -162,6 +163,11 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		if(girl.getLife ()==0)
 		{
 			Application.LoadLevel ("DeadScreen");
+		}
+		
+		if(girl.checkDoodleCollision ())
+		{
+			
 		}
 	}
 	
@@ -441,6 +447,8 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		down.SetPosition (sentence1.x + down.textRect.width*1.5f, sentence1.y);
 		
 		Futile.stage.AddChild (rabbit);
+		rabbit.Start();
+		girl.addDoodle(rabbit);
 		
 		sentence2.SetPosition(down.x+sentence2.textRect.width/2.5f, down.y);
 		sentence3.SetPosition (sentence2.x+(sentence2.textRect.width-sentence3.textRect.width)/4f, sentence2.y-sentence3.textRect.height);
@@ -711,6 +719,8 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		
 		key.SetPosition (blockd6.x, blockd6.y+key.height/2f);
 		Futile.stage.AddChild (key);
+		key.Start ();
+		girl.addDoodle (key);
 		
 		mediumText.Add (blockd1);
 		mediumText.Add (blockd2);
@@ -820,8 +830,10 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		block7.SetPosition (block2.x, block6.y-block7.textRect.height);
 		block8.SetPosition (block1.x + block8.textRect.width*0.25f, block1.y + block8.textRect.height*3.5f);
 		
-		mushroomDoodle.SetPosition (block8.x, block8.y+mushroomDoodle.height/2f);
+		mushroomDoodle.SetPosition (block8.x, block8.y+block8.textRect.height*0.3f);
 		Futile.stage.AddChild (mushroomDoodle);
+		mushroomDoodle.Start ();
+		girl.addDoodle (mushroomDoodle);
 		
 		mediumText.Add (sentence1);
 		mediumText.Add (sentence2);
@@ -919,6 +931,8 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		
 		Futile.stage.AddChild (canary);
 		Futile.stage.AddChild (mushroom);
+		canary.Start ();
+		girl.addDoodle (canary);
 		
 		mediumText.Add (blockd1);
 		mediumText.Add (blockd2);

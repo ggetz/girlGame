@@ -5,6 +5,7 @@ using Spine;
 public class Doodle : GSpineSprite
 {
 	public float height, width;
+	public Rectangle doodleRect;
 	
 	public Doodle(string atlas, float h, float w, float sc): base(atlas)
 	{
@@ -14,9 +15,9 @@ public class Doodle : GSpineSprite
 	}
 	
 	// Use this for initialization
-	void Start () 
+	public void Start () 
 	{
-		
+		doodleRect=new Rectangle(x, y, width, height);
 	}
 	
 	// Update is called once per frame
@@ -27,7 +28,7 @@ public class Doodle : GSpineSprite
 	
 	public void Collect()
 	{
-		Play("Collected");
-		
+		Play("Collected", false);
+		doodleRect = new Rectangle(x, y);
 	}
 }

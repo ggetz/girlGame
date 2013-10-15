@@ -42,6 +42,8 @@ public class Girl : GSpineSprite
 	// height of ground
 	float groundHeight;
 	
+	List<Doodle> doodleList = new List<Doodle>();
+	
 	public Girl(string girlAtlas, float sc) : base(girlAtlas)
 	{
 		scale=sc;
@@ -420,4 +422,22 @@ public class Girl : GSpineSprite
 		
 	}
 	
+	public void addDoodle(Doodle target)
+	{
+		doodleList.Add (target);
+	}
+	
+	public bool checkDoodleCollision()
+	{
+		foreach(Doodle target in doodleList)
+		{
+			if(target.doodleRect.isIntersecting (rect))
+			{
+				Debug.Log ("Collection time");
+				target.Collect();
+				return true;
+			}
+		}
+		return false;
+	}
 }
