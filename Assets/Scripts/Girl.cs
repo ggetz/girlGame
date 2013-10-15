@@ -120,6 +120,7 @@ public class Girl : GSpineSprite
 			else
 			{
 				yVel = 0;
+				xVel = 0;
 			}
 		}
 		
