@@ -15,9 +15,11 @@ public class Girl : GSpineSprite
 	
 	// physics and speed
 	public float runSpeed = 5f;
+	public float crawlSpeed = 3f;
 	public float jumpPower = 10f;
 	public float gravity = 0.4f;
 	float yVel = 0;
+	float xVel = 0;
 	
 	// height width
 	public float girlWidth;
@@ -59,9 +61,31 @@ public class Girl : GSpineSprite
 	}
 	
 	// Update is called once per frame, checks for collisions and falls
-	public void Update () 
+	public void Update (List<Rectangle> collRects) 
 	{
-		y += yVel;
+		girl.isGrounded = false;
+		
+		//update dimensions
+		if (isCrawling)
+		{
+			girlHeight = crawlingHeight;
+			rect.height = girlHeight;
+			rect.width = standingHeight;
+		}
+		else 
+		{
+			girlHeight = standingHeight;
+			rect.height = girlHeight;
+			rect.width = crawlingHeight;
+		}
+		
+		foreach (Rectangle r in collisionRects)
+		{
+			girl.checkCollisions(r);
+		}
+		
+		girl.checkCollisions(groundHeight);
+		
 		if (!isGrounded)
 		{
 			yVel -= gravity;
@@ -91,24 +115,15 @@ public class Girl : GSpineSprite
 				isCrawling = false;
 				
 			}
-			
+			else
+			{
+				yVel = 0;
+			}
 		}
 		
-		//update dimensions
-		if (isCrawling)
-		{
-			girlHeight = crawlingHeight;
-			rect.height = girlHeight;
-			rect = new Rectangle(x, y, girlWidth, girlHeight);
-		}
-		else 
-		{
-			girlHeight = standingHeight;
-			rect.height = girlHeight;
-			rect = new Rectangle(x, y, girlWidth, girlHeight);
-		}
+		x += xVel;
+		y += yVel;
 		
-		//check collisions
 		rect.x = x;
 		rect.y = y;
 	}
@@ -191,7 +206,7 @@ public class Girl : GSpineSprite
 		{
 			forward = "Forward Crawl";
 			reverse = "Reverse Crawl";
-			runSpeed = 3f;
+			xVel = crawlSpeed;
 			
 		}
 		
@@ -199,7 +214,7 @@ public class Girl : GSpineSprite
 		{
 			forward = "Forward Run";
 			reverse = "Reverse Run";
-			runSpeed = 5f;	
+			xVel = runSpeed;	
 		}
 		
 		//if it's close enough to the point of touch, it stops running
@@ -213,7 +228,7 @@ public class Girl : GSpineSprite
 				scaleX = -scaleX;
 				isFacingRight = false;
 			}
-			x -= runSpeed;
+			xVel *= -1;;
 		}
 		else if ( (targetX-x) > 10 )
 		{
@@ -225,8 +240,6 @@ public class Girl : GSpineSprite
 				scaleX = -scaleX;
 				isFacingRight = true;
 			}
-			
-			x += runSpeed;
 		}
 		else
 		{
@@ -251,7 +264,7 @@ public class Girl : GSpineSprite
 				scaleX = -scaleX;
 				isFacingRight = false;
 			}
-			x -= runSpeed;
+			xVel *= -1;
 		}
 		else if ( (targetX-x) > 10 )
 		{
@@ -263,8 +276,6 @@ public class Girl : GSpineSprite
 				scaleX = -scaleX;
 				isFacingRight = true;
 			}
-			
-			x += 3;
 		}
 		else
 		{
@@ -337,11 +348,10 @@ public class Girl : GSpineSprite
 	
 	public void checkCollisions(float ground)
 	{
-		if (rect.y <= ground)
+		if ((yVel <= 0) && (rect.y <= ground))
 		{
 			isGrounded = true;
 			y = ground;
-			yVel = 0;
 			//Debug.Log("On Ground");
 		}
 	}
@@ -361,7 +371,7 @@ public class Girl : GSpineSprite
 				//Does it pass through the top?
 				d1 = (r.top() - v.y) / vel.y;
 				d2 = (vel.x * d1) + v.x;
-				if(d1 > 0 && d1 < t && d2 > r.left() && d2 < r.right())
+				if(d1 >= 0 && d1 < t && d2 > r.left() && d2 < r.right())
 				{
 					t = d1;
 				}
@@ -369,7 +379,7 @@ public class Girl : GSpineSprite
 				//Does it pass through the right?
 				d1 = (r.right() - v.x) / vel.x;
 				d2 = (vel.y * d1) + v.y;
-				if(d1 > 0 && d1 < t && d2 > r.top() && d2 < r.bottom())
+				if(d1 >= 0 && d1 < t && d2 > r.top() && d2 < r.bottom())
 				{
 					t = d1;
 				}
@@ -377,7 +387,7 @@ public class Girl : GSpineSprite
 				//Does it pass through the bottom?
 				d1 = (r.bottom() - v.y) / vel.y;
 				d2 = (vel.x * d1) + v.x;
-				if(d1 > 0 && d1 < t && d2 > r.left() && d2 < r.right())
+				if(d1 >= 0 && d1 < t && d2 > r.left() && d2 < r.right())
 				{
 					t = d1;
 				}
@@ -385,7 +395,7 @@ public class Girl : GSpineSprite
 				//Does it pass through the left?
 				d1 = (r.left() - v.x) / vel.x;
 				d2 = (vel.y * d1) + v.y;
-				if(d1 > 0 && d1 < t && d2 > r.top() && d2 < r.bottom())
+				if(d1 >= 0 && d1 < t && d2 > r.top() && d2 < r.bottom())
 				{
 					t = d1;
 				}
