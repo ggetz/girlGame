@@ -130,16 +130,7 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 	
 	void Update()
 	{
-		
-		foreach (Rectangle r in collisionRects)
-		{
-			girl.checkCollisions(r);
-		}
-		
-		girl.Update();
-		
-		girl.isGrounded = false;
-		girl.checkCollisions(groundHeight);
+		girl.Update(collisionRects);
 		
 		foreach (MediumText txt in twinkleText)
 		{
