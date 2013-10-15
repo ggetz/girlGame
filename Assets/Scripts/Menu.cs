@@ -7,6 +7,7 @@ using Spine;
 public class Menu: MonoBehaviour
 {
 	FButton start;
+	FButton acheivements;
 	
 	void Start()
 	{
@@ -25,15 +26,29 @@ public class Menu: MonoBehaviour
 		Futile.stage.AddChild (background);
 	
 		start = new FButton("StartButton1", "StartButton2");
+		acheivements = new FButton("StartButton1", "StartButton2");
+		
 		start.scale=0.6f;
 		start.SetPosition (Futile.screen.width*0.4f, Futile.screen.height*0.3f);
+		
+		acheivements.scale = 0.5f;
+		acheivements.SetPosition (Futile.screen.width*0.4f, Futile.screen.height*0.15f);
+		
 		Futile.stage.AddChild (start);
+		Futile.stage.AddChild (acheivements);
 		
 		start.SignalRelease+=HandleStartButtonRelease;
+		acheivements.SignalRelease+=HandleAcheivementButtonRelease;
 	}
 	
 	private void HandleStartButtonRelease(FButton button)
 	{
 		Application.LoadLevel("AliceLevel");
 	}
+	
+	private void HandleAcheivementButtonRelease(FButton button)
+	{
+		Application.LoadLevel("AcheivementScreen");
+	}
+	
 }
