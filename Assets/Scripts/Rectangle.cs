@@ -41,12 +41,12 @@ public class Rectangle {
 	
 	public float top()
 	{
-		return y;
+		return y + height;
 	}
 	
 	public float bottom()
 	{
-		return y + height;
+		return y;
 	}
 	
 	public float left()
@@ -67,11 +67,25 @@ public class Rectangle {
 	public bool isIntersecting(Rectangle r)
 	{
 		
-		if ( ( ( right() >= r.left() && right() <= r.right() ) || (left() >= r.left () && left() <= r.right())) && (( top () <= r.bottom() && top() >= r.top() )  || ( bottom () <= r.bottom() && bottom() >= r.top() ) ) )
-		{
+		if ( ( ( right() >= r.left() && right() <= r.right() ) || (left() >= r.left () && left() <= r.right())) && (( top () <= r.top() && top() >= r.bottom() )  || ( bottom () <= r.top() && bottom() >= r.bottom() ) ) )
 			return true;
-		}
 		else return false;
+	}
+	
+	public bool doesContain(Vector2 v)
+	{
+		return (v.x > left() && v.x < right() && v.y > top() && v.y < bottom());
+		
+	}
+	
+	public Vector2[] corners()
+	{
+		Vector2[] corners = new Vector2[4];
+		corners[0] = new Vector2(left(), top());
+		corners[1] = new Vector2(right(), top());
+		corners[2] = new Vector2(right(), bottom());
+		corners[3] = new Vector2(left(), bottom());
+		return corners;
 	}
 	
 	public void scale(float sc)

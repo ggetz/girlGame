@@ -131,14 +131,7 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 	
 	void Update()
 	{
-		girl.Update();
-		
-		girl.isGrounded = false;
-		
-		foreach (Rectangle r in collisionRects)
-		{
-			girl.checkCollisions(r);
-		}
+		girl.Update(collisionRects);
 		
 		foreach (MediumText txt in twinkleText)
 		{
@@ -150,15 +143,10 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 			obs.Update();
 		}
 		
-		girl.checkCollisions(groundHeight);
-		
 		focus.x = girl.x - Futile.screen.halfWidth;
 		focus.y = girl.y - .1f * Futile.screen.height;
 		
 		eraser.Update ();
-		
-		Debug.Log("GIRL: " + girl.x + ", " + girl.y);
-		Debug.Log( collisionRects[11].x + ", " + collisionRects[11].y);
 		
 		if(girl.getLife ()==0)
 		{
