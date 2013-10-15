@@ -348,20 +348,56 @@ public class Girl : GSpineSprite
 	
 	public bool checkCollisions(Rectangle r)
 	{
-		if (rect.isIntersecting(r))
+		Vector2[] corners = getRect().corners();
+		Vector2 vel = new Vector2(runSpeed, yVel);
+		foreach(Vector2 v in corners)
 		{
-			Debug.Log("WE HAVE POTATO INCOMING");
-			if( rect.left() > r.left())
-				x = r.left() - girlWidth;
-			else if (rect.right() < r.right())
-				x = r.right();
-			
-			if ( rect.bottom() < r.bottom() )
-				y = r.top ();
-			else if (rect.top () > r.top() )
-				y = r.bottom () - girlHeight;
-			
-			return true;
+			if(r.doesContain(v + vel))
+			{
+				float t = 1;
+				float d1 = -1;
+				float d2 = -1;
+				
+				//Does it pass through the top?
+				d1 = (r.top() - v.y) / vel.y;
+				d2 = (vel.x * d1) + v.x;
+				if(d1 > 0 && d1 < t && d2 > r.left() && d2 < r.right())
+				{
+					t = d1;
+				}
+				
+				//Does it pass through the right?
+				d1 = (r.right() - v.x) / vel.x;
+				d2 = (vel.y * d1) + v.y;
+				if(d1 > 0 && d1 < t && d2 > r.top() && d2 < r.bottom())
+				{
+					t = d1;
+				}
+				
+				//Does it pass through the bottom?
+				d1 = (r.bottom() - v.y) / vel.y;
+				d2 = (vel.x * d1) + v.x;
+				if(d1 > 0 && d1 < t && d2 > r.left() && d2 < r.right())
+				{
+					t = d1;
+				}
+				
+				//Does it pass through the left?
+				d1 = (r.left() - v.x) / vel.x;
+				d2 = (vel.y * d1) + v.y;
+				if(d1 > 0 && d1 < t && d2 > r.top() && d2 < r.bottom())
+				{
+					t = d1;
+				}
+				
+				if(t == 1)
+				{
+					return false;
+				}
+				runSpeed *= t;
+				yVel *= t;
+				return true;
+			}
 		}
 		return false;
 	}
