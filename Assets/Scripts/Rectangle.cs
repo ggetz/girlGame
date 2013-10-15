@@ -78,6 +78,16 @@ public class Rectangle {
 		
 	}
 	
+	public Vector2[] corners()
+	{
+		Vector2[] corners = new Vector2[4];
+		corners[0] = new Vector2(left(), top());
+		corners[1] = new Vector2(right(), top());
+		corners[2] = new Vector2(right(), bottom());
+		corners[3] = new Vector2(left(), bottom());
+		return corners;
+	}
+	
 	public void scale(float sc)
 	{
 		height=height*sc;
