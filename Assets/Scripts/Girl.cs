@@ -358,9 +358,11 @@ public class Girl : GSpineSprite
 	
 	public bool checkCollisions(Rectangle r)
 	{
-		Vector2[] corners = getRect().corners();
+		Vector2[] gCorners = getRect().corners();
+		Vector2[] rCorners = r.corners();
 		Vector2 vel = new Vector2(runSpeed, yVel);
-		foreach(Vector2 v in corners)
+		Vector2 negVel = vel * -1;
+		foreach(Vector2 v in gCorners)
 		{
 			if(r.doesContain(v + vel))
 			{
@@ -368,18 +370,10 @@ public class Girl : GSpineSprite
 				float d1 = -1;
 				float d2 = -1;
 				
-				//Does it pass through the top?
-				d1 = (r.top() - v.y) / vel.y;
-				d2 = (vel.x * d1) + v.x;
-				if(d1 >= 0 && d1 < t && d2 > r.left() && d2 < r.right())
-				{
-					t = d1;
-				}
-				
 				//Does it pass through the right?
 				d1 = (r.right() - v.x) / vel.x;
 				d2 = (vel.y * d1) + v.y;
-				if(d1 >= 0 && d1 < t && d2 > r.top() && d2 < r.bottom())
+				if(d1 >= 0 && d1 < t && d2 > r.bottom() && d2 < r.top())
 				{
 					t = d1;
 				}
@@ -395,9 +389,68 @@ public class Girl : GSpineSprite
 				//Does it pass through the left?
 				d1 = (r.left() - v.x) / vel.x;
 				d2 = (vel.y * d1) + v.y;
-				if(d1 >= 0 && d1 < t && d2 > r.top() && d2 < r.bottom())
+				if(d1 >= 0 && d1 < t && d2 > r.bottom() && d2 < r.top())
 				{
 					t = d1;
+				}
+				
+				//Does it pass through the top?
+				d1 = (r.top() - v.y) / vel.y;
+				d2 = (vel.x * d1) + v.x;
+				if(d1 >= 0 && d1 < t && d2 > r.left() && d2 < r.right())
+				{
+					t = d1;
+					isGrounded = true;
+				}
+				
+				if(t == 1)
+				{
+					return false;
+				}
+				runSpeed *= t;
+				yVel *= t;
+				return true;
+			}
+		}
+		foreach(Vector2 v in rCorners)
+		{
+			if(rect.doesContain(v + negVel))
+			{
+				float t = 1;
+				float d1 = -1;
+				float d2 = -1;
+				
+				//Does it pass through the right?
+				d1 = (rect.right() - v.x) / negVel.x;
+				d2 = (negVel.y * d1) + v.y;
+				if(d1 >= 0 && d1 < t && d2 > rect.bottom() && d2 < rect.top())
+				{
+					t = d1;
+				}
+				
+				//Does it pass through the bottom?
+				d1 = (rect.bottom() - v.y) / negVel.y;
+				d2 = (negVel.x * d1) + v.x;
+				if(d1 >= 0 && d1 < t && d2 > rect.left() && d2 < rect.right())
+				{
+					t = d1;
+				}
+				
+				//Does it pass through the left?
+				d1 = (rect.left() - v.x) / negVel.x;
+				d2 = (negVel.y * d1) + v.y;
+				if(d1 >= 0 && d1 < t && d2 > rect.bottom() && d2 < rect.top())
+				{
+					t = d1;
+				}
+				
+				//Does it pass through the top?
+				d1 = (rect.top() - v.y) / negVel.y;
+				d2 = (negVel.x * d1) + v.x;
+				if(d1 >= 0 && d1 < t && d2 > rect.left() && d2 < rect.right())
+				{
+					t = d1;
+					isGrounded = true;
 				}
 				
 				if(t == 1)
