@@ -41,12 +41,12 @@ public class Rectangle {
 	
 	public float top()
 	{
-		return y;
+		return y + height;
 	}
 	
 	public float bottom()
 	{
-		return y + height;
+		return y;
 	}
 	
 	public float left()
@@ -67,7 +67,7 @@ public class Rectangle {
 	public bool isIntersecting(Rectangle r)
 	{
 		
-		if ( ( ( right() >= r.left() && right() <= r.right() ) || (left() >= r.left () && left() <= r.right())) && (( top () <= r.bottom() && top() >= r.top() )  || ( bottom () <= r.bottom() && bottom() >= r.top() ) ) )
+		if ( ( ( right() >= r.left() && right() <= r.right() ) || (left() >= r.left () && left() <= r.right())) && (( top () <= r.top() && top() >= r.bottom() )  || ( bottom () <= r.top() && bottom() >= r.bottom() ) ) )
 			return true;
 		else return false;
 	}
