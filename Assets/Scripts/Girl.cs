@@ -126,7 +126,10 @@ public class Girl : GSpineSprite
 		x += xVel;
 		y += yVel;
 		
-		xVel = 0;
+		if(!isGrounded)
+		{
+			xVel = 0;
+		}
 		
 		rect.x = x;
 		rect.y = y;
