@@ -8,29 +8,37 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":1200,"h":817},
 	"sourceSize": {"w":1200,"h":817}
 },
-"StartButton1.png":
+"MediumNormalText.png":
 {
-	"frame": {"x":1204,"y":2,"w":250,"h":150},
+	"frame": {"x":1204,"y":2,"w":256,"h":256},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":250,"h":150},
-	"sourceSize": {"w":250,"h":150}
+	"spriteSourceSize": {"x":0,"y":0,"w":256,"h":256},
+	"sourceSize": {"w":256,"h":256}
 },
-"StartButton2.png":
+"ReplayButton.png":
 {
-	"frame": {"x":1456,"y":2,"w":250,"h":150},
+	"frame": {"x":1462,"y":2,"w":458,"h":212},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":250,"h":150},
-	"sourceSize": {"w":250,"h":150}
+	"spriteSourceSize": {"x":0,"y":0,"w":458,"h":212},
+	"sourceSize": {"w":458,"h":212}
+},
+"ReplayButton2.png":
+{
+	"frame": {"x":2,"y":821,"w":458,"h":212},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":458,"h":212},
+	"sourceSize": {"w":458,"h":212}
 }},
 "meta": {
 	"app": "http://www.codeandweb.com/texturepacker ",
 	"version": "1.0",
 	"image": "MenuAtlas.png",
 	"format": "RGBA8888",
-	"size": {"w":2048,"h":1024},
+	"size": {"w":2048,"h":2048},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:33d5d102b6f310bb45cd2a104d934925$"
+	"smartupdate": "$TexturePacker:SmartUpdate:18f0ca19cf0a246705d0582441891734$"
 }
 }
