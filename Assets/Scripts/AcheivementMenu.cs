@@ -17,10 +17,8 @@ public class AcheivementMenu: MonoBehaviour
 		fparams.origin = new Vector2(0f, 0f);
 		Futile.instance.Init(fparams);
 		
-		Futile.atlasManager.LoadFont("PalatinoMedium", "MediumNormalText", "Atlases/MediumNormalText", 0, 0);
-		//Futile.atlasManager.LoadFont("PalatinoSpecial", "MediumSpecialText", "Atlases/MediumSpecialText", 0, 0);
-		
 		Futile.atlasManager.LoadAtlas("Atlases/MenuAtlas");
+		Futile.atlasManager.LoadFont("MediumNormalText", "MediumNormalText", "Atlases/MediumNormalText", 0, 0);
 		
 		FSprite background = new FSprite("Blog Background");
 		background.scale=0.6f;
@@ -28,7 +26,7 @@ public class AcheivementMenu: MonoBehaviour
 		background.SetPosition(Futile.screen.width/2f, background.height/2f);
 		Futile.stage.AddChild (background);
 	
-		back = new FButton("StartButton1", "StartButton2");
+		back = new FButton("ReplayButton", "ReplayButton2");
 		
 		back.scale=0.2f;
 		back.SetPosition (Futile.screen.width*0.05f, Futile.screen.height*0.05f);
@@ -40,25 +38,28 @@ public class AcheivementMenu: MonoBehaviour
 		acheives = new List<Acheivement>();
 		acheives.Add(new Acheivement("Fast!", "Complete Alice in Wonderland in less than a minute."));
 		acheives.Add(new Acheivement("Doodles", "Collect all doodles."));
+		acheives[1].Complete();
 		acheives.Add(new Acheivement("Acheivement", "And this is the description."));
 		
-		float y = Futile.screen.height * 0.8f;
+		float y = Futile.screen.height * 0.95f;
 		
 		foreach (Acheivement a in acheives)
 		{
-			FLabel title = new FLabel("PalitinoMedium", a.title);
-			title.SetPosition(Futile.screen.width * 0.1f, y );
+			FLabel title = new FLabel("MediumNormalText", a.title);
+			title.SetPosition(Futile.screen.width * 0.5f, y );
+			title.scale = 0.8f;
 			if (!a.isComplete())
 				title.alpha = 0.5f;
 			Futile.stage.AddChild(title);
 			
-			FLabel desc = new FLabel("PalitinoMedium", a.desc);
-			desc.SetPosition(Futile.screen.width * 0.1f, y + Futile.screen.height * 0.1f );
+			FLabel desc = new FLabel("MediumNormalText", a.desc);
+			desc.SetPosition(Futile.screen.width * 0.5f, y - Futile.screen.height * 0.05f );
+			desc.scale = 0.5f;
 			if (!a.isComplete())
 				desc.alpha = 0.5f;
 			Futile.stage.AddChild(desc);
 				
-			y += Futile.screen.height * 0.2f;
+			y -= Futile.screen.height * 0.15f;
 		}
 	}
 	
