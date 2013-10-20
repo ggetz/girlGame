@@ -46,6 +46,7 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 	string specialFont;
 	
 	float mediumTextScale=0.6f;
+	Doodle temp;
 	
 	List<FSprite> layer2;
 	List<FSprite> layer3;
@@ -161,7 +162,16 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		
 		if(girl.checkDoodleCollision ())
 		{
+			if(temp==null)
+			{
+				temp=girl.getCollidedDoodle ();
+			}
 			
+			if(temp.alpha==0)
+			{
+				Futile.stage.RemoveChild (girl.getCollidedDoodle ());
+				temp=null;
+			}
 		}
 		
 		updateBackground();

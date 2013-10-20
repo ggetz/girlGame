@@ -34,6 +34,8 @@ public class Girl : GSpineSprite
 	public bool isFacingRight = true;
 	public bool isGrounded = true;
 	
+	Doodle hittingDoodle;
+	
 	Rectangle rect;
 	float crawlingHeight;
 	float standingHeight;
@@ -542,9 +544,15 @@ public class Girl : GSpineSprite
 			{
 				Debug.Log ("Collection time");
 				target.Collect();
+				hittingDoodle=target;
 				return true;
 			}
 		}
 		return false;
+	}
+	
+	public Doodle getCollidedDoodle()
+	{
+		return hittingDoodle;
 	}
 }
