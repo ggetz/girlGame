@@ -95,7 +95,7 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		specialFont = "PalatinoSpecial";
 		
 		//load sprites
-		background = new FSprite("AliceBG1");
+		background = new FSprite("layer1");
 		ground = new Ground(groundHeight, "PalatinoMedium", "Assets/Resources/Atlases/AliceGround.txt", 2);
 		//power1 = new FLabel("PalitinoMedium", "JUMP!");
 		
@@ -335,11 +335,9 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 	{
 		//background
 		Futile.stage.AddChild(background);
-		background.scale = 0.6f;
 		background.SetPosition(background.width/2, background.height/2);
-		FSprite background2 = new FSprite("blank");
+		FSprite background2 = new FSprite("layer1");
 		Futile.stage.AddChild (background2);
-		background2.scale = 0.6f;
 		background2.SetPosition(background.width + (background2.width/2)-20, background.height/2);
 		
 		//obstacles
@@ -462,12 +460,12 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 	void setUpFiller1(float startX)
 	{
 		//I'm sure I shan't be able! I shall be a great deal too far off
-		FSprite background1 = new FSprite("blank");
+		FSprite background1 = new FSprite("layer1");
 		Futile.stage.AddChild(background1);
 		background1.scale = 0.6f;
 		background1.SetPosition(startX + background1.width/2, background1.height/2);
 		
-		FSprite background2 = new FSprite("blank");
+		FSprite background2 = new FSprite("layer1");
 		Futile.stage.AddChild (background2);
 		background2.scale = 0.6f;
 		background2.SetPosition(startX + background1.width + (background2.width/2)-20, background1.height/2);
@@ -534,8 +532,8 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 	
 	void setUpShrinkStage(float startX)
 	{
-		FSprite background3 = new FSprite("blank");
-		FSprite background4 = new FSprite("blank");
+		FSprite background3 = new FSprite("layer1");
+		FSprite background4 = new FSprite("layer1");
 
 		Futile.stage.AddChild (background3);
 		background3.scale = 0.6f;
@@ -621,19 +619,16 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 	void setUpFiller2(float startX)
 	{
 		//'Oh dear, what nonsense I'm ... along in a great hurry, muttering
-		FSprite background1 = new FSprite("blank");
+		FSprite background1 = new FSprite("layer1");
 		Futile.stage.AddChild(background1);
-		background1.scale = 0.6f;
 		background1.SetPosition(startX + background1.width/2, background1.height/2);
 		
-		FSprite background2 = new FSprite("blank");
+		FSprite background2 = new FSprite("layer1");
 		Futile.stage.AddChild (background2);
-		background2.scale = 0.6f;
 		background2.SetPosition(startX + background1.width + (background2.width/2)-20, background1.height/2);
 		
-		FSprite background3 = new FSprite("blank");
+		FSprite background3 = new FSprite("layer1");
 		Futile.stage.AddChild (background3);
-		background3.scale = 0.6f;
 		background3.SetPosition(startX + background1.width + background2.width + (background3.width/2)-20, background1.height/2);
 		
 		GSpineManager.LoadSpine("DoodleAtlas", "Atlases/DoodleJson", "Atlases/DoodleAtlas");
@@ -744,24 +739,20 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 	
 	void setUpMushroomStage(float startX)
 	{
-		FSprite background = new FSprite("blank");
+		FSprite background = new FSprite("layer1");
 		Futile.stage.AddChild (background);
-		background.scale = 0.6f;
 		background.SetPosition((background.width/2)-20 + startX, background.height/2);
 		
-		FSprite background2 = new FSprite("blank");
+		FSprite background2 = new FSprite("layer1");
 		Futile.stage.AddChild (background2);
-		background2.scale = 0.6f;
 		background2.SetPosition((background.width/2)-20 + background.x, background.height/2);
 		
-		FSprite background3 = new FSprite("blank");
+		FSprite background3 = new FSprite("layer1");
 		Futile.stage.AddChild (background3);
-		background3.scale = 0.6f;
 		background3.SetPosition((background.width/2)-20 + background2.x, background.height/2);
 		
-		FSprite background4 = new FSprite("blank");
+		FSprite background4 = new FSprite("layer1");
 		Futile.stage.AddChild (background4);
-		background4.scale = 0.6f;
 		background4.SetPosition((background.width/2)-20 + background3.x, background.height/2);
 		
 		GSpineManager.LoadSpine("MushroomAtlas", "Atlases/MushroomJson", "Atlases/MushroomAtlas");
@@ -841,14 +832,12 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 	
 	void setUpFiller3(float startX)
 	{
-		FSprite background1 = new FSprite("blank");
+		FSprite background1 = new FSprite("layer1");
 		Futile.stage.AddChild(background1);
-		background1.scale = 0.6f;
 		background1.SetPosition(startX + background1.width/2, background1.height/2);
 		
-		FSprite background2 = new FSprite("blank");
+		FSprite background2 = new FSprite("layer1");
 		Futile.stage.AddChild (background2);
-		background2.scale = 0.6f;
 		background2.SetPosition(startX + background1.width + (background2.width/2)-20, background1.height/2);
 		
 		GSpineManager.LoadSpine("DoodleAtlas", "Atlases/DoodleJson", "Atlases/DoodleAtlas");
@@ -949,29 +938,24 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 	
 	void setUpEggStage(float startX)
 	{
-		FSprite background = new FSprite("blank");
+		FSprite background = new FSprite("layer1");
 		Futile.stage.AddChild (background);
-		background.scale = 0.6f;
 		background.SetPosition((background.width/2)-20 + startX, background.height/2);
 		
-		FSprite background2 = new FSprite("blank");
+		FSprite background2 = new FSprite("layer1");
 		Futile.stage.AddChild (background2);
-		background2.scale = 0.6f;
 		background2.SetPosition((background.width/2)-20 + background.x, background.height/2);
 		
-		FSprite background3 = new FSprite("blank");
+		FSprite background3 = new FSprite("layer1");
 		Futile.stage.AddChild (background3);
-		background3.scale = 0.6f;
 		background3.SetPosition((background.width/2)-20 + background2.x, background.height/2);
 		
-		FSprite background4 = new FSprite("blank");
+		FSprite background4 = new FSprite("layer1");
 		Futile.stage.AddChild (background4);
-		background4.scale = 0.6f;
 		background4.SetPosition((background.width/2)-20 + background3.x, background.height/2);
 		
-		FSprite background5 = new FSprite("blank");
+		FSprite background5 = new FSprite("layer1");
 		Futile.stage.AddChild (background5);
-		background5.scale = 0.6f;
 		background5.SetPosition((background.width/2)-20 + background4.x, background.height/2);
 		
 		
@@ -1037,19 +1021,16 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 	void setUpFiller4(float startX)
 	{
 		//'Oh dear, what nonsense I'm ... along in a great hurry, muttering
-		FSprite background1 = new FSprite("blank");
+		FSprite background1 = new FSprite("layer1");
 		Futile.stage.AddChild(background1);
-		background1.scale = 0.6f;
 		background1.SetPosition(startX + background1.width/2, background1.height/2);
 		
-		FSprite background2 = new FSprite("blank");
+		FSprite background2 = new FSprite("layer1");
 		Futile.stage.AddChild (background2);
-		background2.scale = 0.6f;
 		background2.SetPosition(startX + background1.width + (background2.width/2)-20, background1.height/2);		
 		
-		FSprite background3 = new FSprite("blank");
+		FSprite background3 = new FSprite("layer1");
 		Futile.stage.AddChild (background3);
-		background3.scale = 0.6f;
 		background3.SetPosition(startX + background1.width + background2.width + (background3.width/2)-20, background1.height/2);
 		
 		MediumText blockd1 = new MediumText(blockFont, "'I HAVE tasted eggs, certainly,' said");
@@ -1136,22 +1117,20 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 	
 	void setUpTwinkleStage(float startX)
 	{
-		FSprite background = new FSprite("blank");
+		FSprite background = new FSprite("layer1");
 		Futile.stage.AddChild (background);
-		background.scale = 0.6f;
 		background.SetPosition((background.width/2)-20 + startX, background.height/2);
 		
-		FSprite background2 = new FSprite("blank");
+		FSprite background2 = new FSprite("layer1");
 		Futile.stage.AddChild (background2);
-		background2.scale = 0.6f;
 		background2.SetPosition((background.width/2)-20 + background.x, background.height/2);
 		
-		FSprite background3 = new FSprite("blank");
+		FSprite background3 = new FSprite("layer1");
 		Futile.stage.AddChild (background3);
 		background3.scale = 0.6f;
 		background3.SetPosition((background.width/2)-20 + background2.x, background.height/2);
 		
-		FSprite background4 = new FSprite("blank");
+		FSprite background4 = new FSprite("layer1");
 		Futile.stage.AddChild (background4);
 		background4.scale = 0.6f;
 		background4.SetPosition((background.width/2)-20 + background3.x, background.height/2);
@@ -1225,22 +1204,22 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 	
 	void setUpRotationStage(float startX)
 	{
-		FSprite background = new FSprite("blank");
+		FSprite background = new FSprite("layer1");
 		Futile.stage.AddChild (background);
 		background.scale = 0.6f;
 		background.SetPosition((background.width/2)-20 + startX, background.height/2);
 		
-		FSprite background2 = new FSprite("blank");
+		FSprite background2 = new FSprite("layer1");
 		Futile.stage.AddChild (background2);
 		background2.scale = 0.6f;
 		background2.SetPosition((background.width/2)-20 + background.x, background.height/2);
 		
-		FSprite background3 = new FSprite("blank");
+		FSprite background3 = new FSprite("layer1");
 		Futile.stage.AddChild (background3);
 		background3.scale = 0.6f;
 		background3.SetPosition((background.width/2)-20 + background2.x, background.height/2);
 		
-		FSprite background4 = new FSprite("blank");
+		FSprite background4 = new FSprite("layer1");
 		Futile.stage.AddChild (background4);
 		background4.scale = 0.6f;
 		background4.SetPosition((background.width/2)-20 + background3.x, background.height/2);
@@ -1289,22 +1268,22 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 	
 	void setUpTrumpetStage(float startX)
 	{
-		FSprite background = new FSprite("blank");
+		FSprite background = new FSprite("layer1");
 		Futile.stage.AddChild (background);
 		background.scale = 0.6f;
 		background.SetPosition((background.width/2)-20 + startX, background.height/2);
 		
-		FSprite background2 = new FSprite("blank");
+		FSprite background2 = new FSprite("layer1");
 		Futile.stage.AddChild (background2);
 		background2.scale = 0.6f;
 		background2.SetPosition((background.width/2)-20 + background.x, background.height/2);
 		
-		FSprite background3 = new FSprite("blank");
+		FSprite background3 = new FSprite("layer1");
 		Futile.stage.AddChild (background3);
 		background3.scale = 0.6f;
 		background3.SetPosition((background.width/2)-20 + background2.x, background.height/2);
 		
-		FSprite background4 = new FSprite("blank");
+		FSprite background4 = new FSprite("layer1");
 		Futile.stage.AddChild (background4);
 		background4.scale = 0.6f;
 		background4.SetPosition((background.width/2)-20 + background3.x, background.height/2);
@@ -1370,22 +1349,22 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 	void setUpMalletStage(float startX)
 	{
 		
-		FSprite background = new FSprite("blank");
+		FSprite background = new FSprite("layer1");
 		Futile.stage.AddChild (background);
 		background.scale = 0.6f;
 		background.SetPosition((background.width/2)-20 + startX, background.height/2);
 		
-		FSprite background2 = new FSprite("blank");
+		FSprite background2 = new FSprite("layer1");
 		Futile.stage.AddChild (background2);
 		background2.scale = 0.6f;
 		background2.SetPosition((background.width/2)-20 + background.x, background.height/2);
 		
-		FSprite background3 = new FSprite("blank");
+		FSprite background3 = new FSprite("layer1");
 		Futile.stage.AddChild (background3);
 		background3.scale = 0.6f;
 		background3.SetPosition((background.width/2)-20 + background2.x, background.height/2);
 		
-		FSprite background4 = new FSprite("blank");
+		FSprite background4 = new FSprite("layer1");
 		Futile.stage.AddChild (background4);
 		background4.scale = 0.6f;
 		background4.SetPosition((background.width/2)-20 + background3.x, background.height/2);
@@ -1471,6 +1450,14 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		Rect r;
 		r = new Rect(l.x - 0.6f * l.textRect.width/2, l.y, 0.6f * l.textRect.width, 0.6f * l.textRect.height);
 		return r;
+	}
+	
+	FSprite makeBackgorund(float x)
+	{
+		FSprite background = new FSprite("layer1");
+		background.SetPosition(x, Futile.screen.halfHeight);
+		Futile.stage.AddChild(background);
+		return background;
 	}
 	
 }
