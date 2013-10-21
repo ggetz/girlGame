@@ -49,14 +49,14 @@ public class AcheivementMenu: MonoBehaviour
 			title.SetPosition(Futile.screen.width * 0.5f, y );
 			title.scale = 0.8f;
 			if (!a.isComplete())
-				title.alpha = 0.5f;
+				title.alpha = 0.2f;
 			Futile.stage.AddChild(title);
 			
 			FLabel desc = new FLabel("MediumNormalText", a.desc);
 			desc.SetPosition(Futile.screen.width * 0.5f, y - Futile.screen.height * 0.05f );
 			desc.scale = 0.5f;
 			if (!a.isComplete())
-				desc.alpha = 0.5f;
+				desc.alpha = 0.2f;
 			Futile.stage.AddChild(desc);
 				
 			y -= Futile.screen.height * 0.15f;
