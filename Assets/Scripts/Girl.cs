@@ -1,6 +1,6 @@
 /*----------------------------------------
  * Girl.cs
- * Gabby Getz, Laura Mo
+ * Gabby Getz, Laura Mo, Justin Niosi
  * Script for the main character of the 
  * game and all of her actions and states
  *---------------------------------------*/
@@ -34,8 +34,6 @@ public class Girl : GSpineSprite
 	public bool isFacingRight = true;
 	public bool isGrounded = true;
 	
-	Doodle hittingDoodle;
-	
 	Rectangle rect;
 	float crawlingHeight;
 	float standingHeight;
@@ -61,38 +59,36 @@ public class Girl : GSpineSprite
 	public void Start () 
 	{
 		idle ();
-		rect = new Rectangle(x, y, girlWidth, girlHeight);
+		rect = new Rectangle(x-girlWidth/2f, y, girlWidth, girlHeight);
 	}
 	
 	// Update is called once per frame, checks for collisions and falls
 	public void Update (List<Rectangle> collRects) 
 	{
 		isGrounded = false;
+		yVel -= gravity;
 		
 		//update dimensions
 		if (isCrawling)
 		{
 			girlHeight = crawlingHeight;
-			rect.height = girlHeight;
-			rect.width = standingHeight;
+			rect = new Rectangle(x - standingHeight / 2, y, standingHeight, girlHeight);
 		}
 		else 
 		{
 			girlHeight = standingHeight;
-			rect.height = girlHeight;
-			rect.width = crawlingHeight;
+			rect = new Rectangle(x - standingHeight / 2, y, crawlingHeight, girlHeight);
 		}
 		
 		foreach (Rectangle r in collRects)
 		{
-			//checkCollisions(r);
+			checkCollisions(r);
 		}
 		
 		checkCollisions(groundHeight);
 		
 		if (!isGrounded)
 		{
-			yVel -= gravity;
 			isJumping = true;
 		}
 		else
@@ -117,9 +113,8 @@ public class Girl : GSpineSprite
 				isStanding=true;
 				isRunning = false;
 				isCrawling = false;
-				
 			}
-			else
+			if(yVel < 0)
 			{
 				yVel = 0;
 			}
@@ -128,13 +123,10 @@ public class Girl : GSpineSprite
 		x += xVel;
 		y += yVel;
 		
-		if(!isGrounded)
-		{
-			xVel = 0;
-		}
+		rect.x += xVel;
+		rect.y += yVel;
 		
-		rect.x = x;
-		rect.y = y;
+		xVel = 0;
 	}
 	
 	// initiates jump animation and sets states
@@ -216,7 +208,6 @@ public class Girl : GSpineSprite
 			forward = "Forward Crawl";
 			reverse = "Reverse Crawl";
 			xVel = crawlSpeed;
-			
 		}
 		
 		if(isStanding)
@@ -234,10 +225,10 @@ public class Girl : GSpineSprite
 			{
 				Stop ();
 				Play (reverse);
-				scaleX = -scaleX;
 				isFacingRight = false;
+				scaleX = -scaleX;
 			}
-			xVel *= -1;;
+			xVel *= -1;
 		}
 		else if ( (targetX-x) > 10 )
 		{
@@ -246,8 +237,8 @@ public class Girl : GSpineSprite
 			{
 				Stop ();
 				Play (forward);
-				scaleX = -scaleX;
 				isFacingRight = true;
+				scaleX = -scaleX;
 			}
 		}
 		else
@@ -271,8 +262,8 @@ public class Girl : GSpineSprite
 			{
 				Stop ();
 				Play ("Reverse Mid-Jump");
-				scaleX = -scaleX;
 				isFacingRight = false;
+				scaleX = -scaleX;
 			}
 			xVel = runSpeed * -1;
 		}
@@ -283,8 +274,8 @@ public class Girl : GSpineSprite
 			{
 				Stop ();
 				Play ("Forward Mid-Jump");
-				scaleX = -scaleX;
 				isFacingRight = true;
+				scaleX = -scaleX;
 			}
 			xVel = runSpeed;
 		}
@@ -303,7 +294,7 @@ public class Girl : GSpineSprite
 		
 	}
 	
-	// handles idle aniamtion and state
+	// handles idle animation and state
 	
 	public void idle()
 	{
@@ -372,109 +363,136 @@ public class Girl : GSpineSprite
 	{
 		Vector2[] gCorners = getRect().corners();
 		Vector2[] rCorners = r.corners();
-		Vector2 vel = new Vector2(runSpeed, yVel);
+		Vector2 vel = new Vector2(xVel, yVel);
 		Vector2 negVel = vel * -1;
+		float tx = 1;
+		float ty = 1;
+		float d1;
+		float d2;
 		foreach(Vector2 v in gCorners)
 		{
 			if(r.doesContain(v + vel))
 			{
-				float t = 1;
-				float d1 = -1;
-				float d2 = -1;
+				Debug.Log("COLLISION TYPE ONE: \n" 
+					+ "XGirl: " + v.x + " YGirl: " + v.y + "\n"
+					+ "XRect: " + r.x + " YRect: " + r.y + "\n"
+					+ "RectWidth: " + r.width + " RectHeight: " + r.height + "\n"
+					+ "XVel: " + vel.x + " YVel: " + vel.y);
 				
-				//Does it pass through the right?
-				d1 = (r.right() - v.x) / vel.x;
-				d2 = (vel.y * d1) + v.y;
-				if(d1 >= 0 && d1 < t && d2 > r.bottom() && d2 < r.top())
+				if(vel.x > 0)
 				{
-					t = d1;
+					//Does it pass through the left?
+					d1 = (r.left() - v.x) / vel.x;
+					d2 = (vel.y * d1) + v.y;
+					if(d1 >= 0 && d1 < tx && d2 > r.bottom() && d2 < r.top())
+					{
+						tx = d1;
+					}
+				}
+				else
+				{
+					//Does it pass through the right?
+					d1 = (r.right() - v.x) / vel.x;
+					d2 = (vel.y * d1) + v.y;
+					if(d1 >= 0 && d1 < tx && d2 > r.bottom() && d2 < r.top())
+					{
+						tx = d1;
+					}
 				}
 				
-				//Does it pass through the bottom?
-				d1 = (r.bottom() - v.y) / vel.y;
-				d2 = (vel.x * d1) + v.x;
-				if(d1 >= 0 && d1 < t && d2 > r.left() && d2 < r.right())
+				if(vel.y > 0)
 				{
-					t = d1;
+					//Does it pass through the bottom?
+					d1 = ( r.bottom() - v.y) / vel.y;
+					d2 = (vel.x * d1) + v.x;
+					if(d1 >= 0 && d1 < ty && d2 > r.left() && d2 < r.right())
+					{
+						ty = d1;
+					}
 				}
-				
-				//Does it pass through the left?
-				d1 = (r.left() - v.x) / vel.x;
-				d2 = (vel.y * d1) + v.y;
-				if(d1 >= 0 && d1 < t && d2 > r.bottom() && d2 < r.top())
+				else
 				{
-					t = d1;
+					//Does it pass through the top?
+					d1 = (r.top() - v.y) / vel.y;
+					d2 = (vel.x * d1) + v.x;
+					if(d1 >= 0 && d1 < ty && d2 > r.left() && d2 < r.right())
+					{
+						ty = d1;
+						isGrounded = true;
+					}
 				}
-				
-				//Does it pass through the top?
-				d1 = (r.top() - v.y) / vel.y;
-				d2 = (vel.x * d1) + v.x;
-				if(d1 >= 0 && d1 < t && d2 > r.left() && d2 < r.right())
-				{
-					t = d1;
-					isGrounded = true;
-				}
-				
-				if(t == 1)
-				{
-					return false;
-				}
-				runSpeed *= t;
-				yVel *= t;
-				return true;
 			}
 		}
 		foreach(Vector2 v in rCorners)
 		{
 			if(rect.doesContain(v + negVel))
 			{
-				float t = 1;
-				float d1 = -1;
-				float d2 = -1;
+				Debug.Log("COLLISION TYPE TWO: \n" 
+					+ "XGirl: " + rect.x + " YGirl: " + rect.y + "\n"
+					+ "GirlWidth: " + rect.width + " GirlHeight: " + rect.height + "\n"
+					+ "XRect: " + v.x + " YRect: " + v.y + "\n" 
+					+ "XVel: " + vel.x + " YVel: " + vel.y);
 				
-				//Does it pass through the right?
-				d1 = (rect.right() - v.x) / negVel.x;
-				d2 = (negVel.y * d1) + v.y;
-				if(d1 >= 0 && d1 < t && d2 > rect.bottom() && d2 < rect.top())
+				if(vel.x > 0)
 				{
-					t = d1;
+					//Does it pass through the right?
+					d1 = (rect.right() - v.x) / negVel.x;
+					d2 = (negVel.y * d1) + v.y;
+					Debug.Log(d1);
+					if(d1 >= 0 && d1 < tx && d2 > rect.bottom() && d2 < rect.top())
+					{
+						tx = d1;
+					}
+				}
+				else
+				{
+					//Does it pass through the left?
+					d1 = (rect.left() - v.x) / negVel.x;
+					d2 = (negVel.y * d1) + v.y;
+					Debug.Log(d1);
+					if(d1 >= 0 && d1 < tx && d2 > rect.bottom() && d2 < rect.top())
+					{
+						tx = d1;
+					}
 				}
 				
-				//Does it pass through the bottom?
-				d1 = (rect.bottom() - v.y) / negVel.y;
-				d2 = (negVel.x * d1) + v.x;
-				if(d1 >= 0 && d1 < t && d2 > rect.left() && d2 < rect.right())
+				if(vel.x > 0)
 				{
-					t = d1;
+					//Does it pass through the top?
+					d1 = (rect.top() - v.y) / negVel.y;
+					d2 = (negVel.x * d1) + v.x;
+					Debug.Log(d1);
+					if(d1 >= 0 && d1 < ty && d2 > rect.left() && d2 < rect.right())
+					{
+						ty = d1;
+						
+					}
 				}
-				
-				//Does it pass through the left?
-				d1 = (rect.left() - v.x) / negVel.x;
-				d2 = (negVel.y * d1) + v.y;
-				if(d1 >= 0 && d1 < t && d2 > rect.bottom() && d2 < rect.top())
+				else
 				{
-					t = d1;
+					//Does it pass through the bottom?
+					d1 = (rect.bottom() - v.y) / negVel.y;
+					d2 = (negVel.x * d1) + v.x;
+					Debug.Log(d1);
+					if(d1 >= 0 && d1 < ty && d2 > rect.left() && d2 < rect.right())
+					{
+						ty = d1;
+						isGrounded = true;
+					}
 				}
-				
-				//Does it pass through the top?
-				d1 = (rect.top() - v.y) / negVel.y;
-				d2 = (negVel.x * d1) + v.x;
-				if(d1 >= 0 && d1 < t && d2 > rect.left() && d2 < rect.right())
-				{
-					t = d1;
-					isGrounded = true;
-				}
-				
-				if(t == 1)
-				{
-					return false;
-				}
-				runSpeed *= t;
-				yVel *= t;
-				return true;
 			}
 		}
-		return false;
+		if(tx == 1 && ty == 1)
+		{
+			return false;
+		}
+		else
+		{
+			Debug.Log("tx: " + tx + " ty: " + ty);
+		}
+		xVel *= tx;
+		yVel *= ty;
+		return true;
 	}
 	
 	public Rectangle getRect()
@@ -544,15 +562,9 @@ public class Girl : GSpineSprite
 			{
 				Debug.Log ("Collection time");
 				target.Collect();
-				hittingDoodle=target;
 				return true;
 			}
 		}
 		return false;
-	}
-	
-	public Doodle getCollidedDoodle()
-	{
-		return hittingDoodle;
 	}
 }
