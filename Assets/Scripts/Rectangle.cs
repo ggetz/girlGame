@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class Rectangle {
@@ -74,7 +74,7 @@ public class Rectangle {
 	
 	public bool doesContain(Vector2 v)
 	{
-		return (v.x > left() && v.x < right() && v.y > top() && v.y < bottom());
+		return (v.x > left() && v.x < right() && v.y > bottom() && v.y < top());
 		
 	}
 	
