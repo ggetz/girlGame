@@ -47,6 +47,11 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 	
 	float mediumTextScale=0.6f;
 	
+	List<FSprite> layer2;
+	List<FSprite> layer3;
+	float layer2speed = .2f;
+	float layer3speed = .1f;
+	
 	void Start()
 	{
 		// Setup Futile
@@ -66,6 +71,8 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		mediumTextRects = new List<Rect>();
 		pictureObstacleRects = new List<Rect>();
 		specialWordRects = new List<Rect>();
+		layer2 = new List<FSprite>();
+		layer3 = new List<FSprite>();
 		
 		LoadTextures ();
 		SetUpStage ();
@@ -157,6 +164,8 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		{
 			
 		}
+		
+		updateBackground();
 	}
 	
 	/*-----------------------------------------
@@ -336,9 +345,7 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		//background
 		Futile.stage.AddChild(background);
 		background.SetPosition(background.width/2, background.height/2);
-		FSprite background2 = new FSprite("layer1");
-		Futile.stage.AddChild (background2);
-		background2.SetPosition(background.width + (background2.width/2)-20, background.height/2);
+		FSprite background2 = makeBackgorund(background.width + (background.width/2)-20);
 		
 		//obstacles
 	// and fortunately was just in time to see it pop down a large rabbit-hole under the hedge.
@@ -1457,7 +1464,31 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		FSprite background = new FSprite("layer1");
 		background.SetPosition(x, Futile.screen.halfHeight);
 		Futile.stage.AddChild(background);
+		
+		FSprite layer = new FSprite("layer2");
+		layer.SetPosition(x, Futile.screen.halfHeight);
+		Futile.stage.AddChild(layer);
+		layer2.Add(layer);
+		
+		layer = new FSprite("layer3");
+		layer.SetPosition(x, Futile.screen.halfHeight);
+		Futile.stage.AddChild(layer);
+		layer3.Add(layer);
+		
 		return background;
+	}
+	
+	void updateBackground()
+	{
+		foreach (FSprite l in layer2)
+		{
+			l.x -= layer2speed;	
+		}
+		
+		foreach (FSprite l in layer3)
+		{
+			l.x += layer3speed;	
+		}
 	}
 	
 }
