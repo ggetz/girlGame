@@ -45,6 +45,7 @@ public class Girl : GSpineSprite
 	float groundHeight;
 	
 	List<Doodle> doodleList = new List<Doodle>();
+	Doodle hittingDoodle;
 	
 	public Girl(string girlAtlas, float sc) : base(girlAtlas)
 	{
@@ -499,6 +500,11 @@ public class Girl : GSpineSprite
 	{
 		return rect;
 	}
+
+	public Doodle getCollidedDoodle()
+	{
+    	return hittingDoodle;
+  	}
 	
 	public void erased()
 	{
@@ -560,11 +566,13 @@ public class Girl : GSpineSprite
 		{
 			if(target.doodleRect.isIntersecting (rect))
 			{
-				Debug.Log ("Collection time");
-				target.Collect();
-				return true;
-			}
+		       Debug.Log ("Collection time");
+		       target.Collect();
+		       hittingDoodle=target;
+		       return true;
+		    }
 		}
 		return false;
 	}
+    
 }
