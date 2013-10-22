@@ -16,7 +16,7 @@ public class Girl : GSpineSprite
 	// physics and speed
 	public float runSpeed = 5f;
 	public float crawlSpeed = 3f;
-	public float jumpPower = 10f;
+	public float jumpPower = 12f;
 	public float gravity = 0.4f;
 	float yVel = 0;
 	float xVel = 0;
@@ -87,7 +87,7 @@ public class Girl : GSpineSprite
 		}
 		
 		checkCollisions(groundHeight);
-		
+		checkDoodleCollision();
 		if (!isGrounded)
 		{
 			isJumping = true;
@@ -374,11 +374,11 @@ public class Girl : GSpineSprite
 		{
 			if(r.doesContain(v + vel))
 			{
-				Debug.Log("COLLISION TYPE ONE: \n" 
+				/*Debug.Log("COLLISION TYPE ONE: \n" 
 					+ "XGirl: " + v.x + " YGirl: " + v.y + "\n"
 					+ "XRect: " + r.x + " YRect: " + r.y + "\n"
 					+ "RectWidth: " + r.width + " RectHeight: " + r.height + "\n"
-					+ "XVel: " + vel.x + " YVel: " + vel.y);
+					+ "XVel: " + vel.x + " YVel: " + vel.y);*/
 				
 				if(vel.x > 0)
 				{
@@ -428,11 +428,11 @@ public class Girl : GSpineSprite
 		{
 			if(rect.doesContain(v + negVel))
 			{
-				Debug.Log("COLLISION TYPE TWO: \n" 
+				/*Debug.Log("COLLISION TYPE TWO: \n" 
 					+ "XGirl: " + rect.x + " YGirl: " + rect.y + "\n"
 					+ "GirlWidth: " + rect.width + " GirlHeight: " + rect.height + "\n"
 					+ "XRect: " + v.x + " YRect: " + v.y + "\n" 
-					+ "XVel: " + vel.x + " YVel: " + vel.y);
+					+ "XVel: " + vel.x + " YVel: " + vel.y);*/
 				
 				if(vel.x > 0)
 				{
@@ -549,12 +549,6 @@ public class Girl : GSpineSprite
 		return life;
 	}
 	
-	public void collectDoodle(Doodle target)
-	{
-		target.Collect ();
-		
-	}
-	
 	public void addDoodle(Doodle target)
 	{
 		doodleList.Add (target);
@@ -564,6 +558,7 @@ public class Girl : GSpineSprite
 	{
 		foreach(Doodle target in doodleList)
 		{
+			Debug.Log ("Doodle: " + target.doodleRect.left () + "Girl: " + rect.right ());
 			if(target.doodleRect.isIntersecting (rect))
 			{
 		       Debug.Log ("Collection time");
@@ -573,6 +568,11 @@ public class Girl : GSpineSprite
 		    }
 		}
 		return false;
+	}
+	
+	public float getYVelocity()
+	{
+		return yVel;
 	}
     
 }

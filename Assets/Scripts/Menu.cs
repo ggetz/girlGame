@@ -27,8 +27,8 @@ public class Menu: MonoBehaviour
 		background.SetPosition(Futile.screen.width/2f, background.height/2f);
 		Futile.stage.AddChild (background);
 	
-		start = new FButton("ReplayButton", "ReplayButton2");
-		acheivements = new FButton("ReplayButton", "ReplayButton2");
+		start = new FButton("Start1", "Start2");
+		acheivements = new FButton("Achievments1", "Achievment2");
 		
 		start.scale=0.6f;
 		start.SetPosition (Futile.screen.width*0.4f, Futile.screen.height*0.3f);

@@ -17,7 +17,7 @@ public class Doodle : GSpineSprite
 	// Use this for initialization
 	public void Start () 
 	{
-		doodleRect=new Rectangle(x, y, width, height);
+		doodleRect=new Rectangle(x-width/2f, y-height/2f, width, height);
 	}
 	
 	// Update is called once per frame

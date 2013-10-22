@@ -8,6 +8,8 @@ public class Trumpet : MovingPictureObstacles {
 	float scale;
 	public float height = 175;
 	public float width = 500;
+	Rectangle trumpetRect;
+	
 	public Trumpet(string atlas, float x, Scroll scroll): base(atlas)
 	{
 		affectedScroll=scroll;
@@ -15,11 +17,12 @@ public class Trumpet : MovingPictureObstacles {
 
 	}
 	// Use this for initialization
-	public void Start () 
+	public override void Start () 
 	{
 		Play ("Still");
 		height=height*scale;
 		width = width*scale;	
+		trumpetRect=new Rectangle(x, y, width, height);
 	}
 	
 	// Update is called once per frame
@@ -35,6 +38,12 @@ public class Trumpet : MovingPictureObstacles {
 		{
 			affectedScroll.action ();
 		}
+	}
+	
+	public override Rectangle getRect ()
+	{
+		
+		return trumpetRect;	
 	}
 
 }

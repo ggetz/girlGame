@@ -20,21 +20,18 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 	Ground ground;
 	public float scaleGirl;
 	
-	List<Rect> textRects;
-	List<Rect> mediumTextRects;
-	List <Rect> pictureObstacleRects;
-	List <Rect> specialWordRects;
 	List <MediumText> twinkleText = new List<MediumText>();
 	List <MovingPictureObstacles> updateObs = new List<MovingPictureObstacles>();
 	List<Rectangle> collisionRects = new List<Rectangle>();
+	List<Rectangle> obstacleCollisions=new List<Rectangle>();
 	
 	bool directionTouchFound;
 	bool inSpecialWord=false;
 	
 	List <SpecialWords> specialWords = new List<SpecialWords> ();
 	List <MediumText> mediumText = new List<MediumText>();
-	List <PictureObstacle> pictures = new List<PictureObstacle>();
 	List <SpecialWords> holdSpecialWords = new List<SpecialWords> ();
+	List <MovingPictureObstacles> movingObs=new List<MovingPictureObstacles>();
 	
 	FCamObject cam;
 	FNode focus;
@@ -68,10 +65,6 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		Futile.stage.AddChild(cam = new FCamObject());
 		focus = new FNode();
 		
-		textRects = new List<Rect>();
-		mediumTextRects = new List<Rect>();
-		pictureObstacleRects = new List<Rect>();
-		specialWordRects = new List<Rect>();
 		layer2 = new List<FSprite>();
 		layer3 = new List<FSprite>();
 		
@@ -81,6 +74,10 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		foreach (MediumText t in mediumText)
 		{
 			collisionRects.Add(new Rectangle(t, mediumTextScale));	
+		}
+		foreach (MovingPictureObstacles pic in movingObs)
+		{
+			collisionRects.Add (pic.getRect());
 		}
 		
 	}
@@ -127,7 +124,6 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		ground.Start();
 		
 		girl.Start();
-		eraser.Start ();
 		// makes it so that the entire screen is capable of multitouch
 		Futile.touchManager.AddMultiTouchTarget (this);
 		
@@ -138,22 +134,28 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 	
 	void Update()
 	{
-		girl.Update(collisionRects);
 		
+		girl.Update(collisionRects); 
 		foreach (MediumText txt in twinkleText)
 		{
 			txt.Update();
 		}
 		
-		foreach (MovingPictureObstacles obs in updateObs)
+		foreach (MovingPictureObstacles pic in movingObs)
 		{
-			obs.Update();
+			pic.Update ();
+			collisionRects.RemoveAt(collisionRects.Count-1);
+		}
+		
+		foreach(MovingPictureObstacles pic in movingObs)
+		{
+			collisionRects.Add(pic.getRect ());
 		}
 		
 		focus.x = girl.x - Futile.screen.halfWidth;
 		focus.y = girl.y - .1f * Futile.screen.height;
 		
-		eraser.Update ();
+		//eraser.Update ();
 		
 		if(girl.getLife ()==0)
 		{
@@ -356,8 +358,7 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 				}
 		}
 	}
-	
-	
+		
 	void setUpTutorialStage()
 	{
 		//background
@@ -418,7 +419,6 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		hole.scale=0.5f;
 		
 		hole.setSolidity (false);
-		pictures.Add (hole);
 		
 		MediumText sentence1 = new MediumText(blockFont, "In another moment");
 		MediumText sentence2 = new MediumText(blockFont, " went Alice after it never once considering");
@@ -438,7 +438,7 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		blocka6.SetPosition (blocka2.x, blocka4.y - blocka6.textRect.height/1.5f);
 		blocka7.SetPosition (blocka1.x, blocka5.y - blocka7.textRect.height/1.5f);
 		blocka8.SetPosition (blocka2.x, blocka6.y - blocka8.textRect.height/1.5f);
-		blocka9.SetPosition (blocka1.x + (blocka9.textRect.width - blocka1.textRect.width)/4f, blocka8.y - blocka9.textRect.height);
+		blocka9.SetPosition (blocka1.x, blocka8.y - blocka9.textRect.height);
 		blocka10.SetPosition (blocka9.x, blocka9.y - blocka10.textRect.height);
 		blocka11.SetPosition (blocka9.x, blocka10.y - blocka11.textRect.height);
 		
@@ -757,15 +757,10 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		GSpineManager.LoadSpine("MushroomAtlas", "Atlases/MushroomJson", "Atlases/MushroomAtlas");
 		GrowingMushroom smallMushroom = new GrowingMushroom("MushroomAtlas", "small", 0.6f);
 		smallMushroom.scale = 0.6f;
-		smallMushroom.Start();
 		
 		GrowingMushroom bigMushroom = new GrowingMushroom("MushroomAtlas", "big", 0.6f);
 		bigMushroom.scale = 0.6f;
-		bigMushroom.Start ();
-		
-		Futile.stage.AddChild (smallMushroom);
-		Futile.stage.AddChild(bigMushroom);
-		
+
 		GSpineManager.LoadSpine("DoodleAtlas", "Atlases/DoodleJson", "Atlases/DoodleAtlas");
 		Doodle mushroomDoodle = new Doodle("DoodleAtlas", 250f, 150f, 0.6f);
 		mushroomDoodle.SetSkin ("Mushroom");
@@ -799,6 +794,9 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		bigMushroom.SetPosition (sentence3.x + sentence3.textRect.width*1.5f, groundHeight);
 		smallMushroom.SetPosition (bigMushroom.x + smallMushroom.width*1.5f, groundHeight);
 		
+		bigMushroom.Start ();
+		smallMushroom.Start();
+		
 		block1.SetPosition (smallMushroom.x + block1.textRect.width/2f, bigMushroom.height);
 		block2.SetPosition (block1.x - (block1.textRect.width-block2.textRect.width)/4f, block1.y-block2.textRect.height);
 		block3.SetPosition (block2.x, block2.y-block3.textRect.height);
@@ -811,6 +809,7 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		mushroomDoodle.SetPosition (block8.x, block8.y+block8.textRect.height*0.3f);
 		Futile.stage.AddChild (mushroomDoodle);
 		mushroomDoodle.Start ();
+		Debug.Log ("Mushroom: " + mushroomDoodle.doodleRect.left ());
 		girl.addDoodle (mushroomDoodle);
 		
 		mediumText.Add (sentence1);
@@ -825,6 +824,9 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		mediumText.Add (block6);
 		mediumText.Add (block7);
 		mediumText.Add (block8);
+		
+		movingObs.Add (bigMushroom);
+		movingObs.Add(smallMushroom);
 		
 		setUpFiller3 (background4.x+background4.width/2f);
 	}
@@ -961,19 +963,15 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		GSpineManager.LoadSpine("EggAtlas", "Atlases/EggJson", "Atlases/EggAtlas");
 		CrackingEggs egg1 = new CrackingEggs("EggAtlas", 0.3f, girl);
 		egg1.scale = 0.3f;
-		egg1.Start();
 		
 		CrackingEggs egg2 = new CrackingEggs("EggAtlas", 0.3f, girl);
 		egg2.scale = 0.3f;
-		egg2.Start();
 		
 		CrackingEggs egg3 = new CrackingEggs("EggAtlas", 0.3f, girl);
 		egg3.scale = 0.3f;
-		egg3.Start();
 		
 		CrackingEggs bigEgg = new CrackingEggs("EggAtlas", 0.6f, girl);
 		bigEgg.scale = 0.6f;
-		bigEgg.Start ();
 		
 		MediumText sentence1 = new MediumText(blockFont, "'As if I wasn't having enough trouble");
 		MediumText sentence2 = new MediumText(blockFont, "the eggs'");
@@ -996,15 +994,15 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		egg1.SetPosition (sentence1.x + sentence1.textRect.width/1.5f, groundHeight);
 		egg2.SetPosition (egg1.x + egg2.width, groundHeight);
 		egg3.SetPosition (egg2.x + egg3.width, groundHeight);
-		hatching.SetPosition (egg2.x, groundHeight+ egg2.height + hatching.textRect.height);
+		hatching.SetPosition (egg2.x, groundHeight+ egg2.height/2f);
 		
 		sentence2.SetPosition(egg3.x + egg3.width/1.5f, groundHeight + sentence2.textRect.height);
 		bigEgg.SetPosition (sentence2.x + bigEgg.width/1.5f, groundHeight-sentence2.textRect.height);
 		
-		Futile.stage.AddChild(egg1);
-		Futile.stage.AddChild(egg2);
-		Futile.stage.AddChild(egg3);
-		Futile.stage.AddChild(bigEgg);
+		egg1.Start ();
+		egg2.Start ();
+		egg3.Start ();
+		bigEgg.Start ();
 		
 		mediumText.Add (sentence1);
 		mediumText.Add (sentence2);
@@ -1012,6 +1010,16 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		mediumText.Add (block1);
 		mediumText.Add (block2);
 		mediumText.Add (block3);
+		
+		movingObs.Add (egg1);
+		movingObs.Add (egg2);
+		movingObs.Add (egg3);
+		movingObs.Add (bigEgg);
+		
+		updateObs.Add (egg1);
+		updateObs.Add (egg2);
+		updateObs.Add (egg3);
+		updateObs.Add (bigEgg);
 		
 		setUpFiller4 (background5.x+background5.width/2f);
 		
@@ -1201,70 +1209,6 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		setUpTrumpetStage (background4.x+background4.width/2f);
 	}
 	
-	void setUpRotationStage(float startX)
-	{
-		FSprite background = new FSprite("layer1");
-		Futile.stage.AddChild (background);
-		background.scale = 0.6f;
-		background.SetPosition((background.width/2)-20 + startX, background.height/2);
-		
-		FSprite background2 = new FSprite("layer1");
-		Futile.stage.AddChild (background2);
-		background2.scale = 0.6f;
-		background2.SetPosition((background.width/2)-20 + background.x, background.height/2);
-		
-		FSprite background3 = new FSprite("layer1");
-		Futile.stage.AddChild (background3);
-		background3.scale = 0.6f;
-		background3.SetPosition((background.width/2)-20 + background2.x, background.height/2);
-		
-		FSprite background4 = new FSprite("layer1");
-		Futile.stage.AddChild (background4);
-		background4.scale = 0.6f;
-		background4.SetPosition((background.width/2)-20 + background3.x, background.height/2);
-		
-		MediumText sentence1 = new MediumText(blockFont, "So they began solemnly dancing");
-		MediumText sentence2 = new MediumText(blockFont, " and ");
-		MediumText sentence3 = new MediumText(blockFont, "\n\nAlice, every now and then treading on her toes\n\n" +
-														 "then they passed too close , and  waving their \n\n" +
-														 "forepaws to mark the time while the Mock Turtle\n\n" +
-														 " sang this, very slowly and sadly:—");
-		
-		mediumText.Add (sentence1);
-		mediumText.Add (sentence2);
-		mediumText.Add (sentence3);
-		
-		MediumText rotateBlock1 = new MediumText(blockFont, "\"'Will you walk a little faster?\" said a whiting to a snail.\n\"There's a porpoise close behind us, and he's treading on my tail.");
-		MediumText rotateBlock2 = new MediumText( blockFont, "See how eagerly the lobsters and the turtles all advance!\nThey are waiting on the shingle—will you come and join the dance?");
-		
-		mediumText.Add (rotateBlock1);
-		mediumText.Add (rotateBlock2);
-		
-		Vector2 rotatePoint1 = new Vector2(rotateBlock1.x, rotateBlock1.y);
-		Vector2 rotatePoint2 = new Vector2(rotateBlock2.x, rotateBlock2.y);
-		rotateBlock1.RotateAroundPointAbsolute (rotatePoint1,90f);
-		rotateBlock2.RotateAroundPointAbsolute( rotatePoint2, 90f);
-		
-		AffectPictureWords round1 = new AffectPictureWords(specialFont, "round", 1f, rotateBlock1,1);
-		AffectPictureWords round2 = new AffectPictureWords(specialFont, "round", 1f, rotateBlock2, 1);
-		
-		sentence1.SetPosition (startX+sentence1.textRect.width, groundHeight*4);
-		round1.SetPosition (sentence1.x + (sentence1.textRect.width + round1.textRect.width)/3f, sentence1.y);
-		sentence2.SetPosition (round1.x+sentence2.textRect.width, sentence1.y);
-		round2.SetPosition (sentence2.x + (sentence2.textRect.width + round2.textRect.width)/2.9f, sentence1.y);
-		round2.addCollisionObjects (round1);
-		sentence3.SetPosition (sentence1.x + (sentence3.textRect.width-sentence1.textRect.width)/4f, sentence1.y-sentence3.textRect.height/3f);
-		
-		rotateBlock1.SetPosition (round1.x + rotateBlock1.textRect.width/1.5f, groundHeight + rotateBlock1.textRect.width/2f);
-		rotateBlock2.SetPosition (rotateBlock1.x + rotateBlock2.textRect.width/3f, groundHeight + rotateBlock2.textRect.width/1.5f);
-		
-		specialWords.Add (round1);
-		specialWords.Add(round2);
-		holdSpecialWords.Add (round1);
-		holdSpecialWords.Add(round2);
-		setUpTrumpetStage (background4.x+background4.width/2f);
-	}
-	
 	void setUpTrumpetStage(float startX)
 	{
 		FSprite background = new FSprite("layer1");
@@ -1296,7 +1240,7 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		trumpet.scale = 0.6f;
 		
 		MediumText block1 = new MediumText(blockFont, "'Herald, read the accusation!' said the King.'");
-		Debug.Log("2");
+
 		MediumText block2 = new MediumText(blockFont, "'Consider your verdict,' the King said to the\n" +
 														"\njury. ' Not yet,not yet!' the Rabbit hastily\n" +
 													 "\ninterrupted.'There's a great deal to come before\n" +
@@ -1336,8 +1280,9 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		trumpet.Start();
 		scroll.Start();
 		
+		movingObs.Add (scroll);
+		
 		Futile.stage.AddChild (trumpet);
-		Futile.stage.AddChild (scroll);
 		
 		block3.SetPosition (scroll.x + block2.textRect.width/1.5f, Futile.screen.height*0.3f);
 		block2.SetPosition (block3.x, block3.y + block2.textRect.height/1.5f);
@@ -1401,46 +1346,39 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		specialWords.Add (tremble);
 		specialWords.Add (thunderstorm);
 		
-		mallet.Start();
-		glass.Start();
 		lightening.Start ();
 		lightening.addCollider (glass);
 		glass.addCollider (mallet);
+		mallet.Start ();
 		
 		mallet.SetPosition (tremble.x+mallet.height/1.5f, groundHeight);
 		glass.SetPosition (tremble.x, tremble.y+tremble.textRect.height/2f);
 		lightening.SetPosition (thunderstorm.x, thunderstorm.y);
 		
 		mallet.makeRect ();
-		
+		glass.Start ();
 		updateObs.Add(glass);
 		
-		Futile.stage.AddChild (glass);
 		Futile.stage.AddChild (lightening);
-		Futile.stage.AddChild(mallet);
+		
+		movingObs.Add (glass);
+		movingObs.Add (mallet);
 		
 		foreach (MediumText mt in mediumText)
 		{
 			Futile.stage.AddChild (mt);
 			mt.scale = mediumTextScale;
-			Rect mtRect = makeTextRect(mt);
-			mediumTextRects.Add (mtRect);
 		}
 				
 		foreach (SpecialWords sw in specialWords)
 		{
 			Futile.stage.AddChild (sw);
-			Rect swRect = makeTextRect(sw);
-			specialWordRects.Add (swRect);
 		}
 		
-		foreach (PictureObstacle pic in pictures)
+		foreach(MovingPictureObstacles pic in movingObs)
 		{
-			Rect picRect = pic.localRect.CloneAndOffset(pic.x, pic.y);
-			pictureObstacleRects.Add(picRect);
+			Futile.stage.AddChild(pic);
 		}
-	
-		
 	}
 	
 	

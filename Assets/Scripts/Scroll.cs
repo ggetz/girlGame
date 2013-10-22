@@ -6,7 +6,8 @@ public class Scroll : MovingPictureObstacles {
 	float scale;
 	public float height = 90;
 	public float width = 450;
-
+	Rectangle textRect;
+	
 	public Scroll(string atlas, float x):base(atlas)
 	{
 		scale = x;
@@ -14,11 +15,12 @@ public class Scroll : MovingPictureObstacles {
 	}
 
 	// Use this for initialization
-	public void Start () 
+	public override void Start () 
 	{
 		height = height*scale;
 		width = width*scale;
 		Play ("Still");	
+		textRect=new Rectangle(x-width/2f, y+height/2f, width, height);
 	}
 	
 	// Update is called once per frame
@@ -29,6 +31,12 @@ public class Scroll : MovingPictureObstacles {
 	public override void action()
 	{
 		Play("Roll Out", false);
+		//textRect=new Rectangle(x-width/2f, y
 		
+	}
+	
+	public override Rectangle getRect ()
+	{
+		return textRect;
 	}
 }

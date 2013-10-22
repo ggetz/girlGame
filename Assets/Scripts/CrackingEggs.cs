@@ -5,7 +5,7 @@ public class CrackingEggs : MovingPictureObstacles
 {
 	int state;
 	float escale;
-	public Rect eggRect;
+	public Rectangle eggRect;
 	public float height;
 	public float width;
 	Girl girl;
@@ -15,20 +15,21 @@ public class CrackingEggs : MovingPictureObstacles
 		state = 0;
 		escale = scale;
 		girl=g;
-	}
-	// Use this for initialization
-	public void Start () 
-	{
 		height = 700*escale;
 		width = 450*escale;
-		eggRect = new Rect(x-width/2f, y-height/2f, width, height);
+	}
+	// Use this for initialization
+	public override void Start () 
+	{
+		eggRect = new Rectangle(x-width/2f, y, width, height);
+		Debug.Log ("Egg: " + eggRect.top());
 		Play ("Uncracked");
 	}
 	
 	// Update is called once per frame
-	void Update () 
+	public override void Update () 
 	{
-	
+		crack ();
 	}
 	
 	public override void action()
@@ -47,39 +48,52 @@ public class CrackingEggs : MovingPictureObstacles
 		{
 			state+=1;
 			Play ("Cracked3",false);
+			height = 300*escale;
+			width = 500*escale;
+			eggRect.height=height;
+			eggRect.width=width;
+			
 		}
 		else
 		{
-			height = 300*escale;
-			width = 500*escale;
+			
 		}
 		
 	}
 	
 	public void crack()
 	{
-		/*if(girl.checkCollisions (eggRect) && girl.getRect().bottom() >= (eggRect.yMax - 10f))
+		if(girl.checkCollisions (eggRect) && eggRect.top() >= (girl.getRect().bottom ()-10) && girl.getYVelocity()!=0 )
 		{
+			Debug.Log ("Let's get crackin'");
 			if(state==0)
 			{
-				state+=1;
+				
 				Play ("Cracked1", false);
 			}
 			else if(state==1)
 			{
-				state+=1;
 				Play ("Cracked2", false);
 			}
 			else if(state==2)
 			{
-				state+=1;
+				Debug.Log ("Egg Original: " + eggRect.top () + " " + eggRect.height);
 				Play ("Cracked3",false);
+				height = 300*escale;
+				width = 500*escale;
+				eggRect.height=height;
+				eggRect.width=width;
+				Debug.Log ("Egg end: " + eggRect.top () + " " + eggRect.height);
 			}
 			else
 			{
-				height = 300*escale;
-				width = 500*escale;
 			}
-		}*/
+			state++;
+		}
+	}
+	
+	public override  Rectangle getRect()
+	{
+		return eggRect;
 	}
 }

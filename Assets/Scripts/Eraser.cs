@@ -348,6 +348,7 @@ public class Eraser: MovingPictureObstacles
 			
 			if(Mathf.Abs (girl.x-x)>=width*1.5f || Mathf.Abs (girl.y-y)>=height*1.5f)
 			{
+				
 					
 				Play("Up", false);
 				

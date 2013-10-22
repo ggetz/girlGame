@@ -8,17 +8,16 @@ public class MovingPictureObstacles : GSpineSprite
 	private float width;
 	private float height;
 	private float oscale;
-	
-	private Rect rect;
+	Rectangle rect;
 	// Use this for initialization
 	public MovingPictureObstacles(string atlas) : base(atlas)
 	{
 		
 	}
 	
-	void Start () 
+	public virtual void Start () 
 	{
-		rect = new Rect(x,y,1,1);
+		
 	}
 	
 	// Update is called once per frame
@@ -41,7 +40,7 @@ public class MovingPictureObstacles : GSpineSprite
 		solid = solidity;
 	}
 	
-	public virtual Rect getRect()
+	public virtual Rectangle getRect()
 	{
 		return rect;
 	}

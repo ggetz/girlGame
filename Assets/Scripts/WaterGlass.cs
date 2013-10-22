@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public class WaterGlass : MovingPictureObstacles
 {
 	float wscale;
-	public Rect glassRect;
+	Rectangle waterRect;
 	public float height;
 	public float width;
 	float groundHeight;
@@ -27,12 +27,11 @@ public class WaterGlass : MovingPictureObstacles
 		groundHeight=ground;
 	}
 	// Use this for initialization
-	public void Start () 
+	public override void Start () 
 	{
 		height =600*wscale;
 		width = 500*wscale;
-		glassRect = new Rect(x-width/2f, y+height, width, height);
-	
+		waterRect=new Rectangle(x, y, width, height);
 		Play ("Still", false);
 	}
 	
@@ -121,7 +120,7 @@ public class WaterGlass : MovingPictureObstacles
 		height = 250*wscale;
 		width = 1400*wscale;
 		
-		glassRect = new Rect(x-width/2f, y, width, height);
+		waterRect = new Rectangle(x-width/2f, y, width, height);
 
 	}
 	
@@ -153,9 +152,9 @@ public class WaterGlass : MovingPictureObstacles
 		}
 	}
 	
-	public override Rect getRect()
+	public override Rectangle getRect()
 	{
-		return glassRect;
+		return waterRect;
 	}
 	
 	public override void electrify()
@@ -165,7 +164,7 @@ public class WaterGlass : MovingPictureObstacles
 		electrified=true;
 		foreach(MovingPictureObstacles obs in checkHit)
 		{
-			if(glassRect.CheckIntersect (obs.getRect ()))
+			if(waterRect.isIntersecting (obs.getRect()))
 			{
 				obs.electrify();
 			}

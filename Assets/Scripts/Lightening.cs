@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public class Lightening : MovingPictureObstacles
 {
 	float lscale;
-	public Rect flashRect;
+	public Rectangle flashRect;
 	public float height;
 	public float width;
 	public float lighteningHeight;
@@ -22,7 +22,7 @@ public class Lightening : MovingPictureObstacles
 	{
 		height =1*lscale;
 		width = 1*lscale;
-		flashRect = new Rect(x-width/2f, y, width, height);
+		flashRect = new Rectangle(x-width/2f, y-height, width, height);
 		Play ("Still", false);
 		
 	}
@@ -40,11 +40,12 @@ public class Lightening : MovingPictureObstacles
 		width = 300 * lscale;
 		flashRect.height=height;
 		flashRect.width = width; 
-		flashRect = new Rect(x-width/2f, y-height, width, height);
-		
+		flashRect = new Rectangle(x-width/2f, y-height, width, height);
+		Debug.Log ("Lightening: " + flashRect.top() + " " + flashRect.bottom());
 		foreach( MovingPictureObstacles obs in checkHit)
 		{
-			if(flashRect.CheckIntersect (obs.getRect ()))
+			Debug.Log ("Obs: " + obs.getRect ().top() + " " + obs.getRect().bottom());
+			if(flashRect.isIntersecting(obs.getRect()))
 			{
 				Debug.Log ("Hey I see something");
 				obs.electrify ();
@@ -55,7 +56,7 @@ public class Lightening : MovingPictureObstacles
 		width = 1 * lscale;
 		flashRect.height=height;
 		flashRect.width = width; 
-		flashRect = new Rect(x-width/2f, y, width, height);
+		flashRect = new Rectangle(x-width/2f, y-height, width, height);
 	}
 	
 	public void addCollider(MovingPictureObstacles obs)

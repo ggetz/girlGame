@@ -5,7 +5,7 @@ public class GrowingMushroom : MovingPictureObstacles
 {
 	string start;
 	float mscale;
-	Rect mushRect;
+	Rectangle mushRect;
 	public float sheight;
 	public float swidth;
 	public float bheight;
@@ -19,30 +19,40 @@ public class GrowingMushroom : MovingPictureObstacles
 	{
 		start = startState;
 		mscale = scale;
-	}
-	// Use this for initialization
-	public void Start () 
-	{
+		
 		sheight = 300*mscale;
 		swidth = 250*mscale;
-		bheight = 500*mscale;
+		bheight = 450*mscale;
 		bwidth = 250*mscale;
 		
 		if(start == "small")
 		{
 			height = sheight;
 			width = swidth;
-			mushRect = new Rect(x, y, swidth, sheight);
-			Play ("Small");
 		}
 		
 		if(start == "big")
 		{
 			height = bheight;
 			width = bwidth;
-			mushRect = new Rect(x, y, bwidth, bheight);
-			Play ("Big");
 			isBig = true;
+		}
+	}
+	// Use this for initialization
+	public override void Start () 
+	{
+		
+		if(start == "small")
+		{
+			mushRect = new Rectangle(x-swidth/2f, y, swidth, sheight);
+			Play ("Small");
+		}
+		
+		if(start == "big")
+		{
+			mushRect = new Rectangle(x-bwidth/2f, y, bwidth, bheight);
+			Play ("Big");
+			
 		}
 	}
 	
@@ -73,5 +83,11 @@ public class GrowingMushroom : MovingPictureObstacles
 			width = swidth;
 			isBig = false;
 		}
+	}
+	
+	public override Rectangle getRect()
+	{
+		Debug.Log ("Mushroom: " + mushRect.x);
+		return mushRect;
 	}
 }

@@ -4,7 +4,7 @@ using System.Collections;
 public class Mallet : MovingPictureObstacles
 {
 	float mscale;
-	public Rect malletRect;
+	public Rectangle malletRect;
 	public float height;
 	public float width;
 	bool electrified = false;
@@ -15,7 +15,7 @@ public class Mallet : MovingPictureObstacles
 	}
 	
 	// Use this for initialization
-	public void Start () 
+	public override void Start () 
 	{
 		height =700*mscale;
 		width = 400*mscale;
@@ -36,12 +36,10 @@ public class Mallet : MovingPictureObstacles
 	
 	public void makeRect()
 	{
-		malletRect = new Rect(x-width/2f, y, width, height);
-	
-		Debug.Log ("Mallet: " + y + " " +height + " " + malletRect.xMin + " " + malletRect.xMax + ", " + malletRect.yMin + " " + malletRect.yMax);
+		malletRect = new Rectangle(x-width/2f, y, width, height);
 	}
 	
-	public override Rect getRect()
+	public override Rectangle getRect()
 	{
 		return malletRect;
 	}
@@ -52,5 +50,7 @@ public class Mallet : MovingPictureObstacles
 		Play ("Fry", false);
 		height = 90*mscale;
 		width = 400*mscale;
+		malletRect.height=height;
+		malletRect.width=width;
 	}
 }
