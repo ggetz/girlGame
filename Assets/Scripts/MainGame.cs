@@ -18,9 +18,6 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 
 	FSprite background;
 	Ground ground;
-	FSprite obstacle1;
-	FLabel power1;
-	FSprite introText;
 	public float scaleGirl;
 	
 	List<Rect> textRects;
@@ -52,6 +49,9 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 	List<FSprite> layer3;
 	float layer2speed = .1f;
 	float layer3speed = .2f;
+	
+	int doodleCollect=60;
+	bool collectionTime=false;
 	
 	void Start()
 	{
@@ -167,13 +167,22 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 				temp=girl.getCollidedDoodle ();
 			}
 			
-			if(temp.alpha==0)
-			{
-				Futile.stage.RemoveChild (girl.getCollidedDoodle ());
-				temp=null;
-			}
+			collectionTime=true;
 		}
 		
+		if(collectionTime)
+		{
+			doodleCollect--;
+			
+			if(doodleCollect==0)
+			{
+				Debug.Log ("Goodbye friends I am gone");
+				Futile.stage.RemoveChild (girl.getCollidedDoodle ());
+				temp=null;
+				doodleCollect=60;
+				collectionTime=false;
+			}
+		}
 		updateBackground();
 	}
 	

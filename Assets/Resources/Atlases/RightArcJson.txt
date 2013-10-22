@@ -1,0 +1,99 @@
+{
+"bones": [
+	{ "name": "root" },
+	{ "name": "Glow", "parent": "root", "x": 233.69, "y": 822.51 }
+],
+"slots": [
+	{ "name": "BunnyBackground", "bone": "root", "attachment": "BunnyBackground" },
+	{ "name": "RightArc1", "bone": "root", "attachment": "RightArc1" },
+	{ "name": "RightArc2", "bone": "root", "attachment": "RightArc2" },
+	{ "name": "RightArc3", "bone": "root", "attachment": "RightArc3" },
+	{ "name": "Glow1", "bone": "Glow", "attachment": "Glow1" },
+	{ "name": "Glow2", "bone": "Glow" }
+],
+"skins": {
+	"default": {
+		"BunnyBackground": {
+			"BunnyBackground": { "x": -23.54, "y": 542.56, "width": 1415, "height": 1080 }
+		},
+		"Glow1": {
+			"Glow1": { "x": 17.21, "y": 19.12, "rotation": 0.39, "width": 431, "height": 568 }
+		},
+		"Glow2": {
+			"Glow2": { "y": 109.04, "rotation": 14.37, "width": 421, "height": 616 }
+		},
+		"RightArc1": {
+			"RightArc1": { "x": 231.77, "y": 895.2, "width": 91, "height": 266 }
+		},
+		"RightArc2": {
+			"RightArc2": { "x": 245.17, "y": 638.86, "width": 73, "height": 336 }
+		},
+		"RightArc3": {
+			"RightArc3": { "x": 199.25, "y": 340.43, "width": 121, "height": 332 }
+		}
+	}
+},
+"animations": {
+	"Part1": {
+		"bones": {
+			"Glow": {
+				"rotate": [
+					{ "time": 1, "angle": -7.63 },
+					{ "time": 1.3333, "angle": -14.98 }
+				],
+				"translate": [
+					{ "time": 0, "x": 0, "y": 99.79 },
+					{ "time": 0.3333, "x": 14.6, "y": -46.24 },
+					{ "time": 0.6666, "x": 4.86, "y": -182.55 },
+					{ "time": 1, "x": -17.03, "y": -328.59 },
+					{ "time": 1.3333, "x": -73.01, "y": -591.46 }
+				]
+			}
+		},
+		"slots": {
+			"Glow1": {
+				"attachment": [
+					{ "time": 0.5, "name": null },
+					{ "time": 0.6333, "name": "Glow1" }
+				],
+				"color": [
+					{ "time": 0, "color": "fffffffa" },
+					{ "time": 0.4, "color": "ffffffc0" },
+					{ "time": 0.5666, "color": "ffffff39" },
+					{ "time": 0.7666, "color": "ffffffff" },
+					{ "time": 1.3333, "color": "ffffff4b" }
+				]
+			},
+			"Glow2": {
+				"attachment": [
+					{ "time": 0.1666, "name": "Glow2" },
+					{ "time": 0.4666, "name": "Glow2" },
+					{ "time": 1, "name": "Glow2" },
+					{ "time": 1.3333, "name": "Glow2" }
+				],
+				"color": [
+					{ "time": 0.1666, "color": "ffffff05" },
+					{ "time": 0.5666, "color": "ffffffee" },
+					{ "time": 0.7333, "color": "ffffffa0" },
+					{ "time": 0.9333, "color": "ffffff3f" },
+					{ "time": 0.9666, "color": "ffffff56" },
+					{ "time": 1, "color": "ffffff6d" },
+					{ "time": 1.3333, "color": "fffffffa" }
+				]
+			},
+			"RightArc2": {
+				"attachment": [
+					{ "time": 0, "name": null },
+					{ "time": 0.7333, "name": "RightArc2" }
+				]
+			},
+			"RightArc3": {
+				"attachment": [
+					{ "time": 0, "name": null },
+					{ "time": 1.2666, "name": "RightArc3" }
+				]
+			}
+		}
+	}
+}
+}

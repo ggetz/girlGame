@@ -37,7 +37,7 @@ public class AcheivementMenu: MonoBehaviour
 		
 		acheives = new List<Acheivement>();
 		acheives.Add(new Acheivement("Fast!", "Complete Alice in Wonderland in less than a minute."));
-		acheives.Add(new Acheivement("Doodles", "Collect all doodles."));
+		acheives.Add(new Acheivement("Savior of Wonderland", "Collect all doodles."));
 		acheives[1].Complete();
 		acheives.Add(new Acheivement("Acheivement", "And this is the description."));
 		

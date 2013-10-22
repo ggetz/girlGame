@@ -1,0 +1,91 @@
+{
+"bones": [
+	{ "name": "root" },
+	{ "name": "Glow", "parent": "root", "x": -180.95, "y": 859.96 }
+],
+"slots": [
+	{ "name": "DoodleCloseUp", "bone": "root", "attachment": "DoodleCloseUp" },
+	{ "name": "LeftArc1", "bone": "root", "attachment": "LeftArc1" },
+	{ "name": "LeftArc2", "bone": "root", "attachment": "LeftArc2" },
+	{ "name": "LeftArc3", "bone": "root", "attachment": "LeftArc3" },
+	{ "name": "GlowStar1", "bone": "Glow", "attachment": "GlowStar2" }
+],
+"skins": {
+	"default": {
+		"DoodleCloseUp": {
+			"DoodleCloseUp": { "x": 30.97, "y": 545.17, "width": 1415, "height": 1080 }
+		},
+		"GlowStar1": {
+			"GlowStar1": { "x": 52.63, "y": 34.67, "rotation": -41.31, "width": 431, "height": 568 },
+			"GlowStar2": { "x": 80.71, "y": 98.66, "rotation": -30.07, "width": 421, "height": 616 }
+		},
+		"LeftArc1": {
+			"LeftArc1": { "x": -44.42, "y": 988.87, "rotation": 2.93, "width": 233, "height": 188 }
+		},
+		"LeftArc2": {
+			"LeftArc2": { "x": -235.82, "y": 759.77, "width": 189, "height": 320 }
+		},
+		"LeftArc3": {
+			"LeftArc3": { "x": -322.82, "y": 490.07, "width": 105, "height": 328 }
+		}
+	}
+},
+"animations": {
+	"Part1": {
+		"bones": {
+			"Glow": {
+				"rotate": [
+					{ "time": 0.4333, "angle": 12.02 },
+					{ "time": 0.4666, "angle": 4.82 },
+					{ "time": 0.7333, "angle": 13.99 },
+					{ "time": 1.1, "angle": 24.84 }
+				],
+				"translate": [
+					{ "time": 0, "x": -5.4, "y": -5.39 },
+					{ "time": 0.6, "x": -116.09, "y": -159.29 },
+					{ "time": 1.4, "x": -205.19, "y": -569.69 }
+				]
+			}
+		},
+		"slots": {
+			"GlowStar1": {
+				"attachment": [
+					{ "time": 0, "name": "GlowStar1" },
+					{ "time": 0.1, "name": "GlowStar2" },
+					{ "time": 0.2333, "name": "GlowStar1" },
+					{ "time": 0.4, "name": "GlowStar2" },
+					{ "time": 0.5333, "name": "GlowStar1" },
+					{ "time": 0.5666, "name": "GlowStar1" },
+					{ "time": 0.6666, "name": "GlowStar2" },
+					{ "time": 0.8333, "name": "GlowStar1" },
+					{ "time": 1, "name": "GlowStar2" },
+					{ "time": 1.1666, "name": "GlowStar1" },
+					{ "time": 1.3333, "name": "GlowStar2" }
+				],
+				"color": [
+					{ "time": 0, "color": "fffffffe" },
+					{ "time": 0.1666, "color": "ffffffff" },
+					{ "time": 0.4666, "color": "fffffffb" },
+					{ "time": 0.6, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 0.7333, "color": "ffffffff" }
+				]
+			},
+			"LeftArc2": {
+				"attachment": [
+					{ "time": 0, "name": null },
+					{ "time": 0.2333, "name": null },
+					{ "time": 0.5, "name": "LeftArc2" },
+					{ "time": 0.6, "name": "LeftArc2" }
+				]
+			},
+			"LeftArc3": {
+				"attachment": [
+					{ "time": 0, "name": null },
+					{ "time": 0.7333, "name": null },
+					{ "time": 1.0666, "name": "LeftArc3" }
+				]
+			}
+		}
+	}
+}
+}

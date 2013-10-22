@@ -1,0 +1,35 @@
+{
+"bones": [
+	{ "name": "root" }
+],
+"slots": [
+	{ "name": "LowerBodyCloseUp", "bone": "root", "attachment": "LowerBodyCloseUp" },
+	{ "name": "LowerBodyGlow", "bone": "root", "attachment": "LowerBodyGlow" }
+],
+"skins": {
+	"default": {
+		"LowerBodyCloseUp": {
+			"LowerBodyCloseUp": { "x": -20.68, "y": 541.5, "width": 1415, "height": 1080 }
+		},
+		"LowerBodyGlow": {
+			"LowerBodyGlow": { "x": -13.98, "y": 383.13, "width": 1345, "height": 706 }
+		}
+	}
+},
+"animations": {
+	"Part1": {
+		"slots": {
+			"LowerBodyGlow": {
+				"color": [
+					{ "time": 0, "color": "ffffff00" },
+					{ "time": 0.3333, "color": "ffffff04" },
+					{ "time": 0.6666, "color": "ffffff6e" },
+					{ "time": 0.8333, "color": "ffffffe3" },
+					{ "time": 1.1, "color": "ffffff51" },
+					{ "time": 1.2666, "color": "ffffff0e" }
+				]
+			}
+		}
+	}
+}
+}

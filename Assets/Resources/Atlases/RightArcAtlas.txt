@@ -1,0 +1,60 @@
+{"frames": {
+
+"BunnyBackground.png":
+{
+	"frame": {"x":2,"y":2,"w":1415,"h":1080},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":1415,"h":1080},
+	"sourceSize": {"w":1415,"h":1080}
+},
+"Glow1.png":
+{
+	"frame": {"x":1419,"y":2,"w":431,"h":568},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":431,"h":568},
+	"sourceSize": {"w":431,"h":568}
+},
+"Glow2.png":
+{
+	"frame": {"x":2,"y":1084,"w":421,"h":616},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":421,"h":616},
+	"sourceSize": {"w":421,"h":616}
+},
+"RightArc1.png":
+{
+	"frame": {"x":425,"y":1084,"w":91,"h":266},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":91,"h":266},
+	"sourceSize": {"w":91,"h":266}
+},
+"RightArc2.png":
+{
+	"frame": {"x":518,"y":1084,"w":73,"h":336},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":73,"h":336},
+	"sourceSize": {"w":73,"h":336}
+},
+"RightArc3.png":
+{
+	"frame": {"x":593,"y":1084,"w":121,"h":332},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":121,"h":332},
+	"sourceSize": {"w":121,"h":332}
+}},
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker ",
+	"version": "1.0",
+	"image": "RightArcAtlas.png",
+	"format": "RGBA8888",
+	"size": {"w":2048,"h":2048},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:20a8db4e8d4f46332b1fa717a1f30ed3$"
+}
+}
