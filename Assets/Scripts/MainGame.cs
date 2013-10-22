@@ -93,7 +93,7 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		girl = new Girl("girlAtlas", scaleGirl);
 		girl.scale =scaleGirl;
 		girl.alpha = .75f * girl.alpha;
-		girl.SetPosition(900, groundHeight);
+		girl.SetPosition(1200, groundHeight);
 		
 		//load the atlas
 		Futile.atlasManager.LoadAtlas("Atlases/AliceAtlas");
@@ -132,7 +132,7 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		Futile.touchManager.AddMultiTouchTarget (this);
 		
 		//set camera to follow girl
-		cam.setWorldBounds(new Rect(-1.5f * Futile.screen.width, -.5f*Futile.screen.height, 30*Futile.screen.width, 1.25f* Futile.screen.height));
+		cam.setWorldBounds(new Rect(-1.5f * Futile.screen.width, -.75f*Futile.screen.height, 30*Futile.screen.width, 1.25f* Futile.screen.height));
 		cam.follow(focus);
 	}
 	
@@ -352,6 +352,8 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 	void setUpTutorialStage()
 	{
 		//background
+		FSprite b = makeBackground(-546);
+		
 		background = makeBackground();
 		FSprite background2 = makeBackground(background.width + (background.width/2)-20);
 		

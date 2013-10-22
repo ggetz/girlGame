@@ -11,6 +11,8 @@ public class Menu: MonoBehaviour
 	
 	void Start()
 	{
+		Resources.Load("Music/alice");
+		
 		// Setup Futile
 		FutileParams fparams = new FutileParams(true, true, false, false);
 		fparams.AddResolutionLevel(1024.0f,	1.0f, 1.0f, "");
