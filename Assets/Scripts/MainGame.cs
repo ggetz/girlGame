@@ -6,6 +6,8 @@ using Spine;
 // remember to extend FMultiTouchableInterface! (wow that's a long title)
 public class MainGame: MonoBehaviour, FMultiTouchableInterface 
 {
+	bool isPaused;
+	
 	Vector2 deltaSwipe;
 	
 	public AudioClip music;
@@ -52,6 +54,8 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 	
 	void Start()
 	{
+		isPaused = false;
+		
 		// Setup Futile
 		FutileParams fparams = new FutileParams(true, true, false, false);
 		fparams.AddResolutionLevel(1024.0f,	1.0f, 1.0f, "");
@@ -133,7 +137,13 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 	}
 	
 	void Update()
-	{
+	{		
+		while (isPaused)
+		{
+			;	
+		}
+		
+		
 		
 		girl.Update(collisionRects); 
 		foreach (MediumText txt in twinkleText)
