@@ -11,15 +11,19 @@ public class Mallet : MovingPictureObstacles
 	
 	public Mallet(string atlas, float scale): base(atlas)
 	{
+		mscale=scale;
+		height =700*mscale;
+		width = 400*mscale;
+		Debug.Log ("In the mallet width is: " + width);
 		mscale = scale;
 	}
 	
 	// Use this for initialization
 	public override void Start () 
 	{
-		height =700*mscale;
-		width = 400*mscale;
+		
 		Play ("Still", false);
+		malletRect = new Rectangle(x-width/2f, y, width, height);
 		
 	}
 	
@@ -34,11 +38,6 @@ public class Mallet : MovingPictureObstacles
 
 	}
 	
-	public void makeRect()
-	{
-		malletRect = new Rectangle(x-width/2f, y, width, height);
-	}
-	
 	public override Rectangle getRect()
 	{
 		return malletRect;
@@ -46,11 +45,12 @@ public class Mallet : MovingPictureObstacles
 	
 	public override void electrify()
 	{
-		Debug.Log ("Mallet frying!");
 		Play ("Fry", false);
-		height = 90*mscale;
-		width = 400*mscale;
+		height = 80*mscale;
+		width = 280*mscale;
 		malletRect.height=height;
 		malletRect.width=width;
+		Debug.Log (malletRect.width + " " + malletRect.height);
+		
 	}
 }

@@ -18,6 +18,8 @@ public class Prologue: MonoBehaviour
 	bool textFading;
 	bool fadeType;
 	int time=0;
+	int framerate;
+	int factor=1;
 	
 	void Start()
 	{
@@ -95,34 +97,34 @@ public class Prologue: MonoBehaviour
 			wholeShot.Play("Part1", false);
 		}
 		
-		if(time==250)
+		if(time==250/factor)
 		{
 			text.text="They can't hear us but we cry\nas if they could";
 			fadeText (true, 50);
 		}
 		
-		if(time==450)
+		if(time==450/factor)
 		{
 			fadeText (false, 50);
 		}
-		if(time==700)
+		if(time==700/factor)
 		{
 			wholeShot.alpha=0;
 			mouth.alpha=100;
 			mouth.Play("Part1", false);
 		}
 		
-		if(time==950)
+		if(time==950/factor)
 		{
 			text.text="Even if only for an instant\nlonger,even if we will fade\none day...";
 			fadeText (true, 50);
 		}
-		if(time==1150)
+		if(time==1150/factor)
 		{
 			fadeText (false, 50);
 		}
 		
-		if(time==1200)
+		if(time==1200/factor)
 		{
 			mouth.alpha=0;
 			wholeShot.Stop ();
@@ -130,25 +132,25 @@ public class Prologue: MonoBehaviour
 			wholeShot.Play("Part2", false);
 		}
 		
-		if(time==1350)
+		if(time==1350/factor)
 		{
 			wholeShot.alpha=0;
 			eye.alpha=100;
 			eye.Play("animation", false);
 		}
 		
-		if(time==1500)
+		if(time==1500/factor)
 		{
 			text.text="Please.\n\nNot Yet";
 			fadeText (true, 50);
 		}
 		
-		if(time==1700)
+		if(time==1700/factor)
 		{
 			fadeText (false,50);
 		}
 		
-		if(time==1800)
+		if(time==1800/factor)
 		{
 			eye.alpha=0;
 			eye.Stop ();
@@ -158,7 +160,7 @@ public class Prologue: MonoBehaviour
 			wholeShot.Play("Part3", false);
 		}
 		
-		if(time==2000)
+		if(time==2000/factor)
 		{
 			wholeShot.Stop();
 			wholeShot.alpha=0;
@@ -166,47 +168,59 @@ public class Prologue: MonoBehaviour
 			hand.Play("Part1", false);
 		}
 		
-		if(time==2400)
+		if(time==2400/factor)
 		{
 			hand.alpha=0;
 			wholeShot.alpha=100;
 			wholeShot.Play("Part4", false);
 		}
 		
-		if(time==3000)
+		if(time==3000/factor)
 		{
 			text.text="So you over there, the\none who can hear us.";
 			fadeText (true, 50);
 		}
 		
-		if(time==3150)
+		if(time==3150/factor)
 		{
 			fadeText (false, 50);
 		}
 		
-		if(time==3000)
+		if(time==3000/factor)
 		{
 			wholeShot.alpha=0;
 			hand.alpha=100;
 			hand.Play("Part2", false);
 		}
 		
-		if(time==3500)
+		if(time==3500/factor)
 		{
 			text.text="Won't you carry us far\naway from here?";
 			fadeText (true, 50);
 		}
-		if(time==3650)
+		if(time==3650/factor)
 		{
 			fadeText (false, 50);
 		}
 		
-		if(time==3710)
+		if(time==3710/factor)
 		{
 			Application.LoadLevel ("MainMenu");
 		}
 		
 		time++;
+		
+		if(time>15)
+		{
+			framerate=(int)(1.0f / Time.deltaTime);
+			Debug.Log ("Framerate: " + framerate);
+			factor=60/framerate;
+			
+			if(factor==0)
+			{
+				factor=1;
+			}
+		}
 		
 		if(textFading)
 		{

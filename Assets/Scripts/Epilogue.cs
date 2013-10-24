@@ -28,6 +28,9 @@ public class Epilogue: MonoBehaviour
 	bool fadeType;
 	int time=0;
 	float scaling=0.5f;
+	int framerate;
+	int factor=1;
+	bool pan=false;
 	
 	void Start()
 	{
@@ -39,7 +42,7 @@ public class Epilogue: MonoBehaviour
 
 		LoadTextures ();
 		SetUpStage ();
-	
+		
 	}
 	
 	void LoadTextures()
@@ -73,7 +76,6 @@ public class Epilogue: MonoBehaviour
 		leg.scale=scaling;
 		hand.scale=scaling;
 		finalHand.scale=scaling;
-		finalScene.scale=scaling;
 		wholeShot.scale=scaling;
 		
 
@@ -98,7 +100,7 @@ public class Epilogue: MonoBehaviour
 		leftArc.SetPosition(Futile.screen.width/2f, 0);
 		lowerBody.SetPosition(Futile.screen.width/2f, 0);
 		finalHand.SetPosition(Futile.screen.width/2f, Futile.screen.height/2f);
-		finalScene.SetPosition(Futile.screen.width/2f, Futile.screen.height/2f);
+		finalScene.SetPosition(Futile.screen.width/1.5f, Futile.screen.height/7f);
 		
 		wholeShot.alpha = 0f;
 		leg.alpha=0f;
@@ -128,7 +130,7 @@ public class Epilogue: MonoBehaviour
 			leg.Play ("Part1", false);
 		}
 		
-		if(time==140)
+		if(time==130)
 		{
 			leg.Stop ();
 			leg.alpha=0;
@@ -184,38 +186,65 @@ public class Epilogue: MonoBehaviour
 			leftArc.Play ("Part1", false);
 		}
 		
-		if(time==2000)
+		if(time==1950)
 		{
 			fadeScene(false, 50, leftArc);
 		}
 		
-		if(time==2200)
+		if(time==2100)
 		{
 			fadeScene (true, 50, finalHand);
 			leftArc.Stop ();
 		}
 		
-		if(time==2350)
+		if(time==2300)
 		{
 			fadeScene (false, 50, finalHand);
 		}
 		
-		if(time==2500)
+		if(time==2450)
 		{
 			fadeScene (true, 50, finalScene);
+			pan=true;
 		}
-		
-		if(time==2900)
+	
+		if(time==2800)
 		{
 			fadeScene (false, 50, finalScene);
 		}
 		
-		if(time==3200)
+		if(time==3000)
+		{
+			finalScene.scale=scaling;
+			finalScene.SetPosition (Futile.screen.width/2f, Futile.screen.height/2f);
+			pan=false;
+			fadeScene (true, 50, finalScene);
+		}
+		
+		if(time==3300)
+		{
+			fadeScene (false, 50, finalScene);
+		}
+		
+		if(time==3500)
 		{
 			Application.LoadLevel ("MainMenu");
 		}
 		
 		time++;
+		
+				
+		if(time>15)
+		{
+			framerate=(int)(1.0f / Time.deltaTime);
+			Debug.Log ("Framerate: " + framerate);
+			factor=60/framerate;
+			
+			if(factor==0)
+			{
+				factor=1;
+			}
+		}
 		
 		if(spineFading)
 		{
@@ -249,6 +278,11 @@ public class Epilogue: MonoBehaviour
 				fadeImage.alpha-=fadeRate;
 			}
 			fade--;	
+		}
+		
+		if(pan)
+		{
+			panRight (finalScene);
 		}
 	}
 	
@@ -296,5 +330,9 @@ public class Epilogue: MonoBehaviour
 		
 	}
 	
+	void panRight(FSprite image)
+	{
+		image.x--;
+	}
 	
 }

@@ -370,6 +370,10 @@ public class Girl : GSpineSprite
 		float ty = 1;
 		float d1;
 		float d2;
+		//if(Mathf.Abs(r.left() - rect.right()) > 300 || Mathf.Abs(rect.left() - r.right()) > 300)
+		//{
+		//	return false;	
+		//}
 		foreach(Vector2 v in gCorners)
 		{
 			if(r.doesContain(v + vel))
@@ -558,7 +562,6 @@ public class Girl : GSpineSprite
 	{
 		foreach(Doodle target in doodleList)
 		{
-			Debug.Log ("Doodle: " + target.doodleRect.left () + "Girl: " + rect.right ());
 			if(target.doodleRect.isIntersecting (rect))
 			{
 		       Debug.Log ("Collection time");
