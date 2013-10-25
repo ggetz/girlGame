@@ -50,7 +50,7 @@ public class Girl : GSpineSprite
 	public Girl(string girlAtlas, float sc) : base(girlAtlas)
 	{
 		scale=sc;
-		girlWidth = 100*sc;
+		girlWidth = 120*sc;
 		standingHeight=225*sc;
 		crawlingHeight = 150*sc;
 		girlHeight=standingHeight;
@@ -73,12 +73,12 @@ public class Girl : GSpineSprite
 		if (isCrawling)
 		{
 			girlHeight = crawlingHeight;
-			rect = new Rectangle(x - standingHeight / 2, y, standingHeight, girlHeight);
+			rect = new Rectangle(x - girlWidth / 2, y, girlWidth, girlHeight);
 		}
 		else 
 		{
 			girlHeight = standingHeight;
-			rect = new Rectangle(x - standingHeight / 2, y, crawlingHeight, girlHeight);
+			rect = new Rectangle(x - girlWidth / 2, y, girlWidth, girlHeight);
 		}
 		
 		foreach (Rectangle r in collRects)

@@ -9,6 +9,8 @@ public class Menu: MonoBehaviour
 	FButton start;
 	FButton acheivements;
 	
+	FSprite logo;
+	
 	void Start()
 	{
 		Resources.Load("Music/alice");
@@ -27,17 +29,20 @@ public class Menu: MonoBehaviour
 		background.SetPosition(Futile.screen.width/2f, background.height/2f);
 		Futile.stage.AddChild (background);
 	
-		start = new FButton("Start1", "Start2");
-		acheivements = new FButton("Achievments1", "Achievment2");
+		start = new FButton("start_green", "start_blue");
+		acheivements = new FButton("acheive_purple", "acheive_pink");
+		logo = new FSprite("logo");
 		
-		start.scale=0.6f;
-		start.SetPosition (Futile.screen.width*0.4f, Futile.screen.height*0.3f);
+		start.SetPosition (Futile.screen.width*0.4f, Futile.screen.height*0.4f);
 		
-		acheivements.scale = 0.5f;
-		acheivements.SetPosition (Futile.screen.width*0.4f, Futile.screen.height*0.15f);
+		acheivements.scale = 0.9f;
+		acheivements.SetPosition (Futile.screen.width*0.4f, Futile.screen.height*0.1f);
+		
+		logo.SetPosition (Futile.screen.width*0.4f, Futile.screen.height*0.7f);
 		
 		Futile.stage.AddChild (start);
 		Futile.stage.AddChild (acheivements);
+		Futile.stage.AddChild (logo);
 		
 		start.SignalRelease+=HandleStartButtonRelease;
 		acheivements.SignalRelease+=HandleAcheivementButtonRelease;
