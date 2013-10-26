@@ -65,7 +65,7 @@ public class Velveteen: MonoBehaviour, FMultiTouchableInterface
 					{
 						SpecialWords word = specialWords[i];
 						Vector2 touchPos = word.GlobalToLocal (touch.position);
-						if(word.textRect.Contains (touchPos) && word.contactMade())
+						if(word.textRect.Contains (touchPos) && girl.getRect().isIntersecting(word.getRect ()))
 						{
 							word.action ();
 							inSpecialWord=true;

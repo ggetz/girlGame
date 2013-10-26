@@ -5,6 +5,10 @@ public class ChangeGirlPositionWord : SpecialWords {
 	
 	Vector2 targetLocation;
 	Girl targetGirl;
+	public ChangeGirlPositionWord(string font, string word, float scale, Girl girl):base(font, word, scale)
+	{
+		targetGirl=girl;
+	}
 	
 	public ChangeGirlPositionWord(string font, string word, float scale, Vector2 location, Girl girl): base(font, word, scale)
 	{
@@ -21,6 +25,11 @@ public class ChangeGirlPositionWord : SpecialWords {
 	void Update () 
 	{
 	
+	}
+	
+	public void setLocation(Vector2 loc)
+	{
+		targetLocation=loc;
 	}
 	
 	public override void action()

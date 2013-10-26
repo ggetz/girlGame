@@ -3,7 +3,7 @@ using System.Collections;
 
 public class ChangeWord : SpecialWords {
 	
-	bool solid = true;
+	bool isSolid = true;
 	public ChangeWord(string font, string word, float scale): base(font, word, scale)
 	{
 		
@@ -23,12 +23,14 @@ public class ChangeWord : SpecialWords {
 	public override void action()
 	{
 		Debug.Log("yo I worked");
-		solid=false;
+		isSolid=false;
 	}
 	
 	
 	public void changeBack()
 	{
-		solid=true;
+		isSolid=true;
 	}
+	
+	
 }

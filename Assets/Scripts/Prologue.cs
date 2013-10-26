@@ -23,6 +23,8 @@ public class Prologue: MonoBehaviour
 	int framerate;
 	int factor=1;
 	
+	bool unplayed=true;
+	
 	void Start()
 	{
 		// Setup Futile
@@ -115,67 +117,123 @@ public class Prologue: MonoBehaviour
 	}
 	
 	void Update()
-	{	
+	{
+		
 		if(time==0)
 		{
 			wholeShot.alpha=100;
 			wholeShot.Play("Part1", false);
 		}
 		
-		if(time==250/factor)
+		if(time>=250 && time<260 && unplayed)
 		{
 			text.text="They can't hear us but we cry\nas if they could";
 			fadeText (true, 50);
+			unplayed=false;
 		}
 		
-		if(time==450/factor)
+		if(time>440 && time<450 && !unplayed)
+		{
+			unplayed=true;
+		}
+		
+		if(time>=450 && time<460 && unplayed)
 		{
 			fadeText (false, 50);
+			unplayed=false;
 		}
-		if(time==700/factor)
+		
+		if(time>=680 && time<690 && !unplayed)
+		{
+			unplayed=true;
+		}
+		if(time>=700 && time<710 && unplayed)
 		{
 			wholeShot.alpha=0;
 			mouth.alpha=100;
 			mouth.Play("Part1", false);
+			unplayed=false;
 		}
 		
-		if(time==950/factor)
+		if(time>940 && time<950 && !unplayed)
+		{
+			unplayed=true;
+		}
+		
+		if(time>=950 && time<960 && unplayed)
 		{
 			text.text="Even if only for an instant\nlonger,even if we will fade\none day...";
 			fadeText (true, 50);
-		}
-		if(time==1150/factor)
-		{
-			fadeText (false, 50);
+			unplayed=false;
 		}
 		
-		if(time==1200/factor)
+		if(time>=1100 && time<1110 && !unplayed)
+		{
+			unplayed=true;
+		}
+		
+		if(time>=1150 && time<1160 && unplayed)
+		{
+			fadeText (false, 50);
+			unplayed=false;
+		}
+		
+		if(time>=1170 && time<1180 && !unplayed)
+		{
+			unplayed=true;
+		}
+		
+		if(time==1200)
 		{
 			mouth.alpha=0;
 			wholeShot.Stop ();
 			wholeShot.alpha=100;
 			wholeShot.Play("Part2", false);
+			unplayed=false;
 		}
 		
-		if(time==1350/factor)
+		if(time>=1330 && time<1340 && !unplayed)
+		{
+			unplayed=true;
+		}
+		
+		if(time>=1350 && time<1360 && unplayed)
 		{
 			wholeShot.alpha=0;
 			eye.alpha=100;
 			eye.Play("animation", false);
+			unplayed=false;
 		}
 		
-		if(time==1500/factor)
+		if(time>=1450 && time<1460 && !unplayed)
+		{
+			unplayed=true;
+		}
+		
+		if(time>=1500 && time<1510 && unplayed)
 		{
 			text.text="Please.\n\nNot Yet";
 			fadeText (true, 50);
+			unplayed=false;
 		}
 		
-		if(time==1700/factor)
+		if(time>=1650 && time<1660 && !unplayed)
+		{
+			unplayed=true;
+		}
+		
+		if(time>=1700 && time<1710 && unplayed)
 		{
 			fadeText (false,50);
+			unplayed=false;
 		}
 		
-		if(time==1800/factor)
+		if(time>=1780 && time<1790 && !unplayed)
+		{
+			unplayed=true;
+		}
+		
+		if(time>=1800 && time<1810 && unplayed)
 		{
 			eye.alpha=0;
 			eye.Stop ();
@@ -183,69 +241,111 @@ public class Prologue: MonoBehaviour
 			wholeShot.alpha=100;
 			
 			wholeShot.Play("Part3", false);
+			unplayed=false;
 		}
 		
-		if(time==2000/factor)
+		if(time>=1950 && time<1960 && !unplayed)
+		{
+			unplayed=true;
+		}
+		
+		if(time>=2000 && time<2010 && unplayed)
 		{
 			wholeShot.Stop();
 			wholeShot.alpha=0;
 			hand.alpha=100;
 			hand.Play("Part1", false);
+			unplayed=false;
 		}
 		
-		if(time==2400/factor)
+		if(time>=2350 && time<2360 && !unplayed)
+		{
+			unplayed=true;
+		}
+		
+		if(time>=2400 && time<2410 && unplayed)
 		{
 			hand.alpha=0;
 			wholeShot.alpha=100;
 			wholeShot.Play("Part4", false);
+			unplayed=false;
 		}
 		
-		if(time==3000/factor)
+		if(time>=2900 && time<2910 && !unplayed)
+		{
+			unplayed=true;
+		}
+		
+		if(time>=3000 && time<3010 && unplayed)
 		{
 			text.text="So you over there, the\none who can hear us.";
 			fadeText (true, 50);
+			unplayed=false;
 		}
 		
-		if(time==3150/factor)
+		if(time>=3100 && time<3110 && !unplayed)
+		{
+			unplayed=true;
+		}
+		
+		if(time>=3150 && time<3160 && unplayed)
 		{
 			fadeText (false, 50);
+			unplayed=false;
 		}
 		
-		if(time==3000/factor)
+		if(time>=3020 && time<3030 && !unplayed)
+		{
+			unplayed=true;
+		}
+		
+		if(time>=3050 && time<3060 && unplayed)
 		{
 			wholeShot.alpha=0;
 			hand.alpha=100;
 			hand.Play("Part2", false);
+			unplayed=false;
 		}
 		
-		if(time==3500/factor)
+		if(time>=3400 && time<3410 && !unplayed)
+		{
+			unplayed=true;
+		}
+		
+		if(time>=3500 && time<3510 && unplayed)
 		{
 			text.text="Won't you carry us far\naway from here?";
 			fadeText (true, 50);
-		}
-		if(time==3650/factor)
-		{
-			fadeText (false, 50);
+			unplayed=false;
 		}
 		
-		if(time==3710/factor)
+		if(time>=3600 && time<3610 && !unplayed)
+		{
+			unplayed=true;
+		}
+		
+		if(time>=3650 && time<3660 && unplayed)
+		{
+			fadeText (false, 50);
+			unplayed=false;
+		}
+		
+		if(time>=3710)
 		{
 			Application.LoadLevel ("MainMenu");
 		}
+
+		framerate=(int)(1.0f / Time.deltaTime);
+		Debug.Log ("Framerate: " + framerate);
+		factor=60/framerate;
 		
-		time++;
-		
-		if(time>15)
+		if(factor==0)
 		{
-			framerate=(int)(1.0f / Time.deltaTime);
-			Debug.Log ("Framerate: " + framerate);
-			factor=60/framerate;
-			
-			if(factor==0)
-			{
-				factor=1;
-			}
+			factor=1;
 		}
+		
+		time+=(int)factor;
+		
 		
 		if(textFading)
 		{
