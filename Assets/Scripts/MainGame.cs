@@ -18,6 +18,8 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 	FContainer dcontainer;
 	FButton dButton;
 	FLabel dLabel;
+	int currentDItem = 0;
+	List<string> dialogueItems;
 	
 	Vector2 deltaSwipe;
 	
@@ -66,6 +68,14 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 	void Start()
 	{
 		isPaused = false;
+		
+		/**Dialogue **/
+		dialogueItems = new List<string>();
+		dialogueItems.Add("Hey there");
+		dialogueItems.Add("hey there giiirl");
+		dialogueItems.Add("Hey girl hey");
+		dialogueItems.Add("Imma tell you a thing");
+		dialogueItems.Add("you ready?");
 		
 		// Setup Futile
 		FutileParams fparams = new FutileParams(true, true, false, false);
@@ -1503,11 +1513,17 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 	
 	FContainer prologueDialogue()
 	{
+		girl.Pause();
+		eraser.Pause();
+		
 		FContainer container = new FContainer();
 		FButton skipButton = new FButton("back_blue", "back_purple");
-		dLabel = new FLabel(blockFont, "Hey you there!");
-		dLabel.SetPosition(Futile.screen.halfWidth, Futile.screen.halfHeight);
-		container.AddChild(dLabel);
+		
+		dButton = new FButton("splotch");
+		dButton.SetPosition(Futile.screen.halfWidth, Futile.screen.halfHeight);
+		dButton.AddLabel(blockFont, dialogueItems[currentDItem], Color.black);
+		
+		container.AddChild(dButton);
 
 		skipButton.scale = 0.4f;
 		skipButton.scaleX = -skipButton.scaleX;
@@ -1515,7 +1531,7 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		skipButton.SetPosition(Futile.screen.width * 0.85f, Futile.screen.height * 0.1f);
 		
 		skipButton.SignalRelease+=HandleSkipButtonRelease;
-		
+		dButton.SignalRelease+=HandleDialogueButtonRelease;
 		container.AddChild(skipButton);
 		
 		return container;
@@ -1524,11 +1540,20 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 	private void HandleSkipButtonRelease(FButton button)
 	{
 		cam.RemoveChild(dcontainer);
+		girl.Resume();
+		eraser.Play();
 	}
 	
 	private void HandleDialogueButtonRelease(FButton button)
 	{
-		//change text
-		dLabel.text= "x";
+		currentDItem++;
+		if (currentDItem >= dialogueItems.Count)
+		{
+			cam.RemoveChild(dcontainer);
+			girl.Resume();
+			eraser.Play();	
+		}
+		else	
+			dButton.AddLabel(blockFont, dialogueItems[currentDItem], Color.black);
 	}
 }
