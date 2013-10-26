@@ -200,32 +200,6 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 	
 	void Update()
 	{		
-		while (isPaused)
-		{
-			;	
-		}
-		
-		girl.Update(collisionRects); 
-		foreach (MediumText txt in twinkleText)
-		{
-			txt.Update();
-		}
-		
-		foreach (MovingPictureObstacles pic in movingObs)
-		{
-			pic.Update ();
-			collisionRects.RemoveAt(collisionRects.Count-1);
-		}
-		
-		foreach(MovingPictureObstacles pic in movingObs)
-		{
-			collisionRects.Add(pic.getRect ());
-		}
-		
-		focus.x = girl.x - Futile.screen.halfWidth;
-		focus.y = girl.y - .1f * Futile.screen.height;
-		
-		eraser.Update ();
 		
 		if(girl.getLife ()==0)
 		{
@@ -247,16 +221,11 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 			{
 				txt.Update();
 			}
-			
-			foreach (MovingPictureObstacles pic in movingObs)
+		
+			for(int i=0; i<movingObs.Count; i++)
 			{
-				pic.Update ();
-				collisionRects.RemoveAt(collisionRects.Count-1);
-			}
-			
-			foreach(MovingPictureObstacles pic in movingObs)
-			{
-				collisionRects.Add(pic.getRect ());
+				movingObs[i].Update ();
+				collisionRects[collisionRects.Count-movingObs.Count+i]=movingObs[i].getRect ();
 			}
 			
 			focus.x = girl.x - Futile.screen.halfWidth;
