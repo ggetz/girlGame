@@ -21,7 +21,7 @@ public class Prologue: MonoBehaviour
 	int framerate;
 	int factor=1;
 	
-	bool unplayed=false;
+	bool unplayed=true;
 	
 	void Start()
 	{
@@ -92,7 +92,8 @@ public class Prologue: MonoBehaviour
 	}
 	
 	void Update()
-	{	
+	{
+		
 		if(time==0)
 		{
 			wholeShot.alpha=100;
@@ -308,20 +309,18 @@ public class Prologue: MonoBehaviour
 		{
 			Application.LoadLevel ("MainMenu");
 		}
+
+		framerate=(int)(1.0f / Time.deltaTime);
+		Debug.Log ("Framerate: " + framerate);
+		factor=60/framerate;
 		
-		if(time>15)
+		if(factor==0)
 		{
-			framerate=(int)(1.0f / Time.deltaTime);
-			Debug.Log ("Framerate: " + framerate);
-			factor=60/framerate;
-			
-			if(factor==0)
-			{
-				factor=1;
-			}
-			
-			time+=(int)factor;
+			factor=1;
 		}
+		
+		time+=(int)factor;
+		
 		
 		if(textFading)
 		{
