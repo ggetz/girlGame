@@ -13,6 +13,7 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 	FButton quitButton;
 	FButton pauseButton;
 	FContainer hud;
+	FContainer dcontainer;
 	
 	Vector2 deltaSwipe;
 	
@@ -168,6 +169,8 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		pauseButton.SignalRelease+=HandlePauseButtonRelease;
 		hud.AddChild(pauseButton);
 		cam.AddChild(hud);
+		dcontainer = prologueDialogue();
+		cam.AddChild(dcontainer);
 		Futile.stage.AddChild(cam);
 	}
 	
@@ -817,13 +820,9 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		FSprite background1 = makeBackground((background.width/2)-20 + startX);
 		FSprite background2 = makeBackground((background.width/2)-20 + background1.x);
 		
-		FSprite background3 = new FSprite("layer1");
-		Futile.stage.AddChild (background3);
-		background3.SetPosition((background.width/2)-20 + background2.x, background.height/2);
+		FSprite background3 = makeBackground((background.width/2)-20 + background2.x);
 		
-		FSprite background4 = new FSprite("layer1");
-		Futile.stage.AddChild (background4);
-		background4.SetPosition((background.width/2)-20 + background3.x, background.height/2);
+		FSprite background4 = makeBackground((background.width/2)-20 + background3.x);
 		
 		GSpineManager.LoadSpine("MushroomAtlas", "Atlases/MushroomJson", "Atlases/MushroomAtlas");
 		GrowingMushroom smallMushroom = new GrowingMushroom("MushroomAtlas", "small", 0.6f);
@@ -904,13 +903,9 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 	
 	void setUpFiller3(float startX)
 	{
-		FSprite background1 = new FSprite("layer1");
-		Futile.stage.AddChild(background1);
-		background1.SetPosition(startX + background1.width/2, background1.height/2);
+		FSprite background1 = makeBackground(startX + background.width/2);
 		
-		FSprite background2 = new FSprite("layer1");
-		Futile.stage.AddChild (background2);
-		background2.SetPosition(startX + background1.width + (background2.width/2)-20, background1.height/2);
+		FSprite background2 = makeBackground(startX + background1.width + (background.width/2)-20);
 		
 		GSpineManager.LoadSpine("DoodleAtlas", "Atlases/DoodleJson", "Atlases/DoodleAtlas");
 		Doodle canary = new Doodle("DoodleAtlas", 238f, 200f, 0.6f);
@@ -1010,25 +1005,15 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 	
 	void setUpEggStage(float startX)
 	{
-		FSprite background = new FSprite("layer1");
-		Futile.stage.AddChild (background);
-		background.SetPosition((background.width/2)-20 + startX, background.height/2);
+		FSprite background1 = makeBackground((background.width/2)-20 + startX);
 		
-		FSprite background2 = new FSprite("layer1");
-		Futile.stage.AddChild (background2);
-		background2.SetPosition((background.width/2)-20 + background.x, background.height/2);
+		FSprite background2 = makeBackground((background.width/2)-20 + background1.x);
 		
-		FSprite background3 = new FSprite("layer1");
-		Futile.stage.AddChild (background3);
-		background3.SetPosition((background.width/2)-20 + background2.x, background.height/2);
+		FSprite background3 = makeBackground((background.width/2)-20 + background2.x);
 		
-		FSprite background4 = new FSprite("layer1");
-		Futile.stage.AddChild (background4);
-		background4.SetPosition((background.width/2)-20 + background3.x, background.height/2);
+		FSprite background4 = makeBackground((background.width/2)-20 + background3.x);
 		
-		FSprite background5 = new FSprite("layer1");
-		Futile.stage.AddChild (background5);
-		background5.SetPosition((background.width/2)-20 + background4.x, background.height/2);
+		FSprite background5 = makeBackground((background.width/2)-20 + background4.x);
 		
 		
 		GSpineManager.LoadSpine("EggAtlas", "Atlases/EggJson", "Atlases/EggAtlas");
@@ -1099,17 +1084,11 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 	void setUpFiller4(float startX)
 	{
 		//'Oh dear, what nonsense I'm ... along in a great hurry, muttering
-		FSprite background1 = new FSprite("layer1");
-		Futile.stage.AddChild(background1);
-		background1.SetPosition(startX + background1.width/2, background1.height/2);
+		FSprite background1 = makeBackground(startX + background.width/2);
 		
-		FSprite background2 = new FSprite("layer1");
-		Futile.stage.AddChild (background2);
-		background2.SetPosition(startX + background1.width + (background2.width/2)-20, background1.height/2);		
+		FSprite background2 = makeBackground(startX + background1.width + (background.width/2)-20);	
 		
-		FSprite background3 = new FSprite("layer1");
-		Futile.stage.AddChild (background3);
-		background3.SetPosition(startX + background1.width + background2.width + (background3.width/2)-20, background1.height/2);
+		FSprite background3 = makeBackground(startX + background1.width + background2.width + (background.width/2)-20);
 		
 		MediumText blockd1 = new MediumText(blockFont, "'I HAVE tasted eggs, certainly,' said");
 		MediumText blockd2 = new MediumText(blockFont, "Alice, who was a very truthful child;");
@@ -1509,5 +1488,31 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 			l.x -= layer3speed;	
 		}
 	}
+	
+	FContainer prologueDialogue()
+	{
+		FContainer container = new FContainer();
+		FButton skipButton = new FButton("back_blue", "back_purple");
+		FLabel dialogueLabel = new FLabel(blockFont, "Hey you there!");
+		dialogueLabel.SetPosition(Futile.screen.halfWidth, Futile.screen.halfHeight);
+		container.AddChild(dialogueLabel);
+
+		skipButton.scale = 0.4f;
+		skipButton.scaleX = -skipButton.scaleX;
+		
+		skipButton.SetPosition(Futile.screen.width * 0.85f, Futile.screen.height * 0.1f);
+		
+		skipButton.SignalRelease+=HandleSkipButtonRelease;
+		
+		container.AddChild(skipButton);
+		
+		return container;
+	}
+	
+	private void HandleSkipButtonRelease(FButton button)
+	{
+		cam.RemoveChild(dcontainer);
+	}
+	
 	
 }

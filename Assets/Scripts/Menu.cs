@@ -36,14 +36,13 @@ public class Menu: MonoBehaviour
 		
 		logo = new FSprite("logo");
 		
-		start.SetPosition (Futile.screen.width*0.4f, Futile.screen.height*0.55f);
+		start.SetPosition (Futile.screen.width*0.4f, Futile.screen.height*0.45f);
 		
-		acheivements.scale = 0.8f;
-		acheivements.SetPosition (Futile.screen.width*0.4f, Futile.screen.height*0.27f);
+		acheivements.SetPosition (Futile.screen.width*0.4f, Futile.screen.height*0.2f);
 		
 		quit.SetPosition(Futile.screen.width*0.4f, Futile.screen.height*0.12f);
 		
-		logo.SetPosition (Futile.screen.width*0.4f, Futile.screen.height*0.8f);
+		logo.SetPosition (Futile.screen.width*0.4f, Futile.screen.height*0.7f);
 		
 		Futile.stage.AddChild (start);
 		Futile.stage.AddChild (quit);
