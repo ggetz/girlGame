@@ -13,7 +13,11 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 	FButton quitButton;
 	FButton pauseButton;
 	FContainer hud;
+	
+	/**Dialogue Stuffs **/
 	FContainer dcontainer;
+	FButton dButton;
+	FLabel dLabel;
 	
 	Vector2 deltaSwipe;
 	
@@ -1501,9 +1505,9 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 	{
 		FContainer container = new FContainer();
 		FButton skipButton = new FButton("back_blue", "back_purple");
-		FLabel dialogueLabel = new FLabel(blockFont, "Hey you there!");
-		dialogueLabel.SetPosition(Futile.screen.halfWidth, Futile.screen.halfHeight);
-		container.AddChild(dialogueLabel);
+		dLabel = new FLabel(blockFont, "Hey you there!");
+		dLabel.SetPosition(Futile.screen.halfWidth, Futile.screen.halfHeight);
+		container.AddChild(dLabel);
 
 		skipButton.scale = 0.4f;
 		skipButton.scaleX = -skipButton.scaleX;
@@ -1522,5 +1526,9 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		cam.RemoveChild(dcontainer);
 	}
 	
-	
+	private void HandleDialogueButtonRelease(FButton button)
+	{
+		//change text
+		dLabel.text= "x";
+	}
 }
