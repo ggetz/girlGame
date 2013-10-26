@@ -117,8 +117,8 @@ public class WaterGlass : MovingPictureObstacles
 
 		Play ("Shatter", false);
 		
-		height = 250*wscale;
-		width = 1400*wscale;
+		height = 50*wscale;
+		width = 800*wscale;
 		
 		waterRect = new Rectangle(x-width/2f, y, width, height);
 
@@ -164,6 +164,8 @@ public class WaterGlass : MovingPictureObstacles
 		electrified=true;
 		foreach(MovingPictureObstacles obs in checkHit)
 		{
+			Debug.Log("Water: " + waterRect.right () + " " + waterRect.left());
+			Debug.Log("Mallet: " + obs.getRect().right() + " " + obs.getRect ().left());
 			if(waterRect.isIntersecting (obs.getRect()))
 			{
 				obs.electrify();

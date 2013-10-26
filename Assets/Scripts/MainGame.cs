@@ -221,7 +221,7 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 			focus.x = girl.x - Futile.screen.halfWidth;
 			focus.y = girl.y - .1f * Futile.screen.height;
 			
-			//eraser.Update ();
+			eraser.Update ();
 			
 			if(girl.getLife ()==0)
 			{
@@ -1418,13 +1418,12 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		lightening.Start ();
 		lightening.addCollider (glass);
 		glass.addCollider (mallet);
-		mallet.Start ();
-		
-		mallet.SetPosition (tremble.x+mallet.height/1.5f, groundHeight);
+	
+		mallet.SetPosition (tremble.x+mallet.width, groundHeight);
 		glass.SetPosition (tremble.x, tremble.y+tremble.textRect.height/2f);
 		lightening.SetPosition (thunderstorm.x, thunderstorm.y);
 		
-		mallet.makeRect ();
+		mallet.Start ();
 		glass.Start ();
 		updateObs.Add(glass);
 		

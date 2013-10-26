@@ -4,8 +4,11 @@ using System.Collections;
 public class Scroll : MovingPictureObstacles {
 
 	float scale;
-	public float height = 90;
+	public float rHeight = 90;
 	public float width = 450;
+	public float fHeight=500;
+	public float textHeight=200;
+	public float textWidth=300;
 	Rectangle textRect;
 	
 	public Scroll(string atlas, float x):base(atlas)
@@ -17,10 +20,11 @@ public class Scroll : MovingPictureObstacles {
 	// Use this for initialization
 	public override void Start () 
 	{
-		height = height*scale;
+		rHeight = rHeight*scale;
 		width = width*scale;
+		fHeight=fHeight*scale;
 		Play ("Still");	
-		textRect=new Rectangle(x-width/2f, y+height/2f, width, height);
+		textRect=new Rectangle(x-width/2f, y-fHeight, width, rHeight);
 	}
 	
 	// Update is called once per frame
@@ -30,8 +34,11 @@ public class Scroll : MovingPictureObstacles {
 	
 	public override void action()
 	{
+		textHeight=textHeight*scale;
+		textWidth=textWidth*scale;
+		
 		Play("Roll Out", false);
-		//textRect=new Rectangle(x-width/2f, y
+		textRect=new Rectangle(x-width/2f, y-fHeight/2f, textWidth, textHeight);
 		
 	}
 	
