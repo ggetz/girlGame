@@ -24,7 +24,9 @@ public class Scroll : MovingPictureObstacles {
 		width = width*scale;
 		fHeight=fHeight*scale;
 		Play ("Still");	
-		textRect=new Rectangle(x-width/2f, y-fHeight, width, rHeight);
+		textRect=new Rectangle(0, 0, 0, 0);
+		Debug.Log ("Rect: " + textRect.top () + " " + textRect.left ());	
+	
 	}
 	
 	// Update is called once per frame
@@ -38,8 +40,8 @@ public class Scroll : MovingPictureObstacles {
 		textWidth=textWidth*scale;
 		
 		Play("Roll Out", false);
-		textRect=new Rectangle(x-width/2f, y-fHeight/2f, textWidth, textHeight);
-		
+		textRect=new Rectangle(x-width/2f, y+fHeight/2f-textHeight/2f, textWidth, textHeight);
+		Debug.Log ("Rect: " + textRect.top () + " " + textRect.left ());	
 	}
 	
 	public override Rectangle getRect ()
