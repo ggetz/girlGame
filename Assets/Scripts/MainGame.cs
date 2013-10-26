@@ -79,6 +79,10 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		{
 			collisionRects.Add(new Rectangle(t, mediumTextScale));	
 		}
+		foreach (SpecialWords sw in specialWords)
+		{
+			collisionRects.Add (sw.getRect ());
+		}
 		foreach (MovingPictureObstacles pic in movingObs)
 		{
 			collisionRects.Add (pic.getRect());
@@ -142,8 +146,6 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		{
 			;	
 		}
-		
-		
 		
 		girl.Update(collisionRects); 
 		foreach (MediumText txt in twinkleText)
@@ -214,7 +216,8 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 					{
 						SpecialWords word = specialWords[i];
 						Vector2 touchPos = word.GlobalToLocal (touch.position);
-						if(word.textRect.Contains (touchPos))
+						Debug.Log (word.getRect ().left());
+						if(word.textRect.Contains (touchPos) && girl.getRect ().isIntersecting (word.getRect()))
 						{
 							word.action ();
 							inSpecialWord=true;
@@ -464,9 +467,11 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		
 		sentence1.SetPosition (blocka7.x + sentence1.textRect.width/1.5f, blocka9.y+sentence1.textRect.height/1.5f);
 		
-		ChangeWord down = new ChangeWord(specialFont, "down", 1f);
+		ChangeGirlPositionWord down = new ChangeGirlPositionWord(specialFont, "down", 1f, girl);
 		Futile.stage.AddChild(down);
 		down.SetPosition (sentence1.x + down.textRect.width*1.5f, sentence1.y);
+		Vector2 downPos=new Vector2(down.x, down.y-girl.girlHeight/1.5f);
+		down.setLocation(downPos);
 		
 		Futile.stage.AddChild (rabbit);
 		rabbit.Start();
@@ -1330,29 +1335,28 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		GSpineManager.LoadSpine("MalletAtlas", "Atlases/MalletJson", "Atlases/MalletAtlas");
 		Mallet mallet = new Mallet("MalletAtlas", 0.6f);
 		mallet.scale = 0.6f;
-
+	 
 		GSpineManager.LoadSpine ("LighteningAtlas", "Atlases/LighteningJson", "Atlases/LighteningAtlas");
 		Lightening lightening = new Lightening("LighteningAtlas", 0.6f);
 		lightening.scale = 0.4f;
 		
 		AffectPictureWords tremble = new AffectPictureWords(specialFont, "tremble", 1f, glass);
 		AffectPictureWords thunderstorm = new AffectPictureWords(specialFont, "thunderstorm", 1f, lightening);
-		
-		
+		 
 		MediumText block1 = new MediumText(blockFont, "But here, the Duchess's voice died away, and hers arm began to ");
 		MediumText block2 = new MediumText(blockFont, "Alice looked up, and there stood the Queen, frowning like a ");
 
 		block1.SetPosition (startX + block1.textRect.width/1.5f, groundHeight + girl.girlHeight*2f);
 		block2.SetPosition (startX + block2.textRect.width/2f, lightening.lighteningHeight - block2.textRect.height);
-
+	
 		block1.SetPosition (startX + block1.textRect.width/1.5f, groundHeight + girl.girlHeight*2f);
 		block2.SetPosition (startX + block2.textRect.width/2f, lightening.lighteningHeight);
-		tremble.SetPosition(block1.x+(block1.textRect.width/2f)*mediumTextScale+tremble.rect.width/2f, block1.y);
+		tremble.SetPosition(block1.x+block1.textRect.width/2f+0.6f*(tremble.textRect.width/2f), block1.y);
 		thunderstorm.SetPosition (block2.x + block2.textRect.width/2.4f, block2.y);
 		
 		mediumText.Add (block1);
 		mediumText.Add (block2);
-		
+
 		specialWords.Add (tremble);
 		specialWords.Add (thunderstorm);
 		
@@ -1382,6 +1386,7 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		foreach (SpecialWords sw in specialWords)
 		{
 			Futile.stage.AddChild (sw);
+			sw.setRect (new Rectangle((MediumText)sw, 1));
 		}
 		
 		foreach(MovingPictureObstacles pic in movingObs)

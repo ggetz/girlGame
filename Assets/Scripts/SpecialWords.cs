@@ -4,12 +4,11 @@ using System.Collections;
 public class SpecialWords : MediumText
 {
 	PictureObstacle effectedObstacle;
-	bool linked = false;
-	Girl girl;
-	public Rectangle rect;
 	enum effectTypes{SHRINK, ENLARGE};
 	float height;
 	float width;
+	
+	Rectangle rect;
 	
 	// Use this for initialization
 	public SpecialWords(string font, string word, float scale): base(font, word)
@@ -18,7 +17,6 @@ public class SpecialWords : MediumText
 		width = textRect.width * scale;
 		x = x - width/2;
 		y = y - height/2;
-		rect=new Rectangle(x, y, width, height);
 	}
 	
 	
@@ -36,11 +34,14 @@ public class SpecialWords : MediumText
 	{
 	}
 	
-	public bool contactMade()
+	public Rectangle getRect()
 	{
-		return rect.isIntersecting(girl.getRect ());
+		return rect;
 	}
 	
-
+	public void setRect(Rectangle r)
+	{
+		rect=r;
+	}
 	
 }
