@@ -26,10 +26,10 @@ public class AcheivementMenu: MonoBehaviour
 		background.SetPosition(Futile.screen.width/2f, background.height/2f);
 		Futile.stage.AddChild (background);
 	
-		back = new FButton("Achievments1", "Achievment2");
+		back = new FButton("back_pink", "back_purple");
 		
-		back.scale=0.2f;
-		back.SetPosition (Futile.screen.width*0.05f, Futile.screen.height*0.05f);
+		back.scale=0.6f;
+		back.SetPosition (Futile.screen.width*0.1f, Futile.screen.height*0.1f);
 		
 		Futile.stage.AddChild (back);
 		

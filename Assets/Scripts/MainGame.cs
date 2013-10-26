@@ -6,7 +6,13 @@ using Spine;
 // remember to extend FMultiTouchableInterface! (wow that's a long title)
 public class MainGame: MonoBehaviour, FMultiTouchableInterface 
 {
+	/** Pause Stuffs **/
 	bool isPaused;
+	FContainer pauseMenu;
+	FButton backButton;
+	FButton quitButton;
+	FButton pauseButton;
+	FContainer hud;
 	
 	Vector2 deltaSwipe;
 	
@@ -74,6 +80,7 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		
 		LoadTextures ();
 		SetUpStage ();
+		setUpPauseMenu ();
 		
 		foreach (MediumText t in mediumText)
 		{
@@ -113,6 +120,25 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		eraser.scale=0.6f;
 		
 	}
+	
+	void setUpPauseMenu()
+	{
+		pauseMenu = new FContainer();
+		
+		backButton = new FButton("back_purple", "back_blue");
+		quitButton = new FButton("quit_blue", "quit_purple");
+		
+		backButton.scale = 0.7f;
+		
+		backButton.SetPosition(Futile.screen.width * 0.15f, Futile.screen.height * 0.85f);
+		quitButton.SetPosition(Futile.screen.width * 0.5f, Futile.screen.height * 0.3f);
+		
+		pauseMenu.AddChild(backButton);
+		pauseMenu.AddChild(quitButton);
+		
+		backButton.SignalRelease+=HandleBackButtonRelease;
+		quitButton.SignalRelease+=HandleQuitButtonRelease;
+	}
 			
 	void SetUpStage()
 	{
@@ -134,68 +160,99 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		//set camera to follow girl
 		cam.setWorldBounds(new Rect(-1.5f * Futile.screen.width, -.5f*Futile.screen.height, 30*Futile.screen.width, 1.25f* Futile.screen.height));
 		cam.follow(focus);
+		
+		hud = new FContainer();
+		pauseButton = new FButton("pause_red", "pause_orange");
+		pauseButton.SetPosition(Futile.screen.width*0.95f, Futile.screen.height*0.9f);
+		pauseButton.scale=0.4f;
+		pauseButton.SignalRelease+=HandlePauseButtonRelease;
+		hud.AddChild(pauseButton);
+		cam.AddChild(hud);
+		Futile.stage.AddChild(cam);
+	}
+	
+	private void HandlePauseButtonRelease(FButton button)
+	{
+		isPaused = true;
+	}
+	
+	private void HandleBackButtonRelease(FButton button)
+	{
+		isPaused = false;
+		cam.RemoveChild(pauseMenu);
+		cam.AddChild(hud);
+		Futile.stage.AddChild(cam);
+		girl.Resume();
+	}
+	
+	private void HandleQuitButtonRelease(FButton button)
+	{
+		Application.LoadLevel("MainMenu");
 	}
 	
 	void Update()
 	{		
-		while (isPaused)
+		if (isPaused)
 		{
-			;	
+			girl.Pause();
+			cam.RemoveChild(hud);
+			cam.AddChild(pauseMenu);
+			Futile.stage.AddChild(cam);
 		}
-		
-		
-		
-		girl.Update(collisionRects); 
-		foreach (MediumText txt in twinkleText)
+		else
 		{
-			txt.Update();
-		}
-		
-		foreach (MovingPictureObstacles pic in movingObs)
-		{
-			pic.Update ();
-			collisionRects.RemoveAt(collisionRects.Count-1);
-		}
-		
-		foreach(MovingPictureObstacles pic in movingObs)
-		{
-			collisionRects.Add(pic.getRect ());
-		}
-		
-		focus.x = girl.x - Futile.screen.halfWidth;
-		focus.y = girl.y - .1f * Futile.screen.height;
-		
-		//eraser.Update ();
-		
-		if(girl.getLife ()==0)
-		{
-			Application.LoadLevel ("DeadScreen");
-		}
-		
-		if(girl.checkDoodleCollision ())
-		{
-			if(temp==null)
+			girl.Update(collisionRects); 
+			foreach (MediumText txt in twinkleText)
 			{
-				temp=girl.getCollidedDoodle ();
+				txt.Update();
 			}
 			
-			collectionTime=true;
-		}
-		
-		if(collectionTime)
-		{
-			doodleCollect--;
-			
-			if(doodleCollect==0)
+			foreach (MovingPictureObstacles pic in movingObs)
 			{
-				Debug.Log ("Goodbye friends I am gone");
-				Futile.stage.RemoveChild (girl.getCollidedDoodle ());
-				temp=null;
-				doodleCollect=60;
-				collectionTime=false;
+				pic.Update ();
+				collisionRects.RemoveAt(collisionRects.Count-1);
 			}
+			
+			foreach(MovingPictureObstacles pic in movingObs)
+			{
+				collisionRects.Add(pic.getRect ());
+			}
+			
+			focus.x = girl.x - Futile.screen.halfWidth;
+			focus.y = girl.y - .1f * Futile.screen.height;
+			
+			//eraser.Update ();
+			
+			if(girl.getLife ()==0)
+			{
+				Application.LoadLevel ("DeadScreen");
+			}
+			
+			if(girl.checkDoodleCollision ())
+			{
+				if(temp==null)
+				{
+					temp=girl.getCollidedDoodle ();
+				}
+				
+				collectionTime=true;
+			}
+			
+			if(collectionTime)
+			{
+				doodleCollect--;
+				
+				if(doodleCollect==0)
+				{
+					Debug.Log ("Goodbye friends I am gone");
+					Futile.stage.RemoveChild (girl.getCollidedDoodle ());
+					temp=null;
+					doodleCollect=60;
+					collectionTime=false;
+				}
+			}
+			updateBackground();
 		}
-		updateBackground();
 	}
 	
 	/*-----------------------------------------
@@ -205,7 +262,8 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 	 * ---------------------------------------*/
 	public void HandleMultiTouch(FTouch[] touches)
 	{
-
+		if(!isPaused)
+		{
 		foreach(FTouch touch in touches)
 		{
 			if(touch.phase == TouchPhase.Began)
@@ -366,6 +424,7 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 					}
 					
 				}
+		}
 		}
 	}
 		

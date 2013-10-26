@@ -35,7 +35,7 @@ public class Menu: MonoBehaviour
 		
 		start.SetPosition (Futile.screen.width*0.4f, Futile.screen.height*0.4f);
 		
-		acheivements.scale = 0.9f;
+		acheivements.scale = 0.8f;
 		acheivements.SetPosition (Futile.screen.width*0.4f, Futile.screen.height*0.1f);
 		
 		logo.SetPosition (Futile.screen.width*0.4f, Futile.screen.height*0.7f);

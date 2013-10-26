@@ -24,9 +24,33 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":512,"h":256},
 	"sourceSize": {"w":512,"h":256}
 },
+"back_blue.png":
+{
+	"frame": {"x":1076,"y":2,"w":232,"h":142},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":232,"h":142},
+	"sourceSize": {"w":232,"h":142}
+},
+"back_pink.png":
+{
+	"frame": {"x":1310,"y":2,"w":232,"h":142},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":232,"h":142},
+	"sourceSize": {"w":232,"h":142}
+},
+"back_purple.png":
+{
+	"frame": {"x":1544,"y":2,"w":232,"h":142},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":232,"h":142},
+	"sourceSize": {"w":232,"h":142}
+},
 "drinkme.png":
 {
-	"frame": {"x":1076,"y":2,"w":106,"h":145},
+	"frame": {"x":1778,"y":2,"w":106,"h":145},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":106,"h":145},
@@ -34,7 +58,7 @@
 },
 "layer1.png":
 {
-	"frame": {"x":1184,"y":2,"w":1092,"h":751},
+	"frame": {"x":1886,"y":2,"w":1092,"h":751},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":1092,"h":751},
@@ -42,7 +66,7 @@
 },
 "layer2.png":
 {
-	"frame": {"x":2278,"y":2,"w":1092,"h":751},
+	"frame": {"x":2980,"y":2,"w":1092,"h":751},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":1092,"h":751},
@@ -71,6 +95,38 @@
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":369,"h":554},
 	"sourceSize": {"w":369,"h":554}
+},
+"pause_orange.png":
+{
+	"frame": {"x":2107,"y":755,"w":277,"h":190},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":277,"h":190},
+	"sourceSize": {"w":277,"h":190}
+},
+"pause_red.png":
+{
+	"frame": {"x":2386,"y":755,"w":277,"h":190},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":277,"h":190},
+	"sourceSize": {"w":277,"h":190}
+},
+"quit_blue.png":
+{
+	"frame": {"x":2665,"y":755,"w":285,"h":178},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":285,"h":178},
+	"sourceSize": {"w":285,"h":178}
+},
+"quit_purple.png":
+{
+	"frame": {"x":2952,"y":755,"w":285,"h":178},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":285,"h":178},
+	"sourceSize": {"w":285,"h":178}
 }},
 "meta": {
 	"app": "http://www.codeandweb.com/texturepacker ",
@@ -79,6 +135,6 @@
 	"format": "RGBA8888",
 	"size": {"w":4096,"h":2048},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:dbfcd3968f0ba8dd3675c4bfb2699d02$"
+	"smartupdate": "$TexturePacker:SmartUpdate:67be3b56099123c39de0a0bb3bfcb0e4$"
 }
 }
