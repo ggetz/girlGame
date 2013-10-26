@@ -20,6 +20,9 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 	FLabel dLabel;
 	int currentDItem = 0;
 	List<string> dialogueItems;
+	bool step2Triggered=false;
+	bool step3Triggered=false;
+	bool step4Triggered=false;
 	
 	Vector2 deltaSwipe;
 	
@@ -71,11 +74,14 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		
 		/**Dialogue **/
 		dialogueItems = new List<string>();
-		dialogueItems.Add("Hey there");
-		dialogueItems.Add("hey there giiirl");
-		dialogueItems.Add("Hey girl hey");
-		dialogueItems.Add("Imma tell you a thing");
-		dialogueItems.Add("you ready?");
+		dialogueItems.Add("Hey, over here!");
+		dialogueItems.Add("You've escaped!");
+		dialogueItems.Add("Please, help me out of here before we're both erased!");
+		dialogueItems.Add("The first thing you need to do is jump up onto the words above me.");
+		dialogueItems.Add("Touch the screen in fornt of you to run,");
+		dialogueItems.Add("Touch the screen in behind you to run backwards,");
+		dialogueItems.Add("And swipe up to jump.");
+		dialogueItems.Add("Come on!");
 		
 		// Setup Futile
 		FutileParams fparams = new FutileParams(true, true, false, false);
@@ -214,6 +220,12 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 	
 	void Update()
 	{		
+		if (girl.x > Futile.screen.halfWidth && !step2Triggered)
+			prologueDialogue2();
+		if (step2Triggered && girl.y < Futile.screen.halfHeight * 1.25f && !step3Triggered)
+			prologueDialogue3();
+		if (step3Triggered && girl.y < Futile.screen.halfHeight * 0.7f && !step4Triggered)
+			prologueDialogue4();
 		
 		if(girl.getLife ()==0)
 		{
@@ -1513,14 +1525,16 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 	
 	FContainer prologueDialogue()
 	{
-		girl.Pause();
+		girl.SetPosition(girl.x + Futile.screen.width * .1f, girl.y);
 		eraser.Pause();
 		
 		FContainer container = new FContainer();
 		FButton skipButton = new FButton("back_blue", "back_purple");
+		skipButton.AddLabel(blockFont, "Skip", Color.black);
+		skipButton.label.scaleX = -skipButton.label.scaleX;
 		
 		dButton = new FButton("splotch");
-		dButton.SetPosition(Futile.screen.halfWidth, Futile.screen.halfHeight);
+		dButton.SetPosition(Futile.screen.width * 0.5f, Futile.screen.halfHeight);
 		dButton.AddLabel(blockFont, dialogueItems[currentDItem], Color.black);
 		
 		container.AddChild(dButton);
@@ -1528,7 +1542,7 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		skipButton.scale = 0.4f;
 		skipButton.scaleX = -skipButton.scaleX;
 		
-		skipButton.SetPosition(Futile.screen.width * 0.85f, Futile.screen.height * 0.1f);
+		skipButton.SetPosition(Futile.screen.width * 0.85f, Futile.screen.height * 0.05f);
 		
 		skipButton.SignalRelease+=HandleSkipButtonRelease;
 		dButton.SignalRelease+=HandleDialogueButtonRelease;
@@ -1537,10 +1551,42 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		return container;
 	}
 	
+	void prologueDialogue2()
+	{
+		step2Triggered = true;
+		dialogueItems.Add("Good!");
+		dialogueItems.Add("Now drop down the hole!");
+		dialogueItems.Add("Step on the picture, tap it.");
+		dialogueItems.Add("You should drop down.");
+		dButton.AddLabel(blockFont, dialogueItems[currentDItem], Color.black);
+		cam.AddChild(dcontainer);
+	}
+	
+	void prologueDialogue3()
+	{
+		step3Triggered = true;
+		dialogueItems.Add("Almost here!");
+		dialogueItems.Add("Now see that special word there?");
+		dialogueItems.Add("Get close to it and tap it.");
+		dialogueItems.Add("You will use it's power and drop down.");
+		dButton.AddLabel(blockFont, dialogueItems[currentDItem], Color.black);
+		cam.AddChild(dcontainer);
+	}
+	
+	void prologueDialogue4()
+	{
+		step4Triggered = true;
+		dialogueItems.Add("Good job!");
+		dialogueItems.Add("Now crawl under here to get me.");
+		dialogueItems.Add("Swipe down to crawl,");
+		dialogueItems.Add("and swipe up to resume running.");
+		dButton.AddLabel(blockFont, dialogueItems[currentDItem], Color.black);
+		cam.AddChild(dcontainer);
+	}
+	
 	private void HandleSkipButtonRelease(FButton button)
 	{
 		cam.RemoveChild(dcontainer);
-		girl.Resume();
 		eraser.Play();
 	}
 	
