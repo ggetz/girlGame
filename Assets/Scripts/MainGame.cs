@@ -312,6 +312,7 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 						if(word.textRect.Contains (touchPos) && girl.getRect ().isIntersecting (word.getRect()))
 						{
 							word.action ();
+							Debug.Log ("Girl: " + girl.getRect ().bottom () + girl.getRect ().right());
 							inSpecialWord=true;
 						}
 					}
@@ -701,20 +702,20 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		mediumText.Add (blocka8);
 		mediumText.Add (blocka9);
 		
-		sentence1.SetPosition (startX + sentence1.textRect.width/3f, Futile.screen.height*0.85f);
+		sentence1.SetPosition (startX + sentence1.textRect.width/3f, Futile.screen.height*0.9f);
 		sentence3.SetPosition(sentence1.x + (sentence1.textRect.width - sentence3.textRect.width)/4f, sentence1.y - sentence3.textRect.height);
 		shrink.SetPosition(sentence3.x - shrink.textRect.width, sentence3.y);
 		sentence2.SetPosition (shrink.x - sentence2.textRect.width/2f, sentence3.y);
 		
-		blocka1.SetPosition (sentence3.x, sentence3.y - blocka1.textRect.height);
-		blocka2.SetPosition (sentence3.x, blocka1.y - blocka2.textRect.height);
-		blocka3.SetPosition (sentence3.x, blocka2.y - blocka3.textRect.height);
-		blocka4.SetPosition (sentence1.x, blocka3.y - blocka4.textRect.height);
-		blocka5.SetPosition (sentence1.x, blocka4.y - blocka5.textRect.height);
-		blocka6.SetPosition (sentence1.x, blocka5.y - blocka6.textRect.height);
-		blocka7.SetPosition (sentence1.x, blocka6.y - blocka7.textRect.height);
-		blocka8.SetPosition (sentence1.x, blocka7.y - blocka8.textRect.height);
-		blocka9.SetPosition (sentence1.x, blocka8.y - blocka9.textRect.height);
+		blocka9.SetPosition (sentence1.x, groundHeight+girl.girlHeight*0.3f);
+		blocka8.SetPosition (sentence1.x, blocka9.y + blocka8.textRect.height);
+		blocka7.SetPosition (sentence1.x, blocka8.y + blocka7.textRect.height);
+		blocka6.SetPosition (sentence1.x, blocka7.y + blocka6.textRect.height);
+		blocka5.SetPosition (sentence1.x, blocka6.y + blocka5.textRect.height);
+		blocka4.SetPosition (sentence1.x, blocka5.y + blocka4.textRect.height);
+		blocka3.SetPosition (sentence3.x, blocka4.y + blocka3.textRect.height);
+		blocka2.SetPosition (sentence3.x, blocka3.y + blocka2.textRect.height);
+		blocka1.SetPosition (sentence3.x, blocka2.y + blocka1.textRect.height);	
 		
 		MediumText sentence4 = new MediumText(blockFont, "\"Well, I'll eat it,\" said Alice");
 		MediumText sentence5 = new MediumText(blockFont, "\"and if it makes me ");
@@ -1420,7 +1421,7 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 	
 		block1.SetPosition (startX + block1.textRect.width/1.5f, groundHeight + girl.girlHeight*2f);
 		block2.SetPosition (startX + block2.textRect.width/2f, lightening.lighteningHeight);
-		tremble.SetPosition(block1.x+block1.textRect.width/2f+0.6f*(tremble.textRect.width/2f), block1.y);
+		tremble.SetPosition(block1.x+block1.textRect.width/2f*0.6f+(tremble.textRect.width/2f), block1.y);
 		thunderstorm.SetPosition (block2.x + block2.textRect.width/2.4f, block2.y);
 		
 		mediumText.Add (block1);
@@ -1434,7 +1435,7 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		glass.addCollider (mallet);
 	
 		mallet.SetPosition (tremble.x+mallet.width, groundHeight);
-		glass.SetPosition (tremble.x, tremble.y+tremble.textRect.height/2f);
+		glass.SetPosition (tremble.x+glass.width/2f, tremble.y+tremble.textRect.height/2f);
 		lightening.SetPosition (thunderstorm.x, thunderstorm.y);
 		
 		mallet.Start ();
