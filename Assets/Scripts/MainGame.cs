@@ -197,7 +197,6 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 	
 	void Update()
 	{		
-<<<<<<< HEAD
 		while (isPaused)
 		{
 			;	
@@ -226,9 +225,11 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		eraser.Update ();
 		
 		if(girl.getLife ()==0)
-=======
+		{
+			Application.LoadLevel ("DeathScreen");
+		}
+
 		if (isPaused)
->>>>>>> 404ed9ea610ae10e47dc7d4e3b89579a99b14259
 		{
 			girl.Pause();
 			eraser.Pause();

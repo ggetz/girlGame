@@ -2,19 +2,11 @@
 
 "Incubus.png":
 {
-<<<<<<< HEAD
 	"frame": {"x":2,"y":2,"w":1024,"h":512},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":1024,"h":512},
 	"sourceSize": {"w":1024,"h":512}
-=======
-	"frame": {"x":2,"y":2,"w":1024,"h":1024},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":1024,"h":1024},
-	"sourceSize": {"w":1024,"h":1024}
->>>>>>> 404ed9ea610ae10e47dc7d4e3b89579a99b14259
 },
 "back_blue.png":
 {
@@ -45,14 +37,8 @@
 	"version": "1.0",
 	"image": "PrologueAtlas.png",
 	"format": "RGBA8888",
-<<<<<<< HEAD
 	"size": {"w":2048,"h":1024},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:e260140ac42c0eefd43cb40e1c650f26$"
-=======
-	"size": {"w":2048,"h":2048},
-	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:fd4125d9aabab5a7172afe5488d34da8$"
->>>>>>> 404ed9ea610ae10e47dc7d4e3b89579a99b14259
+	"smartupdate": "$TexturePacker:SmartUpdate:15bdb1df0d4ffd9479022665704c217d$"
 }
 }
