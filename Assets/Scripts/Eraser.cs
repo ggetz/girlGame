@@ -4,6 +4,8 @@ using System.Collections.Generic;
 
 public class Eraser: MovingPictureObstacles
 {
+	bool isPaused;
+	
 	/** X and Y coordinates */
 	public int count;
 	
@@ -61,6 +63,7 @@ public class Eraser: MovingPictureObstacles
 		eraserRect = new Rectangle(x, y, width, height);
 		difficulty=diff;
 		delay = Random.Range (50*difficulty, difficulty*100);
+		isPaused = false;
 	}
 	
 	/*-----------------------------
@@ -90,6 +93,16 @@ public class Eraser: MovingPictureObstacles
 	{
 		isHit = true;
 		
+	}
+	
+	public void Pause()
+	{
+		isPaused = true;
+	}
+	
+	public void Play()
+	{
+		isPaused = false;
 	}
 	
 	private void randomStroke(int area)
@@ -220,7 +233,8 @@ public class Eraser: MovingPictureObstacles
 	 */
 	public void Update ()
 	{	
-		
+		if (!isPaused)
+		{
 		if(startMoving)
 		{
 			
@@ -272,6 +286,7 @@ public class Eraser: MovingPictureObstacles
 			}
 		
 		}
+	}
 	}
 	
 	void eraserAnimation()

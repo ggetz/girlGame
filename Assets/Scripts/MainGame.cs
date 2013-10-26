@@ -183,6 +183,7 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		cam.AddChild(hud);
 		Futile.stage.AddChild(cam);
 		girl.Resume();
+		eraser.Play();
 	}
 	
 	private void HandleQuitButtonRelease(FButton button)
@@ -195,6 +196,7 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		if (isPaused)
 		{
 			girl.Pause();
+			eraser.Pause();
 			cam.RemoveChild(hud);
 			cam.AddChild(pauseMenu);
 			Futile.stage.AddChild(cam);

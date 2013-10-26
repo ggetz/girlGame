@@ -21,7 +21,7 @@ public class AcheivementMenu: MonoBehaviour
 		Futile.atlasManager.LoadFont("MediumNormalText", "MediumNormalText", "Atlases/MediumNormalText", 0, 0);
 		
 		FSprite background = new FSprite("Blog Background");
-		background.scale=0.6f;
+		//background.scale=0.6f;
 		
 		background.SetPosition(Futile.screen.width/2f, background.height/2f);
 		Futile.stage.AddChild (background);

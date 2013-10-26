@@ -6,6 +6,8 @@ using Spine;
 
 public class Prologue: MonoBehaviour
 {
+	FContainer overlay;
+	FButton skipButton;
 	
 	string textFont;
 	GSpineSprite wholeShot;
@@ -31,7 +33,30 @@ public class Prologue: MonoBehaviour
 
 		LoadTextures ();
 		SetUpStage ();
+		SetUpOverlay ();
 	
+	}
+	
+	void SetUpOverlay()
+	{
+		overlay = new FContainer();
+		
+		skipButton = new FButton("back_blue", "back_purple");
+		
+		skipButton.scale = 0.4f;
+		skipButton.scaleX = -skipButton.scaleX;
+		
+		skipButton.SetPosition(Futile.screen.width * 0.85f, Futile.screen.height * 0.1f);
+		
+		skipButton.SignalRelease+=HandleSkipButtonRelease;
+		
+		overlay.AddChild(skipButton);
+		Futile.stage.AddChild(overlay);
+	}
+	
+	private void HandleSkipButtonRelease(FButton button)
+	{
+		Application.LoadLevel("AliceLevel");
 	}
 	
 	void LoadTextures()
