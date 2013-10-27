@@ -20,6 +20,7 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 	FLabel dLabel;
 	int currentDItem = 0;
 	List<string> dialogueItems;
+	bool isInDialogue = false;
 	bool step2Triggered=false;
 	bool step3Triggered=false;
 	bool step4Triggered=false;
@@ -78,7 +79,7 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		dialogueItems.Add("You've escaped!");
 		dialogueItems.Add("Please, help me out of here before we're both erased!");
 		dialogueItems.Add("The first thing you need to do is jump up onto the words above me.");
-		dialogueItems.Add("Touch the screen in fornt of you to run,");
+		dialogueItems.Add("Touch the screen in front of you to run,");
 		dialogueItems.Add("Touch the screen in behind you to run backwards,");
 		dialogueItems.Add("And swipe up to jump.");
 		dialogueItems.Add("Come on!");
@@ -151,11 +152,13 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		pauseMenu = new FContainer();
 		
 		backButton = new FButton("back_purple", "back_blue");
+		backButton.AddLabel(blockFont, "Resume", Color.black);
+		backButton.label.y += backButton.label.textRect.height * .2f;
 		quitButton = new FButton("quit_blue", "quit_purple");
 		
-		backButton.scale = 0.7f;
+		backButton.scale = 1f;
 		
-		backButton.SetPosition(Futile.screen.width * 0.15f, Futile.screen.height * 0.85f);
+		backButton.SetPosition(Futile.screen.width * 0.52f, Futile.screen.height * 0.6f);
 		quitButton.SetPosition(Futile.screen.width * 0.5f, Futile.screen.height * 0.3f);
 		
 		pauseMenu.AddChild(backButton);
@@ -298,7 +301,7 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 	 * ---------------------------------------*/
 	public void HandleMultiTouch(FTouch[] touches)
 	{
-		if(!isPaused)
+		if(!isPaused && !isInDialogue)
 		{
 		foreach(FTouch touch in touches)
 		{
@@ -1526,6 +1529,7 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 	
 	FContainer prologueDialogue()
 	{
+		isInDialogue = true;
 		girl.SetPosition(girl.x + Futile.screen.width * .1f, girl.y);
 		eraser.Pause();
 		
@@ -1554,6 +1558,7 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 	
 	void prologueDialogue2()
 	{
+		isInDialogue = true;
 		step2Triggered = true;
 		dialogueItems.Add("Good!");
 		dialogueItems.Add("Now drop down the hole!");
@@ -1565,6 +1570,7 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 	
 	void prologueDialogue3()
 	{
+		isInDialogue = true;
 		step3Triggered = true;
 		dialogueItems.Add("Almost here!");
 		dialogueItems.Add("Now see that special word there?");
@@ -1576,6 +1582,7 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 	
 	void prologueDialogue4()
 	{
+		isInDialogue = true;
 		step4Triggered = true;
 		dialogueItems.Add("Good job!");
 		dialogueItems.Add("Now crawl under here to get me.");
@@ -1587,7 +1594,11 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 	
 	private void HandleSkipButtonRelease(FButton button)
 	{
+		isInDialogue = false;
 		cam.RemoveChild(dcontainer);
+		step2Triggered = true;
+		step3Triggered = true;
+		step4Triggered = true;
 		eraser.Play();
 	}
 	
@@ -1598,7 +1609,8 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		{
 			cam.RemoveChild(dcontainer);
 			girl.Resume();
-			eraser.Play();	
+			eraser.Play();
+			isInDialogue = false;
 		}
 		else	
 			dButton.AddLabel(blockFont, dialogueItems[currentDItem], Color.black);
