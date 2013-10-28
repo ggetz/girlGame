@@ -344,7 +344,7 @@ public class Prologue: MonoBehaviour
 			factor=1;
 		}
 		
-		time+=(int)factor;
+		time+=(int)(factor+0.5);
 		
 		
 		if(textFading)

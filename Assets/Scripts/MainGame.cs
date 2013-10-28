@@ -51,6 +51,7 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 	List <MediumText> mediumText = new List<MediumText>();
 	List <SpecialWords> holdSpecialWords = new List<SpecialWords> ();
 	List <MovingPictureObstacles> movingObs=new List<MovingPictureObstacles>();
+	List <PictureObstacle> collidingObs=new List<PictureObstacle>();
 	
 	FCamObject cam;
 	FNode focus;
@@ -107,6 +108,10 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		foreach (MediumText t in mediumText)
 		{
 			collisionRects.Add(new Rectangle(t, mediumTextScale));	
+		}
+		foreach(PictureObstacle pic in collidingObs)
+		{
+			collisionRects.Add (new Rectangle(pic.x, pic.y-pic.height/2f, pic.width, pic.height));
 		}
 		foreach (SpecialWords sw in specialWords)
 		{
@@ -668,6 +673,9 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 				
 		PictureObstacle drinkMe = new PictureObstacle("drinkme");
 		drinkMe.scale=0.6f;
+		
+		PictureObstacle mushroom = new PictureObstacle("mushroom1");
+		mushroom.scale=0.3f;
 	
 		ChangeGirlSizeWord shrink = new ChangeGirlSizeWord(specialFont, "shrink", 1f, 0.3f, girl);
 		ChangeGirlSizeWord grow = new ChangeGirlSizeWord(specialFont, "grow", 1f, 0.6f, girl);
@@ -705,7 +713,7 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		mediumText.Add (blocka8);
 		mediumText.Add (blocka9);
 		
-		sentence1.SetPosition (startX + sentence1.textRect.width/3f, Futile.screen.height*0.9f);
+		sentence1.SetPosition (startX + sentence1.textRect.width/3f, Futile.screen.height*0.85f);
 		sentence3.SetPosition(sentence1.x + (sentence1.textRect.width - sentence3.textRect.width)/4f, sentence1.y - sentence3.textRect.height);
 		shrink.SetPosition(sentence3.x - shrink.textRect.width, sentence3.y);
 		sentence2.SetPosition (shrink.x - sentence2.textRect.width/2f, sentence3.y);
@@ -734,7 +742,12 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		sentence6.SetAnchor (grow.x + sentence6.textRect.width/2f, grow.y);
 		
 		drinkMe.SetPosition(grow.x, groundHeight + drinkMe.height/2f);
+		mushroom.SetPosition (blocka4.x-0.6f*(blocka4.textRect.width/2f)-mushroom.width, groundHeight+mushroom.height/2f);
+		Futile.stage.AddChild(mushroom);
 		Futile.stage.AddChild (drinkMe);
+		
+		collidingObs.Add (mushroom);
+		collidingObs.Add (drinkMe);
 		setUpFiller2(background4.x + background4.width/2f);
 		
 	}

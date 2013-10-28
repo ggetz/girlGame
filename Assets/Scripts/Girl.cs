@@ -51,8 +51,8 @@ public class Girl : GSpineSprite
 	{
 		scale=sc;
 		girlWidth = 120*sc;
-		standingHeight=225*sc;
-		crawlingHeight = 150*sc;
+		standingHeight=200*sc;
+		crawlingHeight = 125*sc;
 		girlHeight=standingHeight;
 	}
 	
