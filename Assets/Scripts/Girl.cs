@@ -560,6 +560,12 @@ public class Girl : GSpineSprite
 		doodleList.Add (target);
 	}
 	
+	public void scale(float s)
+	{
+		scale *= s;
+		rect.scale(s);
+	}
+	
 	public bool checkDoodleCollision()
 	{
 		foreach(Doodle target in doodleList)
