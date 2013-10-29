@@ -21,9 +21,11 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 	int currentDItem = 0;
 	List<string> dialogueItems;
 	bool isInDialogue = false;
+	bool step1Triggered=false;
 	bool step2Triggered=false;
 	bool step3Triggered=false;
 	bool step4Triggered=false;
+	bool step5Triggered=false;
 	
 	Vector2 deltaSwipe;
 	
@@ -76,7 +78,7 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		
 		/**Dialogue **/
 		dialogueItems = new List<string>();
-		dialogueItems.Add("Hey, over here!");
+		dialogueItems.Add("\"Hey, over here!\" said the rabbit.");
 		dialogueItems.Add("You've escaped!");
 		dialogueItems.Add("Please, help me out of here before we're both erased!");
 		dialogueItems.Add("The first thing you need to do is jump up onto the words above me.");
@@ -191,7 +193,7 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		Futile.touchManager.AddMultiTouchTarget (this);
 		
 		//set camera to follow girl
-		cam.setWorldBounds(new Rect(-1.5f * Futile.screen.width, -.5f*Futile.screen.height, 30*Futile.screen.width, 1.25f* Futile.screen.height));
+		cam.setWorldBounds(new Rect(-1.5f * Futile.screen.width, -.5f*Futile.screen.height, 30*Futile.screen.width, 1.1f* Futile.screen.height));
 		cam.follow(focus);
 		
 		hud = new FContainer();
@@ -201,8 +203,6 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		pauseButton.SignalRelease+=HandlePauseButtonRelease;
 		hud.AddChild(pauseButton);
 		cam.AddChild(hud);
-		dcontainer = prologueDialogue();
-		cam.AddChild(dcontainer);
 		Futile.stage.AddChild(cam);
 	}
 	
@@ -228,7 +228,13 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 	
 	void Update()
 	{		
-		if (girl.x > Futile.screen.halfWidth && !step2Triggered)
+		if (!step1Triggered && girl.x > Futile.screen.halfWidth * 0.4f)
+		{
+			dcontainer = prologueDialogue();
+			cam.AddChild(dcontainer);	
+			Futile.stage.AddChild(cam);
+		}
+		if (step1Triggered && girl.x > Futile.screen.halfWidth && !step2Triggered)
 			prologueDialogue2();
 		if (step2Triggered && girl.y < Futile.screen.halfHeight * 1.25f && !step3Triggered)
 			prologueDialogue3();
@@ -1542,6 +1548,7 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 	
 	FContainer prologueDialogue()
 	{
+		step1Triggered = true;
 		isInDialogue = true;
 		girl.SetPosition(girl.x + Futile.screen.width * .1f, girl.y);
 		eraser.Pause();
@@ -1601,6 +1608,17 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		dialogueItems.Add("Now crawl under here to get me.");
 		dialogueItems.Add("Swipe down to crawl,");
 		dialogueItems.Add("and swipe up to resume running.");
+		dButton.AddLabel(blockFont, dialogueItems[currentDItem], Color.black);
+		cam.AddChild(dcontainer);
+	}
+	
+	void prologueDialogue5()
+	{
+		isInDialogue = true;
+		step5Triggered = true;
+		dialogueItems.Add("Thank you, kind girl!");
+		dialogueItems.Add("Continue to use the words,");
+		dialogueItems.Add("They have a great power!");
 		dButton.AddLabel(blockFont, dialogueItems[currentDItem], Color.black);
 		cam.AddChild(dcontainer);
 	}

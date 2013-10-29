@@ -19,6 +19,8 @@ public class Menu: MonoBehaviour
 		// Setup Futile
 		FutileParams fparams = new FutileParams(true, true, false, false);
 		fparams.AddResolutionLevel(1024.0f,	1.0f, 1.0f, "");
+		fparams.AddResolutionLevel(1280.0f,	2.0f,	2.0f,	"");
+		futileParams.AddResolutionLevel(2048.0f,	4.0f,	1.0f,	"");
 		fparams.origin = new Vector2(0f, 0f);
 		Futile.instance.Init(fparams);
 		
@@ -38,9 +40,9 @@ public class Menu: MonoBehaviour
 		
 		start.SetPosition (Futile.screen.width*0.4f, Futile.screen.height*0.45f);
 		
-		acheivements.SetPosition (Futile.screen.width*0.4f, Futile.screen.height*0.27f);
+		acheivements.SetPosition (Futile.screen.width*0.4f, Futile.screen.height*0.23f);
 		
-		quit.SetPosition(Futile.screen.width*0.4f, Futile.screen.height*0.12f);
+		quit.SetPosition(Futile.screen.width*0.4f, Futile.screen.height*0.07f);
 		
 		logo.SetPosition (Futile.screen.width*0.4f, Futile.screen.height*0.7f);
 		

@@ -50,9 +50,9 @@ public class Girl : GSpineSprite
 	public Girl(string girlAtlas, float sc) : base(girlAtlas)
 	{
 		scale=sc;
-		girlWidth = 120*sc;
-		standingHeight=200*sc;
-		crawlingHeight = 125*sc;
+		girlWidth = 110*sc;
+		standingHeight=190*sc;
+		crawlingHeight = 90*sc;
 		girlHeight=standingHeight;
 	}
 	
@@ -362,6 +362,8 @@ public class Girl : GSpineSprite
 	
 	public bool checkCollisions(Rectangle r)
 	{
+		if (!r.isSolid)
+			return false;
 		Vector2[] gCorners = getRect().corners();
 		Vector2[] rCorners = r.corners();
 		Vector2 vel = new Vector2(xVel, yVel);

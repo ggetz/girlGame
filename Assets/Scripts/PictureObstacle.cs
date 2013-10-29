@@ -39,8 +39,8 @@ public class PictureObstacle : FSprite
 		return solid;
 	}
 	
-	public Rectangle getRect()
+	/**public Rectangle getRect()
 	{
-		
-	}
+		return
+	}**/
 }
