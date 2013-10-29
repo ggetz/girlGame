@@ -332,7 +332,7 @@ public class Prologue: MonoBehaviour
 		
 		if(time>=3710)
 		{
-			Application.LoadLevel ("MainMenu");
+			Application.LoadLevel ("AliceLevel");
 		}
 
 		framerate=(int)(1.0f / Time.deltaTime);

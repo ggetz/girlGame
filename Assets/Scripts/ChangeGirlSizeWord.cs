@@ -24,6 +24,7 @@ public class ChangeGirlSizeWord : SpecialWords {
 	
 	public override void action()
 	{
+<<<<<<< HEAD
 		if(scaleSize>targetGirl.scale)
 		{
 			scaleSize=-scaleSize;
@@ -32,6 +33,9 @@ public class ChangeGirlSizeWord : SpecialWords {
 		}
 		targetGirl.scale=scaleSize;
 		targetGirl.changeSize(scaleSize);
+=======
+		targetGirl.scale(scaleSize);
+>>>>>>> a6b6a4805f899273890c3ac9bfe277291bf0ef10
 	}
 		
 }

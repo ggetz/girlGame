@@ -21,9 +21,11 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 	int currentDItem = 0;
 	List<string> dialogueItems;
 	bool isInDialogue = false;
+	bool step1Triggered=false;
 	bool step2Triggered=false;
 	bool step3Triggered=false;
 	bool step4Triggered=false;
+	bool step5Triggered=false;
 	
 	Vector2 deltaSwipe;
 	
@@ -34,6 +36,10 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 	Eraser eraser;
 	
 	float groundHeight;
+	
+	ParticleEngine particles;
+	int framesPerParticle;
+	int framesSince;
 
 	FSprite background;
 	Ground ground;
@@ -56,6 +62,8 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 	FCamObject cam;
 	FNode focus;
 	
+	Random rand = new Random();
+	
 	string blockFont;
 	string specialFont;
 	string specialClose;
@@ -77,6 +85,7 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		
 		/**Dialogue **/
 		dialogueItems = new List<string>();
+<<<<<<< HEAD
 		dialogueItems.Add("\"Hey, you! Over there!\"");
 		dialogueItems.Add("\"I can't believe it...\nyou're moving...\"");
 		dialogueItems.Add("\"I can't leave on my own...\nI can't move at all...\nbut won't you take me\nwith you?\"");
@@ -85,6 +94,16 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		dialogueItems.Add("touch the screen behind you\n to run backwards,");
 		dialogueItems.Add("and swipe up to jump.");
 		dialogueItems.Add("\"Please! Don't leave me here!\nI won't last long if you do...\"");
+=======
+		dialogueItems.Add("\"Hey, over here!\" said the rabbit.");
+		dialogueItems.Add("You've escaped!");
+		dialogueItems.Add("Please, help me out of here before we're both erased!");
+		dialogueItems.Add("The first thing you need to do is jump up onto the words above me.");
+		dialogueItems.Add("Touch the screen in front of you to run,");
+		dialogueItems.Add("Touch the screen in behind you to run backwards,");
+		dialogueItems.Add("And swipe up to jump.");
+		dialogueItems.Add("Come on!");
+>>>>>>> a6b6a4805f899273890c3ac9bfe277291bf0ef10
 		
 		// Setup Futile
 		FutileParams fparams = new FutileParams(true, true, false, false);
@@ -129,6 +148,11 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 			collisionRects.Add (pic.getRect());
 		}
 		
+		
+		framesPerParticle = 15;
+		framesSince = framesPerParticle - 1;
+		
+		particles = new ParticleEngine();
 	}
 	
 	void LoadTextures()
@@ -200,7 +224,7 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		Futile.touchManager.AddMultiTouchTarget (this);
 		
 		//set camera to follow girl
-		cam.setWorldBounds(new Rect(-1.5f * Futile.screen.width, -.5f*Futile.screen.height, 30*Futile.screen.width, 1.25f* Futile.screen.height));
+		cam.setWorldBounds(new Rect(-1.5f * Futile.screen.width, -.5f*Futile.screen.height, 30*Futile.screen.width, 1.1f* Futile.screen.height));
 		cam.follow(focus);
 		
 		hud = new FContainer();
@@ -210,8 +234,6 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		pauseButton.SignalRelease+=HandlePauseButtonRelease;
 		hud.AddChild(pauseButton);
 		cam.AddChild(hud);
-		dcontainer = prologueDialogue();
-		cam.AddChild(dcontainer);
 		Futile.stage.AddChild(cam);
 	}
 	
@@ -237,7 +259,13 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 	
 	void Update()
 	{		
-		if (girl.x > Futile.screen.halfWidth && !step2Triggered)
+		if (!step1Triggered && girl.x > Futile.screen.halfWidth * 0.4f)
+		{
+			dcontainer = prologueDialogue();
+			cam.AddChild(dcontainer);	
+			Futile.stage.AddChild(cam);
+		}
+		if (step1Triggered && girl.x > Futile.screen.halfWidth && !step2Triggered)
 			prologueDialogue2();
 		if (step2Triggered && girl.y < Futile.screen.halfHeight * 1.25f && !step3Triggered)
 			prologueDialogue3();
@@ -340,6 +368,53 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 			
 			updateBackground();
 		}
+		particles.update();
+		if(Application.loadedLevelName.Equals("AliceLevel"))
+		{
+			framesSince++;
+			if(framesSince >= framesPerParticle)
+			{
+				Vector2 pos = new Vector2(focus.x + Futile.screen.width + Random.value * 500, focus.y + Random.value * Futile.screen.height);
+				Color color = Color.black;
+				color.a -= 0.6f;
+				float angle = 0;
+				int letterNum = (int)Mathf.Floor(Random.Range(0,26));
+				char letter = (char)(letterNum + 97);
+				FLabel sprite = new FLabel("PalatinoMedium", letter.ToString());
+				sprite.scale = 0.6f;
+				Particle p = new Particle(pos, color, angle, sprite, new Particle.posRuleDelegate(letterWindPosRule), new Particle.colorRuleDelegate(letterWindColorRule),
+					new Particle.angleRuleDelegate(letterWindAngleRule), new Particle.shouldDieDelegate(letterWindShouldDie), (int)Mathf.Floor(Random.Range(0,200)));
+				particles.addParticle(p);
+				framesSince = 0;
+			}
+		}
+	}
+	
+	public Vector2 letterWindPosRule(Vector2 pos0, int age)
+	{
+		Vector2 velocity = new Vector2(-1f, 0);
+		float freq = 0.06f;
+		Vector2 shift = new Vector2(0, Mathf.Sin(age * freq));
+		float magnitude = 5;
+		return pos0 + (velocity * age) + shift * magnitude;
+	}
+	
+	public Color letterWindColorRule(Color color0, int age)
+	{
+		float fadeRate = 0.000005f;
+		Color output = color0;
+		output.a -= fadeRate * (age - 500) * (age - 500);
+		return output;
+	}
+	
+	public float letterWindAngleRule(float angle0, int age)
+	{
+		return angle0;
+	}
+	
+	public bool letterWindShouldDie(int age)
+	{
+		return age > 1000;
 	}
 	
 	/*-----------------------------------------
@@ -721,7 +796,7 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		mushroom.scale=0.3f;
 		
 		ChangeGirlSizeWord shrink = new ChangeGirlSizeWord(specialFont, "shrink", 1f, 0.3f, girl);
-		ChangeGirlSizeWord grow = new ChangeGirlSizeWord(specialFont, "grow", 1f, 0.6f, girl);
+		ChangeGirlSizeWord grow = new ChangeGirlSizeWord(specialFont, "grow", 1f, 1/(0.3f), girl);
 		
 		specialWords.Add (shrink);
 		specialWords.Add (grow);
@@ -1594,6 +1669,7 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 	
 	FContainer prologueDialogue()
 	{
+		step1Triggered = true;
 		isInDialogue = true;
 		girl.SetPosition(girl.x + Futile.screen.width * .1f, girl.y);
 		eraser.Pause();
@@ -1655,6 +1731,17 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		dButton.AddLabel(blockFont, dialogueItems[currentDItem], Color.black);
 		cam.AddChild(dcontainer);
 		eraser.Pause ();
+	}
+	
+	void prologueDialogue5()
+	{
+		isInDialogue = true;
+		step5Triggered = true;
+		dialogueItems.Add("Thank you, kind girl!");
+		dialogueItems.Add("Continue to use the words,");
+		dialogueItems.Add("They have a great power!");
+		dButton.AddLabel(blockFont, dialogueItems[currentDItem], Color.black);
+		cam.AddChild(dcontainer);
 	}
 	
 	private void HandleSkipButtonRelease(FButton button)
