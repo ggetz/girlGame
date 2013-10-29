@@ -24,9 +24,7 @@ public class ChangeGirlSizeWord : SpecialWords {
 	
 	public override void action()
 	{
-		targetGirl.scale = scaleSize;
-		targetGirl.getRect().scale(scaleSize);
-		targetGirl.getRect().scale(scaleSize);
+		targetGirl.scale(scaleSize);
 	}
 		
 }
