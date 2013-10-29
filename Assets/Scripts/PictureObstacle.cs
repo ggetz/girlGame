@@ -6,22 +6,28 @@ public class PictureObstacle : FSprite
 
 	private bool solid=true;
 	Rectangle rect;
-	
+
 	// Use this for initialization
 	public PictureObstacle(string picture) : base(picture)
 	{
 		rect=new Rectangle(x, y-(height/2f)*scale, width*scale, height*scale);
 	}
 	
-	void Start () 
+	public void Start () 
 	{
-	
+		rect.x=x;
+		rect.y=y-height/2f;
 	}
 	
 	// Update is called once per frame
 	void Update () 
 	{
 	
+	}
+	
+	public void newRect(Rectangle r)
+	{
+		rect=r;
 	}
 	
 	public virtual void action()
@@ -41,6 +47,6 @@ public class PictureObstacle : FSprite
 	
 	public Rectangle getRect()
 	{
-		
+		return rect;
 	}
 }

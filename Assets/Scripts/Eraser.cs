@@ -58,11 +58,11 @@ public class Eraser: MovingPictureObstacles
 		angle = 20;
 		girl=pc;
 		scale=sc;
-		height = 300*scale;
-		width = 200*scale;
-		eraserRect = new Rectangle(x, y, width, height);
+		height = 200*scale;
+		width = 150*scale;
+		eraserRect = new Rectangle(x, y-height/2f, width, height);
 		difficulty=diff;
-		delay = Random.Range (50*difficulty, difficulty*100);
+		delay = Random.Range (50*difficulty, difficulty*300);
 		isPaused = false;
 	}
 	
@@ -252,8 +252,7 @@ public class Eraser: MovingPictureObstacles
 					strokeType=Random.Range (0, 1);
 					//make a random stroke
 					randomStroke(strokeType);
-					pathType=3;
-						//Random.Range (0, 5);
+					pathType=Random.Range (0, 5);
 					if(pathType==3)
 					{
 						x=girl.x-girl.girlWidth*2f;

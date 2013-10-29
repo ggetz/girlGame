@@ -15,8 +15,11 @@ public class MediumText : FLabel {
 	int showTime;
 	int show;
 	int time;
-	bool isTwinkling;
+	bool isTwinkling=false;
+	bool twinkling;
 	bool showing;
+	
+	Rectangle rect;
 	
 	List <MediumText> textObjects = new List<MediumText>(); 
 	public MediumText(string font, string text):base(font, text)
@@ -25,13 +28,14 @@ public class MediumText : FLabel {
 	}
 	
 	// Use this for initialization
-	void Start () 
+	public void Start () 
 	{
-	
+		rect=new Rectangle(this, scale);
 	}
 	
 	// Update is called once per frame
-	public void Update () {
+	public void Update () 
+	{
 		
 		if(time>0)
 		{
@@ -41,7 +45,6 @@ public class MediumText : FLabel {
 					{
 						alpha=100;
 						solid=true;
-						Debug.Log ("See");
 					}
 					if(show>0)
 					{
@@ -61,7 +64,6 @@ public class MediumText : FLabel {
 				{
 					alpha=0;
 					solid=false;
-					Debug.Log ("Don't See");
 				}
 				
 				if(fade>0)
@@ -81,20 +83,13 @@ public class MediumText : FLabel {
 			alpha=0;
 			solid=false;
 			isTwinkling=false;
+			time=0;
 		}
+		
+		rect.isSolid=solid;
 	
 	}
-	
-	public bool isSolid()
-	{
-		return solid;
-	}
-	
-	public void setSolidity(bool isSolid)
-	{
-		solid=isSolid;
-	}
-	
+
 	public void rotate(float degrees)
 	{
 		rotation+=degrees;
@@ -127,5 +122,25 @@ public class MediumText : FLabel {
 			showing = visible;
 		}
 			
+	}
+	
+	public void setSolidity(bool s)
+	{
+		solid=s;
+	}
+	
+	public bool isSolid()
+	{
+		return solid;
+	}
+	
+	public bool getTwinkling()
+	{
+		return isTwinkling;
+	}
+	
+	public Rectangle getRect()
+	{
+		return rect;
 	}
 }

@@ -39,7 +39,7 @@ public class Girl : GSpineSprite
 	float standingHeight;
 	float scale;
 	
-	int life=10;
+	int life=11;
 	
 	// height of ground
 	float groundHeight;
@@ -50,9 +50,9 @@ public class Girl : GSpineSprite
 	public Girl(string girlAtlas, float sc) : base(girlAtlas)
 	{
 		scale=sc;
-		girlWidth = 120*sc;
-		standingHeight=200*sc;
-		crawlingHeight = 125*sc;
+		girlWidth = 110*sc;
+		standingHeight=170*sc;
+		crawlingHeight = 110*sc;
 		girlHeight=standingHeight;
 	}
 	
@@ -68,7 +68,6 @@ public class Girl : GSpineSprite
 	{
 		isGrounded = false;
 		yVel -= gravity;
-		
 		//update dimensions
 		if (isCrawling)
 		{
@@ -374,6 +373,12 @@ public class Girl : GSpineSprite
 		//{
 		//	return false;	
 		//}
+		
+		if(!r.isSolid)
+		{
+			return false;
+		}
+		
 		foreach(Vector2 v in gCorners)
 		{
 			if(r.doesContain(v + vel))
@@ -428,6 +433,8 @@ public class Girl : GSpineSprite
 				}
 			}
 		}
+	
+		
 		foreach(Vector2 v in rCorners)
 		{
 			if(rect.doesContain(v + negVel))
@@ -443,7 +450,7 @@ public class Girl : GSpineSprite
 					//Does it pass through the right?
 					d1 = (rect.right() - v.x) / negVel.x;
 					d2 = (negVel.y * d1) + v.y;
-					Debug.Log(d1);
+					//Debug.Log(d1);
 					if(d1 >= 0 && d1 < tx && d2 > rect.bottom() && d2 < rect.top())
 					{
 						tx = d1;
@@ -454,7 +461,7 @@ public class Girl : GSpineSprite
 					//Does it pass through the left?
 					d1 = (rect.left() - v.x) / negVel.x;
 					d2 = (negVel.y * d1) + v.y;
-					Debug.Log(d1);
+					//Debug.Log(d1);
 					if(d1 >= 0 && d1 < tx && d2 > rect.bottom() && d2 < rect.top())
 					{
 						tx = d1;
@@ -466,7 +473,7 @@ public class Girl : GSpineSprite
 					//Does it pass through the top?
 					d1 = (rect.top() - v.y) / negVel.y;
 					d2 = (negVel.x * d1) + v.x;
-					Debug.Log(d1);
+					//Debug.Log(d1);
 					if(d1 >= 0 && d1 < ty && d2 > rect.left() && d2 < rect.right())
 					{
 						ty = d1;
@@ -478,7 +485,7 @@ public class Girl : GSpineSprite
 					//Does it pass through the bottom?
 					d1 = (rect.bottom() - v.y) / negVel.y;
 					d2 = (negVel.x * d1) + v.x;
-					Debug.Log(d1);
+					//Debug.Log(d1);
 					if(d1 >= 0 && d1 < ty && d2 > rect.left() && d2 < rect.right())
 					{
 						ty = d1;
@@ -487,13 +494,14 @@ public class Girl : GSpineSprite
 				}
 			}
 		}
+	
 		if(tx == 1 && ty == 1)
 		{
 			return false;
 		}
 		else
 		{
-			Debug.Log("tx: " + tx + " ty: " + ty);
+			//Debug.Log("tx: " + tx + " ty: " + ty);
 		}
 		xVel *= tx;
 		yVel *= ty;
@@ -512,7 +520,6 @@ public class Girl : GSpineSprite
 	
 	public void erased()
 	{
-		Debug.Log ("Oh god I'm being erased");
 		if(isCrawling)
 		{
 			if(isFacingRight)
@@ -538,11 +545,11 @@ public class Girl : GSpineSprite
 		
 		if(alpha>0.5f)
 		{
-			alpha=alpha*0.9f;
+			alpha=alpha*0.95f;
 		}
 		else
 		{
-			alpha=alpha*0.85f;
+			alpha=alpha*0.9f;
 		}
 		
 		life--;
@@ -564,7 +571,6 @@ public class Girl : GSpineSprite
 		{
 			if(target.doodleRect.isIntersecting (rect))
 			{
-		       Debug.Log ("Collection time");
 		       target.Collect();
 		       hittingDoodle=target;
 		       return true;
@@ -577,5 +583,26 @@ public class Girl : GSpineSprite
 	{
 		return yVel;
 	}
+	
+	public void changeSize(float sc)
+	{
+		rect.scale (sc);
+		girlWidth = 110*sc;
+		standingHeight=170*sc;
+		crawlingHeight = 110*sc;
+		girlHeight=standingHeight;
+		
+		if(sc<0.6f)
+		{
+			jumpPower=10f;
+		}
+		else
+		{
+			jumpPower=12f;
+		}
+		
+		
+	}
+	
     
 }

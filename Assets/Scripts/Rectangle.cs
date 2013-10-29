@@ -72,6 +72,13 @@ public class Rectangle {
 		else return false;
 	}
 	
+	public bool isInRange(Rectangle r)
+	{
+		if ( ( ( right() +10 >= r.left() && right()-10 <= r.right() ) || (left()+10>= r.left () && left()-10<= r.right())) && (( top ()-10<= r.top() && top()+10>= r.bottom() )  || ( bottom ()-10<= r.top() && ( bottom()+10 >= r.bottom() || top ()+10>= r.top() ))))
+			return true;
+		else return false;
+	}
+	
 	public bool doesContain(Vector2 v)
 	{
 		return (v.x > left() && v.x < right() && v.y > bottom() && v.y < top());

@@ -7,7 +7,7 @@ public class SpecialWords : MediumText
 	enum effectTypes{SHRINK, ENLARGE};
 	float height;
 	float width;
-	
+	bool isActivated;
 	Rectangle rect;
 	
 	// Use this for initialization
@@ -17,6 +17,7 @@ public class SpecialWords : MediumText
 		width = textRect.width * scale;
 		x = x - width/2;
 		y = y - height/2;
+		alpha=alpha*0.5f;
 	}
 	
 	
@@ -42,6 +43,23 @@ public class SpecialWords : MediumText
 	public void setRect(Rectangle r)
 	{
 		rect=r;
+	}
+	
+	public void activate()
+	{
+		alpha=alpha*2f;
+		isActivated=true;
+	}
+	
+	public void deactivate()
+	{
+		alpha=alpha*0.5f;
+		isActivated=false;
+	}
+	
+	public bool getActive()
+	{
+		return isActivated;
 	}
 	
 }
