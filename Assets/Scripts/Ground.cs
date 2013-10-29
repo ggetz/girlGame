@@ -21,11 +21,16 @@ public class Ground
 	float upperDistanceRange;
 	float lowerDistanceRange;
 	
+	TextAsset book;
 	string text="";
 	string tempText;
+	string charCheck;
 	
 	float textPosition=0;
 	float distance=0;
+	
+	int iterator=0;
+	bool endOfFile=false;
 	
 	List<Rect> groundObjects = new List<Rect>();
 	
@@ -40,86 +45,76 @@ public class Ground
 	// Use this for initialization
 	public void Start () 
 	{
-		try
-        {
-			using (StreamReader sr = new StreamReader(textSource))
-            {
-				
-				Debug.Log ("I'm in!");
-				if(level<2)
+		book=(TextAsset)Resources.Load (textSource, typeof(TextAsset));
+		text=book.text;
+		if(level<2)
 				{
-					text = sr.ReadToEnd ();
-					Debug.Log (text);
 	                groundText = new MediumText(gFont, text);
 					groundText.scale = 0.6f;
 					groundText.SetPosition (groundText.textRect.width/2f*groundText.scaleX, groundHeight);
 					Futile.stage.AddChild (groundText);
 				}
 				
-				else
+		else
+		{
+			if(level==2)
+			{
+				lowerBreakRange=20;
+				upperBreakRange=40;
+				
+				lowerDistanceRange=0.1f;
+				upperDistanceRange=0.4f;
+			}
+			
+			if(level==3)
+			{
+				lowerBreakRange=5;
+				upperBreakRange=30;
+				
+				lowerDistanceRange=0.2f;
+				upperDistanceRange=1.5f;
+			}
+			
+			while(!endOfFile)
+			{
+				breaks= UnityEngine.Random.Range (lowerBreakRange, upperBreakRange);
+				while(charCheck!=null && breaks>0)
 				{
-					if(level==2)
+					charCheck=text[iterator].ToString ();
+					if(charCheck==" ")
 					{
-						lowerBreakRange=20;
-						upperBreakRange=40;
-						
-						lowerDistanceRange=0.1f;
-						upperDistanceRange=0.4f;
+						breaks--;
 					}
-					
-					if(level==3)
-					{
-						lowerBreakRange=5;
-						upperBreakRange=30;
-						
-						lowerDistanceRange=0.2f;
-						upperDistanceRange=1.5f;
-					}
-					
-					while(!sr.EndOfStream)
-					{
-						breaks= UnityEngine.Random.Range (lowerBreakRange, upperBreakRange);
-						while(!sr.EndOfStream && breaks>0)
-						{
-							
-							tempText=Convert.ToString((char)sr.Read());
-							if(tempText==" ")
-							{
-								breaks--;
-							}
-							text+=tempText;
-						}
-						
-						groundText=new MediumText(gFont, text);
-						groundText.scale=0.6f;
-						distance=UnityEngine.Random.Range(Futile.screen.width*lowerDistanceRange, Futile.screen.width*upperDistanceRange);
-						if(textPosition==0)
-						{
-							groundText.SetPosition ((groundText.textRect.width/2f)*0.6f, groundHeight);
-							distance=0;
-						}
-						else
-						{
-							groundText.SetPosition (textPosition+((groundText.textRect.width/2f)*0.6f)+distance, groundHeight);
-							
-						}
-						
-						textPosition+=(groundText.textRect.width)*0.6f+distance;
-						Futile.stage.AddChild (groundText);
-						groundObjects.Add (groundText.textRect);
-						text="";
-						breaks=0;
-					}
+					tempText+=charCheck;
+					iterator++;
 				}
 				
-            }
-        }
-        catch (Exception e)
-        {
-            Debug.Log ("ooops");
-			Debug.Log (e);
-        }
-		
+				groundText=new MediumText(gFont, tempText);
+				groundText.scale=0.6f;
+				distance=UnityEngine.Random.Range(Futile.screen.width*lowerDistanceRange, Futile.screen.width*upperDistanceRange);
+				if(textPosition==0)
+				{
+					groundText.SetPosition ((groundText.textRect.width/2f)*0.6f, groundHeight);
+					distance=0;
+				}
+				else
+				{
+					groundText.SetPosition (textPosition+((groundText.textRect.width/2f)*0.6f)+distance, groundHeight);
+					
+				}
+				
+				textPosition+=(groundText.textRect.width)*0.6f+distance;
+				Futile.stage.AddChild (groundText);
+				groundObjects.Add (groundText.textRect);
+				tempText="";
+				breaks=0;
+			
+				if(charCheck==null)
+				{	
+					endOfFile=true;
+				}
+			}
+		}
 	}
 	
 	// Update is called once per frame
