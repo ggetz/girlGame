@@ -742,7 +742,7 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		mushroom.scale=0.3f;
 	
 		ChangeGirlSizeWord shrink = new ChangeGirlSizeWord(specialFont, "shrink", 1f, 0.3f, girl);
-		ChangeGirlSizeWord grow = new ChangeGirlSizeWord(specialFont, "grow", 1f, 0.6f, girl);
+		ChangeGirlSizeWord grow = new ChangeGirlSizeWord(specialFont, "grow", 1f, 1/(0.3f), girl);
 		
 		specialWords.Add (shrink);
 		specialWords.Add (grow);
