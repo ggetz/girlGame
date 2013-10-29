@@ -36,6 +36,10 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 	Eraser eraser;
 	
 	float groundHeight;
+	
+	ParticleEngine particles;
+	int framesPerParticle;
+	int framesSince;
 
 	FSprite background;
 	Ground ground;
@@ -57,6 +61,8 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 	
 	FCamObject cam;
 	FNode focus;
+	
+	Random rand = new Random();
 	
 	string blockFont;
 	string specialFont;
@@ -124,6 +130,11 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 			collisionRects.Add (pic.getRect());
 		}
 		
+		
+		framesPerParticle = 15;
+		framesSince = framesPerParticle - 1;
+		
+		particles = new ParticleEngine();
 	}
 	
 	void LoadTextures()
@@ -303,6 +314,53 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 			}
 			updateBackground();
 		}
+		particles.update();
+		if(Application.loadedLevelName.Equals("AliceLevel"))
+		{
+			framesSince++;
+			if(framesSince >= framesPerParticle)
+			{
+				Vector2 pos = new Vector2(focus.x + Futile.screen.width + Random.value * 500, focus.y + Random.value * Futile.screen.height);
+				Color color = Color.black;
+				color.a -= 0.6f;
+				float angle = 0;
+				int letterNum = (int)Mathf.Floor(Random.Range(0,26));
+				char letter = (char)(letterNum + 97);
+				FLabel sprite = new FLabel("PalatinoMedium", letter.ToString());
+				sprite.scale = 0.6f;
+				Particle p = new Particle(pos, color, angle, sprite, new Particle.posRuleDelegate(letterWindPosRule), new Particle.colorRuleDelegate(letterWindColorRule),
+					new Particle.angleRuleDelegate(letterWindAngleRule), new Particle.shouldDieDelegate(letterWindShouldDie), (int)Mathf.Floor(Random.Range(0,200)));
+				particles.addParticle(p);
+				framesSince = 0;
+			}
+		}
+	}
+	
+	public Vector2 letterWindPosRule(Vector2 pos0, int age)
+	{
+		Vector2 velocity = new Vector2(-1f, 0);
+		float freq = 0.06f;
+		Vector2 shift = new Vector2(0, Mathf.Sin(age * freq));
+		float magnitude = 5;
+		return pos0 + (velocity * age) + shift * magnitude;
+	}
+	
+	public Color letterWindColorRule(Color color0, int age)
+	{
+		float fadeRate = 0.000005f;
+		Color output = color0;
+		output.a -= fadeRate * (age - 500) * (age - 500);
+		return output;
+	}
+	
+	public float letterWindAngleRule(float angle0, int age)
+	{
+		return angle0;
+	}
+	
+	public bool letterWindShouldDie(int age)
+	{
+		return age > 1000;
 	}
 	
 	/*-----------------------------------------
