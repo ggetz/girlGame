@@ -27,6 +27,9 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 	bool step4Triggered=false;
 	bool step5Triggered=false;
 	
+	/* Keep track of what doodles are collected*/
+	List<Doodle> doodles;
+	
 	float xEnd;
 	Vector2 deltaSwipe;
 	
@@ -96,6 +99,7 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		dialogueItems.Add("and swipe up to jump.");
 		dialogueItems.Add("\"Please! Don't leave me here!\nI won't last long if you do...\"");
 
+		/* OLD DIALOAGUE **
 		dialogueItems.Add("\"Hey, over here!\" said the rabbit.");
 		dialogueItems.Add("You've escaped!");
 		dialogueItems.Add("Please, help me out of here before we're both erased!");
@@ -104,6 +108,7 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		dialogueItems.Add("Touch the screen in behind you to run backwards,");
 		dialogueItems.Add("And swipe up to jump.");
 		dialogueItems.Add("Come on!");
+		*/
 
 		// Setup Futile
 		FutileParams fparams = new FutileParams(true, true, false, false);
@@ -152,6 +157,7 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		framesSince = framesPerParticle - 1;
 		
 		particles = new ParticleEngine();
+		doodles = new List<Doodle>();
 	}
 	
 	void LoadTextures()
@@ -402,6 +408,20 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 				framesSince = 0;
 			}
 		}
+		
+		bool allCollected = true;
+		for each (Doodle d in doodles)
+		{
+			if (!d.isCollected())
+				allCollected = false;
+		}
+		if (allCollected)
+		{
+			//ACHEIVEMENT FOR ALL DOODLES COLLECTED
+		}
+		
+		//CHECK IF AT END OF LEVEL
+		//CHECK IF UNDER A MINUTE FOR ACHEIVEMENT
 	}
 	
 	public Vector2 letterWindPosRule(Vector2 pos0, int age)
@@ -641,6 +661,7 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		GSpineManager.LoadSpine("DoodleAtlas", "Atlases/DoodleJson", "Atlases/DoodleAtlas");
 		Doodle rabbit = new Doodle("DoodleAtlas", 193f, 200f, 0.5f);
 		rabbit.SetSkin ("Bunny");
+		doodles.Add(rabbit);
 
 		MediumText blockb = new MediumText(blockFont, "rabbit-hole under the hedge");
 		mediumText.Add (blockb);
@@ -891,6 +912,7 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		GSpineManager.LoadSpine("DoodleAtlas", "Atlases/DoodleJson", "Atlases/DoodleAtlas");
 		Doodle key = new Doodle("DoodleAtlas", 150f, 179f, 0.6f);
 		key.SetSkin ("Key");
+		doodles.Add(key);
 		
 		MediumText blockd1 = new MediumText(blockFont, "Oh dear, what");
 		MediumText blockd2 = new MediumText(blockFont, "nonsense I'm");
@@ -1014,6 +1036,7 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		GSpineManager.LoadSpine("DoodleAtlas", "Atlases/DoodleJson", "Atlases/DoodleAtlas");
 		Doodle mushroomDoodle = new Doodle("DoodleAtlas", 250f, 150f, 0.6f);
 		mushroomDoodle.SetSkin ("Mushroom");
+		doodles.Add(mushroomDoodle);
 		
 		AffectPictureWords bgrow = new AffectPictureWords(specialFont, "grow", 1f, smallMushroom);
 		bgrow.SetPosition (300, groundHeight + 20f);
@@ -1194,6 +1217,7 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		
 		Doodle canary = new Doodle("DoodleAtlas", 238f, 200f, 0.6f);
 		canary.SetSkin ("Canary");
+		doodles.Add(canary);
 		
 		GSpineManager.LoadSpine("EggAtlas", "Atlases/EggJson", "Atlases/EggAtlas");
 		CrackingEggs egg1 = new CrackingEggs("EggAtlas", 0.3f, girl);
