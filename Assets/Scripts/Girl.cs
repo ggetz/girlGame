@@ -558,7 +558,7 @@ public class Girl : GSpineSprite
 		}
 		else
 		{
-			alpha=alpha*0.9f;
+			alpha=alpha*0.85f;
 		}
 		
 		life--;

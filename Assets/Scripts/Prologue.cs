@@ -241,6 +241,7 @@ public class Prologue: MonoBehaviour
 			
 			Futile.stage.AddChild (hand);
 			hand.SetPosition(Futile.screen.width/2f, 0);
+			hand.MoveToBottom();
 			hand.scale=0.6f;
 			hand.alpha=0f;
 		}
@@ -337,7 +338,6 @@ public class Prologue: MonoBehaviour
 		}
 
 		framerate=(int)(1.0f / Time.deltaTime);
-		Debug.Log ("Framerate: " + framerate);
 		factor=60/framerate;
 		
 		if(factor==0)
