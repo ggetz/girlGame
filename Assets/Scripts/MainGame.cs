@@ -157,6 +157,7 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		framesSince = framesPerParticle - 1;
 		
 		particles = new ParticleEngine();
+		
 		doodles = new List<Doodle>();
 	}
 	
@@ -417,11 +418,17 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		}
 		if (allCollected)
 		{
-			//ACHEIVEMENT FOR ALL DOODLES COLLECTED
+			PlayerPrefs.SetInt("AllDoodlesAlice", 1);
 		}
 		
 		//CHECK IF AT END OF LEVEL
+			//PlayerPrefs.SetInt("CompleteAlice", 1);
+		
 		//CHECK IF UNDER A MINUTE FOR ACHEIVEMENT
+			//PlayerPrefs.SetInt("MinuteAlice", 1);
+			
+		//CHECK IF AT FULL LIFE
+			//PlayerPrefs.SetInt("NotErasedAlice", 1);
 	}
 	
 	public Vector2 letterWindPosRule(Vector2 pos0, int age)
