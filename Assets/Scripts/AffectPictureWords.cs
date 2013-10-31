@@ -7,7 +7,7 @@ public class AffectPictureWords : SpecialWords
 	
 	MovingPictureObstacles effectedObstacle;
 	MediumText effectedText;
-	List <MediumText> effectedTextGroup;
+	public List <MediumText> effectedTextGroup;
 	int actionType;
 	bool linked = false;
 
@@ -22,6 +22,7 @@ public class AffectPictureWords : SpecialWords
 		effectedText = obs;
 		actionType = type;
 		linked=true;
+		
 	}
 
 	public AffectPictureWords(string font, string word, float scale, List <MediumText> obs, int type): base(font, word, scale)
@@ -49,14 +50,14 @@ public class AffectPictureWords : SpecialWords
 				effectedObstacle.action();
 			}
 			
-			else if(effectedText != null)
+			else if(effectedText != null && effectedTextGroup==null)
 			{
 				actionOption ();
 			}
 			
 			else if(effectedTextGroup !=null)
 			{
-				Debug.Log ("TwinkleText: " + effectedTextGroup.Count);
+				
 				foreach(MediumText obs in effectedTextGroup)
 				{
 					effectedText=obs;
@@ -81,12 +82,12 @@ public class AffectPictureWords : SpecialWords
 			int random = Random.Range (0,1);
 			if(random==1)
 			{
-				effectedText.twinkle (Random.Range (100,300), Random.Range (100,200), true,5);
+				effectedText.twinkle (Random.Range (150,300), Random.Range (100,200), true,5);
 			}
 			
 			else
 			{
-				effectedText.twinkle (Random.Range(100,300), Random.Range (100,200),false,5);
+				effectedText.twinkle (Random.Range(150,300), Random.Range (100,200),false,5);
 			}
 		}
 	}

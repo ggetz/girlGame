@@ -1551,7 +1551,7 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		MediumText block2 = new MediumText(blockFont, "Alice looked up, and there stood the Queen, frowning like a ");
 
 		block2.SetPosition (startX + block2.textRect.width/2.5f, lightening.lighteningHeight);
-		block1.SetPosition (block2.x + block1.textRect.width/3f, block2.y+girl.girlHeight);
+		block1.SetPosition (block2.x + block1.textRect.width/4f, block2.y+girl.girlHeight);
 		
 		tremble.SetPosition(block1.x+block1.textRect.width/2f*0.6f+(tremble.textRect.width/2f), block1.y);
 		thunderstorm.SetPosition (block2.x + block2.textRect.width/2.4f, block2.y);

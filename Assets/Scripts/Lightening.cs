@@ -14,7 +14,7 @@ public class Lightening : MovingPictureObstacles
 	public Lightening(string atlas, float scale): base(atlas)
 	{
 		lscale = scale;
-		lighteningHeight = 500*lscale;
+		lighteningHeight = 400*lscale;
 		
 	}
 	// Use this for initialization

@@ -28,10 +28,11 @@ public class Trumpet : MovingPictureObstacles {
 	}
 	
 	// Update is called once per frame
-	void Update () 
+	public override void Update () 
 	{
 		if(startCountDown)
 		{
+			Debug.Log ("Trumpet: " + blowCount + " : " + time);
 			if(time>0)
 			{
 				time--;
@@ -40,7 +41,6 @@ public class Trumpet : MovingPictureObstacles {
 			else
 			{
 				blowCount=0;
-				time=30;
 			}
 		}
 	}
@@ -51,12 +51,14 @@ public class Trumpet : MovingPictureObstacles {
 		blowCount+=1;
 		if(blowCount==1)
 		{
+			time=60;
 			startCountDown=true;
 			//PLAY FIRST TRUMPET HERE
 		}
 		if(blowCount==2)
 		{
 			//PLAY SECOND TRUMPET HERE
+			time=60;
 		}
 		if(blowCount==3)
 		{

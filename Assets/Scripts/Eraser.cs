@@ -182,7 +182,6 @@ public class Eraser: MovingPictureObstacles
 	
 	private void zigZag()
 	{
-		Debug.Log ("Count: " + zigZagCount);
 		if(zigZagCount<10 && doZigZag)
 		{
 			if (y < 5)
@@ -381,7 +380,6 @@ public class Eraser: MovingPictureObstacles
 	{
 		if(eraserRect.isIntersecting(girl.getRect ()))
 		{
-			Debug.Log ("Erasing time!");
 			if(!erasing)
 			{
 				erasing=true;
