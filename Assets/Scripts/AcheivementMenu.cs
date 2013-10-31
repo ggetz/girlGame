@@ -36,10 +36,18 @@ public class AcheivementMenu: MonoBehaviour
 		back.SignalRelease+=HandleBackButtonRelease;
 		
 		acheives = new List<Acheivement>();
-		acheives.Add(new Acheivement("Fast!", "Complete Alice in Wonderland in less than a minute."));
-		acheives.Add(new Acheivement("Savior of Wonderland", "Collect all doodles."));
-		acheives[1].Complete();
-		acheives.Add(new Acheivement("Acheivement", "And this is the description."));
+		acheives.Add(new Acheivement("Down the Rabbit Hole", "Complete Alice in Wonderland."));
+		if (PlayerPrefs.GetInt("CompleteAlice", 0) == 1)
+			acheives[0].Complete();
+		acheives.Add(new Acheivement("Caucus Race Champion", "Complete Alice in Wonderland in less than a minute."));
+		if (PlayerPrefs.GetInt("MinuteCompleteAlice", 0) == 1)
+			acheives[1].Complete();
+		acheives.Add(new Acheivement("Savior of Wonderland", "Collect all doodles in Alice in Wonderland."));
+		if (PlayerPrefs.GetInt("AllDoodlesAlice", 0) == 1)
+			acheives[2].Complete();
+		acheives.Add(new Acheivement("Queen's Immunity", "Complete Alice in Wonderland without being erased once."));
+		if (PlayerPrefs.GetInt("NotErasedAlice", 0) == 1)
+			acheives[3].Complete();
 		
 		float y = Futile.screen.height * 0.95f;
 		
