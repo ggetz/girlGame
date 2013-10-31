@@ -66,12 +66,12 @@ public class Prologue: MonoBehaviour
 		// Load the girl 
 		GSpineManager.LoadSpine("PrologueWholeShotAtlas", "Atlases/PrologueWholeShotJson", "Atlases/PrologueWholeShotAtlas");
 		wholeShot = new GSpineSprite("PrologueWholeShotAtlas");
-		wholeShot.scale=0.6f;
+		wholeShot.scale=0.55f;
 		
 		GSpineManager.LoadSpine("MouthCloseUpAtlas", "Atlases/MouthCloseUpJson", "Atlases/MouthCloseUpAtlas");
 		mouth = new GSpineSprite("MouthCloseUpAtlas");
 		
-		mouth.scale=0.6f;
+		mouth.scale=0.55f;
 		
 		//load the atlas
 		Futile.atlasManager.LoadAtlas("Atlases/PrologueAtlas");
@@ -79,7 +79,7 @@ public class Prologue: MonoBehaviour
 		textFont = "Incubus";
 		
 		text = new FLabel(textFont, "");
-		text.scale=0.6f;
+		text.scale=0.55f;
 		
 	}
 			
@@ -181,7 +181,7 @@ public class Prologue: MonoBehaviour
 			unplayed=false;
 			GSpineManager.LoadSpine("EyeCloseUpAtlas", "Atlases/EyeCloseUpJson", "Atlases/EyeCloseUpAtlas");
 			eye = new GSpineSprite("EyeCloseUpAtlas");
-			eye.scale=0.6f;
+			eye.scale=0.55f;
 		
 		}
 		
@@ -244,7 +244,7 @@ public class Prologue: MonoBehaviour
 			Futile.stage.AddChild (hand);
 			hand.SetPosition(Futile.screen.width/2f, 0);
 			hand.MoveToBottom();
-			hand.scale=0.6f;
+			hand.scale=0.55f;
 			hand.alpha=0f;
 		}
 		
@@ -345,6 +345,10 @@ public class Prologue: MonoBehaviour
 		if(factor==0)
 		{
 			factor=1;
+		}
+		else if(factor>=10)
+		{
+			factor=8;
 		}
 		
 		time+=(int)(factor+0.5);

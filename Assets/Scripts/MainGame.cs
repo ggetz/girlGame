@@ -28,7 +28,6 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 	bool step5Triggered=false;
 	
 	/* Keep track of what doodles are collected*/
-	List<Doodle> doodles;
 	
 	float xEnd;
 	Vector2 deltaSwipe;
@@ -158,7 +157,6 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		
 		particles = new ParticleEngine();
 		
-		doodles = new List<Doodle>();
 	}
 	
 	void LoadTextures()
@@ -216,9 +214,10 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 			
 	void SetUpStage()
 	{
+		Debug.Log ("Yo");
 		setUpTutorialStage();
 		//girl
-		
+		Debug.Log ("Here");
 		Futile.stage.AddChild(girl);
 		Futile.stage.AddChild (eraser);
 		girl.SetPosition(0, groundHeight);
@@ -391,7 +390,9 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 			}
 			updateBackground();
 		}
+		
 		particles.update();
+		
 		if(Application.loadedLevelName.Equals("AliceLevel"))
 		{
 			framesSince++;
@@ -411,17 +412,7 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 				framesSince = 0;
 			}
 		}
-		
-		bool allCollected = true;
-		foreach (Doodle d in doodles)
-		{
-			if (!d.isCollected())
-				allCollected = false;
-		}
-		if (allCollected)
-		{
-			PlayerPrefs.SetInt("AllDoodlesAlice", 1);
-		}
+	
 		
 		//CHECK IF AT END OF LEVEL
 			//PlayerPrefs.SetInt("CompleteAlice", 1);
@@ -667,11 +658,12 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		mediumText.Add (blocka10);
 		mediumText.Add (blocka11);
 		
+		Debug.Log ("Yup hi");
 		GSpineManager.LoadSpine("DoodleAtlas", "Atlases/DoodleJson", "Atlases/DoodleAtlas");
 		Doodle rabbit = new Doodle("DoodleAtlas", 193f, 200f, 0.5f);
 		rabbit.SetSkin ("Bunny");
-		doodles.Add(rabbit);
-
+		
+		
 		MediumText blockb = new MediumText(blockFont, "rabbit-hole under the hedge");
 		mediumText.Add (blockb);
 		
@@ -878,7 +870,7 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		blocka5.SetPosition (blocka9.x, blocka6.y + blocka5.textRect.height);
 		blocka4.SetPosition (blocka9.x, blocka5.y + blocka4.textRect.height);
 		
-		sentence1.SetPosition (blocka9.x-sentence1.textRect.width/6f, blocka4.y + girl.girlHeight*1.6f);
+		sentence1.SetPosition (blocka9.x, blocka4.y + girl.girlHeight*1.6f);
 		sentence3.SetPosition(blocka9.x + (sentence1.textRect.width - sentence3.textRect.width)/4f, sentence1.y-sentence3.textRect.height);
 		shrink.SetPosition(sentence3.x - shrink.textRect.width, sentence3.y);
 		sentence2.SetPosition (shrink.x - sentence2.textRect.width/2f, sentence3.y);
@@ -922,7 +914,7 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		GSpineManager.LoadSpine("DoodleAtlas", "Atlases/DoodleJson", "Atlases/DoodleAtlas");
 		Doodle key = new Doodle("DoodleAtlas", 150f, 179f, 0.6f);
 		key.SetSkin ("Key");
-		doodles.Add(key);
+
 		
 		MediumText blockd1 = new MediumText(blockFont, "Oh dear, what");
 		MediumText blockd2 = new MediumText(blockFont, "nonsense I'm");
@@ -1048,8 +1040,7 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		GSpineManager.LoadSpine("DoodleAtlas", "Atlases/DoodleJson", "Atlases/DoodleAtlas");
 		Doodle mushroomDoodle = new Doodle("DoodleAtlas", 250f, 150f, 0.6f);
 		mushroomDoodle.SetSkin ("Mushroom");
-		doodles.Add(mushroomDoodle);
-		
+
 		AffectPictureWords bgrow = new AffectPictureWords(specialFont, "grow", 1f, smallMushroom);
 		bgrow.SetPosition (300, groundHeight + 20f);
 		specialWords.Add (bgrow);
@@ -1229,7 +1220,6 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		
 		Doodle canary = new Doodle("DoodleAtlas", 238f, 200f, 0.6f);
 		canary.SetSkin ("Canary");
-		doodles.Add(canary);
 		
 		GSpineManager.LoadSpine("EggAtlas", "Atlases/EggJson", "Atlases/EggAtlas");
 		CrackingEggs egg1 = new CrackingEggs("EggAtlas", 0.3f, girl);
