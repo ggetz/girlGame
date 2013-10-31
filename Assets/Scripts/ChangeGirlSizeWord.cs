@@ -32,10 +32,7 @@ public class ChangeGirlSizeWord : SpecialWords {
 		}
 		targetGirl.scale=scaleSize;
 		targetGirl.changeSize(scaleSize);
-<<<<<<< HEAD
-		
-=======
->>>>>>> d3823309e6e6f2acf86d9880b4a352f88c020f95
+
 	}
 		
 }

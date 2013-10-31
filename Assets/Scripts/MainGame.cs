@@ -86,10 +86,7 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		
 		/**Dialogue **/
 		dialogueItems = new List<string>();
-<<<<<<< HEAD
 
-=======
->>>>>>> d3823309e6e6f2acf86d9880b4a352f88c020f95
 		dialogueItems.Add("\"Hey, you! Over there!\"");
 		dialogueItems.Add("\"I can't believe it...\nyou're moving...\"");
 		dialogueItems.Add("\"I can't leave on my own...\nI can't move at all...\nbut won't you take me\nwith you?\"");
@@ -98,7 +95,6 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		dialogueItems.Add("touch the screen behind you\n to run backwards,");
 		dialogueItems.Add("and swipe up to jump.");
 		dialogueItems.Add("\"Please! Don't leave me here!\nI won't last long if you do...\"");
-<<<<<<< HEAD
 
 		dialogueItems.Add("\"Hey, over here!\" said the rabbit.");
 		dialogueItems.Add("You've escaped!");
@@ -109,9 +105,6 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		dialogueItems.Add("And swipe up to jump.");
 		dialogueItems.Add("Come on!");
 
-=======
->>>>>>> d3823309e6e6f2acf86d9880b4a352f88c020f95
-		
 		// Setup Futile
 		FutileParams fparams = new FutileParams(true, true, false, false);
 		fparams.AddResolutionLevel(1024.0f,	1.0f, 1.0f, "");

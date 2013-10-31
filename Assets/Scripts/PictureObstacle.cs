@@ -49,8 +49,4 @@ public class PictureObstacle : FSprite
 	{
 		return rect;
 	}
-<<<<<<< HEAD
-=======
-
->>>>>>> d3823309e6e6f2acf86d9880b4a352f88c020f95
 }
