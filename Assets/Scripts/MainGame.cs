@@ -726,7 +726,7 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		specialWords.Add (Out);
 		specialWords.Add (down);
 		
-		setUpTwinkleStage(background2.x + background2.width/2f);
+		setUpFiller1(background2.x + background2.width/2f);
 		
 	}
 	
