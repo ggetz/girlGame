@@ -27,6 +27,7 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 	bool step4Triggered=false;
 	bool step5Triggered=false;
 	
+	float xEnd;
 	Vector2 deltaSwipe;
 	
 	public AudioClip music;
@@ -46,12 +47,12 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 	public float scaleGirl;
 	
 	List <MediumText> twinkleText = new List<MediumText>();
-	List <MovingPictureObstacles> updateObs = new List<MovingPictureObstacles>();
 	List<Rectangle> collisionRects = new List<Rectangle>();
 	List<Rectangle> obstacleCollisions=new List<Rectangle>();
 	
 	bool directionTouchFound;
 	bool inSpecialWord=false;
+	bool twinkling=false;
 	
 	List <SpecialWords> specialWords = new List<SpecialWords> ();
 	List <MediumText> mediumText = new List<MediumText>();
@@ -85,7 +86,7 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		
 		/**Dialogue **/
 		dialogueItems = new List<string>();
-<<<<<<< HEAD
+
 		dialogueItems.Add("\"Hey, you! Over there!\"");
 		dialogueItems.Add("\"I can't believe it...\nyou're moving...\"");
 		dialogueItems.Add("\"I can't leave on my own...\nI can't move at all...\nbut won't you take me\nwith you?\"");
@@ -94,7 +95,7 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		dialogueItems.Add("touch the screen behind you\n to run backwards,");
 		dialogueItems.Add("and swipe up to jump.");
 		dialogueItems.Add("\"Please! Don't leave me here!\nI won't last long if you do...\"");
-=======
+
 		dialogueItems.Add("\"Hey, over here!\" said the rabbit.");
 		dialogueItems.Add("You've escaped!");
 		dialogueItems.Add("Please, help me out of here before we're both erased!");
@@ -103,7 +104,7 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		dialogueItems.Add("Touch the screen in behind you to run backwards,");
 		dialogueItems.Add("And swipe up to jump.");
 		dialogueItems.Add("Come on!");
->>>>>>> a6b6a4805f899273890c3ac9bfe277291bf0ef10
+
 		
 		// Setup Futile
 		FutileParams fparams = new FutileParams(true, true, false, false);
@@ -112,8 +113,7 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		Futile.instance.Init(fparams);
 		
 		groundHeight = 0.25f * Futile.screen.halfHeight;
-		
-		Debug.Log ("GroundHeight: " + groundHeight);
+
 		//set up camera
 		Futile.stage.AddChild(cam = new FCamObject());
 		focus = new FNode();
@@ -288,6 +288,7 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		else
 		{
 			girl.Update(collisionRects); 
+			int x=0;
 			
 			foreach(MediumText star in twinkleText)
 			{
@@ -295,9 +296,18 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 				{
 					star.Update ();
 				}
+	
 			}
 			
-			if(twinkleText[0].getTwinkling()==true && twinkleText[twinkleText.Count-1].getTwinkling()==true)
+			while(!twinkling && x<twinkleText.Count)
+			{
+				if(twinkleText[x].getTwinkling ())
+				{
+					twinkling=true;
+				}
+				x++;
+			}
+			if(twinkling)
 			{
 				int start=collisionRects.Count-movingObs.Count-twinkleText.Count;
 				int end=collisionRects.Count-movingObs.Count;
@@ -308,6 +318,7 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 					collisionRects[i]=twinkleText[index].getRect();
 					index++;
 				}
+				twinkling=false;
 			}
 		
 			foreach(SpecialWords sp in specialWords)
@@ -365,7 +376,11 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 				}
 			}
 			
-			
+			if(girl.x>xEnd)
+			{
+				
+				Application.LoadLevel ("Epilogue");
+			}
 			updateBackground();
 		}
 		particles.update();
@@ -434,11 +449,9 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 					{
 						SpecialWords word = specialWords[i];
 						Vector2 touchPos = word.GlobalToLocal (touch.position);
-						Debug.Log (word.getRect ().left());
 						if(word.textRect.Contains (touchPos) && girl.getRect ().isInRange (word.getRect()))
 						{
 							word.action ();
-							Debug.Log ("Girl: " + girl.getRect ().bottom () + girl.getRect ().right());
 							inSpecialWord=true;
 						}
 					}
@@ -714,7 +727,7 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		specialWords.Add (Out);
 		specialWords.Add (down);
 		
-		setUpFiller1(background2.x + background2.width/2f);
+		setUpTwinkleStage(background2.x + background2.width/2f);
 		
 	}
 	
@@ -796,7 +809,7 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		mushroom.scale=0.3f;
 		
 		ChangeGirlSizeWord shrink = new ChangeGirlSizeWord(specialFont, "shrink", 1f, 0.3f, girl);
-		ChangeGirlSizeWord grow = new ChangeGirlSizeWord(specialFont, "grow", 1f, 1/(0.3f), girl);
+		ChangeGirlSizeWord grow = new ChangeGirlSizeWord(specialFont, "grow", 1f, 0.6f, girl);
 		
 		specialWords.Add (shrink);
 		specialWords.Add (grow);
@@ -1242,11 +1255,6 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		movingObs.Add (egg3);
 		movingObs.Add (bigEgg);
 		
-		updateObs.Add (egg1);
-		updateObs.Add (egg2);
-		updateObs.Add (egg3);
-		updateObs.Add (bigEgg);
-		
 		canary.Start ();
 		girl.addDoodle (canary);
 		
@@ -1491,6 +1499,7 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		trumpet.Start();
 		scroll.Start();
 		
+		movingObs.Add (trumpet);
 		movingObs.Add (scroll);
 		
 		Futile.stage.AddChild (trumpet);
@@ -1564,14 +1573,14 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		
 		mallet.Start ();
 		glass.Start ();
-		updateObs.Add(glass);
 		
 		Futile.stage.AddChild (lightening);
 		
 		movingObs.Add (glass);
 		movingObs.Add (mallet);
 		
-			
+		xEnd=background4.x+background4.width/2f;
+		
 		foreach (MediumText mt in mediumText)
 		{
 			Futile.stage.AddChild (mt);

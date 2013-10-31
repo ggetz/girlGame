@@ -56,6 +56,7 @@ public class AffectPictureWords : SpecialWords
 			
 			else if(effectedTextGroup !=null)
 			{
+				Debug.Log ("TwinkleText: " + effectedTextGroup.Count);
 				foreach(MediumText obs in effectedTextGroup)
 				{
 					effectedText=obs;
@@ -80,12 +81,12 @@ public class AffectPictureWords : SpecialWords
 			int random = Random.Range (0,1);
 			if(random==1)
 			{
-				effectedText.twinkle (Random.Range (300,400), Random.Range (100,200), true,5);
+				effectedText.twinkle (Random.Range (100,300), Random.Range (100,200), true,5);
 			}
 			
 			else
 			{
-				effectedText.twinkle (Random.Range(300,400), Random.Range (100,200),false,5);
+				effectedText.twinkle (Random.Range(100,300), Random.Range (100,200),false,5);
 			}
 		}
 	}

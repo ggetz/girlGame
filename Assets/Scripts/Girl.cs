@@ -51,13 +51,13 @@ public class Girl : GSpineSprite
 	{
 		scale=sc;
 		girlWidth = 110*sc;
-<<<<<<< HEAD
+
 		standingHeight=170*sc;
 		crawlingHeight = 110*sc;
-=======
+
 		standingHeight=190*sc;
 		crawlingHeight = 90*sc;
->>>>>>> a6b6a4805f899273890c3ac9bfe277291bf0ef10
+
 		girlHeight=standingHeight;
 	}
 	
@@ -570,12 +570,6 @@ public class Girl : GSpineSprite
 	public void addDoodle(Doodle target)
 	{
 		doodleList.Add (target);
-	}
-	
-	public void scale(float s)
-	{
-		scale *= s;
-		rect.scale(s);
 	}
 	
 	public bool checkDoodleCollision()

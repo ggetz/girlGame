@@ -29,6 +29,7 @@ public class Doodle : GSpineSprite
 	public void Collect()
 	{
 		Play("Collected", false);
-		doodleRect = new Rectangle(x, y);
+		//GET COLLECTED
+		doodleRect = new Rectangle(x, y, 0, 0);
 	}
 }
