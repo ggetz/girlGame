@@ -85,7 +85,6 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		
 		/**Dialogue **/
 		dialogueItems = new List<string>();
-<<<<<<< HEAD
 		dialogueItems.Add("\"Hey, you! Over there!\"");
 		dialogueItems.Add("\"I can't believe it...\nyou're moving...\"");
 		dialogueItems.Add("\"I can't leave on my own...\nI can't move at all...\nbut won't you take me\nwith you?\"");
@@ -94,16 +93,6 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		dialogueItems.Add("touch the screen behind you\n to run backwards,");
 		dialogueItems.Add("and swipe up to jump.");
 		dialogueItems.Add("\"Please! Don't leave me here!\nI won't last long if you do...\"");
-=======
-		dialogueItems.Add("\"Hey, over here!\" said the rabbit.");
-		dialogueItems.Add("You've escaped!");
-		dialogueItems.Add("Please, help me out of here before we're both erased!");
-		dialogueItems.Add("The first thing you need to do is jump up onto the words above me.");
-		dialogueItems.Add("Touch the screen in front of you to run,");
-		dialogueItems.Add("Touch the screen in behind you to run backwards,");
-		dialogueItems.Add("And swipe up to jump.");
-		dialogueItems.Add("Come on!");
->>>>>>> a6b6a4805f899273890c3ac9bfe277291bf0ef10
 		
 		// Setup Futile
 		FutileParams fparams = new FutileParams(true, true, false, false);
@@ -259,15 +248,15 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 	
 	void Update()
 	{		
-		if (!step1Triggered && girl.x > Futile.screen.halfWidth * 0.4f)
+		if (!step1Triggered && girl.x > Futile.screen.halfWidth * 0.3f)
 		{
 			dcontainer = prologueDialogue();
 			cam.AddChild(dcontainer);	
 			Futile.stage.AddChild(cam);
 		}
-		if (step1Triggered && girl.x > Futile.screen.halfWidth && !step2Triggered)
+		if (step1Triggered && girl.x > Futile.screen.halfWidth * 1.35f && !step2Triggered)
 			prologueDialogue2();
-		if (step2Triggered && girl.y < Futile.screen.halfHeight * 1.25f && !step3Triggered)
+		if (step2Triggered && girl.y < Futile.screen.halfHeight * 1.3f && !step3Triggered)
 			prologueDialogue3();
 		if (step3Triggered && girl.y < Futile.screen.halfHeight * 0.7f && !step4Triggered)
 			prologueDialogue4();
@@ -796,7 +785,7 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		mushroom.scale=0.3f;
 		
 		ChangeGirlSizeWord shrink = new ChangeGirlSizeWord(specialFont, "shrink", 1f, 0.3f, girl);
-		ChangeGirlSizeWord grow = new ChangeGirlSizeWord(specialFont, "grow", 1f, 1/(0.3f), girl);
+		ChangeGirlSizeWord grow = new ChangeGirlSizeWord(specialFont, "grow", 1f, 0.6f, girl);
 		
 		specialWords.Add (shrink);
 		specialWords.Add (grow);
@@ -1671,7 +1660,7 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 	{
 		step1Triggered = true;
 		isInDialogue = true;
-		girl.SetPosition(girl.x + Futile.screen.width * .1f, girl.y);
+		girl.Pause();
 		eraser.Pause();
 		
 		FContainer container = new FContainer();
@@ -1752,6 +1741,7 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		step3Triggered = true;
 		step4Triggered = true;
 		eraser.Play();
+		girl.Resume();
 	}
 	
 	private void HandleDialogueButtonRelease(FButton button)
