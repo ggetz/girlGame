@@ -96,14 +96,6 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		dialogueItems.Add("and swipe up to jump.");
 		dialogueItems.Add("\"Please! Don't leave me here!\nI won't last long if you do...\"");
 
-		dialogueItems.Add("\"Hey, over here!\" said the rabbit.");
-		dialogueItems.Add("You've escaped!");
-		dialogueItems.Add("Please, help me out of here before we're both erased!");
-		dialogueItems.Add("The first thing you need to do is jump up onto the words above me.");
-		dialogueItems.Add("Touch the screen in front of you to run,");
-		dialogueItems.Add("Touch the screen in behind you to run backwards,");
-		dialogueItems.Add("And swipe up to jump.");
-		dialogueItems.Add("Come on!");
 
 		// Setup Futile
 		FutileParams fparams = new FutileParams(true, true, false, false);

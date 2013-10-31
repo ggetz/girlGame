@@ -68,19 +68,10 @@ public class Prologue: MonoBehaviour
 		wholeShot = new GSpineSprite("PrologueWholeShotAtlas");
 		wholeShot.scale=0.6f;
 		
-		GSpineManager.LoadSpine("HandCloseUpAtlas", "Atlases/HandCloseUpJson", "Atlases/HandCloseUpAtlas");
-		hand = new GSpineSprite("HandCloseUpAtlas");
-		
-		GSpineManager.LoadSpine("EyeCloseUpAtlas", "Atlases/EyeCloseUpJson", "Atlases/EyeCloseUpAtlas");
-		eye = new GSpineSprite("EyeCloseUpAtlas");
-		
 		GSpineManager.LoadSpine("MouthCloseUpAtlas", "Atlases/MouthCloseUpJson", "Atlases/MouthCloseUpAtlas");
 		mouth = new GSpineSprite("MouthCloseUpAtlas");
 		
-		
-		eye.scale=0.6f;
 		mouth.scale=0.6f;
-		hand.scale=0.6f;
 		
 		//load the atlas
 		Futile.atlasManager.LoadAtlas("Atlases/PrologueAtlas");
@@ -95,24 +86,18 @@ public class Prologue: MonoBehaviour
 	{
 		
 		Futile.stage.AddChild (wholeShot);
-		Futile.stage.AddChild (eye);
+		
 		Futile.stage.AddChild (mouth);
-		Futile.stage.AddChild (hand);
 		Futile.stage.AddChild(text);
 		
 		wholeShot.SetPosition(Futile.screen.width/2f, 0);
-		eye.SetPosition(Futile.screen.width/2f, 0);
-		hand.SetPosition(Futile.screen.width/2f, 0);
 		mouth.SetPosition(Futile.screen.width/2f, 0);
 		text.SetPosition (Futile.screen.width/2f, Futile.screen.height/2f);
 		
 		wholeShot.alpha = 0f;
-		eye.alpha=0f;
+
 		mouth.alpha=0f;
-		hand.alpha=0f;
 		text.alpha=0f;
-		
-		
 		
 	}
 	
@@ -158,6 +143,9 @@ public class Prologue: MonoBehaviour
 		if(time>940 && time<950 && !unplayed)
 		{
 			unplayed=true;
+			Futile.stage.RemoveChild(mouth);
+			Futile.atlasManager.UnloadAtlas ("Atlases/MouthCloseUpAtlas");
+			
 		}
 		
 		if(time>=950 && time<960 && unplayed)
@@ -185,16 +173,22 @@ public class Prologue: MonoBehaviour
 		
 		if(time==1200)
 		{
-			mouth.alpha=0;
 			wholeShot.Stop ();
 			wholeShot.alpha=100;
 			wholeShot.Play("Part2", false);
 			unplayed=false;
+			GSpineManager.LoadSpine("EyeCloseUpAtlas", "Atlases/EyeCloseUpJson", "Atlases/EyeCloseUpAtlas");
+			eye = new GSpineSprite("EyeCloseUpAtlas");
+			eye.scale=0.6f;
+		
 		}
 		
 		if(time>=1330 && time<1340 && !unplayed)
 		{
 			unplayed=true;
+			Futile.stage.AddChild (eye);
+			eye.SetPosition(Futile.screen.width/2f, 0);
+			eye.alpha=0f;
 		}
 		
 		if(time>=1350 && time<1360 && unplayed)
@@ -215,6 +209,8 @@ public class Prologue: MonoBehaviour
 			text.text="Please.\n\nNot Yet";
 			fadeText (true, 50);
 			unplayed=false;
+			Futile.stage.RemoveChild (eye);
+			Futile.atlasManager.UnloadAtlas ("Atlases/EyeCloseUpAtlas");
 		}
 		
 		if(time>=1650 && time<1660 && !unplayed)
@@ -231,17 +227,22 @@ public class Prologue: MonoBehaviour
 		if(time>=1780 && time<1790 && !unplayed)
 		{
 			unplayed=true;
+			GSpineManager.LoadSpine("HandCloseUpAtlas", "Atlases/HandCloseUpJson", "Atlases/HandCloseUpAtlas");
+			hand = new GSpineSprite("HandCloseUpAtlas");
 		}
 		
 		if(time>=1800 && time<1810 && unplayed)
 		{
-			eye.alpha=0;
-			eye.Stop ();
 			wholeShot.Stop ();
 			wholeShot.alpha=100;
 			
 			wholeShot.Play("Part3", false);
 			unplayed=false;
+			
+			Futile.stage.AddChild (hand);
+			hand.SetPosition(Futile.screen.width/2f, 0);
+			hand.scale=0.6f;
+			hand.alpha=0f;
 		}
 		
 		if(time>=1950 && time<1960 && !unplayed)
@@ -367,8 +368,6 @@ public class Prologue: MonoBehaviour
 	
 	void fadeText(bool fadeIn, int fadeTime)
 	{
-		Debug.Log (fadeTime);
-		Debug.Log (fadeIn);
 		if(fadeTime > 0 && !textFading)
 		{
 			textFading=true;
