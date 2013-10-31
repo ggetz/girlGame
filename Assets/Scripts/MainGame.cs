@@ -99,8 +99,6 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		dialogueItems.Add("and swipe up to jump.");
 		dialogueItems.Add("\"Please! Don't leave me here!\nI won't last long if you do...\"");
 
-<<<<<<< HEAD
-=======
 		/* OLD DIALOAGUE **
 		dialogueItems.Add("\"Hey, over here!\" said the rabbit.");
 		dialogueItems.Add("You've escaped!");
@@ -111,7 +109,6 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		dialogueItems.Add("And swipe up to jump.");
 		dialogueItems.Add("Come on!");
 		*/
->>>>>>> 793b0d7a1ba96f05106ad91915030273f15daef0
 
 		// Setup Futile
 		FutileParams fparams = new FutileParams(true, true, false, false);
@@ -179,6 +176,7 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		Futile.atlasManager.LoadFont("PalatinoMedium", "MediumNormalText", "Atlases/MediumNormalText", 0, 0);
 		Futile.atlasManager.LoadFont("PalatinoSpecial", "MediumSpecialText", "Atlases/MediumSpecialText", 0, 0);
 		Futile.atlasManager.LoadFont ("SpecialClose", "MediumSpecialTextClose", "Atlases/MediumSpecialTextClose",0,0);
+	
 		blockFont = "PalatinoMedium";
 		specialFont = "PalatinoSpecial";
 		specialClose="SpecialClose";
@@ -191,6 +189,7 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		eraser = new Eraser("EraserAtlas", girl, 0.6f, 5);
 		eraser.SetPosition(girl.x, Futile.screen.height + girl.y);
 		eraser.scale=0.6f;
+		
 		
 	}
 	
@@ -414,7 +413,7 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		}
 		
 		bool allCollected = true;
-		for each (Doodle d in doodles)
+		foreach (Doodle d in doodles)
 		{
 			if (!d.isCollected())
 				allCollected = false;
@@ -757,7 +756,7 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		specialWords.Add (Out);
 		specialWords.Add (down);
 		
-		setUpTwinkleStage(background2.x + background2.width/2f);
+		setUpFiller1(background2.x + background2.width/2f);
 		
 	}
 	
@@ -1640,7 +1639,7 @@ public class MainGame: MonoBehaviour, FMultiTouchableInterface
 		movingObs.Add (mallet);
 		
 		xEnd=background4.x+background4.width/2f;
-		
+		Debug.Log ("End: " + xEnd);
 		foreach (MediumText mt in mediumText)
 		{
 			Futile.stage.AddChild (mt);

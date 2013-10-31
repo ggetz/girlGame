@@ -80,6 +80,7 @@ public class Prologue: MonoBehaviour
 		
 		text = new FLabel(textFont, "");
 		text.scale=0.6f;
+		
 	}
 			
 	void SetUpStage()
@@ -98,7 +99,7 @@ public class Prologue: MonoBehaviour
 
 		mouth.alpha=0f;
 		text.alpha=0f;
-		
+		FSoundManager.PlayMusic ("prologue", 1f);
 	}
 	
 	void Update()
@@ -106,6 +107,7 @@ public class Prologue: MonoBehaviour
 		
 		if(time==0)
 		{
+			
 			wholeShot.alpha=100;
 			wholeShot.Play("Part1", false);
 		}

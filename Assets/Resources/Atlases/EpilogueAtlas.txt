@@ -1,8 +1,16 @@
 {"frames": {
 
+"BlackEdge.png":
+{
+	"frame": {"x":2,"y":2,"w":240,"h":1080},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":240,"h":1080},
+	"sourceSize": {"w":240,"h":1080}
+},
 "FinalHand.png":
 {
-	"frame": {"x":2,"y":2,"w":1415,"h":1080},
+	"frame": {"x":244,"y":2,"w":1415,"h":1080},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":1415,"h":1080},
@@ -10,11 +18,19 @@
 },
 "FinalScene.png":
 {
-	"frame": {"x":1419,"y":2,"w":1415,"h":1080},
+	"frame": {"x":1661,"y":2,"w":1415,"h":1080},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":1415,"h":1080},
 	"sourceSize": {"w":1415,"h":1080}
+},
+"Incubus.png":
+{
+	"frame": {"x":2,"y":1084,"w":1024,"h":512},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":1024,"h":512},
+	"sourceSize": {"w":1024,"h":512}
 }},
 "meta": {
 	"app": "http://www.codeandweb.com/texturepacker ",
@@ -23,6 +39,6 @@
 	"format": "RGBA8888",
 	"size": {"w":4096,"h":2048},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:ea48a13883444e901106cc3df270790f$"
+	"smartupdate": "$TexturePacker:SmartUpdate:221ac414bc7d53b0e78b04ea039242d7$"
 }
 }

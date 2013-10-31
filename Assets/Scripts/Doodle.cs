@@ -6,14 +6,14 @@ public class Doodle : GSpineSprite
 {
 	public float height, width;
 	public Rectangle doodleRect;
-	private bool isCollected;
+	private bool collected;
 	
 	public Doodle(string atlas, float h, float w, float sc): base(atlas)
 	{
 		height=h*sc;
 		width=w*sc;
 		scale=sc;
-		isCollected = false;
+		collected = false;
 	}
 	
 	// Use this for initialization
@@ -33,11 +33,11 @@ public class Doodle : GSpineSprite
 		Play("Collected", false);
 		//GET COLLECTED
 		doodleRect = new Rectangle(x, y, 0, 0);
-		isCollected = true;
+		collected = true;
 	}
 	
 	public bool isCollected()
 	{
-		return isCollected;
+		return collected;
 	}
 }
