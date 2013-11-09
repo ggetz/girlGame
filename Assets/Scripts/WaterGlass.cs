@@ -29,8 +29,8 @@ public class WaterGlass : MovingPictureObstacles
 	// Use this for initialization
 	public override void Start () 
 	{
-		height =600*wscale;
-		width = 500*wscale;
+		height =600*0.4f;
+		width = 500*0.4f;
 		waterRect=new Rectangle(x, y, width, height);
 		Play ("Still", false);
 	}

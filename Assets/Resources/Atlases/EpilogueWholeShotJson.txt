@@ -1,6 +1,6 @@
 {
 "bones": [
-	{ "name": "root" },
+	{ "name": "root", "scaleX": 0.6, "scaleY": 0.6 },
 	{ "name": "Girl", "parent": "root", "x": -380.19, "y": 648.75 },
 	{ "name": "PaperBlock", "parent": "root", "x": 158.15, "y": 837.5 },
 	{ "name": "PaperBlock2", "parent": "root", "x": 245, "y": 353.3 },

@@ -1,6 +1,6 @@
 {
 "bones": [
-	{ "name": "root" },
+	{ "name": "root", "scaleX": 0.6, "scaleY": 0.6 },
 	{ "name": "LeftIndex1", "parent": "root", "length": 114.31, "x": -340.53, "y": 737.6, "rotation": 39.31 },
 	{ "name": "LeftMiddle1", "parent": "root", "length": 80.85, "x": -198.75, "y": 703.11, "rotation": 53.56 },
 	{ "name": "LeftPinky1", "parent": "root", "length": 96.71, "x": -41.64, "y": 553.66, "rotation": 56.51 },

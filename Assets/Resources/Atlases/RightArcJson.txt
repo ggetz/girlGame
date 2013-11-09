@@ -1,6 +1,6 @@
 {
 "bones": [
-	{ "name": "root" },
+	{ "name": "root", "scaleX": 0.6, "scaleY": 0.6 },
 	{ "name": "Glow", "parent": "root", "x": 233.69, "y": 822.51 }
 ],
 "slots": [

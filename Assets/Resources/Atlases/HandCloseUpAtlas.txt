@@ -2,163 +2,163 @@
 
 "Blank.png":
 {
-	"frame": {"x":2,"y":2,"w":1463,"h":1080},
+	"frame": {"x":960,"y":2,"w":878,"h":648},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":1463,"h":1080},
-	"sourceSize": {"w":1463,"h":1080}
+	"spriteSourceSize": {"x":0,"y":0,"w":878,"h":648},
+	"sourceSize": {"w":878,"h":648}
 },
 "Edge.png":
 {
-	"frame": {"x":1467,"y":2,"w":253,"h":1078},
+	"frame": {"x":1840,"y":2,"w":152,"h":647},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":253,"h":1078},
-	"sourceSize": {"w":253,"h":1078}
+	"spriteSourceSize": {"x":0,"y":0,"w":152,"h":647},
+	"sourceSize": {"w":152,"h":647}
 },
 "First1.png":
 {
-	"frame": {"x":1722,"y":2,"w":159,"h":118},
+	"frame": {"x":2,"y":652,"w":87,"h":69},
 	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":159,"h":118},
-	"sourceSize": {"w":159,"h":118}
+	"trimmed": true,
+	"spriteSourceSize": {"x":2,"y":1,"w":87,"h":69},
+	"sourceSize": {"w":95,"h":71}
 },
 "First2.png":
 {
-	"frame": {"x":1883,"y":2,"w":159,"h":118},
+	"frame": {"x":1969,"y":651,"w":73,"h":49},
 	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":159,"h":118},
-	"sourceSize": {"w":159,"h":118}
+	"trimmed": true,
+	"spriteSourceSize": {"x":13,"y":16,"w":73,"h":49},
+	"sourceSize": {"w":95,"h":71}
 },
 "First3.png":
 {
-	"frame": {"x":2044,"y":2,"w":121,"h":108},
+	"frame": {"x":1969,"y":751,"w":69,"h":47},
 	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":121,"h":108},
-	"sourceSize": {"w":121,"h":108}
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":8,"w":69,"h":47},
+	"sourceSize": {"w":73,"h":65}
 },
 "HairGlow.png":
 {
-	"frame": {"x":2167,"y":2,"w":527,"h":424},
+	"frame": {"x":1091,"y":1443,"w":312,"h":252},
 	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":527,"h":424},
-	"sourceSize": {"w":527,"h":424}
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":2,"w":312,"h":252},
+	"sourceSize": {"w":316,"h":254}
 },
 "HairSketch.png":
 {
-	"frame": {"x":2696,"y":2,"w":489,"h":410},
+	"frame": {"x":856,"y":1205,"w":285,"h":236},
 	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":489,"h":410},
-	"sourceSize": {"w":489,"h":410}
+	"trimmed": true,
+	"spriteSourceSize": {"x":8,"y":10,"w":285,"h":236},
+	"sourceSize": {"w":293,"h":246}
 },
 "HandBackground.png":
 {
-	"frame": {"x":2,"y":1084,"w":1420,"h":1080},
+	"frame": {"x":2,"y":800,"w":852,"h":648},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":1420,"h":1080},
-	"sourceSize": {"w":1420,"h":1080}
+	"spriteSourceSize": {"x":0,"y":0,"w":852,"h":648},
+	"sourceSize": {"w":852,"h":648}
 },
 "HandBorder.png":
 {
-	"frame": {"x":1424,"y":1084,"w":1593,"h":1080},
+	"frame": {"x":2,"y":2,"w":956,"h":648},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":1593,"h":1080},
-	"sourceSize": {"w":1593,"h":1080}
+	"spriteSourceSize": {"x":0,"y":0,"w":956,"h":648},
+	"sourceSize": {"w":956,"h":648}
 },
 "HandGlow.png":
 {
-	"frame": {"x":3019,"y":1084,"w":761,"h":744},
+	"frame": {"x":632,"y":1450,"w":457,"h":446},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":761,"h":744},
-	"sourceSize": {"w":761,"h":744}
+	"spriteSourceSize": {"x":0,"y":0,"w":457,"h":446},
+	"sourceSize": {"w":457,"h":446}
 },
 "ScreenWhiteOut.png":
 {
-	"frame": {"x":2,"y":2166,"w":1066,"h":960},
+	"frame": {"x":2,"y":1450,"w":628,"h":554},
 	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":1066,"h":960},
-	"sourceSize": {"w":1066,"h":960}
+	"trimmed": true,
+	"spriteSourceSize": {"x":4,"y":12,"w":628,"h":554},
+	"sourceSize": {"w":640,"h":576}
 },
 "Second1.png":
 {
-	"frame": {"x":1070,"y":2166,"w":131,"h":101},
+	"frame": {"x":2,"y":723,"w":79,"h":57},
 	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":131,"h":101},
-	"sourceSize": {"w":131,"h":101}
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":3,"w":79,"h":57},
+	"sourceSize": {"w":79,"h":61}
 },
 "Second2.png":
 {
-	"frame": {"x":1203,"y":2166,"w":131,"h":101},
+	"frame": {"x":1969,"y":702,"w":73,"h":47},
 	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":131,"h":101},
-	"sourceSize": {"w":131,"h":101}
+	"trimmed": true,
+	"spriteSourceSize": {"x":3,"y":13,"w":73,"h":47},
+	"sourceSize": {"w":79,"h":61}
 },
 "Second3.png":
 {
-	"frame": {"x":1336,"y":2166,"w":131,"h":101},
+	"frame": {"x":168,"y":702,"w":67,"h":45},
 	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":131,"h":101},
-	"sourceSize": {"w":131,"h":101}
+	"trimmed": true,
+	"spriteSourceSize": {"x":6,"y":11,"w":67,"h":45},
+	"sourceSize": {"w":79,"h":61}
 },
 "SkirtGlow.png":
 {
-	"frame": {"x":1469,"y":2166,"w":567,"h":699},
+	"frame": {"x":856,"y":800,"w":306,"h":403},
 	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":567,"h":699},
-	"sourceSize": {"w":567,"h":699}
+	"trimmed": true,
+	"spriteSourceSize": {"x":34,"y":0,"w":306,"h":403},
+	"sourceSize": {"w":340,"h":419}
 },
 "Third1.png":
 {
-	"frame": {"x":2038,"y":2166,"w":139,"h":83},
+	"frame": {"x":83,"y":723,"w":83,"h":50},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":139,"h":83},
-	"sourceSize": {"w":139,"h":83}
+	"spriteSourceSize": {"x":0,"y":0,"w":83,"h":50},
+	"sourceSize": {"w":83,"h":50}
 },
 "Third2.png":
 {
-	"frame": {"x":2179,"y":2166,"w":139,"h":83},
+	"frame": {"x":171,"y":652,"w":81,"h":44},
 	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":139,"h":83},
-	"sourceSize": {"w":139,"h":83}
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":5,"w":81,"h":44},
+	"sourceSize": {"w":83,"h":50}
 },
 "Thumb1.png":
 {
-	"frame": {"x":2320,"y":2166,"w":238,"h":258},
+	"frame": {"x":1840,"y":651,"w":127,"h":147},
 	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":238,"h":258},
-	"sourceSize": {"w":238,"h":258}
+	"trimmed": true,
+	"spriteSourceSize": {"x":13,"y":0,"w":127,"h":147},
+	"sourceSize": {"w":143,"h":155}
 },
 "Thumb2.png":
 {
-	"frame": {"x":2560,"y":2166,"w":133,"h":114},
+	"frame": {"x":91,"y":652,"w":78,"h":48},
 	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":133,"h":114},
-	"sourceSize": {"w":133,"h":114}
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":9,"w":78,"h":48},
+	"sourceSize": {"w":80,"h":68}
 }},
 "meta": {
 	"app": "http://www.codeandweb.com/texturepacker ",
 	"version": "1.0",
 	"image": "HandCloseUpAtlas.png",
 	"format": "RGBA8888",
-	"size": {"w":4096,"h":4096},
-	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:9f77b5948b89407058c9596e7892200b$"
+	"size": {"w":2048,"h":2048},
+	"scale": "0.6",
+	"smartupdate": "$TexturePacker:SmartUpdate:5ee68fd751fbd7486b07b22713b08cb9:1/1$"
 }
 }

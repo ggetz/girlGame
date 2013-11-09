@@ -15,8 +15,8 @@ public class CrackingEggs : MovingPictureObstacles
 		state = 0;
 		escale = scale;
 		girl=g;
-		height = 700*escale;
-		width = 450*escale;
+		height = 700*0.6f*escale;
+		width = 450*0.6f*escale;
 	}
 	// Use this for initialization
 	public override void Start () 
@@ -48,8 +48,8 @@ public class CrackingEggs : MovingPictureObstacles
 		{
 			state+=1;
 			Play ("Cracked3",false);
-			height = 300*escale;
-			width = 500*escale;
+			height = 300*escale*0.6f;
+			width = 500*escale*0.6f;
 			eggRect.height=height;
 			eggRect.width=width;
 			
@@ -79,8 +79,8 @@ public class CrackingEggs : MovingPictureObstacles
 			{
 				Debug.Log ("Egg Original: " + eggRect.top () + " " + eggRect.height);
 				Play ("Cracked3",false);
-				height = 300*escale;
-				width = 500*escale;
+				height = 300*escale*0.6f;
+				width = 500*escale*0.6f;
 				eggRect.height=height;
 				eggRect.width=width;
 				Debug.Log ("Egg end: " + eggRect.top () + " " + eggRect.height);

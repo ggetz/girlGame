@@ -1,6 +1,6 @@
 {
 "bones": [
-	{ "name": "root", "length": 60 },
+	{ "name": "root", "length": 60, "scaleX": 0.6, "scaleY": 0.6 },
 	{ "name": "Lighteninga", "parent": "root", "x": -181.26, "y": 557.31, "rotation": -4.07 },
 	{ "name": "Lighteningb", "parent": "root", "x": 212.73, "y": 154.49 },
 	{ "name": "Mallet", "parent": "root", "length": 211.32, "x": 9.66, "y": 22.41, "rotation": 90 },

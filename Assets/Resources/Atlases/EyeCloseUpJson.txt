@@ -1,6 +1,6 @@
 {
 "bones": [
-	{ "name": "root" },
+	{ "name": "root", "scaleX": 0.6, "scaleY": 0.6 },
 	{ "name": "Pupil", "parent": "root", "length": 562.78, "x": -39.71, "y": 141.33, "rotation": 128.43 }
 ],
 "slots": [

@@ -1,6 +1,6 @@
 {
 "bones": [
-	{ "name": "root", "x": -1.85, "y": 5.36 },
+	{ "name": "root", "x": -1.85, "y": 5.36, "scaleX": 0.6, "scaleY": 0.6 },
 	{ "name": "Egg", "parent": "root", "x": -2.46, "y": 343.05 },
 	{ "name": "bone1", "parent": "Egg", "length": 266.66, "x": -193.85, "y": 83.51, "rotation": 58.9 },
 	{ "name": "bone2", "parent": "Egg", "length": 134.16, "x": 132.65, "y": 232.5, "rotation": 141.5 },

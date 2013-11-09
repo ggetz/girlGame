@@ -12,8 +12,8 @@ public class Mallet : MovingPictureObstacles
 	public Mallet(string atlas, float scale): base(atlas)
 	{
 		mscale=scale;
-		height =700*mscale;
-		width = 400*mscale;
+		height =700*0.6f*mscale;
+		width = 400*0.6f*mscale;
 		Debug.Log ("In the mallet width is: " + width);
 		mscale = scale;
 	}
@@ -46,8 +46,8 @@ public class Mallet : MovingPictureObstacles
 	public override void electrify()
 	{
 		Play ("Fry", false);
-		height = 80*mscale;
-		width = 280*mscale;
+		height = 80*mscale*0.6f;
+		width = 280*mscale*0.6f;
 		malletRect.height=height;
 		malletRect.width=width;
 		Debug.Log (malletRect.width + " " + malletRect.height);

@@ -11,10 +11,10 @@ public class Lightening : MovingPictureObstacles
 	public float lighteningHeight;
 	List <MovingPictureObstacles> checkHit = new List<MovingPictureObstacles>();
 	
-	public Lightening(string atlas, float scale): base(atlas)
+	public Lightening(string atlas): base(atlas)
 	{
 		lscale = scale;
-		lighteningHeight = 400*lscale;
+		lighteningHeight = 400*0.6f;
 		
 	}
 	// Use this for initialization

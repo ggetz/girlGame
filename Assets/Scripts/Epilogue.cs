@@ -27,10 +27,13 @@ public class Epilogue: MonoBehaviour
 	bool imageFading;
 	bool fadeType;
 	int time=0;
-	float scaling=0.5f;
 	int framerate;
 	int factor=1;
 	bool pan=false;
+	
+	bool unplayed=true;
+	
+	FSprite border1, border2;
 	
 	void Start()
 	{
@@ -68,22 +71,14 @@ public class Epilogue: MonoBehaviour
 		
 		Futile.atlasManager.LoadAtlas ("Atlases/EpilogueAtlas");
 		finalHand=new FSprite("FinalHand");
-		finalScene=new FSprite("FinalScene");
-
-		leftArc.scale=scaling;
-		rightArc.scale=scaling;
-		lowerBody.scale=scaling;
-		leg.scale=scaling;
-		hand.scale=scaling;
-		finalHand.scale=scaling;
-		wholeShot.scale=scaling;
-		
+		finalScene=new FSprite("FinalScene");	
+		border1=new FSprite("BlackEdge");
+		border2=new FSprite("BlackEdge");
 
 	}
 			
 	void SetUpStage()
 	{
-		
 		Futile.stage.AddChild (wholeShot);
 		Futile.stage.AddChild (leg);
 		Futile.stage.AddChild (rightArc);
@@ -111,7 +106,14 @@ public class Epilogue: MonoBehaviour
 		finalScene.alpha=0f;
 		finalHand.alpha=0f;
 		
+		border1.scale=0.6f;
+		border2.scale=0.6f;
 		
+		border1.SetPosition(border1.width/2f, border1.height/2f);
+		border2.SetPosition(Futile.screen.width-border2.width/2f, border2.height/2f);
+		
+		Futile.stage.AddChild(border1);
+		Futile.stage.AddChild (border2);
 	}
 	
 	void Update()
@@ -122,130 +124,215 @@ public class Epilogue: MonoBehaviour
 			wholeShot.Play("Part1", false);
 		}
 		
-		if(time==100)
+		
+		if(time>=100 && time<110 && unplayed)
 		{
+			Debug.Log ("2");
 			wholeShot.Stop ();
 			wholeShot.alpha=0;
 			leg.alpha=100;
 			leg.Play ("Part1", false);
+			unplayed=false;
 		}
 		
-		if(time==130)
+		if(time>=110 && time<=120 && !unplayed)
+		{
+			unplayed=true;
+		}
+		
+		if(time>=130 && time<=140 && unplayed)
 		{
 			leg.Stop ();
 			leg.alpha=0;
 			wholeShot.alpha=100;
 			wholeShot.Play ("Part2", false);
+			unplayed=false;
 		}
-		if(time==360)
+		
+		if(time>=300 && time<=310 && !unplayed)
+		{
+			unplayed=true;
+		}
+		
+		if(time>=360 && time<=370 && unplayed)
 		{
 			wholeShot.Stop ();
 			wholeShot.alpha=0;
 			leg.alpha=100;
 			leg.Play("Part2", false);
+			unplayed=false;
 		}
 		
-		if(time==550)
+		if(time>=500 && time<=510 && !unplayed)
+		{
+			unplayed=true;
+		}
+		
+		if(time>=550 && time<=560 && unplayed)
 		{
 			leg.Stop ();
 			leg.alpha=0;
 			wholeShot.alpha=100;
 			wholeShot.Play ("Part3", false);
+			unplayed=false;
 		}
 		
-		if(time==1280)
+		if(time>=800 && time<=810 && !unplayed)
+		{
+			unplayed=true;
+		}
+		
+		if(time>=1280 && time<=1290 && unplayed)
 		{
 			wholeShot.Stop ();
 			wholeShot.alpha=0;
 			hand.alpha=100;
 			hand.Play ("Part1", false);
+			unplayed=false;
 		}
 		
-		if(time==1620)
+		if(time>=1500 && time<=1510 && !unplayed)
+		{
+			unplayed=true;
+		}
+		
+		if(time>=1620 && time<=1630 && unplayed)
 		{
 			hand.alpha=0;
 			hand.Stop ();
 			wholeShot.alpha=100;
 			wholeShot.Play ("Part4", false);
+			unplayed=false;
 		}
 		
+		if(time>=1700 && time<=1710 && !unplayed)
+		{
+			unplayed=true;
+		}
 		
-		if(time==1800)
+		if(time>=1800 && time<=1810 && unplayed)
 		{
 			wholeShot.alpha=0;
 			wholeShot.Stop();
 			rightArc.alpha=100;
 			rightArc.Play("Part1", false);
+			unplayed=false;
 		}
 		
-		if(time==1880)
+		if(time>=1850 && time<=1860 && !unplayed)
+		{
+			unplayed=true;
+		}
+		
+		if(time>=1880 && time<=1890 && unplayed)
 		{
 			rightArc.alpha=0;
 			rightArc.Stop();
 			leftArc.alpha=100;
 			leftArc.Play ("Part1", false);
+			unplayed=false;
 		}
 		
-		if(time==1950)
+		if(time>=1900 && time<=1910 && !unplayed)
+		{
+			unplayed=true;
+		}
+		
+		if(time>=1950 && time<=1960 && unplayed)
 		{
 			fadeScene(false, 50, leftArc);
+			unplayed=false;
 		}
 		
-		if(time==2100)
+		if(time>=2000 && time<=2010 && !unplayed)
+		{
+			unplayed=true;
+		}
+		
+		if(time>=2100 && time<=2110 && unplayed)
 		{
 			fadeScene (true, 50, finalHand);
 			leftArc.Stop ();
+			unplayed=false;
 		}
 		
-		if(time==2300)
+		if(time>=2200 && time<=2210 && !unplayed)
+		{
+			unplayed=true;
+		}
+		
+		if(time>=2300 && time<=2310 && unplayed)
 		{
 			fadeScene (false, 50, finalHand);
+			unplayed=false;
 		}
 		
-		if(time==2450)
+		if(time>=2400 && time<=2410 && !unplayed)
+		{
+			unplayed=true;
+		}
+		
+		if(time>=2450 && time<=2460 && unplayed)
 		{
 			fadeScene (true, 50, finalScene);
 			pan=true;
+			unplayed=false;
 		}
 	
-		if(time==2800)
+		if(time>=2700 && time<=2710 && !unplayed)
 		{
-			fadeScene (false, 50, finalScene);
+			unplayed=true;
 		}
 		
-		if(time==3000)
+		if(time>=2800 && time<=2810 && unplayed)
 		{
-			finalScene.scale=scaling;
+			fadeScene (false, 50, finalScene);
+			unplayed=false;
+		}
+		
+		if(time>=2900 && time<=2910 && !unplayed)
+		{
+			unplayed=true;
+		}
+		
+		if(time>=3000 && time<=3010 && unplayed)
+		{
+			finalScene.scale=0.6f;
 			finalScene.SetPosition (Futile.screen.width/2f, Futile.screen.height/2f);
 			pan=false;
 			fadeScene (true, 50, finalScene);
+			unplayed=false;
 		}
 		
-		if(time==3300)
+		if(time>=3100 && time<=3110 && !unplayed)
 		{
+			unplayed=true;
+		}
+		
+		if(time>=3300 && time<=3310 && unplayed)
+		{
+			unplayed=true;
 			fadeScene (false, 50, finalScene);
 		}
 		
-		if(time==3500)
+		if(time>=3500)
 		{
 			Application.LoadLevel ("MainMenu");
 		}
 		
-		time++;
+		framerate=(int)(1.0f / Time.deltaTime);
+		factor=60/framerate;
 		
-				
-		if(time>15)
+		if(factor==0)
 		{
-			framerate=(int)(1.0f / Time.deltaTime);
-			Debug.Log ("Framerate: " + framerate);
-			factor=60/framerate;
-			
-			if(factor==0)
-			{
-				factor=1;
-			}
+			factor=1;
+		}
+		else if(factor>=10)
+		{
+			factor=8;
 		}
 		
+		time+=(int)(factor+0.5);
 		if(spineFading)
 		{
 			if(fade<0)

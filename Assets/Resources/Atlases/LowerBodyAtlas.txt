@@ -2,27 +2,27 @@
 
 "LowerBodyCloseUp.png":
 {
-	"frame": {"x":2,"y":2,"w":1415,"h":1080},
+	"frame": {"x":2,"y":2,"w":849,"h":648},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":1415,"h":1080},
-	"sourceSize": {"w":1415,"h":1080}
+	"spriteSourceSize": {"x":0,"y":0,"w":849,"h":648},
+	"sourceSize": {"w":849,"h":648}
 },
 "LowerBodyGlow.png":
 {
-	"frame": {"x":2,"y":1084,"w":1345,"h":706},
+	"frame": {"x":2,"y":652,"w":807,"h":424},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":1345,"h":706},
-	"sourceSize": {"w":1345,"h":706}
+	"spriteSourceSize": {"x":0,"y":0,"w":807,"h":424},
+	"sourceSize": {"w":807,"h":424}
 }},
 "meta": {
 	"app": "http://www.codeandweb.com/texturepacker ",
 	"version": "1.0",
 	"image": "LowerBodyAtlas.png",
 	"format": "RGBA8888",
-	"size": {"w":2048,"h":2048},
-	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:b59b4ee3975c31021e41ffd30347b919$"
+	"size": {"w":1024,"h":2048},
+	"scale": "0.6",
+	"smartupdate": "$TexturePacker:SmartUpdate:bbc32c66028c464529fd0d51a8b51fc9:1/1$"
 }
 }

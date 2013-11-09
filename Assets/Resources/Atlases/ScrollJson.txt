@@ -1,6 +1,6 @@
 {
 "bones": [
-	{ "name": "root" },
+	{ "name": "root", "scaleX": 0.6, "scaleY": 0.6 },
 	{ "name": "Scroll", "parent": "root", "x": -196.55, "y": 604.98 },
 	{ "name": "bone1", "parent": "Scroll", "x": 202.66, "y": -51.05 },
 	{ "name": "bone2", "parent": "bone1", "x": -2.01, "y": -50.29 },

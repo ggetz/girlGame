@@ -2,59 +2,59 @@
 
 "BunnyBackground.png":
 {
-	"frame": {"x":2,"y":2,"w":1415,"h":1080},
+	"frame": {"x":2,"y":2,"w":849,"h":648},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":1415,"h":1080},
-	"sourceSize": {"w":1415,"h":1080}
+	"spriteSourceSize": {"x":0,"y":0,"w":849,"h":648},
+	"sourceSize": {"w":849,"h":648}
 },
 "Glow1.png":
 {
-	"frame": {"x":1419,"y":2,"w":431,"h":568},
+	"frame": {"x":221,"y":652,"w":259,"h":333},
 	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":431,"h":568},
-	"sourceSize": {"w":431,"h":568}
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":1,"w":259,"h":333},
+	"sourceSize": {"w":259,"h":341}
 },
 "Glow2.png":
 {
-	"frame": {"x":2,"y":1084,"w":421,"h":616},
+	"frame": {"x":2,"y":652,"w":217,"h":370},
 	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":421,"h":616},
-	"sourceSize": {"w":421,"h":616}
+	"trimmed": true,
+	"spriteSourceSize": {"x":8,"y":0,"w":217,"h":370},
+	"sourceSize": {"w":253,"h":370}
 },
 "RightArc1.png":
 {
-	"frame": {"x":425,"y":1084,"w":91,"h":266},
+	"frame": {"x":928,"y":2,"w":55,"h":160},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":91,"h":266},
-	"sourceSize": {"w":91,"h":266}
+	"spriteSourceSize": {"x":0,"y":0,"w":55,"h":160},
+	"sourceSize": {"w":55,"h":160}
 },
 "RightArc2.png":
 {
-	"frame": {"x":518,"y":1084,"w":73,"h":336},
+	"frame": {"x":928,"y":164,"w":44,"h":200},
 	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":73,"h":336},
-	"sourceSize": {"w":73,"h":336}
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":2,"w":44,"h":200},
+	"sourceSize": {"w":44,"h":202}
 },
 "RightArc3.png":
 {
-	"frame": {"x":593,"y":1084,"w":121,"h":332},
+	"frame": {"x":853,"y":2,"w":73,"h":195},
 	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":121,"h":332},
-	"sourceSize": {"w":121,"h":332}
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":4,"w":73,"h":195},
+	"sourceSize": {"w":73,"h":199}
 }},
 "meta": {
 	"app": "http://www.codeandweb.com/texturepacker ",
 	"version": "1.0",
 	"image": "RightArcAtlas.png",
 	"format": "RGBA8888",
-	"size": {"w":2048,"h":2048},
-	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:20a8db4e8d4f46332b1fa717a1f30ed3$"
+	"size": {"w":1024,"h":1024},
+	"scale": "0.6",
+	"smartupdate": "$TexturePacker:SmartUpdate:b4f6ac9ba62c5139f037d8b500273ace:1/1$"
 }
 }

@@ -1,6 +1,6 @@
 {
 "bones": [
-	{ "name": "root" },
+	{ "name": "root", "scaleX": 0.6, "scaleY": 0.6 },
 	{ "name": "BackLeg", "parent": "root", "length": 554.31, "x": -92.37, "y": 1074.23, "rotation": -125.62 },
 	{ "name": "FrontLeg", "parent": "root", "length": 346, "x": 384.45, "y": 1081.89, "rotation": -116.74 },
 	{ "name": "BackFoot", "parent": "BackLeg", "length": 316.18, "x": 556.75, "y": 5.34, "rotation": 60.44 },

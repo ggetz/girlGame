@@ -2,67 +2,67 @@
 
 "BackFeet.png":
 {
-	"frame": {"x":2,"y":2,"w":331,"h":493},
+	"frame": {"x":760,"y":910,"w":199,"h":294},
 	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":331,"h":493},
-	"sourceSize": {"w":331,"h":493}
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":2,"w":199,"h":294},
+	"sourceSize": {"w":199,"h":296}
 },
 "BackLeg.png":
 {
-	"frame": {"x":335,"y":2,"w":471,"h":500},
+	"frame": {"x":2,"y":902,"w":281,"h":300},
 	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":471,"h":500},
-	"sourceSize": {"w":471,"h":500}
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":281,"h":300},
+	"sourceSize": {"w":283,"h":300}
 },
 "BackLeg2.png":
 {
-	"frame": {"x":808,"y":2,"w":656,"h":420},
+	"frame": {"x":2,"y":652,"w":394,"h":248},
 	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":656,"h":420},
-	"sourceSize": {"w":656,"h":420}
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":394,"h":248},
+	"sourceSize": {"w":394,"h":252}
 },
 "Blank.png":
 {
-	"frame": {"x":2,"y":504,"w":1415,"h":1080},
+	"frame": {"x":2,"y":2,"w":849,"h":648},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":1415,"h":1080},
-	"sourceSize": {"w":1415,"h":1080}
+	"spriteSourceSize": {"x":0,"y":0,"w":849,"h":648},
+	"sourceSize": {"w":849,"h":648}
 },
 "FootGlow.png":
 {
-	"frame": {"x":1419,"y":504,"w":610,"h":775},
+	"frame": {"x":398,"y":652,"w":360,"h":461},
 	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":610,"h":775},
-	"sourceSize": {"w":610,"h":775}
+	"trimmed": true,
+	"spriteSourceSize": {"x":6,"y":4,"w":360,"h":461},
+	"sourceSize": {"w":366,"h":465}
 },
 "FrontFeet.png":
 {
-	"frame": {"x":2,"y":1586,"w":350,"h":427},
+	"frame": {"x":760,"y":652,"w":210,"h":256},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":350,"h":427},
-	"sourceSize": {"w":350,"h":427}
+	"spriteSourceSize": {"x":0,"y":0,"w":210,"h":256},
+	"sourceSize": {"w":210,"h":256}
 },
 "FrontLeg.png":
 {
-	"frame": {"x":354,"y":1586,"w":306,"h":367},
+	"frame": {"x":285,"y":1115,"w":182,"h":218},
 	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":306,"h":367},
-	"sourceSize": {"w":306,"h":367}
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":182,"h":218},
+	"sourceSize": {"w":184,"h":220}
 }},
 "meta": {
 	"app": "http://www.codeandweb.com/texturepacker ",
 	"version": "1.0",
 	"image": "FeetCloseUpAtlas.png",
 	"format": "RGBA8888",
-	"size": {"w":2048,"h":2048},
-	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:58c48c209e678aa6c8917c38192574cd$"
+	"size": {"w":1024,"h":2048},
+	"scale": "0.6",
+	"smartupdate": "$TexturePacker:SmartUpdate:1adeef5aaa86d8e96260a3241735eaa5:1/1$"
 }
 }

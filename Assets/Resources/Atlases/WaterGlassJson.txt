@@ -1,6 +1,6 @@
 {
 "bones": [
-	{ "name": "root", "length": 60 },
+	{ "name": "root", "length": 60, "scaleX": 0.6, "scaleY": 0.6 },
 	{ "name": "Glass", "parent": "root", "x": 2.07, "y": 295.78 },
 	{ "name": "Glass1", "parent": "Glass", "length": 199.81, "x": -15.56, "y": 193.85, "rotation": 15.4 },
 	{ "name": "Glass2", "parent": "Glass", "length": 184.27, "x": 50.94, "y": -33.95, "rotation": 42.4 },

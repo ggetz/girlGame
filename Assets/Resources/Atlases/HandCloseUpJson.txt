@@ -1,6 +1,6 @@
 {
 "bones": [
-	{ "name": "root" },
+	{ "name": "root", "scaleX": 0.6, "scaleY": 0.6 },
 	{ "name": "HandBackground", "parent": "root", "length": 228.25, "x": -108.78, "y": 798.39, "rotation": -42.38 },
 	{ "name": "White", "parent": "root", "x": 10.68, "y": 546.42, "scaleX": 0.2, "scaleY": 0.2 },
 	{ "name": "First1", "parent": "HandBackground", "length": 81.66, "x": 312.78, "y": 25.56, "rotation": 9.9 },

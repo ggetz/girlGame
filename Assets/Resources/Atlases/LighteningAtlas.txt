@@ -2,43 +2,43 @@
 
 "Lightening1.png":
 {
-	"frame": {"x":2,"y":2,"w":117,"h":141},
+	"frame": {"x":184,"y":2,"w":70,"h":85},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":117,"h":141},
-	"sourceSize": {"w":117,"h":141}
+	"spriteSourceSize": {"x":0,"y":0,"w":70,"h":85},
+	"sourceSize": {"w":70,"h":85}
 },
 "Lightening2.png":
 {
-	"frame": {"x":121,"y":2,"w":300,"h":500},
+	"frame": {"x":2,"y":2,"w":180,"h":242},
 	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":300,"h":500},
-	"sourceSize": {"w":300,"h":500}
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":58,"w":180,"h":242},
+	"sourceSize": {"w":180,"h":300}
 },
 "Lightening3.png":
 {
-	"frame": {"x":2,"y":504,"w":242,"h":207},
+	"frame": {"x":2,"y":339,"w":145,"h":124},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":242,"h":207},
-	"sourceSize": {"w":242,"h":207}
+	"spriteSourceSize": {"x":0,"y":0,"w":145,"h":124},
+	"sourceSize": {"w":145,"h":124}
 },
 "Lightening4.png":
 {
-	"frame": {"x":2,"y":713,"w":277,"h":151},
+	"frame": {"x":2,"y":246,"w":166,"h":91},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":277,"h":151},
-	"sourceSize": {"w":277,"h":151}
+	"spriteSourceSize": {"x":0,"y":0,"w":166,"h":91},
+	"sourceSize": {"w":166,"h":91}
 }},
 "meta": {
 	"app": "http://www.codeandweb.com/texturepacker ",
 	"version": "1.0",
-	"image": "LighteningSprite.png",
+	"image": "LighteningAtlas.png",
 	"format": "RGBA8888",
-	"size": {"w":512,"h":1024},
-	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:92f598fcda89bbe1a6cd07aa8754414a$"
+	"size": {"w":256,"h":512},
+	"scale": "0.6",
+	"smartupdate": "$TexturePacker:SmartUpdate:e058d3be3b18215b4ccaa3b9a6d3bb4c:1/1$"
 }
 }

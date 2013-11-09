@@ -1,6 +1,6 @@
 {
 "bones": [
-	{ "name": "root" },
+	{ "name": "root", "scaleX": 0.6, "scaleY": 0.6 },
 	{ "name": "Lower Lip", "parent": "root", "length": 304.54, "x": -77.96, "y": 577.67, "rotation": 20.5 },
 	{ "name": "Upper Lip", "parent": "root", "length": 559.74, "x": -273.98, "y": 548.01, "rotation": 18.7 }
 ],

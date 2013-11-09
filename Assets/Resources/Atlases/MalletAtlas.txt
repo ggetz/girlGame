@@ -2,99 +2,99 @@
 
 "Ash1.png":
 {
-	"frame": {"x":2,"y":2,"w":114,"h":137},
+	"frame": {"x":82,"y":424,"w":64,"h":72},
 	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":114,"h":137},
-	"sourceSize": {"w":114,"h":137}
+	"trimmed": true,
+	"spriteSourceSize": {"x":2,"y":8,"w":64,"h":72},
+	"sourceSize": {"w":68,"h":82}
 },
 "Ash2.png":
 {
-	"frame": {"x":118,"y":2,"w":184,"h":68},
+	"frame": {"x":293,"y":116,"w":110,"h":39},
 	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":184,"h":68},
-	"sourceSize": {"w":184,"h":68}
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":2,"w":110,"h":39},
+	"sourceSize": {"w":110,"h":41}
 },
 "Ash3.png":
 {
-	"frame": {"x":304,"y":2,"w":194,"h":110},
+	"frame": {"x":293,"y":52,"w":114,"h":62},
 	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":194,"h":110},
-	"sourceSize": {"w":194,"h":110}
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":4,"w":114,"h":62},
+	"sourceSize": {"w":116,"h":66}
 },
 "Ash4.png":
 {
-	"frame": {"x":500,"y":2,"w":191,"h":110},
+	"frame": {"x":176,"y":424,"w":115,"h":62},
 	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":191,"h":110},
-	"sourceSize": {"w":191,"h":110}
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":4,"w":115,"h":62},
+	"sourceSize": {"w":115,"h":66}
 },
 "Ash5.png":
 {
-	"frame": {"x":693,"y":2,"w":188,"h":114},
+	"frame": {"x":293,"y":157,"w":107,"h":56},
 	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":188,"h":114},
-	"sourceSize": {"w":188,"h":114}
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":8,"w":107,"h":56},
+	"sourceSize": {"w":113,"h":68}
 },
 "Ash6.png":
 {
-	"frame": {"x":883,"y":2,"w":72,"h":129},
+	"frame": {"x":39,"y":424,"w":41,"h":73},
 	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":72,"h":129},
-	"sourceSize": {"w":72,"h":129}
+	"trimmed": true,
+	"spriteSourceSize": {"x":2,"y":4,"w":41,"h":73},
+	"sourceSize": {"w":43,"h":77}
 },
 "Ash7.png":
 {
-	"frame": {"x":957,"y":2,"w":54,"h":111},
+	"frame": {"x":148,"y":424,"w":26,"h":65},
 	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":54,"h":111},
-	"sourceSize": {"w":54,"h":111}
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":2,"w":26,"h":65},
+	"sourceSize": {"w":32,"h":67}
 },
 "Ash8.png":
 {
-	"frame": {"x":2,"y":141,"w":68,"h":126},
+	"frame": {"x":2,"y":424,"w":35,"h":74},
 	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":68,"h":126},
-	"sourceSize": {"w":68,"h":126}
+	"trimmed": true,
+	"spriteSourceSize": {"x":3,"y":0,"w":35,"h":74},
+	"sourceSize": {"w":41,"h":76}
 },
 "Lighteninga.png":
 {
-	"frame": {"x":72,"y":141,"w":236,"h":93},
+	"frame": {"x":293,"y":2,"w":142,"h":48},
 	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":236,"h":93},
-	"sourceSize": {"w":236,"h":93}
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":5,"w":142,"h":48},
+	"sourceSize": {"w":142,"h":56}
 },
 "Lighteningb.png":
 {
-	"frame": {"x":310,"y":141,"w":135,"h":170},
+	"frame": {"x":409,"y":52,"w":81,"h":102},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":135,"h":170},
-	"sourceSize": {"w":135,"h":170}
+	"spriteSourceSize": {"x":0,"y":0,"w":81,"h":102},
+	"sourceSize": {"w":81,"h":102}
 },
 "Mallet.png":
 {
-	"frame": {"x":447,"y":141,"w":400,"h":700},
+	"frame": {"x":2,"y":2,"w":222,"h":420},
 	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":400,"h":700},
-	"sourceSize": {"w":400,"h":700}
+	"trimmed": true,
+	"spriteSourceSize": {"x":9,"y":0,"w":222,"h":420},
+	"sourceSize": {"w":240,"h":420}
 }},
 "meta": {
 	"app": "http://www.codeandweb.com/texturepacker ",
 	"version": "1.0",
 	"image": "MalletAtlas.png",
 	"format": "RGBA8888",
-	"size": {"w":1024,"h":1024},
-	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:2f97ddac545a5f41979d9f95525252f9$"
+	"size": {"w":512,"h":512},
+	"scale": "0.6",
+	"smartupdate": "$TexturePacker:SmartUpdate:96cf9ed5e8117d34a0a0fc2ff77db2ef:1/1$"
 }
 }
